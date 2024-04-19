@@ -1,0 +1,857 @@
+******************************************************************************
+            TI ARM Clang Linker Unix v3.2.0                    
+******************************************************************************
+>> Linked Fri Apr 19 13:35:17 2024
+
+OUTPUT FILE NAME:   <sha2hash.out>
+ENTRY POINT SYMBOL: "resetISR"  address: 00002d31
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00080000  00003170  0007ce90  R  X
+  SRAM                  20000000   00009000  00002bdf  00006421  RW X
+  S2RRAM                40098000   00001000  00000000  00001000  RW  
+  CCFG                  4e020000   00000800  00000800  00000000  R   
+  LOG_DATA              90000000   00040000  00000000  00040000  R   
+  LOG_PTR               94000008   00040000  00000000  00040000  R   
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00002eb4   00002eb4    r-x
+  00000000    00000000    0000008c   0000008c    r-- .resetVecs
+  0000008c    0000008c    00002e28   00002e28    r-x .text
+00002eb4    00002eb4    00000008   00000008    rw-
+  00002eb4    00002eb4    00000008   00000008    rw- .args
+00002ec0    00002ec0    000002b4   000002b4    r--
+  00002ec0    00002ec0    0000024c   0000024c    r-- .rodata
+  0000310c    0000310c    00000068   00000068    r-- .cinit
+20000000    20000000    00000187   00000000    rw-
+  20000000    20000000    00000187   00000000    rw- .data
+20000400    20000400    00000020   00000000    rw-
+  20000400    20000400    00000010   00000000    rw- .TI.bound:dmaChannel0ControlTableEntry
+  20000410    20000410    00000010   00000000    rw- .TI.bound:dmaChannel1ControlTableEntry
+20000420    20000420    000025ac   00000000    rw-
+  20000420    20000420    00002000   00000000    rw- .sysmem
+  20002420    20002420    000005ac   00000000    rw- .bss
+20008c00    20008c00    00000400   00000000    rw-
+  20008c00    20008c00    00000400   00000000    rw- .stack
+4e020000    4e020000    00000800   00000800    r--
+  4e020000    4e020000    00000800   00000800    r-- .ccfg
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.resetVecs 
+*          0    00000000    0000008c     
+                  00000000    0000008c     nortos_cc23x0r5.a : startup_cc23x0r5_ticlang.c.obj (.resetVecs)
+
+.binit     0    00000000    00000000     
+
+.text      0    0000008c    00002e28     
+                  0000008c    00000888     libc.a : _printfi.c.obj (.text:__TI_printfi_nofloat)
+                  00000914    00000214     drivers_cc23x0r5.a : UART2LPF3.c.obj (.text.UART2LPF3_hwiIntFxn)
+                  00000b28    000001ba                        : UART2.c.obj (.text.UART2_readTimeout)
+                  00000ce2    00000002     ti_drivers_config.obj (.text.Board_initHook)
+                  00000ce4    0000019c     drivers_cc23x0r5.a : UART2LPF3.c.obj (.text.UART2LPF3_initHw)
+                  00000e80    0000017c                        : UART2LPF3.c.obj (.text.UART2_open)
+                  00000ffc    00000164                        : UART2.c.obj (.text.UART2_writeTimeoutBlocking)
+                  00001160    00000140     nortos_cc23x0r5.a : PowerCC23X0_nortos.c.obj (.text.PowerCC23X0_standbyPolicy)
+                  000012a0    0000010c     drivers_cc23x0r5.a : UART2LPF3.c.obj (.text.UART2Support_dmaStartRx)
+                  000013ac    00000108                        : UART2.c.obj (.text.UART2_writeTimeoutNonblocking)
+                  000014b4    000000dc                        : GPIOLPF3.c.obj (.text.GPIO_init)
+                  00001590    000000c0                        : UART2LPF3.c.obj (.text.UART2Support_dmaStartTx)
+                  00001650    000000a8     sha2hash.obj (.text.mainThread)
+                  000016f8    000000a2     libclang_rt.builtins.a : udivmoddi4.S.obj (.text)
+                  0000179a    00000002     drivers_cc23x0r5.a : SHA2LPF3SW.c.obj (.text.SHA2_init)
+                  0000179c    0000009c                        : PowerCC23X0.c.obj (.text.Power_init)
+                  00001838    0000009c     nortos_cc23x0r5.a : SemaphoreP_nortos.c.obj (.text.SemaphoreP_pend)
+                  000018d4    00000078                       : ClockPLPF3_nortos.c.obj (.text.ClockP_hwiCallback)
+                  0000194c    00000078                       : HwiPCC23X0_nortos.c.obj (.text.HwiP_construct)
+                  000019c4    00000078     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.PowerCC23X0_oscillatorISR)
+                  00001a3c    00000078     libc.a : copy_decompress_lzss.c.obj (.text:decompress:lzss)
+                  00001ab4    00000074     nortos_cc23x0r5.a : ClockPLPF3_nortos.c.obj (.text.ClockP_startup)
+                  00001b28    00000070     drivers_cc23x0r5.a : UART2LPF3.c.obj (.text.UART2Support_dmaStopTx)
+                  00001b98    0000006c                        : PowerCC23X0.c.obj (.text.PowerCC23X0_startHFXT)
+                  00001c04    00000064     nortos_cc23x0r5.a : ClockPLPF3_nortos.c.obj (.text.ClockP_start)
+                  00001c68    00000064     drivers_cc23x0r5.a : GPIOLPF3.c.obj (.text.GPIO_setConfigAndMux)
+                  00001ccc    00000064     driverlib.a : interrupt.c.obj (.text.IntSetPriority)
+                  00001d30    00000064     drivers_cc23x0r5.a : UART2LPF3.c.obj (.text.UART2Support_dmaStopRx)
+                  00001d94    0000005c     nortos_cc23x0r5.a : ClockPLPF3_nortos.c.obj (.text.ClockP_walkQueueDynamic)
+                  00001df0    0000005c                       : SemaphoreP_nortos.c.obj (.text.SemaphoreP_construct)
+                  00001e4c    00000058     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.Power_releaseDependency)
+                  00001ea4    00000058                        : PowerCC23X0.c.obj (.text.Power_setDependency)
+                  00001efc    00000058     libclang_rt.builtins.a : clzsi2.c.obj (.text.__clzsi2)
+                  00001f54    00000054     ti_drivers_config.obj (.text.Board_shutDownExtFlash)
+                  00001fa8    00000054     driverlib.a : lrfd.c.obj (.text.LRFDApplyClockDependencies)
+                  00001ffc    00000054     sha2hash.obj (.text.printHash)
+                  00002050    00000050     drivers_cc23x0r5.a : UDMALPF3.c.obj (.text.UDMALPF3_init)
+                  000020a0    0000004c     ti_drivers_config.obj (.text.Board_sendExtFlashByte)
+                  000020ec    0000004c     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.Power_sleep)
+                  00002138    00000048                        : RingBuf.c.obj (.text.RingBuf_put)
+                  00002180    00000048                        : SHA2LPF3SW.c.obj (.text.SHA2_construct)
+                  000021c8    00000048                        : UART2.c.obj (.text.UART2_readFull)
+                  00002210    00000044                        : UART2LPF3.c.obj (.text.UART2LPF3_initIO)
+                  00002254    00000040     nortos_cc23x0r5.a : SemaphoreP_nortos.c.obj (.text.SemaphoreP_post)
+                  00002294    00000040     libclang_rt.builtins.a : aeabi_uidivmod.S.obj (.text.__aeabi_uidivmod)
+                  000022d4    00000040     libc.a : atoi.c.obj (.text.atoi)
+                  00002314    0000003c     drivers_cc23x0r5.a : SHA2LPF3SW.c.obj (.text.SHA2_finalize)
+                  00002350    0000003c                        : UART2LPF3.c.obj (.text.UART2LPF3_preNotifyFxn)
+                  0000238c    0000003c     libc.a : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit)
+                  000023c8    0000003a     drivers_cc23x0r5.a : RingBuf.c.obj (.text.RingBuf_putAdvance)
+                  00002402    00000002                        : UART2LPF3.c.obj (.text.UART2LPF3_eventCallback)
+                  00002404    0000003a     libclang_rt.builtins.a : muldsi3.S.obj (.text.__muldsi3)
+                  0000243e    00000002                            : aeabi_div0.c.obj (.text.__aeabi_idiv0)
+                  00002440    00000038     drivers_cc23x0r5.a : GPIOLPF3.c.obj (.text.GPIO_hwiIntFxn)
+                  00002478    00000038     driverlib.a : interrupt.c.obj (.text.IntClearPend)
+                  000024b0    00000038     drivers_cc23x0r5.a : SHA2LPF3SW.c.obj (.text.SHA2_addData)
+                  000024e8    00000038                        : UART2.c.obj (.text.UART2_rxEnable)
+                  00002520    00000038     libc.a : sprintf.c.obj (.text.sprintf)
+                  00002558    00000034     ti_drivers_config.obj (.text.Board_wakeUpExtFlash)
+                  0000258c    00000034     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.PowerCC23X0_notify)
+                  000025c0    00000034                        : RingBuf.c.obj (.text.RingBuf_putPointer)
+                  000025f4    00000034                        : UDMALPF3.c.obj (.text.UDMALPF3_postNotifyFxn)
+                  00002628    00000030                        : GPIO.c.obj (.text.GPIO_resetConfig)
+                  00002658    00000030     driverlib.a : interrupt.c.obj (.text.IntIsEnabled)
+                  00002688    00000030     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.Power_getDependencyCount)
+                  000026b8    00000030                        : PowerCC23X0.c.obj (.text.Power_releaseConstraint)
+                  000026e8    00000030                        : RingBuf.c.obj (.text.RingBuf_getConsume)
+                  00002718    0000002c     ti_drivers_config.obj (.text.Board_init)
+                  00002744    0000002c     driverlib.a : interrupt.c.obj (.text.IntRegister)
+                  00002770    0000002c     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.PowerCC23X0_setDependencyCount)
+                  0000279c    0000002c                        : PowerCC23X0.c.obj (.text.Power_setConstraint)
+                  000027c8    0000002c     driverlib.a : setup.c.obj (.text.SetupTrimDevice)
+                  000027f4    0000002c     drivers_cc23x0r5.a : UART2LPF3.c.obj (.text.UART2Support_enableInts)
+                  00002820    00000028     driverlib.a : interrupt.c.obj (.text.IntDisable)
+                  00002848    00000028                 : interrupt.c.obj (.text.IntEnable)
+                  00002870    00000028     drivers_cc23x0r5.a : List.c.obj (.text.List_remove)
+                  00002898    00000028                        : PowerCC23X0.c.obj (.text.Power_registerNotify)
+                  000028c0    00000028                        : UART2LPF3.c.obj (.text.UART2LPF3_getRxData)
+                  000028e8    00000026                        : RingBuf.c.obj (.text.RingBuf_getPointer)
+                  0000290e    00000026     driverlib.a : uart.c.obj (.text.UARTConfigSetExpClk)
+                  00002934    00000024     nortos_cc23x0r5.a : HwiPCC23X0_nortos.c.obj (.text.HwiP_dispatch)
+                  00002958    00000024     drivers_cc23x0r5.a : List.c.obj (.text.List_put)
+                  0000297c    00000024                        : PowerCC23X0.c.obj (.text.PowerLPF3_selectLFXT)
+                  000029a0    00000024     libclang_rt.builtins.a : muldi3.S.obj (.text.__muldi3)
+                  000029c4    00000024     libc.a : boot_cortex_m.c.obj (.text:_c_int00)
+                  000029e8    00000022     drivers_cc23x0r5.a : UART2.c.obj (.text.UART2_read)
+                  00002a0a    00000022     libc.a : memccpy.c.obj (.text.memccpy)
+                  00002a2c    00000020     nortos_cc23x0r5.a : ClockPLPF3_nortos.c.obj (.text.ClockP_add)
+                  00002a4c    00000020     driverlib.a : udma.c.obj (.text.uDMADisableChannelAttribute)
+                  00002a6c    0000001e     drivers_cc23x0r5.a : SHA2LPF3SW.c.obj (.text.SHA2_hashData)
+                  00002a8a    0000001e                        : UART2LPF3.c.obj (.text.UART2Support_sendData)
+                  00002aa8    0000001e     libclang_rt.builtins.a : ashldi3.S.obj (.text.__ashldi3)
+                  00002ac6    00000002                            : aeabi_div0.c.obj (.text.__aeabi_ldiv0)
+                  00002ac8    0000001c     drivers_cc23x0r5.a : GPIO.c.obj (.text.GPIO_setCallback)
+                  00002ae4    0000001c     driverlib.a : lrfd.c.obj (.text.LRFDReleaseClockDependency)
+                  00002b00    0000001c                 : lrfd.c.obj (.text.LRFDSetClockDependency)
+                  00002b1c    0000001c     nortos_cc23x0r5.a : SemaphoreP_nortos.c.obj (.text.SemaphoreP_constructBinary)
+                  00002b38    0000001c     driverlib.a : uart.c.obj (.text.UARTDisable)
+                  00002b54    0000001c     libc.a : args_main.c.obj (.text._args_main)
+                  00002b70    0000001a     drivers_cc23x0r5.a : UART2.c.obj (.text.UART2_writeTimeout)
+                  00002b8a    00000002     nortos_cc23x0r5.a : SemaphoreP_nortos.c.obj (.text.clkFxn)
+                  00002b8c    00000018                       : HwiPCC23X0_nortos.c.obj (.text.HwiP_inISR)
+                  00002ba4    00000018                       : HwiPCC23X0_nortos.c.obj (.text.HwiP_setFunc)
+                  00002bbc    00000018     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.Power_idleFunc)
+                  00002bd4    00000018                        : UART2LPF3.c.obj (.text.UART2LPF3_postNotifyFxn)
+                  00002bec    00000018     libc.a : sprintf.c.obj (.text._outs)
+                  00002c04    00000016     drivers_cc23x0r5.a : UART2LPF3.c.obj (.text.uartDmaDisable)
+                  00002c1a    00000016                        : UART2LPF3.c.obj (.text.uartDmaEnable)
+                  00002c30    00000014     nortos_cc23x0r5.a : ClockPLPF3_nortos.c.obj (.text.ClockP_destruct)
+                  00002c44    00000014     drivers_cc23x0r5.a : GPIOLPF3.c.obj (.text.GPIO_disableInt)
+                  00002c58    00000014                        : GPIOLPF3.c.obj (.text.GPIO_write)
+                  00002c6c    00000014                        : List.c.obj (.text.List_clearList)
+                  00002c80    00000014                        : SHA2.c.obj (.text.SHA2_open)
+                  00002c94    00000014     libclang_rt.builtins.a : aeabi_uldivmod.S.obj (.text.__aeabi_uldivmod)
+                  00002ca8    00000014     driverlib.a : udma.c.obj (.text.uDMAGetChannelSize)
+                  00002cbc    00000012     libc.a : memcpy16.S.obj (.text:TI_memcpy_small)
+                  00002cce    00000012            : copy_decompress_none.c.obj (.text:decompress:none)
+                  00002ce0    00000010     nortos_cc23x0r5.a : ClockPLPF3_nortos.c.obj (.text.ClockP_getCpuFreq)
+                  00002cf0    00000010                       : HwiPCC23X0_nortos.c.obj (.text.HwiP_Params_init)
+                  00002d00    00000010     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.Power_disablePolicy)
+                  00002d10    00000010                        : UART2.c.obj (.text.UART2_Params_init)
+                  00002d20    00000010     main_nortos.obj (.text.main)
+                  00002d30    00000010     nortos_cc23x0r5.a : startup_cc23x0r5_ticlang.c.obj (.text.resetISR)
+                  00002d40    00000010     libc.a : wcslen.c.obj (.text.wcslen)
+                  00002d50    00000010            : copy_zero_init.c.obj (.text:decompress:ZI)
+                  00002d60    0000000e     nortos_cc23x0r5.a : HwiPCC23X0_nortos.c.obj (.text.HwiP_restore)
+                  00002d6e    0000000e     drivers_cc23x0r5.a : RingBuf.c.obj (.text.RingBuf_construct)
+                  00002d7c    0000000e                        : UART2LPF3.c.obj (.text.UART2Support_disableTx)
+                  00002d8a    0000000e                        : UART2LPF3.c.obj (.text.UART2Support_enableRx)
+                  00002d98    0000000e                        : UART2LPF3.c.obj (.text.UART2Support_enableTx)
+                  00002da6    0000000e                        : UART2LPF3.c.obj (.text.UART2Support_txDone)
+                  00002db4    0000000e                        : UART2.c.obj (.text.UART2_write)
+                  00002dc2    00000002     nortos_cc23x0r5.a : startup_cc23x0r5_ticlang.c.obj (.text.faultISR)
+                  00002dc4    0000000e     libclang_rt.builtins.a : aeabi_memset.S.obj (.text.__aeabi_memset)
+                  00002dd2    0000000e     libc.a : _printfi.c.obj (.text.strlen)
+                  00002de0    0000000e            : memset16.S.obj (.text:TI_memset_small)
+                  00002dee    0000000c     nortos_cc23x0r5.a : HwiPCC23X0_nortos.c.obj (.text.HwiP_disable)
+                  00002dfa    00000002                       : startup_cc23x0r5_ticlang.c.obj (.text.intDefaultHandler)
+                  00002dfc    0000000c     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.PowerCC23X0_rtcISR)
+                  00002e08    0000000c                        : PowerCC23X0.c.obj (.text.Power_enablePolicy)
+                  00002e14    0000000c                        : PowerCC23X0.c.obj (.text.Power_getConstraintMask)
+                  00002e20    0000000c     libclang_rt.builtins.a : aeabi_memset.S.obj (.text.__aeabi_memclr)
+                  00002e2c    0000000a     drivers_cc23x0r5.a : GPIOLPF3.c.obj (.text.GPIO_setConfig)
+                  00002e36    0000000a     nortos_cc23x0r5.a : HwiPCC23X0_nortos.c.obj (.text.HwiP_interruptsEnabled)
+                  00002e40    0000000a     drivers_cc23x0r5.a : UART2.c.obj (.text.OUTLINED_FUNCTION_0)
+                  00002e4a    0000000a                        : UART2LPF3.c.obj (.text.UART2Support_powerSetConstraint)
+                  00002e54    0000000a                        : UART2LPF3.c.obj (.text.UDMALPF3_disableAttribute)
+                  00002e5e    0000000a     libc.a : sprintf.c.obj (.text._outc)
+                  00002e68    00000008     nortos_cc23x0r5.a : HwiPCC23X0_nortos.c.obj (.text.HwiP_clearInterrupt)
+                  00002e70    00000008                       : HwiPCC23X0_nortos.c.obj (.text.HwiP_enable)
+                  00002e78    00000008                       : HwiPCC23X0_nortos.c.obj (.text.HwiP_enableInterrupt)
+                  00002e80    00000008                       : NoRTOS.c.obj (.text.NoRTOS_start)
+                  00002e88    00000008     libc.a : aeabi_portable.c.obj (.text.__aeabi_errno_addr)
+                  00002e90    00000008     libclang_rt.builtins.a : aeabi_memcpy.S.obj (.text.__aeabi_memcpy)
+                  00002e98    00000006     driverlib.a : cpu.c.obj (.text.CPUDelay)
+                  00002e9e    00000004     nortos_cc23x0r5.a : ClockPLPF3_nortos.c.obj (.text.ClockP_isActive)
+                  00002ea2    00000004     drivers_cc23x0r5.a : UART2.c.obj (.text.OUTLINED_FUNCTION_1)
+                  00002ea6    00000004                        : RingBuf.c.obj (.text.RingBuf_getCount)
+                  00002eaa    00000004     libc.a : pre_init.c.obj (.text._system_pre_init)
+                  00002eae    00000004            : exit.c.obj (.text:abort)
+                  00002eb2    00000002     nortos_cc23x0r5.a : startup_cc23x0r5_ticlang.c.obj (.text.nmiISR)
+
+.rodata    0    00002ec0    0000024c     
+                  00002ec0    00000101     libc.a : aeabi_ctype.S.obj (.rodata:__aeabi_ctype_table_)
+                  00002fc1    00000002     drivers_cc23x0r5.a : UART2LPF3.c.obj (.rodata.stopBits)
+                  00002fc3    00000001     ti_drivers_config.obj (.rodata.GPIO_pinLowerBound)
+                  00002fc4    00000058     ti_drivers_config.obj (.rodata.UART2LPF3_hwAttrs)
+                  0000301c    00000029     sha2hash.obj (.rodata.promptEnter)
+                  00003045    00000001     ti_drivers_config.obj (.rodata.GPIO_pinUpperBound)
+                  00003046    00000001     ti_drivers_config.obj (.rodata.SHA2LPF3SWHWAttrs)
+                  00003047    00000001     ti_drivers_config.obj (.rodata.UART2_count)
+                  00003048    00000024     drivers_cc23x0r5.a : UART2.c.obj (.rodata.UART2_defaultParams)
+                  0000306c    0000001a     sha2hash.obj (.rodata.promptStartup)
+                  00003086    00000017     sha2hash.obj (.rodata.promptHash)
+                  0000309d    00000011     libc.a : _printfi.c.obj (.rodata.str1.11645776875810915891)
+                  000030ae    00000011            : _printfi.c.obj (.rodata.str1.44690500295887128011)
+                  000030bf    00000001     --HOLE-- [fill = 0]
+                  000030c0    00000010     ti_drivers_config.obj (.rodata.GPIO_config)
+                  000030d0    0000000c     drivers_cc23x0r5.a : SHA2.c.obj (.rodata.SHA2_defaultParams)
+                  000030dc    00000008     ti_drivers_config.obj (.rodata.PowerCC23X0_config)
+                  000030e4    00000008     ti_drivers_config.obj (.rodata.SHA2_config)
+                  000030ec    00000008     ti_drivers_config.obj (.rodata.UART2_config)
+                  000030f4    00000005     drivers_cc23x0r5.a : UART2LPF3.c.obj (.rodata.parityType)
+                  000030f9    00000005     sha2hash.obj (.rodata.str1.66992399226659508241)
+                  000030fe    00000005     nortos_cc23x0r5.a : PowerCC23X0_nortos.c.obj (.rodata.sysTimerResolutionShift)
+                  00003103    00000001     --HOLE-- [fill = 0]
+                  00003104    00000004     ti_drivers_config.obj (.rodata.UDMALPF3_config)
+                  00003108    00000004     drivers_cc23x0r5.a : UART2LPF3.c.obj (.rodata.cst4)
+
+.cinit     0    0000310c    00000068     
+                  0000310c    00000023     (.cinit..data.load) [load image, compression = lzss]
+                  0000312f    00000001     --HOLE-- [fill = 0]
+                  00003130    0000000c     (__TI_handler_table)
+                  0000313c    00000008     (.cinit..TI.bound:dmaChannel0ControlTableEntry.load) [load image, compression = zero_init]
+                  00003144    00000008     (.cinit..TI.bound:dmaChannel1ControlTableEntry.load) [load image, compression = zero_init]
+                  0000314c    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00003154    00000020     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.data      0    20000000    00000187     UNINITIALIZED
+                  20000000    0000008c     nortos_cc23x0r5.a : HwiPCC23X0_nortos.c.obj (.data.HwiP_dispatchTable)
+                  2000008c    00000068     ti_drivers_config.obj (.data.gpioPinConfigs)
+                  200000f4    0000003f     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.data..L_MergedGlobals.1)
+                  20000133    00000001     nortos_cc23x0r5.a : ClockPLPF3_nortos.c.obj (.data.ClockP_initialized)
+                  20000134    00000024     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.data..L_MergedGlobals)
+                  20000158    00000014     nortos_cc23x0r5.a : ClockPLPF3_nortos.c.obj (.data..L_MergedGlobals)
+                  2000016c    00000004                       : HwiPCC23X0_nortos.c.obj (.data.HwiP_swiPIntNum)
+                  20000170    00000010                       : SemaphoreP_nortos.c.obj (.data..L_MergedGlobals)
+                  20000180    00000004     libc.a : aeabi_portable.c.obj (.data.__aeabi_errno)
+                  20000184    00000001     drivers_cc23x0r5.a : GPIOLPF3.c.obj (.data.initCalled)
+                  20000185    00000001                        : UDMALPF3.c.obj (.data.isOpen)
+                  20000186    00000001     driverlib.a : lrfd.c.obj (.data.lrfdClocked)
+
+.ramVecs   0    20000200    0000008c     NOLOAD SECTION
+                  20000200    0000008c     driverlib.a : interrupt.c.obj (.ramVecs)
+
+.sysmem    0    20000420    00002000     UNINITIALIZED
+                  20000420    00000010     libc.a : memory.c.obj (.sysmem)
+                  20000430    00001ff0     --HOLE--
+
+.bss       0    20002420    000005ac     UNINITIALIZED
+                  20002420    00000180     (.common:UART2LPF3_objects)
+                  200025a0    00000100     sha2hash.obj (.bss.formatedMsg)
+                  200026a0    00000100     sha2hash.obj (.bss.msg)
+                  200027a0    0000008c     (.common:SHA2LPF3SWObjects)
+                  2000282c    00000068     (.common:gpioCallbackFunctions)
+                  20002894    00000068     (.common:gpioUserArgs)
+                  200028fc    00000020     ti_drivers_config.obj (.bss.uart2RxRingBuffer0)
+                  2000291c    00000020     ti_drivers_config.obj (.bss.uart2TxRingBuffer0)
+                  2000293c    0000001c     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.bss.ckmHwi)
+                  20002958    0000001c                        : GPIOLPF3.c.obj (.bss.gpioHwi)
+                  20002974    0000001c     (.common:clockHwi)
+                  20002990    00000014                        : UDMALPF3.c.obj (.bss.postNotify)
+                  200029a4    00000014     nortos_cc23x0r5.a : PowerCC23X0_nortos.c.obj (.bss.sysTimerTimeouts)
+                  200029b8    00000008     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.bss.notifyList)
+                  200029c0    00000004                        : PowerCC23X0.c.obj (.bss.PowerCC23X0_enterStandby.controlPreStandby)
+                  200029c4    00000004                        : PowerCC23X0.c.obj (.bss.constraintCounts)
+                  200029c8    00000004     driverlib.a : lrfd.c.obj (.bss.lrfdClockDependencySets)
+
+.stack     0    20008c00    00000400     UNINITIALIZED
+                  20008c00    00000004     libc.a : boot_cortex_m.c.obj (.stack)
+                  20008c04    000003fc     --HOLE--
+
+.ccfg      0    4e020000    00000800     
+                  4e020000    00000800     ti_devices_config.obj (.ccfg)
+
+.log_data 
+*          0    90000000    00000000     COPY SECTION
+
+.log_ptr   0    94000008    00000000     COPY SECTION
+
+__llvm_prf_cnts 
+*          0    20000000    00000000     UNINITIALIZED
+
+__llvm_prf_bits 
+*          0    20000000    00000000     UNINITIALIZED
+
+.TI.bound:dmaChannel0ControlTableEntry 
+*          0    20000400    00000010     UNINITIALIZED
+                  20000400    00000010     ti_drivers_config.obj (.TI.bound:dmaChannel0ControlTableEntry)
+
+.TI.bound:dmaChannel1ControlTableEntry 
+*          0    20000410    00000010     UNINITIALIZED
+                  20000410    00000010     ti_drivers_config.obj (.TI.bound:dmaChannel1ControlTableEntry)
+
+.args      0    00002eb4    00000008     
+                  00002eb4    00000008     --HOLE-- [fill = 0]
+
+MODULE SUMMARY
+
+       Module                           code    ro data   rw data
+       ------                           ----    -------   -------
+    <current directory>
+       ti_devices_config.obj            0       2048      0      
+       ti_drivers_config.obj            258     136       932    
+       sha2hash.obj                     252     95        512    
+       main_nortos.obj                  16      0         0      
+    +--+--------------------------------+-------+---------+---------+
+       Total:                           526     2279      1444   
+                                                                 
+    /home/developer/.conan/data/tiarmllvm/3.2.0.LTS-0/library-msp/ga/package/be241241e9d4718e5bab4eb33935bbb69606bb0c/lib/armv6m-ti-none-eabi/c/libc.a
+       _printfi.c.obj                   2198    34        0      
+       aeabi_ctype.S.obj                0       257       0      
+       copy_decompress_lzss.c.obj       120     0         0      
+       sprintf.c.obj                    90      0         0      
+       atoi.c.obj                       64      0         0      
+       autoinit.c.obj                   60      0         0      
+       boot_cortex_m.c.obj              36      0         0      
+       memccpy.c.obj                    34      0         0      
+       args_main.c.obj                  28      0         0      
+       copy_decompress_none.c.obj       18      0         0      
+       memcpy16.S.obj                   18      0         0      
+       copy_zero_init.c.obj             16      0         0      
+       wcslen.c.obj                     16      0         0      
+       memset16.S.obj                   14      0         0      
+       aeabi_portable.c.obj             8       0         4      
+       exit.c.obj                       4       0         0      
+       pre_init.c.obj                   4       0         0      
+    +--+--------------------------------+-------+---------+---------+
+       Total:                           2728    291       4      
+                                                                 
+    /home/developer/.conan/data/tiarmllvm/3.2.0.LTS-0/library-msp/ga/package/be241241e9d4718e5bab4eb33935bbb69606bb0c/lib/clang/15.0.7/lib/armv6m-ti-none-eabi/libclang_rt.builtins.a
+       udivmoddi4.S.obj                 162     0         0      
+       clzsi2.c.obj                     88      0         0      
+       aeabi_uidivmod.S.obj             64      0         0      
+       muldsi3.S.obj                    58      0         0      
+       muldi3.S.obj                     36      0         0      
+       ashldi3.S.obj                    30      0         0      
+       aeabi_memset.S.obj               26      0         0      
+       aeabi_uldivmod.S.obj             20      0         0      
+       aeabi_memcpy.S.obj               8       0         0      
+       aeabi_div0.c.obj                 4       0         0      
+    +--+--------------------------------+-------+---------+---------+
+       Total:                           496     0         0      
+                                                                 
+    /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/ticlang/m0p/nortos_cc23x0r5.a
+       ClockPLPF3_nortos.c.obj          500     0         21     
+       HwiPCC23X0_nortos.c.obj          280     0         144    
+       SemaphoreP_nortos.c.obj          342     0         16     
+       PowerCC23X0_nortos.c.obj         320     5         20     
+       startup_cc23x0r5_ticlang.c.obj   22      140       0      
+       NoRTOS.c.obj                     8       0         0      
+    +--+--------------------------------+-------+---------+---------+
+       Total:                           1472    145       201    
+                                                                 
+    /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/ticlang/driverlib.a
+       interrupt.c.obj                  328     0         140    
+       lrfd.c.obj                       140     0         5      
+       uart.c.obj                       66      0         0      
+       udma.c.obj                       52      0         0      
+       setup.c.obj                      44      0         0      
+       cpu.c.obj                        6       0         0      
+    +--+--------------------------------+-------+---------+---------+
+       Total:                           636     0         145    
+                                                                 
+    /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/ticlang/m0p/drivers_cc23x0r5.a
+       UART2LPF3.c.obj                  2384    11        0      
+       UART2.c.obj                      1294    36        0      
+       PowerCC23X0.c.obj                1024    0         171    
+       GPIOLPF3.c.obj                   426     0         29     
+       RingBuf.c.obj                    286     0         0      
+       SHA2LPF3SW.c.obj                 220     0         0      
+       UDMALPF3.c.obj                   132     0         21     
+       List.c.obj                       96      0         0      
+       GPIO.c.obj                       76      0         0      
+       SHA2.c.obj                       20      12        0      
+    +--+--------------------------------+-------+---------+---------+
+       Total:                           5958    59        221    
+                                                                 
+       Heap:                            0       0         8192   
+       Stack:                           0       0         1024   
+       Linker Generated:                0       103       0      
+    +--+--------------------------------+-------+---------+---------+
+       Grand Total:                     11816   2877      11231  
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00003154 records: 4, size/record: 8, table size: 32
+	.data: load addr=0000310c, load size=00000023 bytes, run addr=20000000, run size=00000187 bytes, compression=lzss
+	.TI.bound:dmaChannel0ControlTableEntry: load addr=0000313c, load size=00000008 bytes, run addr=20000400, run size=00000010 bytes, compression=zero_init
+	.TI.bound:dmaChannel1ControlTableEntry: load addr=00003144, load size=00000008 bytes, run addr=20000410, run size=00000010 bytes, compression=zero_init
+	.bss: load addr=0000314c, load size=00000008 bytes, run addr=20002420, run size=000005ac bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00003130 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+SEGMENT ATTRIBUTES
+
+    id tag       seg value 
+    -- ---       --- ----- 
+     0 PHA_BOUND 4   (null)
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                           
+-------   ----                           
+00002719  Board_init                     
+00000ce3  Board_initHook                 
+000020a1  Board_sendExtFlashByte         
+00001f55  Board_shutDownExtFlash         
+00002559  Board_wakeUpExtFlash           
+00002eae  C$$EXIT                        
+00002e99  CPUDelay                       
+00002a2d  ClockP_add                     
+00002c31  ClockP_destruct                
+00002ce1  ClockP_getCpuFreq              
+00002e9f  ClockP_isActive                
+00001c05  ClockP_start                   
+00001ab5  ClockP_startup                 
+00001d95  ClockP_walkQueueDynamic        
+000030c0  GPIO_config                    
+00002c45  GPIO_disableInt                
+00002441  GPIO_hwiIntFxn                 
+000014b5  GPIO_init                      
+00002fc3  GPIO_pinLowerBound             
+00003045  GPIO_pinUpperBound             
+00002629  GPIO_resetConfig               
+00002ac9  GPIO_setCallback               
+00002e2d  GPIO_setConfig                 
+00001c69  GPIO_setConfigAndMux           
+00002c59  GPIO_write                     
+00002cf1  HwiP_Params_init               
+00002e69  HwiP_clearInterrupt            
+0000194d  HwiP_construct                 
+00002def  HwiP_disable                   
+00002935  HwiP_dispatch                  
+00002e71  HwiP_enable                    
+00002e79  HwiP_enableInterrupt           
+00002b8d  HwiP_inISR                     
+00002e37  HwiP_interruptsEnabled         
+00002d61  HwiP_restore                   
+00002ba5  HwiP_setFunc                   
+2000016c  HwiP_swiPIntNum                
+00002479  IntClearPend                   
+00002821  IntDisable                     
+00002849  IntEnable                      
+00002659  IntIsEnabled                   
+00002745  IntRegister                    
+00001ccd  IntSetPriority                 
+00001fa9  LRFDApplyClockDependencies     
+00002ae5  LRFDReleaseClockDependency     
+00002b01  LRFDSetClockDependency         
+00002c6d  List_clearList                 
+00002959  List_put                       
+00002871  List_remove                    
+00002e81  NoRTOS_start                   
+000030dc  PowerCC23X0_config             
+0000258d  PowerCC23X0_notify             
+00001161  PowerCC23X0_standbyPolicy      
+0000297d  PowerLPF3_selectLFXT           
+00002d01  Power_disablePolicy            
+00002e09  Power_enablePolicy             
+00002e15  Power_getConstraintMask        
+00002689  Power_getDependencyCount       
+00002bbd  Power_idleFunc                 
+0000179d  Power_init                     
+00002899  Power_registerNotify           
+000026b9  Power_releaseConstraint        
+00001e4d  Power_releaseDependency        
+0000279d  Power_setConstraint            
+00001ea5  Power_setDependency            
+000020ed  Power_sleep                    
+00002d6f  RingBuf_construct              
+000026e9  RingBuf_getConsume             
+00002ea7  RingBuf_getCount               
+000028e9  RingBuf_getPointer             
+00002139  RingBuf_put                    
+000023c9  RingBuf_putAdvance             
+000025c1  RingBuf_putPointer             
+00003046  SHA2LPF3SWHWAttrs              
+200027a0  SHA2LPF3SWObjects              
+000024b1  SHA2_addData                   
+000030e4  SHA2_config                    
+00002181  SHA2_construct                 
+000030d0  SHA2_defaultParams             
+00002315  SHA2_finalize                  
+00002a6d  SHA2_hashData                  
+0000179b  SHA2_init                      
+00002c81  SHA2_open                      
+00001df1  SemaphoreP_construct           
+00002b1d  SemaphoreP_constructBinary     
+20000178  SemaphoreP_defaultParams       
+00001839  SemaphoreP_pend                
+00002255  SemaphoreP_post                
+000027c9  SetupTrimDevice                
+00002cbd  TI_memcpy_small                
+00002de1  TI_memset_small                
+20002420  UART2LPF3_objects              
+00002d7d  UART2Support_disableTx         
+000012a1  UART2Support_dmaStartRx        
+00001591  UART2Support_dmaStartTx        
+00001d31  UART2Support_dmaStopRx         
+00001b29  UART2Support_dmaStopTx         
+000027f5  UART2Support_enableInts        
+00002d8b  UART2Support_enableRx          
+00002d99  UART2Support_enableTx          
+00002e4b  UART2Support_powerSetConstraint
+00002a8b  UART2Support_sendData          
+00002da7  UART2Support_txDone            
+00002d11  UART2_Params_init              
+000030ec  UART2_config                   
+00003047  UART2_count                    
+00003048  UART2_defaultParams            
+00000e81  UART2_open                     
+000029e9  UART2_read                     
+000021c9  UART2_readFull                 
+00000b29  UART2_readTimeout              
+000024e9  UART2_rxEnable                 
+00002db5  UART2_write                    
+00002b71  UART2_writeTimeout             
+00000ffd  UART2_writeTimeoutBlocking     
+000013ad  UART2_writeTimeoutNonblocking  
+0000290f  UARTConfigSetExpClk            
+00002b39  UARTDisable                    
+00003104  UDMALPF3_config                
+00002051  UDMALPF3_init                  
+20009000  __STACK_END                    
+00000400  __STACK_SIZE                   
+00002000  __SYSMEM_SIZE                  
+00000000  __TI_ATRegion0_region_sz       
+00000000  __TI_ATRegion0_src_addr        
+00000000  __TI_ATRegion0_trg_addr        
+00000000  __TI_ATRegion1_region_sz       
+00000000  __TI_ATRegion1_src_addr        
+00000000  __TI_ATRegion1_trg_addr        
+00000000  __TI_ATRegion2_region_sz       
+00000000  __TI_ATRegion2_src_addr        
+00000000  __TI_ATRegion2_trg_addr        
+00003154  __TI_CINIT_Base                
+00003174  __TI_CINIT_Limit               
+00003174  __TI_CINIT_Warm                
+00003130  __TI_Handler_Table_Base        
+0000313c  __TI_Handler_Table_Limit       
+0000238d  __TI_auto_init_nobinit_nopinit 
+00001a3d  __TI_decompress_lzss           
+00002ccf  __TI_decompress_none           
+ffffffff  __TI_pprof_out_hndl            
+0000008d  __TI_printfi_nofloat           
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+00000000  __TI_static_base__             
+00002d51  __TI_zero_init                 
+00002ec0  __aeabi_ctype_table_           
+00002ec0  __aeabi_ctype_table_C          
+20000180  __aeabi_errno                  
+00002e89  __aeabi_errno_addr             
+0000243f  __aeabi_idiv0                  
+00002ac7  __aeabi_ldiv0                  
+00002aa9  __aeabi_llsl                   
+000029a1  __aeabi_lmul                   
+00002e21  __aeabi_memclr                 
+00002e21  __aeabi_memclr4                
+00002e21  __aeabi_memclr8                
+00002e91  __aeabi_memcpy                 
+00002e91  __aeabi_memcpy4                
+00002e91  __aeabi_memcpy8                
+00002dc5  __aeabi_memset                 
+00002dc5  __aeabi_memset4                
+00002dc5  __aeabi_memset8                
+00002295  __aeabi_uidiv                  
+00002295  __aeabi_uidivmod               
+00002c95  __aeabi_uldivmod               
+00002aa9  __ashldi3                      
+ffffffff  __binit__                      
+00002eb4  __c_args__                     
+00001efd  __clzsi2                       
+UNDEFED   __mpu_init                     
+000029a1  __muldi3                       
+00002405  __muldsi3                      
+20008c00  __stack                        
+20000000  __start___llvm_prf_bits        
+20000000  __start___llvm_prf_cnts        
+20000000  __stop___llvm_prf_bits         
+20000000  __stop___llvm_prf_cnts         
+000016f9  __udivmoddi4                   
+00002b55  _args_main                     
+000029c5  _c_int00                       
+20000420  _sys_memory                    
+UNDEFED   _system_post_cinit             
+00002eab  _system_pre_init               
+00002eaf  abort                          
+000022d5  atoi                           
+ffffffff  binit                          
+4e020000  ccfg                           
+00002b8b  clkFxn                         
+20002974  clockHwi                       
+2000282c  gpioCallbackFunctions          
+2000008c  gpioPinConfigs                 
+20002894  gpioUserArgs                   
+00002d21  main                           
+00001651  mainThread                     
+00002a0b  memccpy                        
+00001ffd  printHash                      
+00002d31  resetISR                       
+00002521  sprintf                        
+00002a4d  uDMADisableChannelAttribute    
+00002ca9  uDMAGetChannelSize             
+00002d41  wcslen                         
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                           
+-------   ----                           
+00000000  __TI_ATRegion0_region_sz       
+00000000  __TI_ATRegion0_src_addr        
+00000000  __TI_ATRegion0_trg_addr        
+00000000  __TI_ATRegion1_region_sz       
+00000000  __TI_ATRegion1_src_addr        
+00000000  __TI_ATRegion1_trg_addr        
+00000000  __TI_ATRegion2_region_sz       
+00000000  __TI_ATRegion2_src_addr        
+00000000  __TI_ATRegion2_trg_addr        
+00000000  __TI_static_base__             
+0000008d  __TI_printfi_nofloat           
+00000400  __STACK_SIZE                   
+00000b29  UART2_readTimeout              
+00000ce3  Board_initHook                 
+00000e81  UART2_open                     
+00000ffd  UART2_writeTimeoutBlocking     
+00001161  PowerCC23X0_standbyPolicy      
+000012a1  UART2Support_dmaStartRx        
+000013ad  UART2_writeTimeoutNonblocking  
+000014b5  GPIO_init                      
+00001591  UART2Support_dmaStartTx        
+00001651  mainThread                     
+000016f9  __udivmoddi4                   
+0000179b  SHA2_init                      
+0000179d  Power_init                     
+00001839  SemaphoreP_pend                
+0000194d  HwiP_construct                 
+00001a3d  __TI_decompress_lzss           
+00001ab5  ClockP_startup                 
+00001b29  UART2Support_dmaStopTx         
+00001c05  ClockP_start                   
+00001c69  GPIO_setConfigAndMux           
+00001ccd  IntSetPriority                 
+00001d31  UART2Support_dmaStopRx         
+00001d95  ClockP_walkQueueDynamic        
+00001df1  SemaphoreP_construct           
+00001e4d  Power_releaseDependency        
+00001ea5  Power_setDependency            
+00001efd  __clzsi2                       
+00001f55  Board_shutDownExtFlash         
+00001fa9  LRFDApplyClockDependencies     
+00001ffd  printHash                      
+00002000  __SYSMEM_SIZE                  
+00002051  UDMALPF3_init                  
+000020a1  Board_sendExtFlashByte         
+000020ed  Power_sleep                    
+00002139  RingBuf_put                    
+00002181  SHA2_construct                 
+000021c9  UART2_readFull                 
+00002255  SemaphoreP_post                
+00002295  __aeabi_uidiv                  
+00002295  __aeabi_uidivmod               
+000022d5  atoi                           
+00002315  SHA2_finalize                  
+0000238d  __TI_auto_init_nobinit_nopinit 
+000023c9  RingBuf_putAdvance             
+00002405  __muldsi3                      
+0000243f  __aeabi_idiv0                  
+00002441  GPIO_hwiIntFxn                 
+00002479  IntClearPend                   
+000024b1  SHA2_addData                   
+000024e9  UART2_rxEnable                 
+00002521  sprintf                        
+00002559  Board_wakeUpExtFlash           
+0000258d  PowerCC23X0_notify             
+000025c1  RingBuf_putPointer             
+00002629  GPIO_resetConfig               
+00002659  IntIsEnabled                   
+00002689  Power_getDependencyCount       
+000026b9  Power_releaseConstraint        
+000026e9  RingBuf_getConsume             
+00002719  Board_init                     
+00002745  IntRegister                    
+0000279d  Power_setConstraint            
+000027c9  SetupTrimDevice                
+000027f5  UART2Support_enableInts        
+00002821  IntDisable                     
+00002849  IntEnable                      
+00002871  List_remove                    
+00002899  Power_registerNotify           
+000028e9  RingBuf_getPointer             
+0000290f  UARTConfigSetExpClk            
+00002935  HwiP_dispatch                  
+00002959  List_put                       
+0000297d  PowerLPF3_selectLFXT           
+000029a1  __aeabi_lmul                   
+000029a1  __muldi3                       
+000029c5  _c_int00                       
+000029e9  UART2_read                     
+00002a0b  memccpy                        
+00002a2d  ClockP_add                     
+00002a4d  uDMADisableChannelAttribute    
+00002a6d  SHA2_hashData                  
+00002a8b  UART2Support_sendData          
+00002aa9  __aeabi_llsl                   
+00002aa9  __ashldi3                      
+00002ac7  __aeabi_ldiv0                  
+00002ac9  GPIO_setCallback               
+00002ae5  LRFDReleaseClockDependency     
+00002b01  LRFDSetClockDependency         
+00002b1d  SemaphoreP_constructBinary     
+00002b39  UARTDisable                    
+00002b55  _args_main                     
+00002b71  UART2_writeTimeout             
+00002b8b  clkFxn                         
+00002b8d  HwiP_inISR                     
+00002ba5  HwiP_setFunc                   
+00002bbd  Power_idleFunc                 
+00002c31  ClockP_destruct                
+00002c45  GPIO_disableInt                
+00002c59  GPIO_write                     
+00002c6d  List_clearList                 
+00002c81  SHA2_open                      
+00002c95  __aeabi_uldivmod               
+00002ca9  uDMAGetChannelSize             
+00002cbd  TI_memcpy_small                
+00002ccf  __TI_decompress_none           
+00002ce1  ClockP_getCpuFreq              
+00002cf1  HwiP_Params_init               
+00002d01  Power_disablePolicy            
+00002d11  UART2_Params_init              
+00002d21  main                           
+00002d31  resetISR                       
+00002d41  wcslen                         
+00002d51  __TI_zero_init                 
+00002d61  HwiP_restore                   
+00002d6f  RingBuf_construct              
+00002d7d  UART2Support_disableTx         
+00002d8b  UART2Support_enableRx          
+00002d99  UART2Support_enableTx          
+00002da7  UART2Support_txDone            
+00002db5  UART2_write                    
+00002dc5  __aeabi_memset                 
+00002dc5  __aeabi_memset4                
+00002dc5  __aeabi_memset8                
+00002de1  TI_memset_small                
+00002def  HwiP_disable                   
+00002e09  Power_enablePolicy             
+00002e15  Power_getConstraintMask        
+00002e21  __aeabi_memclr                 
+00002e21  __aeabi_memclr4                
+00002e21  __aeabi_memclr8                
+00002e2d  GPIO_setConfig                 
+00002e37  HwiP_interruptsEnabled         
+00002e4b  UART2Support_powerSetConstraint
+00002e69  HwiP_clearInterrupt            
+00002e71  HwiP_enable                    
+00002e79  HwiP_enableInterrupt           
+00002e81  NoRTOS_start                   
+00002e89  __aeabi_errno_addr             
+00002e91  __aeabi_memcpy                 
+00002e91  __aeabi_memcpy4                
+00002e91  __aeabi_memcpy8                
+00002e99  CPUDelay                       
+00002e9f  ClockP_isActive                
+00002ea7  RingBuf_getCount               
+00002eab  _system_pre_init               
+00002eae  C$$EXIT                        
+00002eaf  abort                          
+00002eb4  __c_args__                     
+00002ec0  __aeabi_ctype_table_           
+00002ec0  __aeabi_ctype_table_C          
+00002fc3  GPIO_pinLowerBound             
+00003045  GPIO_pinUpperBound             
+00003046  SHA2LPF3SWHWAttrs              
+00003047  UART2_count                    
+00003048  UART2_defaultParams            
+000030c0  GPIO_config                    
+000030d0  SHA2_defaultParams             
+000030dc  PowerCC23X0_config             
+000030e4  SHA2_config                    
+000030ec  UART2_config                   
+00003104  UDMALPF3_config                
+00003130  __TI_Handler_Table_Base        
+0000313c  __TI_Handler_Table_Limit       
+00003154  __TI_CINIT_Base                
+00003174  __TI_CINIT_Limit               
+00003174  __TI_CINIT_Warm                
+20000000  __start___llvm_prf_bits        
+20000000  __start___llvm_prf_cnts        
+20000000  __stop___llvm_prf_bits         
+20000000  __stop___llvm_prf_cnts         
+2000008c  gpioPinConfigs                 
+2000016c  HwiP_swiPIntNum                
+20000178  SemaphoreP_defaultParams       
+20000180  __aeabi_errno                  
+20000420  _sys_memory                    
+20002420  UART2LPF3_objects              
+200027a0  SHA2LPF3SWObjects              
+2000282c  gpioCallbackFunctions          
+20002894  gpioUserArgs                   
+20002974  clockHwi                       
+20008c00  __stack                        
+20009000  __STACK_END                    
+4e020000  ccfg                           
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+ffffffff  __binit__                      
+ffffffff  binit                          
+UNDEFED   __mpu_init                     
+UNDEFED   _system_post_cinit             
+
+[202 symbols]

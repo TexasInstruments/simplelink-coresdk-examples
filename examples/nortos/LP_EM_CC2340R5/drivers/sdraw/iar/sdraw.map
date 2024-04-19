@@ -1,0 +1,815 @@
+﻿###############################################################################
+#
+# IAR ELF Linker V9.40.2.374/LNX for ARM BX               19/Apr/2024  13:35:09
+# Copyright 2007-2023 IAR Systems AB.
+#
+#    Output file  =  sdraw.out
+#    Map file     =  sdraw.map
+#    Command line =
+#        sdraw.obj main_nortos.obj ti_devices_config.obj ti_drivers_config.obj
+#        -L/project/staging/core_examples/simplelink-lowpower-f3-sdk/source
+#        -L/project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos
+#        -fti_utils_build_linker.cmd.genlibs
+#        (ti/display/lib/iar/m0p/display_cc23x0r5.a
+#        ti/drivers/lib/iar/m0p/drivers_cc23x0r5.a
+#        lib/iar/m0p/nortos_cc23x0r5.a
+#        ti/devices/cc23x0r5/driverlib/lib/iar/driverlib.a) --config
+#        ../iar/cc23x0r5_nortos.icf --map sdraw.map --silent
+#        --semihosting=iar_breakpoint --cpu=Cortex-M0+ -o sdraw.out
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__CPP_Runtime   = 1
+__Heap_Handler  = DLMalloc
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The advanced heap was selected because the application calls
+memory allocation functions outside of system library functions,
+there are calls to deallocation functions in the application, and
+the application appears to be primarily optimized for speed.
+
+
+*******************************************************************************
+*** RESERVED RANGES
+***
+
+Ranges reserved by absolute symbols:
+
+         From           To  Size
+         ----           --  ----
+  0x2000'0400  0x2000'040f  0x10
+  0x2000'0410  0x2000'041f  0x10
+  0x2000'0420  0x2000'042f  0x10
+  0x2000'0430  0x2000'043f  0x10
+  0x2000'0480  0x2000'048f  0x10
+  0x2000'0490  0x2000'049f  0x10
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at address 0x0 { ro section .resetVecs };
+"P2":  place in [from 0x4e02'0000 to 0x4e02'07ff] { section .ccfg };
+"P3":  place in [from 0x0 to 0x7'ffff] { ro };
+"P4":  place in [from 0x2000'0000 to 0x2000'8fff] { rw, section .ramVecs };
+define block HEAP with size = 16K, alignment = 8 { };
+"P5":  place in [from 0x2000'0000 to 0x2000'8fff] { block HEAP };
+define block CSTACK with size = 1K, alignment = 8 { section .stack };
+"A1":  place at end of [from 0x2000'0000 to 0x2000'8fff] { block CSTACK };
+do not initialize { section .stack, section .noinit };
+initialize by copy { rw };
+keep { section .resetVecs };
+keep { section .ccfg };
+
+No sections matched the following patterns:
+
+  ro section .log_data  in block LOG_DATA
+  ro section .log_ptr*  in block LOG_PTR
+  section .s2rram       in "P1"
+
+
+  Section            Kind         Address    Size  Object
+  -------            ----         -------    ----  ------
+"A0":                                        0x8c
+  .resetVecs         const            0x0    0x8c  startup_cc23x0r5_iar.c.obj [7]
+                                   - 0x8c    0x8c
+
+"P3":                                      0x66c3
+  .text              ro code         0x8c  0x1670  dlmalloc.o [3]
+  .text              ro code       0x16fc     0xa  abort.o [3]
+  .rodata            const         0x1706     0x1  ti_drivers_config.obj [1]
+  .rodata            const         0x1707     0x1  ti_drivers_config.obj [1]
+  .text              ro code       0x1708    0x2c  xgetmemchunk.o [3]
+  .text              ro code       0x1734    0x4e  ABImemcpy.o [8]
+  .rodata            const         0x1782     0x1  ti_drivers_config.obj [1]
+  .rodata            const         0x1783     0x1  ti_drivers_config.obj [1]
+  .text              ro code       0x1784    0x14  exit.o [9]
+  .text              ro code       0x1798   0xec0  SPILPF3DMA.c.obj [5]
+  .text              ro code       0x2658   0x122  HwiPCC23X0_nortos.c.obj [7]
+  .rodata            const         0x277a     0x1  ti_drivers_config.obj [1]
+  .rodata            const         0x277b     0x1  ti_drivers_config.obj [1]
+  .text              ro code       0x277c   0x1f4  SwiP_nortos.c.obj [7]
+  .text              ro code       0x2970   0x194  SemaphoreP_nortos.c.obj [7]
+  .text              ro code       0x2b04    0x60  GPIO.c.obj [5]
+  .text              ro code       0x2b64   0x424  PowerCC23X0.c.obj [5]
+  .text              ro code       0x2f88   0x244  GPIOLPF3.c.obj [5]
+  .text              ro code       0x31cc    0x74  UDMALPF3.c.obj [5]
+  .text              ro code       0x3240    0x38  udma.c.obj [4]
+  .text              ro code       0x3278    0x14  memset.o [8]
+  .text              ro code       0x328c   0x218  ClockPLPF3_nortos.c.obj [7]
+  .text              ro code       0x34a4    0xae  I32DivModFast.o [8]
+  .text              ro code       0x3554   0x1c4  interrupt.c.obj [4]
+  .text              ro code       0x3718    0x58  QueueP_nortos.c.obj [7]
+  .text              ro code       0x3770     0x8  heaptramp0.o [3]
+  .text              ro code       0x3778    0x66  List.c.obj [5]
+  .text              ro code       0x37e0    0x7c  lrfd.c.obj [4]
+  .text              ro code       0x385c    0x4e  ABImemset.o [8]
+  .text              ro code       0x38ac     0x2  IntDivZer.o [8]
+  .text              ro code       0x38b0   0xad8  UART2LPF3.c.obj [5]
+  .text              ro code       0x4388   0x144  RingBuf.c.obj [5]
+  .text              ro code       0x44cc    0x94  UART2.c.obj [5]
+  .text              ro code       0x4560    0x5a  UART2.c.obj [5]
+  .text              ro code       0x45ba    0x34  UART2.c.obj [5]
+  .text              ro code       0x45f0    0x74  uart.c.obj [4]
+  .text              ro code       0x4664   0x90e  SDSPI.c.obj [5]
+  .text              ro code       0x4f74    0xb4  SPI.c.obj [5]
+  .text              ro code       0x5028   0x3f8  SystemP_nortos.c.obj [7]
+  .text              ro code       0x5420     0xe  strlen.o [8]
+  .text              ro code       0x542e    0x32  DblCmpLe.o [6]
+  .text              ro code       0x5460    0x52  DblToI32.o [6]
+  .text              ro code       0x54b4    0x34  IxxToDbl.o [6]
+  .text              ro code       0x54e8   0x1a8  DblAddSub.o [6]
+  .text              ro code       0x5690   0x184  DblMul.o [6]
+  .text              ro code       0x5814   0x296  UART2.c.obj [5]
+  .text              ro code       0x5aac   0x284  sdraw.obj [1]
+  .text              ro code       0x5d30    0x9d  Display.c.obj [2]
+  .text              ro code       0x5dd0    0xac  SD.c.obj [5]
+  .text              ro code       0x5e7c    0x32  I64Mul.o [8]
+  .text              ro code       0x5eb0    0x1e  memcmp.o [8]
+  .text              ro code       0x5ed0   0x1d0  ti_drivers_config.obj [1]
+  .text              ro code       0x60a0     0x8  cpu.c.obj [4]
+  .text              ro code       0x60a8     0x2  ti_drivers_config.obj [1]
+  .text              ro code       0x60ac   0x150  PowerCC23X0_nortos.c.obj [7]
+  .rodata            const         0x61fc    0xf0  sdraw.obj [1]
+  .text              ro code       0x62ec    0xb4  DisplayUart2.c.obj [2]
+  .text              ro code       0x63a0     0xe  UART2.c.obj [5]
+  .text              ro code       0x63ae    0x1a  UART2.c.obj [5]
+  .text              ro code       0x63c8    0x80  lz77_init_single.o [8]
+  .rodata            const         0x6448    0x58  ti_drivers_config.obj [1]
+  .rodata            const         0x64a0    0x40  ti_drivers_config.obj [1]
+  .text              ro code       0x64e0    0x3c  zero_init3.o [8]
+  .text              ro code       0x651c    0x36  startup_cc23x0r5_iar.c.obj [7]
+  .text              ro code       0x6554    0x2c  setup.c.obj [4]
+  .text              ro code       0x6580    0x28  data_init.o [8]
+  .rodata            const         0x65a8    0x24  SDSPI.c.obj [5]
+  .rodata            const         0x65cc    0x24  UART2.c.obj [5]
+  .iar.init_table    const         0x65f0    0x20  - Linker created -
+  .rodata            const         0x6610    0x20  DisplayUart2.c.obj [2]
+  .text              ro code       0x6630    0x1e  cmain.o [8]
+  .text              ro code       0x664e    0x12  main_nortos.obj [1]
+  .text              ro code       0x6660     0x8  exit.o [3]
+  .text              ro code       0x6668     0x8  NoRTOS.c.obj [7]
+  .text              ro code       0x6670     0xa  cexit.o [8]
+  .text              ro code       0x667c    0x1c  cstartup_M.o [8]
+  .rodata            const         0x6698    0x18  SPILPF3DMA.c.obj [5]
+  .rodata            const         0x66b0    0x14  ti_drivers_config.obj [1]
+  .rodata            const         0x66c4    0x10  ti_drivers_config.obj [1]
+  .rodata            const         0x66d4     0xc  ti_drivers_config.obj [1]
+  .rodata            const         0x66e0     0xc  ti_drivers_config.obj [1]
+  .rodata            const         0x66ec     0xc  ti_drivers_config.obj [1]
+  .rodata            const         0x66f8     0xc  SDSPI.c.obj [5]
+  .rodata            const         0x6704     0x8  ti_drivers_config.obj [1]
+  .rodata            const         0x670c     0x8  ti_drivers_config.obj [1]
+  .rodata            const         0x6714     0x4  ti_drivers_config.obj [1]
+  .rodata            const         0x6718     0x4  ti_drivers_config.obj [1]
+  .rodata            const         0x671c     0x0  zero_init3.o [8]
+  .rodata            const         0x671c     0x0  lz77_init_single.o [8]
+  Initializer bytes  const         0x671c    0x30  <for P4-P5-1>
+                                 - 0x674c  0x66c0
+
+"P4-P5", part 1 of 3:                        0x85
+  P4-P5-1                     0x2000'04a0    0x85  <Init block>
+    .data            inited   0x2000'04a0    0x68  ti_drivers_config.obj [1]
+    .data            inited   0x2000'0508    0x10  PowerCC23X0.c.obj [5]
+    .data            inited   0x2000'0518     0x4  HwiPCC23X0_nortos.c.obj [7]
+    .data            inited   0x2000'051c     0x9  SemaphoreP_nortos.c.obj [7]
+                            - 0x2000'0525    0x85
+
+"P4-P5", part 2 of 3:                      0x1360
+  .bss               zero     0x2000'0528   0x800  sdraw.obj [1]
+  .bss               zero     0x2000'0d28   0x400  ti_drivers_config.obj [1]
+  .bss               zero     0x2000'1128   0x1d8  dlmalloc.o [3]
+  .bss               zero     0x2000'1300   0x180  ti_drivers_config.obj [1]
+  .bss               zero     0x2000'1480   0x100  ti_drivers_config.obj [1]
+  .bss               zero     0x2000'1580    0x8c  HwiPCC23X0_nortos.c.obj [7]
+  .bss               zero     0x2000'160c    0x68  ti_drivers_config.obj [1]
+  .bss               zero     0x2000'1674    0x68  ti_drivers_config.obj [1]
+  .bss               zero     0x2000'16dc    0x4c  SwiP_nortos.c.obj [7]
+  .bss               zero     0x2000'1728    0x40  PowerCC23X0.c.obj [5]
+  .bss               zero     0x2000'1768    0x20  ti_drivers_config.obj [1]
+  .bss               zero     0x2000'1788    0x20  ti_drivers_config.obj [1]
+  .bss               zero     0x2000'17a8    0x20  GPIOLPF3.c.obj [5]
+  .bss               zero     0x2000'17c8    0x20  PowerCC23X0.c.obj [5]
+  .bss               zero     0x2000'17e8    0x20  ClockPLPF3_nortos.c.obj [7]
+  .bss               zero     0x2000'1808    0x18  UDMALPF3.c.obj [5]
+  .bss               zero     0x2000'1820    0x18  dlmalloc.o [3]
+  .bss               zero     0x2000'1838    0x14  PowerCC23X0_nortos.c.obj [7]
+  .bss               zero     0x2000'184c     0xc  ti_drivers_config.obj [1]
+  .bss               zero     0x2000'1858     0xc  ti_drivers_config.obj [1]
+  .bss               zero     0x2000'1864     0xc  PowerCC23X0.c.obj [5]
+  .bss               zero     0x2000'1870     0x8  PowerCC23X0.c.obj [5]
+  .bss               zero     0x2000'1878     0x8  lrfd.c.obj [4]
+  .bss               zero     0x2000'1880     0x4  xgetmemchunk.o [3]
+  .bss               zero     0x2000'1884     0x2  SemaphoreP_nortos.c.obj [7]
+  .bss               zero     0x2000'1886     0x1  SD.c.obj [5]
+  .bss               zero     0x2000'1887     0x1  SPI.c.obj [5]
+                            - 0x2000'1888  0x1360
+
+"P4-P5", part 3 of 3:                      0x4090
+  .ramVecs           uninit   0x2000'1900    0x8c  interrupt.c.obj [4]
+  HEAP                        0x2000'1990  0x4000  <Block>
+    HEAP             uninit   0x2000'1990  0x4000  <Block tail>
+                            - 0x2000'5990  0x4090
+
+"A1":                                       0x400
+  CSTACK                      0x2000'8c00   0x400  <Block>
+    .stack           uninit   0x2000'8c00     0x4  startup_cc23x0r5_iar.c.obj [7]
+    CSTACK           uninit   0x2000'8c04   0x3fc  <Block tail>
+                            - 0x2000'9000   0x400
+
+"P2":                                       0x800
+  .ccfg              const    0x4e02'0000   0x800  ti_devices_config.obj [1]
+                            - 0x4e02'0800   0x800
+
+Unused ranges:
+
+         From           To      Size
+         ----           --      ----
+       0x674f     0x7'ffff  0x7'98b1
+  0x2000'0000  0x2000'03ff     0x400
+  0x2000'0440  0x2000'047f      0x40
+  0x2000'0525  0x2000'0527       0x3
+  0x2000'1888  0x2000'18ff      0x78
+  0x2000'5990  0x2000'8bff    0x3270
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address      Size
+          -------      ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0x1360:
+          0x2000'0528  0x1360
+
+Copy/lz77 (__iar_lz77_init_single3)
+    1 source range, total size 0x30 (36% of destination):
+               0x671c    0x30
+    1 destination range, total size 0x85:
+          0x2000'04a0    0x85
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                      ro code  ro data  rw data
+    ------                      -------  -------  -------
+command line/config:
+    -----------------------------------------------------
+    Total:
+
+/project/staging/core_examples/examples/nortos/LP_EM_CC2340R5/drivers/sdraw/iar: [1]
+    main_nortos.obj                  18
+    sdraw.obj                       644      240    2'048
+    ti_devices_config.obj                  2'048
+    ti_drivers_config.obj           466      291    2'064
+    -----------------------------------------------------
+    Total:                        1'128    2'579    4'112
+
+display_cc23x0r5.a: [2]
+    Display.c.obj                   157
+    DisplayUart2.c.obj              180       32
+    -----------------------------------------------------
+    Total:                          337       32
+
+dl6M_tln.a: [3]
+    abort.o                          10
+    dlmalloc.o                    5'744               496
+    exit.o                            8
+    heaptramp0.o                      8
+    xgetmemchunk.o                   44                 4
+    -----------------------------------------------------
+    Total:                        5'814               500
+
+driverlib.a: [4]
+    cpu.c.obj                         8
+    interrupt.c.obj                 452               140
+    lrfd.c.obj                      124                 8
+    setup.c.obj                      44
+    uart.c.obj                      116
+    udma.c.obj                       56
+    -----------------------------------------------------
+    Total:                          800               148
+
+drivers_cc23x0r5.a: [5]
+    GPIO.c.obj                       96
+    GPIOLPF3.c.obj                  580                32
+    List.c.obj                      102
+    PowerCC23X0.c.obj             1'060        6      132
+    RingBuf.c.obj                   324
+    SD.c.obj                        172                 1
+    SDSPI.c.obj                   2'318       48
+    SPI.c.obj                       180                 1
+    SPILPF3DMA.c.obj              3'776       24
+    UART2.c.obj                     992       36
+    UART2LPF3.c.obj               2'776
+    UDMALPF3.c.obj                  116                24
+    -----------------------------------------------------
+    Total:                       12'492      114      190
+
+m6M_tl.a: [6]
+    DblAddSub.o                     424
+    DblCmpLe.o                       50
+    DblMul.o                        388
+    DblToI32.o                       82
+    IxxToDbl.o                       52
+    -----------------------------------------------------
+    Total:                          996
+
+nortos_cc23x0r5.a: [7]
+    ClockPLPF3_nortos.c.obj         536                32
+    HwiPCC23X0_nortos.c.obj         290        1      144
+    NoRTOS.c.obj                      8
+    PowerCC23X0_nortos.c.obj        336                20
+    QueueP_nortos.c.obj              88
+    SemaphoreP_nortos.c.obj         404        4       11
+    SwiP_nortos.c.obj               500                76
+    SystemP_nortos.c.obj          1'016
+    startup_cc23x0r5_iar.c.obj       54      140        4
+    -----------------------------------------------------
+    Total:                        3'232      145      287
+
+rt6M_tl.a: [8]
+    ABImemcpy.o                      78
+    ABImemset.o                      78
+    I32DivModFast.o                 174
+    I64Mul.o                         50
+    IntDivZer.o                       2
+    cexit.o                          10
+    cmain.o                          30
+    cstartup_M.o                     28
+    data_init.o                      40
+    lz77_init_single.o              128
+    memcmp.o                         30
+    memset.o                         20
+    strlen.o                         14
+    zero_init3.o                     60
+    -----------------------------------------------------
+    Total:                          742
+
+shb_l.a: [9]
+    exit.o                           20
+    -----------------------------------------------------
+    Total:                           20
+
+    Gaps                             29
+    Linker created                            32   17'404
+---------------------------------------------------------
+    Grand Total:                 25'590    2'902   22'641
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                       Address   Size  Type      Object
+-----                       -------   ----  ----      ------
+.iar.init_table$$Base        0x65f0          --   Gb  - Linker created -
+.iar.init_table$$Limit       0x6610          --   Gb  - Linker created -
+?main                        0x6631         Code  Gb  cmain.o [8]
+Board_init                   0x6069   0x26  Code  Gb  ti_drivers_config.obj [1]
+Board_initHook               0x60a9    0x2  Code  Wk  ti_drivers_config.obj [1]
+Board_sendExtFlashByte       0x5ed1  0x126  Code  Gb  ti_drivers_config.obj [1]
+Board_shutDownExtFlash       0x6021   0x48  Code  Gb  ti_drivers_config.obj [1]
+Board_wakeUpExtFlash         0x5ff7   0x2a  Code  Gb  ti_drivers_config.obj [1]
+CPUDelay                     0x60a1    0x8  Code  Gb  cpu.c.obj [4]
+CSTACK$$Base            0x2000'8c00          --   Gb  - Linker created -
+CSTACK$$Limit           0x2000'9000          --   Gb  - Linker created -
+ClockP_add                   0x33ed   0x18  Code  Gb  ClockPLPF3_nortos.c.obj [7]
+ClockP_defaultParams    0x2000'17e8    0xc  Data  Lc  ClockPLPF3_nortos.c.obj [7]
+ClockP_destruct              0x33e1    0xc  Code  Gb  ClockPLPF3_nortos.c.obj [7]
+ClockP_getCpuFreq            0x3485    0xa  Code  Gb  ClockPLPF3_nortos.c.obj [7]
+ClockP_getSystemTickPeriod
+                             0x348f    0x4  Code  Gb  ClockPLPF3_nortos.c.obj [7]
+ClockP_getSystemTicks        0x3493    0x6  Code  Gb  ClockPLPF3_nortos.c.obj [7]
+ClockP_hwiCallback           0x3339   0xa8  Code  Lc  ClockPLPF3_nortos.c.obj [7]
+ClockP_inWorkFunc       0x2000'17f5    0x1  Data  Lc  ClockPLPF3_nortos.c.obj [7]
+ClockP_initialized      0x2000'17f4    0x1  Data  Lc  ClockPLPF3_nortos.c.obj [7]
+ClockP_isActive              0x3481    0x4  Code  Gb  ClockPLPF3_nortos.c.obj [7]
+ClockP_list             0x2000'17f8    0x8  Data  Lc  ClockPLPF3_nortos.c.obj [7]
+ClockP_nextScheduledTick
+                        0x2000'1804    0x4  Data  Lc  ClockPLPF3_nortos.c.obj [7]
+ClockP_start                 0x3405   0x60  Code  Gb  ClockPLPF3_nortos.c.obj [7]
+ClockP_startDuringWorkFunc
+                        0x2000'17f6    0x1  Data  Lc  ClockPLPF3_nortos.c.obj [7]
+ClockP_startup               0x328d   0x5a  Code  Gb  ClockPLPF3_nortos.c.obj [7]
+ClockP_ticks            0x2000'1800    0x4  Data  Lc  ClockPLPF3_nortos.c.obj [7]
+ClockP_walkQueueDynamic
+                             0x32e7   0x52  Code  Gb  ClockPLPF3_nortos.c.obj [7]
+DisplayUart2Min_clear        0x632b    0x2  Code  Gb  DisplayUart2.c.obj [2]
+DisplayUart2Min_clearLines
+                             0x632d    0x2  Code  Gb  DisplayUart2.c.obj [2]
+DisplayUart2Min_close        0x637d    0x4  Code  Gb  DisplayUart2.c.obj [2]
+DisplayUart2Min_control
+                             0x6395    0x6  Code  Gb  DisplayUart2.c.obj [2]
+DisplayUart2Min_fxnTable
+                             0x6610   0x20  Data  Gb  DisplayUart2.c.obj [2]
+DisplayUart2Min_getType
+                             0x639b    0x6  Code  Gb  DisplayUart2.c.obj [2]
+DisplayUart2Min_init         0x62ed    0x2  Code  Gb  DisplayUart2.c.obj [2]
+DisplayUart2Min_open         0x62ef   0x3c  Code  Gb  DisplayUart2.c.obj [2]
+DisplayUart2Min_vprintf
+                             0x6331   0x4a  Code  Gb  DisplayUart2.c.obj [2]
+Display_config               0x66d4    0xc  Data  Gb  ti_drivers_config.obj [1]
+Display_count                0x1706    0x1  Data  Gb  ti_drivers_config.obj [1]
+Display_defaultParams        0x5dcc    0x1  Data  Gb  Display.c.obj [2]
+Display_doInit               0x5da7   0x1c  Code  Gb  Display.c.obj [2]
+Display_doOpen               0x5d31   0x60  Code  Gb  Display.c.obj [2]
+Display_doPrintf             0x5d91    0xc  Code  Gb  Display.c.obj [2]
+GPIO_config                  0x66c4   0x10  Data  Gb  ti_drivers_config.obj [1]
+GPIO_disableInt              0x2f89    0xe  Code  Gb  GPIOLPF3.c.obj [5]
+GPIO_enableInt               0x2f97   0x10  Code  Gb  GPIOLPF3.c.obj [5]
+GPIO_getUserArg              0x2b29    0xa  Code  Gb  GPIO.c.obj [5]
+GPIO_hwiIntFxn               0x2fa7   0x58  Code  Gb  GPIOLPF3.c.obj [5]
+GPIO_init                    0x2fff   0xdc  Code  Gb  GPIOLPF3.c.obj [5]
+GPIO_pinLowerBound           0x1707    0x1  Data  Gb  ti_drivers_config.obj [1]
+GPIO_pinUpperBound           0x1782    0x1  Data  Gb  ti_drivers_config.obj [1]
+GPIO_read                    0x30db    0x8  Code  Gb  GPIOLPF3.c.obj [5]
+GPIO_resetConfig             0x2b33   0x2a  Code  Gb  GPIO.c.obj [5]
+GPIO_setCallback             0x2b05   0x16  Code  Gb  GPIO.c.obj [5]
+GPIO_setConfig               0x30e3    0xa  Code  Gb  GPIOLPF3.c.obj [5]
+GPIO_setConfigAndMux         0x3139   0x58  Code  Gb  GPIOLPF3.c.obj [5]
+GPIO_setInterruptConfig
+                             0x30ed   0x3c  Code  Gb  GPIOLPF3.c.obj [5]
+GPIO_setUserArg              0x2b1b    0xe  Code  Gb  GPIO.c.obj [5]
+GPIO_write                   0x3129   0x10  Code  Gb  GPIOLPF3.c.obj [5]
+HEAP$$Base              0x2000'1990          --   Gb  - Linker created -
+HEAP$$Limit             0x2000'5990          --   Gb  - Linker created -
+HwiP_Params_init             0x2741   0x12  Code  Gb  HwiPCC23X0_nortos.c.obj [7]
+HwiP_clearInterrupt          0x2659    0x8  Code  Gb  HwiPCC23X0_nortos.c.obj [7]
+HwiP_construct               0x2661   0x68  Code  Gb  HwiPCC23X0_nortos.c.obj [7]
+HwiP_destruct                0x26c9   0x12  Code  Gb  HwiPCC23X0_nortos.c.obj [7]
+HwiP_disable                 0x26db    0x8  Code  Gb  HwiPCC23X0_nortos.c.obj [7]
+HwiP_disableInterrupt        0x26e3    0x8  Code  Gb  HwiPCC23X0_nortos.c.obj [7]
+HwiP_dispatch                0x26eb   0x1c  Code  Gb  HwiPCC23X0_nortos.c.obj [7]
+HwiP_dispatchTable      0x2000'1580   0x8c  Data  Lc  HwiPCC23X0_nortos.c.obj [7]
+HwiP_enable                  0x2707    0x4  Code  Gb  HwiPCC23X0_nortos.c.obj [7]
+HwiP_enableInterrupt         0x270b    0x8  Code  Gb  HwiPCC23X0_nortos.c.obj [7]
+HwiP_inISR                   0x271f    0x8  Code  Gb  HwiPCC23X0_nortos.c.obj [7]
+HwiP_interruptsEnabled       0x2713    0xc  Code  Gb  HwiPCC23X0_nortos.c.obj [7]
+HwiP_post                    0x2753    0x8  Code  Gb  HwiPCC23X0_nortos.c.obj [7]
+HwiP_restore                 0x275b    0x8  Code  Gb  HwiPCC23X0_nortos.c.obj [7]
+HwiP_setFunc                 0x2763   0x18  Code  Gb  HwiPCC23X0_nortos.c.obj [7]
+HwiP_swiPIntNum         0x2000'0518    0x4  Data  Gb  HwiPCC23X0_nortos.c.obj [7]
+IntClearPend                 0x36b7   0x34  Code  Gb  interrupt.c.obj [4]
+IntDefaultHandler            0x3555    0x2  Code  Lc  interrupt.c.obj [4]
+IntDisable                   0x3653   0x22  Code  Gb  interrupt.c.obj [4]
+IntEnable                    0x362f   0x24  Code  Gb  interrupt.c.obj [4]
+IntRegister                  0x3557   0x38  Code  Gb  interrupt.c.obj [4]
+IntSetPend                   0x3675   0x42  Code  Gb  interrupt.c.obj [4]
+IntSetPriority               0x3599   0x96  Code  Gb  interrupt.c.obj [4]
+IntUnregister                0x358f    0xa  Code  Gb  interrupt.c.obj [4]
+LRFDApplyClockDependencies
+                             0x3811   0x40  Code  Gb  lrfd.c.obj [4]
+LRFDReleaseClockDependency
+                             0x37f9   0x18  Code  Gb  lrfd.c.obj [4]
+LRFDSetClockDependency       0x37e1   0x18  Code  Gb  lrfd.c.obj [4]
+List_clearList               0x3779   0x14  Code  Gb  List.c.obj [5]
+List_put                     0x378d   0x26  Code  Gb  List.c.obj [5]
+List_remove                  0x37b3   0x2c  Code  Gb  List.c.obj [5]
+NoRTOS_start                 0x6669    0x8  Code  Gb  NoRTOS.c.obj [7]
+PowerCC23X0_config           0x6704    0x8  Data  Gb  ti_drivers_config.obj [1]
+PowerCC23X0_enterStandby::controlPreStandby
+                        0x2000'0514    0x4  Data  Lc  PowerCC23X0.c.obj [5]
+PowerCC23X0_notify           0x2ef9   0x32  Code  Gb  PowerCC23X0.c.obj [5]
+PowerCC23X0_oscillatorISR
+                             0x2ddd   0x9a  Code  Lc  PowerCC23X0.c.obj [5]
+PowerCC23X0_rtcISR           0x2e77    0x8  Code  Lc  PowerCC23X0.c.obj [5]
+PowerCC23X0_setDependencyCount
+                             0x2f2d   0x1c  Code  Lc  PowerCC23X0.c.obj [5]
+PowerCC23X0_standbyPolicy
+                             0x60ad  0x126  Code  Gb  PowerCC23X0_nortos.c.obj [7]
+PowerCC23X0_startHFXT        0x2e85   0x6a  Code  Lc  PowerCC23X0.c.obj [5]
+PowerLPF3_selectLFXT         0x2da9   0x2c  Code  Gb  PowerCC23X0.c.obj [5]
+Power_disablePolicy          0x2bd5    0xa  Code  Gb  PowerCC23X0.c.obj [5]
+Power_enablePolicy           0x2bdf    0x8  Code  Gb  PowerCC23X0.c.obj [5]
+Power_getConstraintMask
+                             0x2be7    0x6  Code  Gb  PowerCC23X0.c.obj [5]
+Power_getDependencyCount
+                             0x2bed   0x22  Code  Gb  PowerCC23X0.c.obj [5]
+Power_idleFunc               0x2c0f   0x16  Code  Gb  PowerCC23X0.c.obj [5]
+Power_init                   0x2b65   0x70  Code  Gb  PowerCC23X0.c.obj [5]
+Power_registerNotify         0x2c25   0x24  Code  Gb  PowerCC23X0.c.obj [5]
+Power_releaseConstraint
+                             0x2c79   0x28  Code  Gb  PowerCC23X0.c.obj [5]
+Power_releaseDependency
+                             0x2ceb   0x46  Code  Gb  PowerCC23X0.c.obj [5]
+Power_setConstraint          0x2c55   0x24  Code  Gb  PowerCC23X0.c.obj [5]
+Power_setDependency          0x2ca1   0x4a  Code  Gb  PowerCC23X0.c.obj [5]
+Power_sleep                  0x2d61   0x3a  Code  Gb  PowerCC23X0.c.obj [5]
+Power_unregisterNotify       0x2c49    0xc  Code  Gb  PowerCC23X0.c.obj [5]
+QueueP_empty                 0x371f    0xe  Code  Gb  QueueP_nortos.c.obj [7]
+QueueP_get                   0x372d   0x1a  Code  Gb  QueueP_nortos.c.obj [7]
+QueueP_init                  0x3719    0x6  Code  Gb  QueueP_nortos.c.obj [7]
+QueueP_put                   0x3747    0x2  Code  Gb  QueueP_nortos.c.obj [7]
+QueueP_remove                0x3763    0xe  Code  Gb  QueueP_nortos.c.obj [7]
+Region$$Table$$Base          0x65f0          --   Gb  - Linker created -
+Region$$Table$$Limit         0x6610          --   Gb  - Linker created -
+RingBuf_construct            0x4389   0x12  Code  Gb  RingBuf.c.obj [5]
+RingBuf_flush                0x4401   0x20  Code  Gb  RingBuf.c.obj [5]
+RingBuf_getConsume           0x43a7   0x30  Code  Gb  RingBuf.c.obj [5]
+RingBuf_getCount             0x43d7    0x4  Code  Gb  RingBuf.c.obj [5]
+RingBuf_getPointer           0x43db   0x26  Code  Gb  RingBuf.c.obj [5]
+RingBuf_put                  0x4421   0x32  Code  Gb  RingBuf.c.obj [5]
+RingBuf_putAdvance           0x445f   0x3a  Code  Gb  RingBuf.c.obj [5]
+RingBuf_putPointer           0x4499   0x2a  Code  Gb  RingBuf.c.obj [5]
+SDSPI_close                  0x4665   0x24  Code  Gb  SDSPI.c.obj [5]
+SDSPI_control                0x4689    0x6  Code  Gb  SDSPI.c.obj [5]
+SDSPI_fxnTable               0x65a8   0x24  Data  Gb  SDSPI.c.obj [5]
+SDSPI_getNumSectors          0x468f   0x90  Code  Gb  SDSPI.c.obj [5]
+SDSPI_getSectorSize          0x471f    0x6  Code  Gb  SDSPI.c.obj [5]
+SDSPI_hwAttrs                0x6718    0x4  Data  Lc  ti_drivers_config.obj [1]
+SDSPI_init                   0x4725    0xc  Code  Gb  SDSPI.c.obj [5]
+SDSPI_initialize             0x4731  0x3ec  Code  Gb  SDSPI.c.obj [5]
+SDSPI_objects           0x2000'1858    0xc  Data  Gb  ti_drivers_config.obj [1]
+SDSPI_open                   0x4b1d   0x70  Code  Gb  SDSPI.c.obj [5]
+SDSPI_read                   0x4b8d   0xb6  Code  Gb  SDSPI.c.obj [5]
+SDSPI_write                  0x4c43   0xd2  Code  Gb  SDSPI.c.obj [5]
+SD_close                     0x5dd1    0xa  Code  Gb  SD.c.obj [5]
+SD_config                    0x66e0    0xc  Data  Gb  ti_drivers_config.obj [1]
+SD_count                     0x1783    0x1  Data  Gb  ti_drivers_config.obj [1]
+SD_defaultParams             0x5e78    0x4  Data  Gb  SD.c.obj [5]
+SD_getNumSectors             0x5ddb    0xa  Code  Gb  SD.c.obj [5]
+SD_getSectorSize             0x5de5    0xa  Code  Gb  SD.c.obj [5]
+SD_init                      0x5def   0x34  Code  Gb  SD.c.obj [5]
+SD_initialize                0x5e23    0xa  Code  Gb  SD.c.obj [5]
+SD_open                      0x5e31   0x30  Code  Gb  SD.c.obj [5]
+SD_read                      0x5e6d    0xa  Code  Gb  SD.c.obj [5]
+SPILPF3DMA_close             0x1799   0x7e  Code  Gb  SPILPF3DMA.c.obj [5]
+SPILPF3DMA_control           0x1817  0x12a  Code  Gb  SPILPF3DMA.c.obj [5]
+SPILPF3DMA_fxnTable          0x6698   0x18  Data  Gb  SPILPF3DMA.c.obj [5]
+SPILPF3DMA_hwAttrs           0x64a0   0x40  Data  Gb  ti_drivers_config.obj [1]
+SPILPF3DMA_hwiFxn            0x1941  0x1ba  Code  Lc  SPILPF3DMA.c.obj [5]
+SPILPF3DMA_init              0x1b09    0xa  Code  Gb  SPILPF3DMA.c.obj [5]
+SPILPF3DMA_objects      0x2000'1480  0x100  Data  Gb  ti_drivers_config.obj [1]
+SPILPF3DMA_open              0x1b13  0x13e  Code  Gb  SPILPF3DMA.c.obj [5]
+SPILPF3DMA_swiFxn            0x1c75   0x4e  Code  Lc  SPILPF3DMA.c.obj [5]
+SPILPF3DMA_transfer          0x1cc5  0x432  Code  Gb  SPILPF3DMA.c.obj [5]
+SPILPF3DMA_transferCancel
+                             0x20f7  0x156  Code  Gb  SPILPF3DMA.c.obj [5]
+SPI_Params_init              0x4ff1    0xe  Code  Gb  SPI.c.obj [5]
+SPI_close                    0x4f75    0xa  Code  Gb  SPI.c.obj [5]
+SPI_config                   0x66ec    0xc  Data  Gb  ti_drivers_config.obj [1]
+SPI_count                    0x277a    0x1  Data  Gb  ti_drivers_config.obj [1]
+SPI_defaultParams            0x5008   0x20  Data  Gb  SPI.c.obj [5]
+SPI_init                     0x4f7f   0x34  Code  Gb  SPI.c.obj [5]
+SPI_open                     0x4fb5   0x30  Code  Gb  SPI.c.obj [5]
+SPI_transfer                 0x4fff    0xa  Code  Gb  SPI.c.obj [5]
+STACK_TOP {Abs}         0x2000'9000         Data  Gb  <internal module>
+SemaphoreP_construct         0x2973   0x52  Code  Gb  SemaphoreP_nortos.c.obj [7]
+SemaphoreP_constructBinary
+                             0x29c5   0x20  Code  Gb  SemaphoreP_nortos.c.obj [7]
+SemaphoreP_create            0x29e5   0x16  Code  Gb  SemaphoreP_nortos.c.obj [7]
+SemaphoreP_createBinary
+                             0x29fb   0x1a  Code  Gb  SemaphoreP_nortos.c.obj [7]
+SemaphoreP_defaultParams
+                        0x2000'051c    0x8  Data  Gb  SemaphoreP_nortos.c.obj [7]
+SemaphoreP_delete            0x2a17    0x8  Code  Gb  SemaphoreP_nortos.c.obj [7]
+SemaphoreP_destruct          0x2a15    0x2  Code  Gb  SemaphoreP_nortos.c.obj [7]
+SemaphoreP_initialized  0x2000'0524    0x1  Data  Lc  SemaphoreP_nortos.c.obj [7]
+SemaphoreP_pend              0x2a1f   0x98  Code  Gb  SemaphoreP_nortos.c.obj [7]
+SemaphoreP_post              0x2ab7   0x3c  Code  Gb  SemaphoreP_nortos.c.obj [7]
+SetupTrimDevice              0x6555   0x2c  Code  Gb  setup.c.obj [4]
+SwiP_Params_init             0x277d    0xe  Code  Gb  SwiP_nortos.c.obj [7]
+SwiP_construct               0x278d   0xb2  Code  Gb  SwiP_nortos.c.obj [7]
+SwiP_currentTrigger     0x2000'16e8    0x4  Data  Lc  SwiP_nortos.c.obj [7]
+SwiP_defaultParams           0x2960   0x10  Data  Lc  SwiP_nortos.c.obj [7]
+SwiP_destruct                0x283f   0x30  Code  Gb  SwiP_nortos.c.obj [7]
+SwiP_dispatch                0x286f   0x82  Code  Gb  SwiP_nortos.c.obj [7]
+SwiP_handleHwi               0x28f1   0x14  Code  Lc  SwiP_nortos.c.obj [7]
+SwiP_hwiStruct          0x2000'16ec   0x1c  Data  Lc  SwiP_nortos.c.obj [7]
+SwiP_initialized        0x2000'16dd    0x1  Data  Lc  SwiP_nortos.c.obj [7]
+SwiP_lockState          0x2000'16e4    0x4  Data  Lc  SwiP_nortos.c.obj [7]
+SwiP_post                    0x2905   0x4e  Code  Gb  SwiP_nortos.c.obj [7]
+SwiP_readyList          0x2000'1708   0x20  Data  Lc  SwiP_nortos.c.obj [7]
+SwiP_readyMask          0x2000'16e0    0x4  Data  Lc  SwiP_nortos.c.obj [7]
+SwiP_schedulerRunning   0x2000'16dc    0x1  Data  Lc  SwiP_nortos.c.obj [7]
+SystemP_vsnprintf            0x5029    0x8  Code  Gb  SystemP_nortos.c.obj [7]
+UART2LPF3_eventCallback
+                             0x3eaf    0x2  Code  Lc  UART2LPF3.c.obj [5]
+UART2LPF3_getRxData          0x38bd   0x30  Code  Lc  UART2LPF3.c.obj [5]
+UART2LPF3_hwAttrs            0x6448   0x58  Data  Lc  ti_drivers_config.obj [1]
+UART2LPF3_hwiIntFxn          0x3eb1  0x262  Code  Lc  UART2LPF3.c.obj [5]
+UART2LPF3_initHw             0x4115  0x1b2  Code  Lc  UART2LPF3.c.obj [5]
+UART2LPF3_initIO             0x42c7   0x3e  Code  Lc  UART2LPF3.c.obj [5]
+UART2LPF3_objects       0x2000'1300  0x180  Data  Gb  ti_drivers_config.obj [1]
+UART2LPF3_postNotifyFxn
+                             0x4361   0x18  Code  Lc  UART2LPF3.c.obj [5]
+UART2LPF3_preNotifyFxn       0x4305   0x36  Code  Lc  UART2LPF3.c.obj [5]
+UART2Support_disableRx       0x3af5   0x22  Code  Gb  UART2LPF3.c.obj [5]
+UART2Support_disableTx       0x3b17    0xe  Code  Gb  UART2LPF3.c.obj [5]
+UART2Support_dmaStartRx
+                             0x3b35  0x124  Code  Gb  UART2LPF3.c.obj [5]
+UART2Support_dmaStartTx
+                             0x3c61   0xc8  Code  Gb  UART2LPF3.c.obj [5]
+UART2Support_dmaStopRx       0x3d35   0x6e  Code  Gb  UART2LPF3.c.obj [5]
+UART2Support_dmaStopTx       0x3db1   0x78  Code  Gb  UART2LPF3.c.obj [5]
+UART2Support_enableTx        0x3e59   0x10  Code  Gb  UART2LPF3.c.obj [5]
+UART2Support_powerRelConstraint
+                             0x3e69    0xa  Code  Gb  UART2LPF3.c.obj [5]
+UART2Support_sendData        0x3e73   0x2c  Code  Gb  UART2LPF3.c.obj [5]
+UART2Support_txDone          0x3e9f   0x10  Code  Gb  UART2LPF3.c.obj [5]
+UART2_Params_init            0x5815    0xc  Code  Gb  UART2.c.obj [5]
+UART2_close                  0x38ed   0x98  Code  Gb  UART2LPF3.c.obj [5]
+UART2_config                 0x670c    0x8  Data  Gb  ti_drivers_config.obj [1]
+UART2_count                  0x277b    0x1  Data  Gb  ti_drivers_config.obj [1]
+UART2_defaultParams          0x65cc   0x24  Data  Gb  UART2.c.obj [5]
+UART2_open                   0x3985  0x170  Code  Gb  UART2LPF3.c.obj [5]
+UART2_readCancel             0x4561   0x5a  Code  Wk  UART2.c.obj [5]
+UART2_rxDisable              0x45bb   0x34  Code  Wk  UART2.c.obj [5]
+UART2_write                  0x63a1    0xe  Code  Wk  UART2.c.obj [5]
+UART2_writeCancel            0x44cd   0x94  Code  Wk  UART2.c.obj [5]
+UART2_writeTimeout           0x63af   0x1a  Code  Wk  UART2.c.obj [5]
+UART2_writeTimeoutBlocking
+                             0x5825  0x184  Code  Gb  UART2.c.obj [5]
+UART2_writeTimeoutNonblocking
+                             0x59a9  0x102  Code  Gb  UART2.c.obj [5]
+UARTConfigSetExpClk          0x45f1   0x4c  Code  Gb  uart.c.obj [4]
+UARTDisable                  0x463d   0x24  Code  Gb  uart.c.obj [4]
+UDMALPF3_channelDisable
+                             0x38b7    0x6  Code  Lc  UART2LPF3.c.obj [5]
+UDMALPF3_clearInterrupt
+                             0x38b1    0x6  Code  Lc  UART2LPF3.c.obj [5]
+UDMALPF3_config              0x6714    0x4  Data  Gb  ti_drivers_config.obj [1]
+UDMALPF3_init                0x31cd   0x3a  Code  Gb  UDMALPF3.c.obj [5]
+UDMALPF3_postNotifyFxn       0x3207   0x28  Code  Lc  UDMALPF3.c.obj [5]
+__aeabi_cdcmple              0x542f         Code  Gb  DblCmpLe.o [6]
+__aeabi_d2iz                 0x5461         Code  Gb  DblToI32.o [6]
+__aeabi_d2uiz                0x5485         Code  Gb  DblToI32.o [6]
+__aeabi_dmul                 0x5691         Code  Gb  DblMul.o [6]
+__aeabi_dsub                 0x55a3         Code  Gb  DblAddSub.o [6]
+__aeabi_i2d                  0x54d5         Code  Gb  IxxToDbl.o [6]
+__aeabi_idiv0                0x38ad         Code  Gb  IntDivZer.o [8]
+__aeabi_lmul                 0x5e7d         Code  Gb  I64Mul.o [8]
+__aeabi_memcpy               0x1769         Code  Gb  ABImemcpy.o [8]
+__aeabi_memcpy4              0x1735         Code  Gb  ABImemcpy.o [8]
+__aeabi_memcpy8              0x1735         Code  Gb  ABImemcpy.o [8]
+__aeabi_memset               0x385d         Code  Gb  ABImemset.o [8]
+__aeabi_ui2d                 0x54b5         Code  Gb  IxxToDbl.o [6]
+__aeabi_uidiv                0x34a5         Code  Gb  I32DivModFast.o [8]
+__aeabi_uidivmod             0x34a5         Code  Gb  I32DivModFast.o [8]
+__ccfg_boot_cfg_crc32_begin {Abs}
+                        0x4e02'0000         Data  Gb  <internal module>
+__ccfg_boot_cfg_crc32_end {Abs}
+                        0x4e02'000b         Data  Gb  <internal module>
+__ccfg_crc32_begin {Abs}
+                        0x4e02'0010         Data  Gb  <internal module>
+__ccfg_crc32_end {Abs}  0x4e02'074b         Data  Gb  <internal module>
+__ccfg_debug_cfg_crc32_begin {Abs}
+                        0x4e02'07d0         Data  Gb  <internal module>
+__ccfg_debug_cfg_crc32_end {Abs}
+                        0x4e02'07fb         Data  Gb  <internal module>
+__ccfg_user_record_crc32_begin {Abs}
+                        0x4e02'0750         Data  Gb  <internal module>
+__ccfg_user_record_crc32_end {Abs}
+                        0x4e02'07cb         Data  Gb  <internal module>
+__cmain                      0x6631         Code  Gb  cmain.o [8]
+__data_GetMemChunk           0x1709   0x2c  Code  Gb  xgetmemchunk.o [3]
+__data_GetMemChunk::start
+                        0x2000'1880    0x4  Data  Lc  xgetmemchunk.o [3]
+__exit                       0x1785   0x14  Code  Gb  exit.o [9]
+__iar_Memcpy                 0x1775         Code  Gb  ABImemcpy.o [8]
+__iar_Memset4_word           0x387d         Code  Gb  ABImemset.o [8]
+__iar_Memset_word            0x3869         Code  Gb  ABImemset.o [8]
+__iar_d2uiz                  0x5489         Code  Gb  DblToI32.o [6]
+__iar_data_init3             0x6581   0x28  Code  Gb  data_init.o [8]
+__iar_dlfree                 0x111d  0x5d6  Code  Gb  dlmalloc.o [3]
+__iar_dlmalloc                0x119  0xff6  Code  Gb  dlmalloc.o [3]
+__iar_lz77_init_single3
+                             0x63c9   0x80  Code  Gb  lz77_init_single.o [8]
+__iar_program_start          0x667d         Code  Gb  cstartup_M.o [8]
+__iar_zero_init3             0x64e1   0x3c  Code  Gb  zero_init3.o [8]
+__low_level_init             0x6539    0xc  Code  Gb  startup_cc23x0r5_iar.c.obj [7]
+__vector_table                  0x0   0x8c  Data  Gb  startup_cc23x0r5_iar.c.obj [7]
+_call_main                   0x663d         Code  Gb  cmain.o [8]
+_exit                        0x6671         Code  Gb  cexit.o [8]
+_gm_                    0x2000'1128  0x1d8  Data  Lc  dlmalloc.o [3]
+abort                        0x16fd    0xa  Code  Gb  abort.o [3]
+assertCS                     0x4d15    0x6  Code  Lc  SDSPI.c.obj [5]
+blockingTransferCallback
+                             0x2255    0xc  Code  Lc  SPILPF3DMA.c.obj [5]
+ccfg                    0x4e02'0000  0x800  Data  Gb  ti_devices_config.obj [1]
+ckmHwi                  0x2000'1730   0x1c  Data  Lc  PowerCC23X0.c.obj [5]
+clkFxn                       0x2971    0x2  Code  Gb  SemaphoreP_nortos.c.obj [7]
+clockHwi                0x2000'174c   0x1c  Data  Gb  PowerCC23X0.c.obj [5]
+configNextTransfer           0x2261  0x11e  Code  Lc  SPILPF3DMA.c.obj [5]
+constraintCounts        0x2000'0508    0x4  Data  Lc  PowerCC23X0.c.obj [5]
+constraintMask          0x2000'0510    0x4  Data  Lc  PowerCC23X0.c.obj [5]
+csnCallback                  0x2395   0x6c  Code  Lc  SPILPF3DMA.c.obj [5]
+dataLength                   0x4378    0x4  Data  Lc  UART2LPF3.c.obj [5]
+deassertCS                   0x4d1b    0x4  Code  Lc  SDSPI.c.obj [5]
+displayUART2Buffer      0x2000'0d28  0x400  Data  Lc  ti_drivers_config.obj [1]
+displayUart2HWAttrs          0x66b0   0x14  Data  Gb  ti_drivers_config.obj [1]
+displayUart2Object      0x2000'184c    0xc  Data  Gb  ti_drivers_config.obj [1]
+dmaChannel0AltControlTableEntry {Abs}
+                        0x2000'0480   0x10  Data  Lc  ti_drivers_config.obj [1]
+dmaChannel0ControlTableEntry {Abs}
+                        0x2000'0400   0x10  Data  Lc  ti_drivers_config.obj [1]
+dmaChannel1AltControlTableEntry {Abs}
+                        0x2000'0490   0x10  Data  Lc  ti_drivers_config.obj [1]
+dmaChannel1ControlTableEntry {Abs}
+                        0x2000'0410   0x10  Data  Lc  ti_drivers_config.obj [1]
+dmaChannel2ControlTableEntry {Abs}
+                        0x2000'0420   0x10  Data  Lc  ti_drivers_config.obj [1]
+dmaChannel3ControlTableEntry {Abs}
+                        0x2000'0430   0x10  Data  Lc  ti_drivers_config.obj [1]
+dmaNullConfig                0x238c    0x8  Data  Lc  SPILPF3DMA.c.obj [5]
+dmaRxConfig                  0x2650    0x8  Data  Lc  SPILPF3DMA.c.obj [5]
+dmaTxConfig                  0x2384    0x8  Data  Lc  SPILPF3DMA.c.obj [5]
+doEnablePolicy          0x2000'1885    0x1  Data  Lc  SemaphoreP_nortos.c.obj [7]
+doPrint                      0x5031  0x358  Code  Lc  SystemP_nortos.c.obj [7]
+dummy_stack             0x2000'8c00    0x4  Data  Lc  startup_cc23x0r5_iar.c.obj [7]
+enableSPI                    0x2605   0x2c  Code  Lc  SPILPF3DMA.c.obj [5]
+exit                         0x6661    0x8  Code  Gb  exit.o [3]
+faultISR                     0x654f    0x2  Code  Lc  startup_cc23x0r5_iar.c.obj [7]
+flushFifos                   0x2401   0x22  Code  Lc  SPILPF3DMA.c.obj [5]
+formatNum                    0x538d   0x76  Code  Lc  SystemP_nortos.c.obj [7]
+frameFormat                  0x2638   0x18  Data  Lc  SPILPF3DMA.c.obj [5]
+free                         0x3771    0x8  Code  Gb  heaptramp0.o [3]
+gpioCallbackFunctions   0x2000'160c   0x68  Data  Gb  ti_drivers_config.obj [1]
+gpioHwi                 0x2000'17ac   0x1c  Data  Lc  GPIOLPF3.c.obj [5]
+gpioPinConfigs          0x2000'04a0   0x68  Data  Gb  ti_drivers_config.obj [1]
+gpioUserArgs            0x2000'1674   0x68  Data  Gb  ti_drivers_config.obj [1]
+initCalled              0x2000'17a8    0x1  Data  Lc  GPIOLPF3.c.obj [5]
+initHw                       0x2435   0xde  Code  Lc  SPILPF3DMA.c.obj [5]
+initIO                       0x2513   0x66  Code  Lc  SPILPF3DMA.c.obj [5]
+init_mparams                   0xab   0x2a  Code  Lc  dlmalloc.o [3]
+init_top                       0xd5   0x38  Code  Lc  dlmalloc.o [3]
+intDefaultHandler            0x6551    0x2  Code  Lc  startup_cc23x0r5_iar.c.obj [7]
+isInitialized           0x2000'1886    0x1  Data  Lc  SD.c.obj [5]
+isInitialized           0x2000'1729    0x1  Data  Lc  PowerCC23X0.c.obj [5]
+isInitialized           0x2000'1887    0x1  Data  Lc  SPI.c.obj [5]
+isOpen                  0x2000'1808    0x1  Data  Lc  UDMALPF3.c.obj [5]
+isPolicyEnabled         0x2000'1728    0x1  Data  Lc  PowerCC23X0.c.obj [5]
+localProgramStart            0x651d   0x1a  Code  Gb  startup_cc23x0r5_iar.c.obj [7]
+lrfdClockDependencySets
+                        0x2000'187c    0x4  Data  Lc  lrfd.c.obj [4]
+lrfdClocked             0x2000'1878    0x1  Data  Lc  lrfd.c.obj [4]
+main                         0x664f   0x12  Code  Gb  main_nortos.obj [1]
+mainThread                   0x5aad  0x190  Code  Gb  sdraw.obj [1]
+memcmp                       0x5eb1         Code  Gb  memcmp.o [8]
+memset                       0x3279   0x14  Code  Gb  memset.o [8]
+mode                         0x2630    0x8  Data  Lc  SPILPF3DMA.c.obj [5]
+mparams                 0x2000'1820   0x18  Data  Lc  dlmalloc.o [3]
+nmiISR                       0x654d    0x2  Code  Lc  startup_cc23x0r5_iar.c.obj [7]
+notifyList              0x2000'1870    0x8  Data  Lc  PowerCC23X0.c.obj [5]
+parityType                   0x4380    0x8  Data  Lc  UART2LPF3.c.obj [5]
+pendInProgress          0x2000'1884    0x1  Data  Lc  SemaphoreP_nortos.c.obj [7]
+policyFxn               0x2000'172c    0x4  Data  Lc  PowerCC23X0.c.obj [5]
+postNotify              0x2000'180c   0x14  Data  Lc  UDMALPF3.c.obj [5]
+powerState              0x2000'050c    0x1  Data  Lc  PowerCC23X0.c.obj [5]
+ramVectorTable          0x2000'1900   0x8c  Data  Lc  interrupt.c.obj [4]
+readBuffer              0x2000'0928  0x400  Data  Lc  sdraw.obj [1]
+recvDataBlock                0x4d29   0x92  Code  Lc  SDSPI.c.obj [5]
+resourceCountsClkctl0   0x2000'17c8   0x20  Data  Lc  PowerCC23X0.c.obj [5]
+resourceCountsLrfd      0x2000'1864    0xc  Data  Lc  PowerCC23X0.c.obj [5]
+segment_holding                0x8d   0x1e  Code  Lc  dlmalloc.o [3]
+sendCmd                      0x4dc9   0x9c  Code  Lc  SDSPI.c.obj [5]
+spiPostNotify                0x2579   0x68  Code  Lc  SPILPF3DMA.c.obj [5]
+spiTransfer                  0x4e65   0x20  Code  Lc  SDSPI.c.obj [5]
+stopBits                     0x437c    0x2  Data  Lc  UART2LPF3.c.obj [5]
+strlen                       0x5421         Code  Gb  strlen.o [8]
+sysTimerResolutionShift
+                             0x61f4    0x8  Data  Lc  PowerCC23X0_nortos.c.obj [7]
+sysTimerTimeouts        0x2000'1838   0x14  Data  Lc  PowerCC23X0_nortos.c.obj [7]
+transmitDataBlock            0x4e85   0x8e  Code  Lc  SDSPI.c.obj [5]
+uDMADisableChannelAttribute
+                             0x3241   0x22  Code  Gb  udma.c.obj [4]
+uDMAGetChannelSize           0x3263    0xe  Code  Gb  udma.c.obj [4]
+uart2RxRingBuffer0      0x2000'1768   0x20  Data  Lc  ti_drivers_config.obj [1]
+uart2TxRingBuffer0      0x2000'1788   0x20  Data  Lc  ti_drivers_config.obj [1]
+waitUntilReady               0x4f13   0x54  Code  Lc  SDSPI.c.obj [5]
+writeBuffer             0x2000'0528  0x400  Data  Lc  sdraw.obj [1]
+
+
+[1] = /project/staging/core_examples/examples/nortos/LP_EM_CC2340R5/drivers/sdraw/iar
+[2] = display_cc23x0r5.a
+[3] = dl6M_tln.a
+[4] = driverlib.a
+[5] = drivers_cc23x0r5.a
+[6] = m6M_tl.a
+[7] = nortos_cc23x0r5.a
+[8] = rt6M_tl.a
+[9] = shb_l.a
+
+  25'590 bytes of readonly  code memory
+   2'902 bytes of readonly  data memory
+  22'641 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

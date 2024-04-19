@@ -1,0 +1,1009 @@
+******************************************************************************
+            TI ARM Clang Linker Unix v3.2.0                    
+******************************************************************************
+>> Linked Fri Apr 19 13:35:15 2024
+
+OUTPUT FILE NAME:   <temperatureNotify.out>
+ENTRY POINT SYMBOL: "resetISR"  address: 000032a9
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00080000  00003625  0007c9db  R  X
+  SRAM                  20000000   00009000  00002dd5  0000622b  RW X
+  S2RRAM                40098000   00001000  00000000  00001000  RW  
+  CCFG                  4e020000   00000800  00000800  00000000  R   
+  LOG_DATA              90000000   00040000  00000000  00040000  R   
+  LOG_PTR               94000008   00040000  00000000  00040000  R   
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    000035a1   000035a1    r-x
+  00000000    00000000    0000008c   0000008c    r-- .resetVecs
+  0000008c    0000008c    000033ac   000033ac    r-x .text
+  00003438    00003438    00000169   00000169    r-- .rodata
+000035a4    000035a4    00000008   00000008    rw-
+  000035a4    000035a4    00000008   00000008    rw- .args
+000035ac    000035ac    0000007c   0000007c    r--
+  000035ac    000035ac    0000007c   0000007c    r-- .cinit
+20000000    20000000    000001a5   00000000    rw-
+  20000000    20000000    000001a5   00000000    rw- .data
+20000400    20000400    00000020   00000000    rw-
+  20000400    20000400    00000010   00000000    rw- .TI.bound:dmaChannel0ControlTableEntry
+  20000410    20000410    00000010   00000000    rw- .TI.bound:dmaChannel1ControlTableEntry
+20000420    20000420    00002784   00000000    rw-
+  20000420    20000420    00002000   00000000    rw- .sysmem
+  20002420    20002420    00000784   00000000    rw- .bss
+20008c00    20008c00    00000400   00000000    rw-
+  20008c00    20008c00    00000400   00000000    rw- .stack
+4e020000    4e020000    00000800   00000800    r--
+  4e020000    4e020000    00000800   00000800    r-- .ccfg
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.resetVecs 
+*          0    00000000    0000008c     
+                  00000000    0000008c     nortos_cc23x0r5.a : startup_cc23x0r5_ticlang.c.obj (.resetVecs)
+
+.binit     0    00000000    00000000     
+
+.text      0    0000008c    000033ac     
+                  0000008c    0000035c     nortos_cc23x0r5.a : SystemP_nortos.c.obj (.text.doPrint)
+                  000003e8    00000214     drivers_cc23x0r5.a : UART2LPF3.c.obj (.text.UART2LPF3_hwiIntFxn)
+                  000005fc    0000019c                        : UART2LPF3.c.obj (.text.UART2LPF3_initHw)
+                  00000798    00000192     libclang_rt.builtins.a : adddf3.S.obj (.text.adddf3_subdf3)
+                  0000092a    00000002     ti_drivers_config.obj (.text.Board_initHook)
+                  0000092c    0000017c     drivers_cc23x0r5.a : UART2LPF3.c.obj (.text.UART2_open)
+                  00000aa8    00000164                        : UART2.c.obj (.text.UART2_writeTimeoutBlocking)
+                  00000c0c    00000140     nortos_cc23x0r5.a : PowerCC23X0_nortos.c.obj (.text.PowerCC23X0_standbyPolicy)
+                  00000d4c    0000012c     libc.a : memory.c.obj (.text.aligned_alloc)
+                  00000e78    0000010c     drivers_cc23x0r5.a : UART2LPF3.c.obj (.text.UART2Support_dmaStartRx)
+                  00000f84    00000108                        : UART2.c.obj (.text.UART2_writeTimeoutNonblocking)
+                  0000108c    000000ec     libc.a : memory.c.obj (.text.free)
+                  00001178    000000e4     libclang_rt.builtins.a : muldf3.S.obj (.text.__muldf3)
+                  0000125c    000000dc     drivers_cc23x0r5.a : GPIOLPF3.c.obj (.text.GPIO_init)
+                  00001338    000000c0                        : UART2LPF3.c.obj (.text.UART2Support_dmaStartTx)
+                  000013f8    000000a8     temperatureNotify.obj (.text.mainThread)
+                  000014a0    0000009c     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.Power_init)
+                  0000153c    0000009c     nortos_cc23x0r5.a : SemaphoreP_nortos.c.obj (.text.SemaphoreP_pend)
+                  000015d8    0000009a     drivers_cc23x0r5.a : UART2.c.obj (.text.UART2_writeCancel)
+                  00001672    00000002     display_cc23x0r5.a : DisplayUart2.c.obj (.text.DisplayUart2Min_clear)
+                  00001674    00000090     drivers_cc23x0r5.a : UART2LPF3.c.obj (.text.UART2_close)
+                  00001704    0000007c     nortos_cc23x0r5.a : SystemP_nortos.c.obj (.text.formatNum)
+                  00001780    0000007c     drivers_cc23x0r5.a : TemperatureLPF3.c.obj (.text.temperatureEventCb)
+                  000017fc    00000078     nortos_cc23x0r5.a : ClockPLPF3_nortos.c.obj (.text.ClockP_hwiCallback)
+                  00001874    00000078                       : HwiPCC23X0_nortos.c.obj (.text.HwiP_construct)
+                  000018ec    00000078     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.PowerCC23X0_oscillatorISR)
+                  00001964    00000078     libc.a : copy_decompress_lzss.c.obj (.text:decompress:lzss)
+                  000019dc    00000074     drivers_cc23x0r5.a : BatMonSupportLPF3.c.obj (.text.BatMonSupportLPF3_init)
+                  00001a50    00000074     nortos_cc23x0r5.a : ClockPLPF3_nortos.c.obj (.text.ClockP_startup)
+                  00001ac4    00000070     drivers_cc23x0r5.a : UART2LPF3.c.obj (.text.UART2Support_dmaStopTx)
+                  00001b34    00000070     libclang_rt.builtins.a : comparedf2.c.obj (.text.__gedf2)
+                  00001ba4    0000006c     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.PowerCC23X0_startHFXT)
+                  00001c10    0000006c     libclang_rt.builtins.a : comparedf2.c.obj (.text.__ledf2)
+                  00001c7c    00000064     nortos_cc23x0r5.a : ClockPLPF3_nortos.c.obj (.text.ClockP_start)
+                  00001ce0    00000064     drivers_cc23x0r5.a : GPIOLPF3.c.obj (.text.GPIO_setConfigAndMux)
+                  00001d44    00000064     driverlib.a : interrupt.c.obj (.text.IntSetPriority)
+                  00001da8    00000064     drivers_cc23x0r5.a : UART2LPF3.c.obj (.text.UART2Support_dmaStopRx)
+                  00001e0c    00000064     libc.a : memory.c.obj (.text.split)
+                  00001e70    00000062     libclang_rt.builtins.a : aeabi_dcmp.S.obj (.text.__aeabi_dcmp)
+                  00001ed2    00000002     display_cc23x0r5.a : DisplayUart2.c.obj (.text.DisplayUart2Min_clearLines)
+                  00001ed4    0000005c     nortos_cc23x0r5.a : ClockPLPF3_nortos.c.obj (.text.ClockP_walkQueueDynamic)
+                  00001f30    0000005c                       : SemaphoreP_nortos.c.obj (.text.SemaphoreP_construct)
+                  00001f8c    00000058     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.Power_releaseDependency)
+                  00001fe4    00000058                        : PowerCC23X0.c.obj (.text.Power_setDependency)
+                  0000203c    00000058     libclang_rt.builtins.a : clzsi2.c.obj (.text.__clzsi2)
+                  00002094    00000058     nortos_cc23x0r5.a : ClockPLPF3_nortos.c.obj (.text.sleepTicks)
+                  000020ec    00000054     ti_drivers_config.obj (.text.Board_shutDownExtFlash)
+                  00002140    00000054     display_cc23x0r5.a : Display.c.obj (.text.Display_doOpen)
+                  00002194    00000054     driverlib.a : lrfd.c.obj (.text.LRFDApplyClockDependencies)
+                  000021e8    00000054     drivers_cc23x0r5.a : UART2.c.obj (.text.UART2_readCancel)
+                  0000223c    00000052     display_cc23x0r5.a : DisplayUart2.c.obj (.text.DisplayUart2Min_vprintf)
+                  0000228e    00000002                        : DisplayUart2.c.obj (.text.DisplayUart2Min_init)
+                  00002290    00000050     drivers_cc23x0r5.a : TemperatureLPF3.c.obj (.text.Temperature_registerNotifyHigh)
+                  000022e0    00000050                        : UDMALPF3.c.obj (.text.UDMALPF3_init)
+                  00002330    0000004c     ti_drivers_config.obj (.text.Board_sendExtFlashByte)
+                  0000237c    0000004c     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.Power_sleep)
+                  000023c8    0000004a     libclang_rt.builtins.a : fixdfsi.S.obj (.text.__fixdfsi)
+                  00002412    00000002     driverlib.a : interrupt.c.obj (.text.IntDefaultHandler)
+                  00002414    00000048     nortos_cc23x0r5.a : ClockPLPF3_nortos.c.obj (.text.ClockP_construct)
+                  0000245c    00000048     drivers_cc23x0r5.a : RingBuf.c.obj (.text.RingBuf_put)
+                  000024a4    00000048                        : TemperatureLPF3.c.obj (.text.Temperature_registerNotifyLow)
+                  000024ec    00000048                        : TemperatureLPF3.c.obj (.text.Temperature_registerNotifyRange)
+                  00002534    00000048                        : TemperatureLPF3.c.obj (.text.degreesToCode)
+                  0000257c    00000044                        : UART2LPF3.c.obj (.text.UART2LPF3_initIO)
+                  000025c0    00000044                        : TemperatureLPF3.c.obj (.text.setNextThresholds)
+                  00002604    00000042     display_cc23x0r5.a : DisplayUart2.c.obj (.text.DisplayUart2Min_open)
+                  00002646    00000002     nortos_cc23x0r5.a : SemaphoreP_nortos.c.obj (.text.SemaphoreP_destruct)
+                  00002648    00000042     libclang_rt.builtins.a : fixunsdfsi.S.obj (.text.__fixunsdfsi)
+                  0000268a    00000002     drivers_cc23x0r5.a : UART2LPF3.c.obj (.text.UART2LPF3_eventCallback)
+                  0000268c    00000040     nortos_cc23x0r5.a : SemaphoreP_nortos.c.obj (.text.SemaphoreP_post)
+                  000026cc    00000040     libclang_rt.builtins.a : aeabi_uidivmod.S.obj (.text.__aeabi_uidivmod)
+                  0000270c    00000040     temperatureNotify.obj (.text.aboveBelowNotificationFxn)
+                  0000274c    0000003c     drivers_cc23x0r5.a : TemperatureLPF3.c.obj (.text.Temperature_init)
+                  00002788    0000003c                        : UART2LPF3.c.obj (.text.UART2LPF3_preNotifyFxn)
+                  000027c4    0000003c                        : BatMonSupportLPF3.c.obj (.text.batMonHwiFxn)
+                  00002800    0000003c                        : TemperatureLPF3.c.obj (.text.updateThresholds)
+                  0000283c    0000003c     libc.a : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit)
+                  00002878    0000003a     drivers_cc23x0r5.a : RingBuf.c.obj (.text.RingBuf_putAdvance)
+                  000028b2    00000002     libclang_rt.builtins.a : aeabi_div0.c.obj (.text.__aeabi_idiv0)
+                  000028b4    0000003a                            : muldsi3.S.obj (.text.__muldsi3)
+                  000028ee    00000002     libc.a : _lock.c.obj (.text._nop)
+                  000028f0    00000038     drivers_cc23x0r5.a : GPIOLPF3.c.obj (.text.GPIO_hwiIntFxn)
+                  00002928    00000038     driverlib.a : interrupt.c.obj (.text.IntClearPend)
+                  00002960    00000038     drivers_cc23x0r5.a : TemperatureLPF3.c.obj (.text.Temperature_getTemperature)
+                  00002998    00000034     ti_drivers_config.obj (.text.Board_wakeUpExtFlash)
+                  000029cc    00000034     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.PowerCC23X0_notify)
+                  00002a00    00000034                        : RingBuf.c.obj (.text.RingBuf_putPointer)
+                  00002a34    00000034                        : UART2.c.obj (.text.UART2_rxDisable)
+                  00002a68    00000034                        : UDMALPF3.c.obj (.text.UDMALPF3_postNotifyFxn)
+                  00002a9c    00000030                        : GPIO.c.obj (.text.GPIO_resetConfig)
+                  00002acc    00000030     driverlib.a : interrupt.c.obj (.text.IntIsEnabled)
+                  00002afc    00000030     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.Power_getDependencyCount)
+                  00002b2c    00000030                        : PowerCC23X0.c.obj (.text.Power_releaseConstraint)
+                  00002b5c    00000030                        : RingBuf.c.obj (.text.RingBuf_getConsume)
+                  00002b8c    0000002c     ti_drivers_config.obj (.text.Board_init)
+                  00002bb8    0000002c     driverlib.a : interrupt.c.obj (.text.IntRegister)
+                  00002be4    0000002c     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.PowerCC23X0_setDependencyCount)
+                  00002c10    0000002c                        : PowerCC23X0.c.obj (.text.Power_setConstraint)
+                  00002c3c    0000002c     driverlib.a : setup.c.obj (.text.SetupTrimDevice)
+                  00002c68    0000002c     libclang_rt.builtins.a : floatsidf.S.obj (.text.__floatsidf)
+                  00002c94    0000002c     temperatureNotify.obj (.text.deltaNotificationFxn)
+                  00002cc0    00000028     driverlib.a : interrupt.c.obj (.text.IntDisable)
+                  00002ce8    00000028                 : interrupt.c.obj (.text.IntEnable)
+                  00002d10    00000028     drivers_cc23x0r5.a : List.c.obj (.text.List_remove)
+                  00002d38    00000028                        : PowerCC23X0.c.obj (.text.Power_registerNotify)
+                  00002d60    00000028                        : UART2LPF3.c.obj (.text.UART2LPF3_getRxData)
+                  00002d88    00000028     libc.a : memory.c.obj (.text.free_list_insert)
+                  00002db0    00000026     drivers_cc23x0r5.a : RingBuf.c.obj (.text.RingBuf_getPointer)
+                  00002dd6    00000026     driverlib.a : uart.c.obj (.text.UARTConfigSetExpClk)
+                  00002dfc    00000024     display_cc23x0r5.a : Display.c.obj (.text.Display_doInit)
+                  00002e20    00000024     nortos_cc23x0r5.a : HwiPCC23X0_nortos.c.obj (.text.HwiP_dispatch)
+                  00002e44    00000024     drivers_cc23x0r5.a : List.c.obj (.text.List_put)
+                  00002e68    00000024                        : PowerCC23X0.c.obj (.text.PowerLPF3_selectLFXT)
+                  00002e8c    00000024                        : UART2LPF3.c.obj (.text.UART2Support_disableRx)
+                  00002eb0    00000024     libc.a : boot_cortex_m.c.obj (.text:_c_int00)
+                  00002ed4    00000020     nortos_cc23x0r5.a : ClockPLPF3_nortos.c.obj (.text.ClockP_add)
+                  00002ef4    00000020                       : ClockPLPF3_nortos.c.obj (.text.ClockP_sleep)
+                  00002f14    00000020     driverlib.a : udma.c.obj (.text.uDMADisableChannelAttribute)
+                  00002f34    0000001e     drivers_cc23x0r5.a : UART2LPF3.c.obj (.text.UART2Support_sendData)
+                  00002f52    00000002     nortos_cc23x0r5.a : SemaphoreP_nortos.c.obj (.text.clkFxn)
+                  00002f54    0000001c     drivers_cc23x0r5.a : BatMonSupportLPF3.c.obj (.text.BatMonSupportLPF3_registerTemperatureCb)
+                  00002f70    0000001c                        : GPIO.c.obj (.text.GPIO_setCallback)
+                  00002f8c    0000001c     driverlib.a : lrfd.c.obj (.text.LRFDReleaseClockDependency)
+                  00002fa8    0000001c                 : lrfd.c.obj (.text.LRFDSetClockDependency)
+                  00002fc4    0000001c     nortos_cc23x0r5.a : SemaphoreP_nortos.c.obj (.text.SemaphoreP_constructBinary)
+                  00002fe0    0000001c                       : SemaphoreP_nortos.c.obj (.text.SemaphoreP_createBinary)
+                  00002ffc    0000001c     driverlib.a : uart.c.obj (.text.UARTDisable)
+                  00003018    0000001c     libc.a : args_main.c.obj (.text._args_main)
+                  00003034    0000001c            : memory.c.obj (.text.free_list_remove)
+                  00003050    0000001c     drivers_cc23x0r5.a : TemperatureLPF3.c.obj (.text.setTempLowerLimit)
+                  0000306c    0000001c                        : TemperatureLPF3.c.obj (.text.setTempUpperLimit)
+                  00003088    0000001a                        : RingBuf.c.obj (.text.RingBuf_flush)
+                  000030a2    0000001a                        : UART2.c.obj (.text.UART2_writeTimeout)
+                  000030bc    00000018     nortos_cc23x0r5.a : HwiPCC23X0_nortos.c.obj (.text.HwiP_inISR)
+                  000030d4    00000018                       : HwiPCC23X0_nortos.c.obj (.text.HwiP_setFunc)
+                  000030ec    00000018     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.Power_idleFunc)
+                  00003104    00000018                        : UART2LPF3.c.obj (.text.UART2LPF3_postNotifyFxn)
+                  0000311c    00000016     display_cc23x0r5.a : DisplayUart2.c.obj (.text.DisplayUart2Min_close)
+                  00003132    00000016     nortos_cc23x0r5.a : SemaphoreP_nortos.c.obj (.text.SemaphoreP_create)
+                  00003148    00000016     drivers_cc23x0r5.a : UART2LPF3.c.obj (.text.uartDmaDisable)
+                  0000315e    00000016                        : UART2LPF3.c.obj (.text.uartDmaEnable)
+                  00003174    00000014     nortos_cc23x0r5.a : ClockPLPF3_nortos.c.obj (.text.ClockP_destruct)
+                  00003188    00000014     display_cc23x0r5.a : Display.c.obj (.text.Display_doPrintf)
+                  0000319c    00000014     drivers_cc23x0r5.a : GPIOLPF3.c.obj (.text.GPIO_disableInt)
+                  000031b0    00000014                        : GPIOLPF3.c.obj (.text.GPIO_write)
+                  000031c4    00000014     driverlib.a : interrupt.c.obj (.text.IntUnregister)
+                  000031d8    00000014     drivers_cc23x0r5.a : List.c.obj (.text.List_clearList)
+                  000031ec    00000014     driverlib.a : udma.c.obj (.text.uDMAGetChannelSize)
+                  00003200    00000012     nortos_cc23x0r5.a : HwiPCC23X0_nortos.c.obj (.text.HwiP_destruct)
+                  00003212    00000012     libc.a : memcpy16.S.obj (.text:TI_memcpy_small)
+                  00003224    00000012            : copy_decompress_none.c.obj (.text:decompress:none)
+                  00003236    00000002     nortos_cc23x0r5.a : startup_cc23x0r5_ticlang.c.obj (.text.faultISR)
+                  00003238    00000010                       : ClockPLPF3_nortos.c.obj (.text.ClockP_getCpuFreq)
+                  00003248    00000010     drivers_cc23x0r5.a : GPIOLPF3.c.obj (.text.GPIO_toggle)
+                  00003258    00000010     nortos_cc23x0r5.a : HwiPCC23X0_nortos.c.obj (.text.HwiP_Params_init)
+                  00003268    00000010     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.Power_disablePolicy)
+                  00003278    00000010                        : PowerCC23X0.c.obj (.text.Power_unregisterNotify)
+                  00003288    00000010                        : UART2.c.obj (.text.UART2_Params_init)
+                  00003298    00000010     main_nortos.obj (.text.main)
+                  000032a8    00000010     nortos_cc23x0r5.a : startup_cc23x0r5_ticlang.c.obj (.text.resetISR)
+                  000032b8    00000010     libc.a : copy_zero_init.c.obj (.text:decompress:ZI)
+                  000032c8    0000000e     nortos_cc23x0r5.a : HwiPCC23X0_nortos.c.obj (.text.HwiP_restore)
+                  000032d6    0000000e     libc.a : memory.c.obj (.text.OUTLINED_FUNCTION_0)
+                  000032e4    0000000e     drivers_cc23x0r5.a : RingBuf.c.obj (.text.RingBuf_construct)
+                  000032f2    0000000e                        : UART2LPF3.c.obj (.text.UART2Support_disableTx)
+                  00003300    0000000e                        : UART2LPF3.c.obj (.text.UART2Support_enableTx)
+                  0000330e    0000000e                        : UART2LPF3.c.obj (.text.UART2Support_txDone)
+                  0000331c    0000000e                        : UART2.c.obj (.text.UART2_write)
+                  0000332a    0000000e     libc.a : memset16.S.obj (.text:TI_memset_small)
+                  00003338    0000000c     nortos_cc23x0r5.a : HwiPCC23X0_nortos.c.obj (.text.HwiP_disable)
+                  00003344    0000000c     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.PowerCC23X0_rtcISR)
+                  00003350    0000000c                        : PowerCC23X0.c.obj (.text.Power_enablePolicy)
+                  0000335c    0000000c                        : PowerCC23X0.c.obj (.text.Power_getConstraintMask)
+                  00003368    0000000c     libclang_rt.builtins.a : aeabi_memset.S.obj (.text.__aeabi_memclr)
+                  00003374    0000000c     libc.a : memory.c.obj (.text.malloc)
+                  00003380    0000000a     drivers_cc23x0r5.a : GPIOLPF3.c.obj (.text.GPIO_setConfig)
+                  0000338a    0000000a     nortos_cc23x0r5.a : HwiPCC23X0_nortos.c.obj (.text.HwiP_interruptsEnabled)
+                  00003394    0000000a     drivers_cc23x0r5.a : UART2.c.obj (.text.OUTLINED_FUNCTION_0)
+                  0000339e    0000000a                        : UART2LPF3.c.obj (.text.UART2Support_powerRelConstraint)
+                  000033a8    0000000a                        : UART2LPF3.c.obj (.text.UDMALPF3_disableAttribute)
+                  000033b2    00000008     nortos_cc23x0r5.a : HwiPCC23X0_nortos.c.obj (.text.HwiP_clearInterrupt)
+                  000033ba    00000008                       : HwiPCC23X0_nortos.c.obj (.text.HwiP_enable)
+                  000033c2    00000008                       : HwiPCC23X0_nortos.c.obj (.text.HwiP_enableInterrupt)
+                  000033ca    00000008                       : NoRTOS.c.obj (.text.NoRTOS_start)
+                  000033d2    00000008                       : SemaphoreP_nortos.c.obj (.text.SemaphoreP_delete)
+                  000033da    00000008                       : SystemP_nortos.c.obj (.text.SystemP_vsnprintf)
+                  000033e2    00000002                       : startup_cc23x0r5_ticlang.c.obj (.text.intDefaultHandler)
+                  000033e4    00000008     libclang_rt.builtins.a : aeabi_memcpy.S.obj (.text.__aeabi_memcpy)
+                  000033ec    00000008     nortos_cc23x0r5.a : posix_sleep.c.obj (.text.sleep)
+                  000033f4    00000008                       : ClockPLPF3_nortos.c.obj (.text.sleepClkFxn)
+                  000033fc    00000006     driverlib.a : cpu.c.obj (.text.CPUDelay)
+                  00003402    00000006     display_cc23x0r5.a : DisplayUart2.c.obj (.text.DisplayUart2Min_control)
+                  00003408    00000006                        : DisplayUart2.c.obj (.text.DisplayUart2Min_getType)
+                  0000340e    00000004     nortos_cc23x0r5.a : ClockPLPF3_nortos.c.obj (.text.ClockP_isActive)
+                  00003412    00000004     drivers_cc23x0r5.a : UART2LPF3.c.obj (.text.OUTLINED_FUNCTION_0)
+                  00003416    00000002     nortos_cc23x0r5.a : startup_cc23x0r5_ticlang.c.obj (.text.nmiISR)
+                  00003418    00000010     drivers_cc23x0r5.a : GPIO.c.obj (.tramp.GPIO_resetConfig.1)
+                  00003428    00000004                        : UART2.c.obj (.text.OUTLINED_FUNCTION_1)
+                  0000342c    00000004                        : RingBuf.c.obj (.text.RingBuf_getCount)
+                  00003430    00000004     libc.a : pre_init.c.obj (.text._system_pre_init)
+                  00003434    00000004            : exit.c.obj (.text:abort)
+
+.rodata    0    00003438    00000169     
+                  00003438    00000058     ti_drivers_config.obj (.rodata.UART2LPF3_hwAttrs)
+                  00003490    00000024     drivers_cc23x0r5.a : UART2.c.obj (.rodata.UART2_defaultParams)
+                  000034b4    00000022     temperatureNotify.obj (.rodata.str1.179707121782601971401)
+                  000034d6    00000022     temperatureNotify.obj (.rodata.str1.5610825085375402771)
+                  000034f8    00000020     display_cc23x0r5.a : DisplayUart2.c.obj (.rodata.DisplayUart2Min_fxnTable)
+                  00003518    00000014     ti_drivers_config.obj (.rodata.displayUart2HWAttrs)
+                  0000352c    00000011     nortos_cc23x0r5.a : SystemP_nortos.c.obj (.rodata.str1.109858018089270873821)
+                  0000353d    00000002     drivers_cc23x0r5.a : UART2LPF3.c.obj (.rodata.stopBits)
+                  0000353f    00000001     ti_drivers_config.obj (.rodata.Display_count)
+                  00003540    00000010     ti_drivers_config.obj (.rodata.GPIO_config)
+                  00003550    0000000c     ti_drivers_config.obj (.rodata.BatMonSupportLPF3_config)
+                  0000355c    0000000c     nortos_cc23x0r5.a : ClockPLPF3_nortos.c.obj (.rodata.ClockP_defaultParams)
+                  00003568    0000000c     ti_drivers_config.obj (.rodata.Display_config)
+                  00003574    00000008     ti_drivers_config.obj (.rodata.PowerCC23X0_config)
+                  0000357c    00000008     ti_drivers_config.obj (.rodata.UART2_config)
+                  00003584    00000007     nortos_cc23x0r5.a : SystemP_nortos.c.obj (.rodata.str1.19629868222606260471)
+                  0000358b    00000005     drivers_cc23x0r5.a : UART2LPF3.c.obj (.rodata.parityType)
+                  00003590    00000005     nortos_cc23x0r5.a : PowerCC23X0_nortos.c.obj (.rodata.sysTimerResolutionShift)
+                  00003595    00000001     display_cc23x0r5.a : Display.c.obj (.rodata.Display_defaultParams)
+                  00003596    00000001     ti_drivers_config.obj (.rodata.GPIO_pinLowerBound)
+                  00003597    00000001     ti_drivers_config.obj (.rodata.GPIO_pinUpperBound)
+                  00003598    00000004     ti_drivers_config.obj (.rodata.UDMALPF3_config)
+                  0000359c    00000004     drivers_cc23x0r5.a : UART2LPF3.c.obj (.rodata.cst4)
+                  000035a0    00000001     ti_drivers_config.obj (.rodata.UART2_count)
+
+.cinit     0    000035ac    0000007c     
+                  000035ac    00000037     (.cinit..data.load) [load image, compression = lzss]
+                  000035e3    00000001     --HOLE-- [fill = 0]
+                  000035e4    0000000c     (__TI_handler_table)
+                  000035f0    00000008     (.cinit..TI.bound:dmaChannel0ControlTableEntry.load) [load image, compression = zero_init]
+                  000035f8    00000008     (.cinit..TI.bound:dmaChannel1ControlTableEntry.load) [load image, compression = zero_init]
+                  00003600    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00003608    00000020     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.data      0    20000000    000001a5     UNINITIALIZED
+                  20000000    0000008c     nortos_cc23x0r5.a : HwiPCC23X0_nortos.c.obj (.data.HwiP_dispatchTable)
+                  2000008c    00000068     ti_drivers_config.obj (.data.gpioPinConfigs)
+                  200000f4    0000003f     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.data..L_MergedGlobals.1)
+                  20000133    00000001     nortos_cc23x0r5.a : ClockPLPF3_nortos.c.obj (.data.ClockP_initialized)
+                  20000134    00000024     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.data..L_MergedGlobals)
+                  20000158    00000014     nortos_cc23x0r5.a : ClockPLPF3_nortos.c.obj (.data..L_MergedGlobals)
+                  2000016c    00000010     drivers_cc23x0r5.a : BatMonSupportLPF3.c.obj (.data..L_MergedGlobals)
+                  2000017c    00000004                        : TemperatureLPF3.c.obj (.data..L_MergedGlobals)
+                  20000180    00000010     nortos_cc23x0r5.a : SemaphoreP_nortos.c.obj (.data..L_MergedGlobals)
+                  20000190    00000004                       : HwiPCC23X0_nortos.c.obj (.data.HwiP_swiPIntNum)
+                  20000194    00000004     libc.a : _lock.c.obj (.data._lock)
+                  20000198    00000004            : _lock.c.obj (.data._unlock)
+                  2000019c    00000001     drivers_cc23x0r5.a : GPIOLPF3.c.obj (.data.initCalled)
+                  2000019d    00000001                        : BatMonSupportLPF3.c.obj (.data.isInitialized)
+                  2000019e    00000001                        : TemperatureLPF3.c.obj (.data.isInitialized)
+                  2000019f    00000001                        : UDMALPF3.c.obj (.data.isOpen)
+                  200001a0    00000001     driverlib.a : lrfd.c.obj (.data.lrfdClocked)
+                  200001a1    00000003     --HOLE--
+                  200001a4    00000001     libc.a : memory.c.obj (.data.memory_is_initialized)
+
+.ramVecs   0    20000200    0000008c     NOLOAD SECTION
+                  20000200    0000008c     driverlib.a : interrupt.c.obj (.ramVecs)
+
+.sysmem    0    20000420    00002000     UNINITIALIZED
+                  20000420    00000010     libc.a : memory.c.obj (.sysmem)
+                  20000430    00001ff0     --HOLE--
+
+.bss       0    20002420    00000784     UNINITIALIZED
+                  20002420    00000400     ti_drivers_config.obj (.bss.displayUART2Buffer)
+                  20002820    00000180     (.common:UART2LPF3_objects)
+                  200029a0    00000068     (.common:gpioCallbackFunctions)
+                  20002a08    00000068     (.common:gpioUserArgs)
+                  20002a70    00000020     ti_drivers_config.obj (.bss.uart2RxRingBuffer0)
+                  20002a90    00000020     ti_drivers_config.obj (.bss.uart2TxRingBuffer0)
+                  20002ab0    0000001c     drivers_cc23x0r5.a : BatMonSupportLPF3.c.obj (.bss.batMonHwi)
+                  20002acc    0000001c                        : PowerCC23X0.c.obj (.bss.ckmHwi)
+                  20002ae8    0000001c                        : GPIOLPF3.c.obj (.bss.gpioHwi)
+                  20002b04    0000001c     (.common:clockHwi)
+                  20002b20    00000018     (.common:aboveBelowNotification)
+                  20002b38    00000018     (.common:deltaNotification)
+                  20002b50    00000014                        : UDMALPF3.c.obj (.bss.postNotify)
+                  20002b64    00000014     nortos_cc23x0r5.a : PowerCC23X0_nortos.c.obj (.bss.sysTimerTimeouts)
+                  20002b78    0000000c     (.common:displayUart2Object)
+                  20002b84    00000008     drivers_cc23x0r5.a : TemperatureLPF3.c.obj (.bss.notificationList)
+                  20002b8c    00000008                        : PowerCC23X0.c.obj (.bss.notifyList)
+                  20002b94    00000004                        : PowerCC23X0.c.obj (.bss.PowerCC23X0_enterStandby.controlPreStandby)
+                  20002b98    00000004                        : PowerCC23X0.c.obj (.bss.constraintCounts)
+                  20002b9c    00000004     driverlib.a : lrfd.c.obj (.bss.lrfdClockDependencySets)
+                  20002ba0    00000004     libc.a : memory.c.obj (.bss.sys_free)
+
+.stack     0    20008c00    00000400     UNINITIALIZED
+                  20008c00    00000004     libc.a : boot_cortex_m.c.obj (.stack)
+                  20008c04    000003fc     --HOLE--
+
+.ccfg      0    4e020000    00000800     
+                  4e020000    00000800     ti_devices_config.obj (.ccfg)
+
+.log_data 
+*          0    90000000    00000000     COPY SECTION
+
+.log_ptr   0    94000008    00000000     COPY SECTION
+
+__llvm_prf_cnts 
+*          0    20000000    00000000     UNINITIALIZED
+
+__llvm_prf_bits 
+*          0    20000000    00000000     UNINITIALIZED
+
+.TI.bound:dmaChannel0ControlTableEntry 
+*          0    20000400    00000010     UNINITIALIZED
+                  20000400    00000010     ti_drivers_config.obj (.TI.bound:dmaChannel0ControlTableEntry)
+
+.TI.bound:dmaChannel1ControlTableEntry 
+*          0    20000410    00000010     UNINITIALIZED
+                  20000410    00000010     ti_drivers_config.obj (.TI.bound:dmaChannel1ControlTableEntry)
+
+.args      0    000035a4    00000008     
+                  000035a4    00000008     --HOLE-- [fill = 0]
+
+MODULE SUMMARY
+
+       Module                           code    ro data   rw data
+       ------                           ----    -------   -------
+    <current directory>
+       ti_drivers_config.obj            258     172       1828   
+       ti_devices_config.obj            0       2048      0      
+       temperatureNotify.obj            276     68        48     
+       main_nortos.obj                  16      0         0      
+    +--+--------------------------------+-------+---------+---------+
+       Total:                           550     2288      1876   
+                                                                 
+    /home/developer/.conan/data/tiarmllvm/3.2.0.LTS-0/library-msp/ga/package/be241241e9d4718e5bab4eb33935bbb69606bb0c/lib/armv6m-ti-none-eabi/c/libc.a
+       memory.c.obj                     730     0         5      
+       copy_decompress_lzss.c.obj       120     0         0      
+       autoinit.c.obj                   60      0         0      
+       boot_cortex_m.c.obj              36      0         0      
+       args_main.c.obj                  28      0         0      
+       copy_decompress_none.c.obj       18      0         0      
+       memcpy16.S.obj                   18      0         0      
+       copy_zero_init.c.obj             16      0         0      
+       memset16.S.obj                   14      0         0      
+       _lock.c.obj                      2       0         8      
+       exit.c.obj                       4       0         0      
+       pre_init.c.obj                   4       0         0      
+    +--+--------------------------------+-------+---------+---------+
+       Total:                           1050    0         13     
+                                                                 
+    /home/developer/.conan/data/tiarmllvm/3.2.0.LTS-0/library-msp/ga/package/be241241e9d4718e5bab4eb33935bbb69606bb0c/lib/clang/15.0.7/lib/armv6m-ti-none-eabi/libclang_rt.builtins.a
+       adddf3.S.obj                     402     0         0      
+       muldf3.S.obj                     228     0         0      
+       comparedf2.c.obj                 220     0         0      
+       aeabi_dcmp.S.obj                 98      0         0      
+       clzsi2.c.obj                     88      0         0      
+       fixdfsi.S.obj                    74      0         0      
+       fixunsdfsi.S.obj                 66      0         0      
+       aeabi_uidivmod.S.obj             64      0         0      
+       muldsi3.S.obj                    58      0         0      
+       floatsidf.S.obj                  44      0         0      
+       aeabi_memset.S.obj               12      0         0      
+       aeabi_memcpy.S.obj               8       0         0      
+       aeabi_div0.c.obj                 2       0         0      
+    +--+--------------------------------+-------+---------+---------+
+       Total:                           1364    0         0      
+                                                                 
+    /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/ticlang/m0p/nortos_cc23x0r5.a
+       SystemP_nortos.c.obj             992     24        0      
+       ClockPLPF3_nortos.c.obj          700     12        21     
+       HwiPCC23X0_nortos.c.obj          298     0         144    
+       SemaphoreP_nortos.c.obj          402     0         16     
+       PowerCC23X0_nortos.c.obj         320     5         20     
+       startup_cc23x0r5_ticlang.c.obj   22      140       0      
+       NoRTOS.c.obj                     8       0         0      
+       posix_sleep.c.obj                8       0         0      
+    +--+--------------------------------+-------+---------+---------+
+       Total:                           2750    181       201    
+                                                                 
+    /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/ticlang/driverlib.a
+       interrupt.c.obj                  350     0         140    
+       lrfd.c.obj                       140     0         5      
+       uart.c.obj                       66      0         0      
+       udma.c.obj                       52      0         0      
+       setup.c.obj                      44      0         0      
+       cpu.c.obj                        6       0         0      
+    +--+--------------------------------+-------+---------+---------+
+       Total:                           658     0         145    
+                                                                 
+    /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/display/lib/ticlang/m0p/display_cc23x0r5.a
+       DisplayUart2.c.obj               188     32        0      
+       Display.c.obj                    140     1         0      
+    +--+--------------------------------+-------+---------+---------+
+       Total:                           328     33        0      
+                                                                 
+    /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/ticlang/m0p/drivers_cc23x0r5.a
+       UART2LPF3.c.obj                  2510    11        0      
+       PowerCC23X0.c.obj                1040    0         171    
+       UART2.c.obj                      980     36        0      
+       TemperatureLPF3.c.obj            720     0         13     
+       GPIOLPF3.c.obj                   442     0         29     
+       RingBuf.c.obj                    312     0         0      
+       BatMonSupportLPF3.c.obj          204     0         45     
+       UDMALPF3.c.obj                   132     0         21     
+       List.c.obj                       96      0         0      
+       GPIO.c.obj                       92      0         0      
+    +--+--------------------------------+-------+---------+---------+
+       Total:                           6528    47        279    
+                                                                 
+       Heap:                            0       0         8192   
+       Stack:                           0       0         1024   
+       Linker Generated:                0       123       0      
+    +--+--------------------------------+-------+---------+---------+
+       Grand Total:                     13228   2672      11730  
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00003608 records: 4, size/record: 8, table size: 32
+	.data: load addr=000035ac, load size=00000037 bytes, run addr=20000000, run size=000001a5 bytes, compression=lzss
+	.TI.bound:dmaChannel0ControlTableEntry: load addr=000035f0, load size=00000008 bytes, run addr=20000400, run size=00000010 bytes, compression=zero_init
+	.TI.bound:dmaChannel1ControlTableEntry: load addr=000035f8, load size=00000008 bytes, run addr=20000410, run size=00000010 bytes, compression=zero_init
+	.bss: load addr=00003600, load size=00000008 bytes, run addr=20002420, run size=00000784 bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 000035e4 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+FAR CALL TRAMPOLINES
+
+callee name               trampoline name
+   callee addr  tramp addr   call addr  call info
+--------------  -----------  ---------  ----------------
+GPIO_resetConfig          $Tramp$TT$L$PI$$GPIO_resetConfig
+   00002a9d     00003418     00003414   drivers_cc23x0r5.a : UART2LPF3.c.obj (.text.OUTLINED_FUNCTION_0)
+
+[1 trampolines]
+[1 trampoline calls]
+
+
+SEGMENT ATTRIBUTES
+
+    id tag       seg value 
+    -- ---       --- ----- 
+     0 PHA_BOUND 4   (null)
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                                   
+-------   ----                                   
+00003550  BatMonSupportLPF3_config               
+000019dd  BatMonSupportLPF3_init                 
+00002f55  BatMonSupportLPF3_registerTemperatureCb
+00002b8d  Board_init                             
+0000092b  Board_initHook                         
+00002331  Board_sendExtFlashByte                 
+000020ed  Board_shutDownExtFlash                 
+00002999  Board_wakeUpExtFlash                   
+00003434  C$$EXIT                                
+000033fd  CPUDelay                               
+00002ed5  ClockP_add                             
+00002415  ClockP_construct                       
+00003175  ClockP_destruct                        
+00003239  ClockP_getCpuFreq                      
+0000340f  ClockP_isActive                        
+00002ef5  ClockP_sleep                           
+00001c7d  ClockP_start                           
+00001a51  ClockP_startup                         
+00001ed5  ClockP_walkQueueDynamic                
+00001673  DisplayUart2Min_clear                  
+00001ed3  DisplayUart2Min_clearLines             
+0000311d  DisplayUart2Min_close                  
+00003403  DisplayUart2Min_control                
+000034f8  DisplayUart2Min_fxnTable               
+00003409  DisplayUart2Min_getType                
+0000228f  DisplayUart2Min_init                   
+00002605  DisplayUart2Min_open                   
+0000223d  DisplayUart2Min_vprintf                
+00003568  Display_config                         
+0000353f  Display_count                          
+00003595  Display_defaultParams                  
+00002dfd  Display_doInit                         
+00002141  Display_doOpen                         
+00003189  Display_doPrintf                       
+00003540  GPIO_config                            
+0000319d  GPIO_disableInt                        
+000028f1  GPIO_hwiIntFxn                         
+0000125d  GPIO_init                              
+00003596  GPIO_pinLowerBound                     
+00003597  GPIO_pinUpperBound                     
+00002a9d  GPIO_resetConfig                       
+00002f71  GPIO_setCallback                       
+00003381  GPIO_setConfig                         
+00001ce1  GPIO_setConfigAndMux                   
+00003249  GPIO_toggle                            
+000031b1  GPIO_write                             
+00003259  HwiP_Params_init                       
+000033b3  HwiP_clearInterrupt                    
+00001875  HwiP_construct                         
+00003201  HwiP_destruct                          
+00003339  HwiP_disable                           
+00002e21  HwiP_dispatch                          
+000033bb  HwiP_enable                            
+000033c3  HwiP_enableInterrupt                   
+000030bd  HwiP_inISR                             
+0000338b  HwiP_interruptsEnabled                 
+000032c9  HwiP_restore                           
+000030d5  HwiP_setFunc                           
+20000190  HwiP_swiPIntNum                        
+00002929  IntClearPend                           
+00002cc1  IntDisable                             
+00002ce9  IntEnable                              
+00002acd  IntIsEnabled                           
+00002bb9  IntRegister                            
+00001d45  IntSetPriority                         
+000031c5  IntUnregister                          
+00002195  LRFDApplyClockDependencies             
+00002f8d  LRFDReleaseClockDependency             
+00002fa9  LRFDSetClockDependency                 
+000031d9  List_clearList                         
+00002e45  List_put                               
+00002d11  List_remove                            
+000033cb  NoRTOS_start                           
+00003574  PowerCC23X0_config                     
+000029cd  PowerCC23X0_notify                     
+00000c0d  PowerCC23X0_standbyPolicy              
+00002e69  PowerLPF3_selectLFXT                   
+00003269  Power_disablePolicy                    
+00003351  Power_enablePolicy                     
+0000335d  Power_getConstraintMask                
+00002afd  Power_getDependencyCount               
+000030ed  Power_idleFunc                         
+000014a1  Power_init                             
+00002d39  Power_registerNotify                   
+00002b2d  Power_releaseConstraint                
+00001f8d  Power_releaseDependency                
+00002c11  Power_setConstraint                    
+00001fe5  Power_setDependency                    
+0000237d  Power_sleep                            
+00003279  Power_unregisterNotify                 
+000032e5  RingBuf_construct                      
+00003089  RingBuf_flush                          
+00002b5d  RingBuf_getConsume                     
+0000342d  RingBuf_getCount                       
+00002db1  RingBuf_getPointer                     
+0000245d  RingBuf_put                            
+00002879  RingBuf_putAdvance                     
+00002a01  RingBuf_putPointer                     
+00001f31  SemaphoreP_construct                   
+00002fc5  SemaphoreP_constructBinary             
+00003133  SemaphoreP_create                      
+00002fe1  SemaphoreP_createBinary                
+20000188  SemaphoreP_defaultParams               
+000033d3  SemaphoreP_delete                      
+00002647  SemaphoreP_destruct                    
+0000153d  SemaphoreP_pend                        
+0000268d  SemaphoreP_post                        
+00002c3d  SetupTrimDevice                        
+000033db  SystemP_vsnprintf                      
+00003213  TI_memcpy_small                        
+0000332b  TI_memset_small                        
+00002961  Temperature_getTemperature             
+0000274d  Temperature_init                       
+00002291  Temperature_registerNotifyHigh         
+000024a5  Temperature_registerNotifyLow          
+000024ed  Temperature_registerNotifyRange        
+20002820  UART2LPF3_objects                      
+00002e8d  UART2Support_disableRx                 
+000032f3  UART2Support_disableTx                 
+00000e79  UART2Support_dmaStartRx                
+00001339  UART2Support_dmaStartTx                
+00001da9  UART2Support_dmaStopRx                 
+00001ac5  UART2Support_dmaStopTx                 
+00003301  UART2Support_enableTx                  
+0000339f  UART2Support_powerRelConstraint        
+00002f35  UART2Support_sendData                  
+0000330f  UART2Support_txDone                    
+00003289  UART2_Params_init                      
+00001675  UART2_close                            
+0000357c  UART2_config                           
+000035a0  UART2_count                            
+00003490  UART2_defaultParams                    
+0000092d  UART2_open                             
+000021e9  UART2_readCancel                       
+00002a35  UART2_rxDisable                        
+0000331d  UART2_write                            
+000015d9  UART2_writeCancel                      
+000030a3  UART2_writeTimeout                     
+00000aa9  UART2_writeTimeoutBlocking             
+00000f85  UART2_writeTimeoutNonblocking          
+00002dd7  UARTConfigSetExpClk                    
+00002ffd  UARTDisable                            
+00003598  UDMALPF3_config                        
+000022e1  UDMALPF3_init                          
+20009000  __STACK_END                            
+00000400  __STACK_SIZE                           
+00002000  __SYSMEM_SIZE                          
+00000000  __TI_ATRegion0_region_sz               
+00000000  __TI_ATRegion0_src_addr                
+00000000  __TI_ATRegion0_trg_addr                
+00000000  __TI_ATRegion1_region_sz               
+00000000  __TI_ATRegion1_src_addr                
+00000000  __TI_ATRegion1_trg_addr                
+00000000  __TI_ATRegion2_region_sz               
+00000000  __TI_ATRegion2_src_addr                
+00000000  __TI_ATRegion2_trg_addr                
+00003608  __TI_CINIT_Base                        
+00003628  __TI_CINIT_Limit                       
+00003628  __TI_CINIT_Warm                        
+000035e4  __TI_Handler_Table_Base                
+000035f0  __TI_Handler_Table_Limit               
+0000283d  __TI_auto_init_nobinit_nopinit         
+00001965  __TI_decompress_lzss                   
+00003225  __TI_decompress_none                   
+ffffffff  __TI_pprof_out_hndl                    
+ffffffff  __TI_prof_data_size                    
+ffffffff  __TI_prof_data_start                   
+00000000  __TI_static_base__                     
+000032b9  __TI_zero_init                         
+000007a3  __adddf3                               
+000023c9  __aeabi_d2iz                           
+00002649  __aeabi_d2uiz                          
+000007a3  __aeabi_dadd                           
+00001e71  __aeabi_dcmpeq                         
+00001ead  __aeabi_dcmpge                         
+00001ec1  __aeabi_dcmpgt                         
+00001e99  __aeabi_dcmple                         
+00001e85  __aeabi_dcmplt                         
+00001179  __aeabi_dmul                           
+00000799  __aeabi_dsub                           
+00002c69  __aeabi_i2d                            
+000028b3  __aeabi_idiv0                          
+00003369  __aeabi_memclr                         
+00003369  __aeabi_memclr4                        
+00003369  __aeabi_memclr8                        
+000033e5  __aeabi_memcpy                         
+000033e5  __aeabi_memcpy4                        
+000033e5  __aeabi_memcpy8                        
+000026cd  __aeabi_uidiv                          
+000026cd  __aeabi_uidivmod                       
+ffffffff  __binit__                              
+000035a4  __c_args__                             
+0000203d  __clzsi2                               
+00001c11  __cmpdf2                               
+00001c11  __eqdf2                                
+000023c9  __fixdfsi                              
+00002649  __fixunsdfsi                           
+00002c69  __floatsidf                            
+00001b35  __gedf2                                
+00001b35  __gtdf2                                
+00001c11  __ledf2                                
+00001c11  __ltdf2                                
+UNDEFED   __mpu_init                             
+00001179  __muldf3                               
+000028b5  __muldsi3                              
+00001c11  __nedf2                                
+20008c00  __stack                                
+20000000  __start___llvm_prf_bits                
+20000000  __start___llvm_prf_cnts                
+20000000  __stop___llvm_prf_bits                 
+20000000  __stop___llvm_prf_cnts                 
+00000799  __subdf3                               
+00003019  _args_main                             
+00002eb1  _c_int00                               
+20000194  _lock                                  
+000028ef  _nop                                   
+20000420  _sys_memory                            
+UNDEFED   _system_post_cinit                     
+00003431  _system_pre_init                       
+20000198  _unlock                                
+00003435  abort                                  
+20002b20  aboveBelowNotification                 
+0000270d  aboveBelowNotificationFxn              
+00000d4d  aligned_alloc                          
+ffffffff  binit                                  
+4e020000  ccfg                                   
+00002f53  clkFxn                                 
+20002b04  clockHwi                               
+20002b38  deltaNotification                      
+00002c95  deltaNotificationFxn                   
+00003518  displayUart2HWAttrs                    
+20002b78  displayUart2Object                     
+0000108d  free                                   
+200029a0  gpioCallbackFunctions                  
+2000008c  gpioPinConfigs                         
+20002a08  gpioUserArgs                           
+00003299  main                                   
+000013f9  mainThread                             
+00003375  malloc                                 
+00000d4d  memalign                               
+000032a9  resetISR                               
+000033ed  sleep                                  
+00002f15  uDMADisableChannelAttribute            
+000031ed  uDMAGetChannelSize                     
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                                   
+-------   ----                                   
+00000000  __TI_ATRegion0_region_sz               
+00000000  __TI_ATRegion0_src_addr                
+00000000  __TI_ATRegion0_trg_addr                
+00000000  __TI_ATRegion1_region_sz               
+00000000  __TI_ATRegion1_src_addr                
+00000000  __TI_ATRegion1_trg_addr                
+00000000  __TI_ATRegion2_region_sz               
+00000000  __TI_ATRegion2_src_addr                
+00000000  __TI_ATRegion2_trg_addr                
+00000000  __TI_static_base__                     
+00000400  __STACK_SIZE                           
+00000799  __aeabi_dsub                           
+00000799  __subdf3                               
+000007a3  __adddf3                               
+000007a3  __aeabi_dadd                           
+0000092b  Board_initHook                         
+0000092d  UART2_open                             
+00000aa9  UART2_writeTimeoutBlocking             
+00000c0d  PowerCC23X0_standbyPolicy              
+00000d4d  aligned_alloc                          
+00000d4d  memalign                               
+00000e79  UART2Support_dmaStartRx                
+00000f85  UART2_writeTimeoutNonblocking          
+0000108d  free                                   
+00001179  __aeabi_dmul                           
+00001179  __muldf3                               
+0000125d  GPIO_init                              
+00001339  UART2Support_dmaStartTx                
+000013f9  mainThread                             
+000014a1  Power_init                             
+0000153d  SemaphoreP_pend                        
+000015d9  UART2_writeCancel                      
+00001673  DisplayUart2Min_clear                  
+00001675  UART2_close                            
+00001875  HwiP_construct                         
+00001965  __TI_decompress_lzss                   
+000019dd  BatMonSupportLPF3_init                 
+00001a51  ClockP_startup                         
+00001ac5  UART2Support_dmaStopTx                 
+00001b35  __gedf2                                
+00001b35  __gtdf2                                
+00001c11  __cmpdf2                               
+00001c11  __eqdf2                                
+00001c11  __ledf2                                
+00001c11  __ltdf2                                
+00001c11  __nedf2                                
+00001c7d  ClockP_start                           
+00001ce1  GPIO_setConfigAndMux                   
+00001d45  IntSetPriority                         
+00001da9  UART2Support_dmaStopRx                 
+00001e71  __aeabi_dcmpeq                         
+00001e85  __aeabi_dcmplt                         
+00001e99  __aeabi_dcmple                         
+00001ead  __aeabi_dcmpge                         
+00001ec1  __aeabi_dcmpgt                         
+00001ed3  DisplayUart2Min_clearLines             
+00001ed5  ClockP_walkQueueDynamic                
+00001f31  SemaphoreP_construct                   
+00001f8d  Power_releaseDependency                
+00001fe5  Power_setDependency                    
+00002000  __SYSMEM_SIZE                          
+0000203d  __clzsi2                               
+000020ed  Board_shutDownExtFlash                 
+00002141  Display_doOpen                         
+00002195  LRFDApplyClockDependencies             
+000021e9  UART2_readCancel                       
+0000223d  DisplayUart2Min_vprintf                
+0000228f  DisplayUart2Min_init                   
+00002291  Temperature_registerNotifyHigh         
+000022e1  UDMALPF3_init                          
+00002331  Board_sendExtFlashByte                 
+0000237d  Power_sleep                            
+000023c9  __aeabi_d2iz                           
+000023c9  __fixdfsi                              
+00002415  ClockP_construct                       
+0000245d  RingBuf_put                            
+000024a5  Temperature_registerNotifyLow          
+000024ed  Temperature_registerNotifyRange        
+00002605  DisplayUart2Min_open                   
+00002647  SemaphoreP_destruct                    
+00002649  __aeabi_d2uiz                          
+00002649  __fixunsdfsi                           
+0000268d  SemaphoreP_post                        
+000026cd  __aeabi_uidiv                          
+000026cd  __aeabi_uidivmod                       
+0000270d  aboveBelowNotificationFxn              
+0000274d  Temperature_init                       
+0000283d  __TI_auto_init_nobinit_nopinit         
+00002879  RingBuf_putAdvance                     
+000028b3  __aeabi_idiv0                          
+000028b5  __muldsi3                              
+000028ef  _nop                                   
+000028f1  GPIO_hwiIntFxn                         
+00002929  IntClearPend                           
+00002961  Temperature_getTemperature             
+00002999  Board_wakeUpExtFlash                   
+000029cd  PowerCC23X0_notify                     
+00002a01  RingBuf_putPointer                     
+00002a35  UART2_rxDisable                        
+00002a9d  GPIO_resetConfig                       
+00002acd  IntIsEnabled                           
+00002afd  Power_getDependencyCount               
+00002b2d  Power_releaseConstraint                
+00002b5d  RingBuf_getConsume                     
+00002b8d  Board_init                             
+00002bb9  IntRegister                            
+00002c11  Power_setConstraint                    
+00002c3d  SetupTrimDevice                        
+00002c69  __aeabi_i2d                            
+00002c69  __floatsidf                            
+00002c95  deltaNotificationFxn                   
+00002cc1  IntDisable                             
+00002ce9  IntEnable                              
+00002d11  List_remove                            
+00002d39  Power_registerNotify                   
+00002db1  RingBuf_getPointer                     
+00002dd7  UARTConfigSetExpClk                    
+00002dfd  Display_doInit                         
+00002e21  HwiP_dispatch                          
+00002e45  List_put                               
+00002e69  PowerLPF3_selectLFXT                   
+00002e8d  UART2Support_disableRx                 
+00002eb1  _c_int00                               
+00002ed5  ClockP_add                             
+00002ef5  ClockP_sleep                           
+00002f15  uDMADisableChannelAttribute            
+00002f35  UART2Support_sendData                  
+00002f53  clkFxn                                 
+00002f55  BatMonSupportLPF3_registerTemperatureCb
+00002f71  GPIO_setCallback                       
+00002f8d  LRFDReleaseClockDependency             
+00002fa9  LRFDSetClockDependency                 
+00002fc5  SemaphoreP_constructBinary             
+00002fe1  SemaphoreP_createBinary                
+00002ffd  UARTDisable                            
+00003019  _args_main                             
+00003089  RingBuf_flush                          
+000030a3  UART2_writeTimeout                     
+000030bd  HwiP_inISR                             
+000030d5  HwiP_setFunc                           
+000030ed  Power_idleFunc                         
+0000311d  DisplayUart2Min_close                  
+00003133  SemaphoreP_create                      
+00003175  ClockP_destruct                        
+00003189  Display_doPrintf                       
+0000319d  GPIO_disableInt                        
+000031b1  GPIO_write                             
+000031c5  IntUnregister                          
+000031d9  List_clearList                         
+000031ed  uDMAGetChannelSize                     
+00003201  HwiP_destruct                          
+00003213  TI_memcpy_small                        
+00003225  __TI_decompress_none                   
+00003239  ClockP_getCpuFreq                      
+00003249  GPIO_toggle                            
+00003259  HwiP_Params_init                       
+00003269  Power_disablePolicy                    
+00003279  Power_unregisterNotify                 
+00003289  UART2_Params_init                      
+00003299  main                                   
+000032a9  resetISR                               
+000032b9  __TI_zero_init                         
+000032c9  HwiP_restore                           
+000032e5  RingBuf_construct                      
+000032f3  UART2Support_disableTx                 
+00003301  UART2Support_enableTx                  
+0000330f  UART2Support_txDone                    
+0000331d  UART2_write                            
+0000332b  TI_memset_small                        
+00003339  HwiP_disable                           
+00003351  Power_enablePolicy                     
+0000335d  Power_getConstraintMask                
+00003369  __aeabi_memclr                         
+00003369  __aeabi_memclr4                        
+00003369  __aeabi_memclr8                        
+00003375  malloc                                 
+00003381  GPIO_setConfig                         
+0000338b  HwiP_interruptsEnabled                 
+0000339f  UART2Support_powerRelConstraint        
+000033b3  HwiP_clearInterrupt                    
+000033bb  HwiP_enable                            
+000033c3  HwiP_enableInterrupt                   
+000033cb  NoRTOS_start                           
+000033d3  SemaphoreP_delete                      
+000033db  SystemP_vsnprintf                      
+000033e5  __aeabi_memcpy                         
+000033e5  __aeabi_memcpy4                        
+000033e5  __aeabi_memcpy8                        
+000033ed  sleep                                  
+000033fd  CPUDelay                               
+00003403  DisplayUart2Min_control                
+00003409  DisplayUart2Min_getType                
+0000340f  ClockP_isActive                        
+0000342d  RingBuf_getCount                       
+00003431  _system_pre_init                       
+00003434  C$$EXIT                                
+00003435  abort                                  
+00003490  UART2_defaultParams                    
+000034f8  DisplayUart2Min_fxnTable               
+00003518  displayUart2HWAttrs                    
+0000353f  Display_count                          
+00003540  GPIO_config                            
+00003550  BatMonSupportLPF3_config               
+00003568  Display_config                         
+00003574  PowerCC23X0_config                     
+0000357c  UART2_config                           
+00003595  Display_defaultParams                  
+00003596  GPIO_pinLowerBound                     
+00003597  GPIO_pinUpperBound                     
+00003598  UDMALPF3_config                        
+000035a0  UART2_count                            
+000035a4  __c_args__                             
+000035e4  __TI_Handler_Table_Base                
+000035f0  __TI_Handler_Table_Limit               
+00003608  __TI_CINIT_Base                        
+00003628  __TI_CINIT_Limit                       
+00003628  __TI_CINIT_Warm                        
+20000000  __start___llvm_prf_bits                
+20000000  __start___llvm_prf_cnts                
+20000000  __stop___llvm_prf_bits                 
+20000000  __stop___llvm_prf_cnts                 
+2000008c  gpioPinConfigs                         
+20000188  SemaphoreP_defaultParams               
+20000190  HwiP_swiPIntNum                        
+20000194  _lock                                  
+20000198  _unlock                                
+20000420  _sys_memory                            
+20002820  UART2LPF3_objects                      
+200029a0  gpioCallbackFunctions                  
+20002a08  gpioUserArgs                           
+20002b04  clockHwi                               
+20002b20  aboveBelowNotification                 
+20002b38  deltaNotification                      
+20002b78  displayUart2Object                     
+20008c00  __stack                                
+20009000  __STACK_END                            
+4e020000  ccfg                                   
+ffffffff  __TI_pprof_out_hndl                    
+ffffffff  __TI_prof_data_size                    
+ffffffff  __TI_prof_data_start                   
+ffffffff  __binit__                              
+ffffffff  binit                                  
+UNDEFED   __mpu_init                             
+UNDEFED   _system_post_cinit                     
+
+[244 symbols]

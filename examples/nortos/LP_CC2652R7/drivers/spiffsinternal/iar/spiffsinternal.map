@@ -1,0 +1,1008 @@
+﻿###############################################################################
+#
+# IAR ELF Linker V9.40.2.374/LNX for ARM BX               19/Apr/2024  14:32:17
+# Copyright 2007-2023 IAR Systems AB.
+#
+#    Output file  =  spiffsinternal.out
+#    Map file     =  spiffsinternal.map
+#    Command line =
+#        spiffsinternal.obj main_nortos.obj ti_devices_config.obj
+#        ti_drivers_config.obj
+#        -L/project/staging/core_examples/cc13xx_cc26xx_sdk/source
+#        -L/project/staging/core_examples/cc13xx_cc26xx_sdk/kernel/nortos
+#        -fti_utils_build_linker.cmd.genlibs
+#        (third_party/spiffs/lib/iar/m4f/spiffs_cc26xx.a
+#        ti/display/lib/iar/m4f/display_cc26x2x7.a
+#        ti/drivers/lib/iar/m4f/drivers_cc26x2x7.a ti/grlib/lib/iar/m4f/grlib.a
+#        lib/iar/m4f/nortos_cc26x2x7.a
+#        ti/devices/cc13x2x7_cc26x2x7/driverlib/bin/iar/driverlib.lib) --config
+#        ../iar/cc13x2x7_cc26x2x7_nortos.icf --map spiffsinternal.map --silent
+#        --semihosting=iar_breakpoint --cpu=Cortex-M4 --fpu=VFPv4_sp -o
+#        spiffsinternal.out
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__CPP_Runtime   = 1
+__Heap_Handler  = DLMalloc
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The advanced heap was selected because the application calls
+memory allocation functions outside of system library functions,
+there are calls to deallocation functions in the application, and
+the application appears to be primarily optimized for speed.
+
+
+*******************************************************************************
+*** RESERVED RANGES
+***
+
+Ranges reserved by absolute symbols:
+
+         From           To    Size
+         ----           --    ----
+       0x8000       0xdfff  0x6000
+  0x2000'1850  0x2000'185f    0x10
+  0x2000'1860  0x2000'186f    0x10
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at address 0x0 { ro section .resetVecs };
+"A1":  place at end of [from 0x0 to 0xa'ffff] { ro section .ccfg };
+"P1":  place in [from 0x0 to 0xa'ffff] { ro };
+"P2":  place in [from 0x2000'0000 to 0x2002'3fff] { rw, section .ramVecs };
+define block HEAP with size = 16K, alignment = 8 { };
+"P3":  place in [from 0x2000'0000 to 0x2002'3fff] { block HEAP };
+define block CSTACK with size = 1K, alignment = 8 { section .stack };
+"A2":  place at end of [from 0x2000'0000 to 0x2002'3fff] { block CSTACK };
+do not initialize { section .stack, section .noinit };
+initialize by copy { rw };
+keep { section .resetVecs };
+keep { section .ccfg };
+
+No sections matched the following patterns:
+
+  ro section .log_data  in block LOG_DATA
+  ro section .log_ptr*  in block LOG_PTR
+
+
+  Section            Kind         Address    Size  Object
+  -------            ----         -------    ----  ------
+"A0":                                        0xd8
+  .resetVecs         const            0x0    0xd8  startup_cc13x2_cc26x2_iar.c.obj [7]
+                                   - 0xd8    0xd8
+
+"P1", part 1 of 2:                         0x29bf
+  .text              ro code         0xd8  0x2980  spiffs_nucleus.c.obj [10]
+  Initializer bytes  const         0x2a58    0x3f  <for P2-P3-1>
+                                 - 0x2a97  0x29bf
+
+"P1", part 2 of 2:                         0x79d0
+  .text              ro code       0xe000   0x42c  spiffs_cache.c.obj [10]
+  .text              ro code       0xe42c   0xad0  spiffs_gc.c.obj [10]
+  .text              ro code       0xeefc    0x6c  strncpy_unaligned.o [8]
+  .text              ro code       0xef68    0x66  ABImemset.o [8]
+  .text              ro code       0xefce    0x7e  lz77_init_single.o [8]
+  .text              ro code       0xf04c    0x76  ABImemcpy_unaligned.o [8]
+  .rodata            const         0xf0c2     0x1  ti_drivers_config.obj [1]
+  .rodata            const         0xf0c3     0x1  ti_drivers_config.obj [1]
+  .text              ro code       0xf0c4    0x12  strcmp.o [8]
+  .rodata            const         0xf0d6     0x1  ti_drivers_config.obj [1]
+  .rodata            const         0xf0d7     0x1  ti_drivers_config.obj [1]
+  .text              ro code       0xf0d8     0x6  ABImemclr.o [8]
+  .rodata            const         0xf0de     0x1  ti_drivers_config.obj [1]
+  .text              ro code       0xf0e0     0x6  ABImemclr4.o [8]
+  .text              ro code       0xf0e8    0x32  ABImemset48.o [8]
+  .text              ro code       0xf11c  0x14d0  dlmalloc.o [3]
+  .text              ro code     0x1'05ec     0x6  abort.o [3]
+  .text              ro code     0x1'05f4    0x2c  xgetmemchunk.o [3]
+  .text              ro code     0x1'0620    0x14  exit.o [9]
+  .text              ro code     0x1'0634   0xab0  spiffs_hydrogen.c.obj [10]
+  .text              ro code     0x1'10e4   0x13c  SPIFFSNVS.c.obj [10]
+  .text              ro code     0x1'1220    0x36  strlen.o [8]
+  .text              ro code     0x1'1258    0x98  NVS.c.obj [5]
+  .text              ro code     0x1'12f0     0xc  MutexP_nortos.c.obj [7]
+  .text              ro code     0x1'12fc   0x9c8  UART2CC26X2.c.obj [5]
+  .text              ro code     0x1'1cc4   0x138  RingBuf.c.obj [5]
+  .text              ro code     0x1'1dfc    0x8a  UART2.c.obj [5]
+  .text              ro code     0x1'1e86    0x58  UART2.c.obj [5]
+  .text              ro code     0x1'1ede    0x34  UART2.c.obj [5]
+  .text              ro code     0x1'1f14    0x4c  GPIO.c.obj [5]
+  .text              ro code     0x1'1f60   0x104  HwiPCC26XX_nortos.c.obj [7]
+  .text              ro code     0x1'2064   0x17c  SemaphoreP_nortos.c.obj [7]
+  .text              ro code     0x1'21e0    0xb0  UDMACC26XX.c.obj [5]
+  .text              ro code     0x1'2290   0x79c  PowerCC26X2.c.obj [5]
+  .text              ro code     0x1'2a2c    0xa8  GPIOCC26XX.c.obj [5]
+  .text              ro code     0x1'2ad4   0x340  ClockPTimer_nortos.c.obj [7]
+  .text              ro code     0x1'2e14    0x20  cpu.c.obj [4]
+  .text              ro code     0x1'2e34    0x60  interrupt.c.obj [4]
+  .text              ro code     0x1'2e94     0x4  heaptramp0.o [3]
+  .text              ro code     0x1'2e98   0x118  PowerCC26X2_helpers.c.obj [5]
+  .text              ro code     0x1'2fb0    0x4c  List.c.obj [5]
+  .text              ro code     0x1'2ffc    0x80  prcm.c.obj [4]
+  .text              ro code     0x1'307c    0xf4  PowerCC26X2_nortos.c.obj [7]
+  .text              ro code     0x1'3170   0x2ec  PowerCC26X2_calibrateRCOSC.c.obj [5]
+  .text              ro code     0x1'345c    0x68  QueueP_nortos.c.obj [7]
+  .text              ro code     0x1'34c4   0x214  SwiP_nortos.c.obj [7]
+  .text              ro code     0x1'36d8   0x1a8  TimerPCC26XX_nortos.c.obj [7]
+  .text              ro code     0x1'3880   0x134  osc.c.obj [4]
+  .text              ro code     0x1'39b4   0x11c  sys_ctrl.c.obj [4]
+  .text              ro code     0x1'3ad0   0x168  PowerCC26X2_calibrateRCOSC_helpers.c.obj [5]
+  .text              ro code     0x1'3c38   0x230  I64DivMod.o [8]
+  .text              ro code     0x1'3e68     0x2  I64DivZer.o [8]
+  .text              ro code     0x1'3e6c   0x380  spiffsinternal.obj [1]
+  .text              ro code     0x1'41ec    0x91  Display.c.obj [2]
+  .text              ro code     0x1'4280   0x368  NVSCC26XX.c.obj [5]
+  .text              ro code     0x1'45e8    0x2c  flash.c.obj [4]
+  .text              ro code     0x1'4614   0x350  SystemP_nortos.c.obj [7]
+  .text              ro code     0x1'4964    0x34  DblCmpLe.o [6]
+  .text              ro code     0x1'4998    0x36  DblToS32.o [6]
+  .text              ro code     0x1'49d0    0x22  S32ToDbl.o [6]
+  .text              ro code     0x1'49f4   0x24e  DblAddSub.o [6]
+  .text              ro code     0x1'4c44   0x1aa  DblMul.o [6]
+  .text              ro code     0x1'4df0    0x22  DblToU32.o [6]
+  .text              ro code     0x1'4e14   0x282  UART2.c.obj [5]
+  .text              ro code     0x1'5098   0x1be  ti_drivers_config.obj [1]
+  .text              ro code     0x1'5258   0x148  GPIOCC26X2.c.obj [5]
+  .text              ro code     0x1'53a0     0x2  ti_drivers_config.obj [1]
+  .text              ro code     0x1'53a4   0x190  setup.c.obj [4]
+  .text              ro code     0x1'5534    0x18  chipinfo.c.obj [4]
+  .text              ro code     0x1'554c    0x3c  aux_sysif.c.obj [4]
+  .text              ro code     0x1'5588    0xb6  DisplayUart2.c.obj [2]
+  .text              ro code     0x1'563e     0xe  UART2.c.obj [5]
+  .text              ro code     0x1'564c    0x1a  UART2.c.obj [5]
+  .rodata            const       0x1'5668    0xb4  spiffsinternal.obj [1]
+  .rodata            const       0x1'571c    0x58  ti_drivers_config.obj [1]
+  .rodata            const       0x1'5774    0x54  PowerCC26X2.c.obj [5]
+  .text              ro code     0x1'57c8    0x38  zero_init3.o [8]
+  .rodata            const       0x1'5800    0x28  NVSCC26XX.c.obj [5]
+  .text              ro code     0x1'5828    0x28  startup_cc13x2_cc26x2_iar.c.obj [7]
+  .text              ro code     0x1'5850    0x28  data_init.o [8]
+  .rodata            const       0x1'5878    0x24  UART2.c.obj [5]
+  .text              ro code     0x1'589c    0x22  fpinit_M.o [6]
+  .iar.init_table    const       0x1'58c0    0x20  - Linker created -
+  .rodata            const       0x1'58e0    0x20  DisplayUart2.c.obj [2]
+  .text              ro code     0x1'5900    0x1e  cmain.o [8]
+  .text              ro code     0x1'591e    0x12  main_nortos.obj [1]
+  .text              ro code     0x1'5930     0x4  exit.o [3]
+  .text              ro code     0x1'5934     0x4  NoRTOS.c.obj [7]
+  .text              ro code     0x1'5938     0xa  cexit.o [8]
+  .text              ro code     0x1'5944    0x1c  cstartup_M.o [8]
+  .rodata            const       0x1'5960    0x14  ti_drivers_config.obj [1]
+  .rodata            const       0x1'5974    0x14  ti_drivers_config.obj [1]
+  .rodata            const       0x1'5988    0x10  ti_drivers_config.obj [1]
+  .rodata            const       0x1'5998     0xc  ti_drivers_config.obj [1]
+  .rodata            const       0x1'59a4     0xc  ti_drivers_config.obj [1]
+  .rodata            const       0x1'59b0     0x8  ti_drivers_config.obj [1]
+  .rodata            const       0x1'59b8     0x8  ti_drivers_config.obj [1]
+  .rodata            const       0x1'59c0     0x8  ti_drivers_config.obj [1]
+  .rodata            const       0x1'59c8     0x8  ti_drivers_config.obj [1]
+  .rodata            const       0x1'59d0     0x0  zero_init3.o [8]
+  .rodata            const       0x1'59d0     0x0  lz77_init_single.o [8]
+                               - 0x1'59d0  0x79d0
+
+"A1":                                        0x58
+  .ccfg              const       0xa'ffa8    0x58  ti_devices_config.obj [1]
+                               - 0xb'0000    0x58
+
+"P2-P3", part 1 of 3:                       0x254
+  P2-P3-1                     0x2000'1870   0x254  <Init block>
+    .data            inited   0x2000'1870    0x7c  ti_drivers_config.obj [1]
+    .data            inited   0x2000'18ec   0x174  PowerCC26X2.c.obj [5]
+    .data            inited   0x2000'1a60    0x1c  PowerCC26X2.c.obj [5]
+    .data            inited   0x2000'1a7c     0x8  ClockPTimer_nortos.c.obj [7]
+    .data            inited   0x2000'1a84     0x4  HwiPCC26XX_nortos.c.obj [7]
+    .data            inited   0x2000'1a88     0x9  SemaphoreP_nortos.c.obj [7]
+    .data            inited   0x2000'1a94    0x30  TimerPCC26XX_nortos.c.obj [7]
+                            - 0x2000'1ac4   0x254
+
+"P2-P3", part 2 of 3:                      0x104c
+  .bss               zero     0x2000'1ac4   0x550  spiffsinternal.obj [1]
+  .bss               zero     0x2000'2014   0x400  ti_drivers_config.obj [1]
+  .bss               zero     0x2000'2414   0x1d8  dlmalloc.o [3]
+  .bss               zero     0x2000'25ec   0x170  ti_drivers_config.obj [1]
+  .bss               zero     0x2000'275c    0xd8  HwiPCC26XX_nortos.c.obj [7]
+  .bss               zero     0x2000'2838    0xa8  ClockPTimer_nortos.c.obj [7]
+  .bss               zero     0x2000'28e0    0x7c  ti_drivers_config.obj [1]
+  .bss               zero     0x2000'295c    0x7c  ti_drivers_config.obj [1]
+  .bss               zero     0x2000'29d8    0x4c  SwiP_nortos.c.obj [7]
+  .bss               zero     0x2000'2a24    0x20  ti_drivers_config.obj [1]
+  .bss               zero     0x2000'2a44    0x20  ti_drivers_config.obj [1]
+  .bss               zero     0x2000'2a64    0x20  ti_drivers_config.obj [1]
+  .bss               zero     0x2000'2a84    0x20  GPIOCC26X2.c.obj [5]
+  .bss               zero     0x2000'2aa4    0x18  dlmalloc.o [3]
+  .bss               zero     0x2000'2abc    0x14  osc.c.obj [4]
+  .bss               zero     0x2000'2ad0    0x10  osc.c.obj [4]
+  .bss               zero     0x2000'2ae0     0xc  ti_drivers_config.obj [1]
+  .bss               zero     0x2000'2aec     0xc  NVSCC26XX.c.obj [5]
+  .bss               zero     0x2000'2af8     0xc  ClockPTimer_nortos.c.obj [7]
+  .bss               zero     0x2000'2b04     0x4  PowerCC26X2_nortos.c.obj [7]
+  .bss               zero     0x2000'2b08     0x4  xgetmemchunk.o [3]
+  .bss               zero     0x2000'2b0c     0x2  SemaphoreP_nortos.c.obj [7]
+  .bss               zero     0x2000'2b0e     0x1  ti_drivers_config.obj [1]
+  .bss               zero     0x2000'2b0f     0x1  NVS.c.obj [5]
+                            - 0x2000'2b10  0x104c
+
+"P2-P3", part 3 of 3:                      0x40d8
+  .ramVecs           uninit   0x2000'2c00    0xd8  interrupt.c.obj [4]
+  HEAP                        0x2000'2cd8  0x4000  <Block>
+    HEAP             uninit   0x2000'2cd8  0x4000  <Block tail>
+                            - 0x2000'6cd8  0x40d8
+
+"A2":                                       0x400
+  CSTACK                      0x2002'3c00   0x400  <Block>
+    .stack           uninit   0x2002'3c00     0x4  startup_cc13x2_cc26x2_iar.c.obj [7]
+    CSTACK           uninit   0x2002'3c04   0x3fc  <Block tail>
+                            - 0x2002'4000   0x400
+
+Unused ranges:
+
+         From           To      Size
+         ----           --      ----
+       0x2a97       0x7fff    0x5569
+     0x1'59d0     0xa'ffa7  0x9'a5d8
+  0x2000'0000  0x2000'184f    0x1850
+  0x2000'2b10  0x2000'2bff      0xf0
+  0x2000'6cd8  0x2002'3bff  0x1'cf28
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address      Size
+          -------      ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0x104c:
+          0x2000'1ac4  0x104c
+
+Copy/lz77 (__iar_lz77_init_single3)
+    1 source range, total size 0x3f (10% of destination):
+               0x2a58    0x3f
+    1 destination range, total size 0x254:
+          0x2000'1870   0x254
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                                    ro code  ro data  rw data
+    ------                                    -------  -------  -------
+command line/config:
+    -------------------------------------------------------------------
+    Total:
+
+/project/staging/core_examples/examples/nortos/LP_CC2652R7/drivers/spiffsinternal/iar: [1]
+    main_nortos.obj                                18
+    spiffsinternal.obj                            896      180    1'360
+    ti_devices_config.obj                                   88
+    ti_drivers_config.obj                         448      218    1'873
+    -------------------------------------------------------------------
+    Total:                                      1'362      486    3'233
+
+display_cc26x2x7.a: [2]
+    Display.c.obj                                 145
+    DisplayUart2.c.obj                            182       32
+    -------------------------------------------------------------------
+    Total:                                        327       32
+
+dl7M_tln.a: [3]
+    abort.o                                         6
+    dlmalloc.o                                  5'328               496
+    exit.o                                          4
+    heaptramp0.o                                    4
+    xgetmemchunk.o                                 44                 4
+    -------------------------------------------------------------------
+    Total:                                      5'386               500
+
+driverlib.lib: [4]
+    aux_sysif.c.obj                                60
+    chipinfo.c.obj                                 24
+    cpu.c.obj                                      32
+    flash.c.obj                                    44
+    interrupt.c.obj                                96               216
+    osc.c.obj                                     308                36
+    prcm.c.obj                                    128
+    setup.c.obj                                   400
+    sys_ctrl.c.obj                                284
+    -------------------------------------------------------------------
+    Total:                                      1'376               252
+
+drivers_cc26x2x7.a: [5]
+    GPIO.c.obj                                     76
+    GPIOCC26X2.c.obj                              328                32
+    GPIOCC26XX.c.obj                              168
+    List.c.obj                                     76
+    NVS.c.obj                                     152                 1
+    NVSCC26XX.c.obj                               872       40       12
+    PowerCC26X2.c.obj                           1'948      126      400
+    PowerCC26X2_calibrateRCOSC.c.obj              748
+    PowerCC26X2_calibrateRCOSC_helpers.c.obj      360
+    PowerCC26X2_helpers.c.obj                     280
+    RingBuf.c.obj                                 312
+    UART2.c.obj                                   960       36
+    UART2CC26X2.c.obj                           2'504
+    UDMACC26XX.c.obj                              176
+    -------------------------------------------------------------------
+    Total:                                      8'960      202      445
+
+m7M_tls.a: [6]
+    DblAddSub.o                                   590
+    DblCmpLe.o                                     52
+    DblMul.o                                      426
+    DblToS32.o                                     54
+    DblToU32.o                                     34
+    S32ToDbl.o                                     34
+    fpinit_M.o                                     34
+    -------------------------------------------------------------------
+    Total:                                      1'224
+
+nortos_cc26x2x7.a: [7]
+    ClockPTimer_nortos.c.obj                      832        1      188
+    HwiPCC26XX_nortos.c.obj                       260               220
+    MutexP_nortos.c.obj                            12
+    NoRTOS.c.obj                                    4
+    PowerCC26X2_nortos.c.obj                      244                 4
+    QueueP_nortos.c.obj                           104
+    SemaphoreP_nortos.c.obj                       380        1       11
+    SwiP_nortos.c.obj                             532                76
+    SystemP_nortos.c.obj                          848
+    TimerPCC26XX_nortos.c.obj                     424        6       48
+    startup_cc13x2_cc26x2_iar.c.obj                40      216        4
+    -------------------------------------------------------------------
+    Total:                                      3'680      224      551
+
+rt7M_tl.a: [8]
+    ABImemclr.o                                     6
+    ABImemclr4.o                                    6
+    ABImemcpy_unaligned.o                         118
+    ABImemset.o                                   102
+    ABImemset48.o                                  50
+    I64DivMod.o                                   560
+    I64DivZer.o                                     2
+    cexit.o                                        10
+    cmain.o                                        30
+    cstartup_M.o                                   28
+    data_init.o                                    40
+    lz77_init_single.o                            126
+    strcmp.o                                       18
+    strlen.o                                       54
+    strncpy_unaligned.o                           108
+    zero_init3.o                                   56
+    -------------------------------------------------------------------
+    Total:                                      1'314
+
+shb_l.a: [9]
+    exit.o                                         20
+    -------------------------------------------------------------------
+    Total:                                         20
+
+spiffs_cc26xx.a: [10]
+    SPIFFSNVS.c.obj                               316
+    spiffs_cache.c.obj                          1'068
+    spiffs_gc.c.obj                             2'768
+    spiffs_hydrogen.c.obj                       2'736
+    spiffs_nucleus.c.obj                       10'624
+    -------------------------------------------------------------------
+    Total:                                     17'512
+
+    Gaps                                           34        4        7
+    Linker created                                          32   17'404
+-----------------------------------------------------------------------
+    Grand Total:                               41'195      980   22'392
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                       Address    Size  Type      Object
+-----                       -------    ----  ----      ------
+.iar.init_table$$Base      0x1'58c0           --   Gb  - Linker created -
+.iar.init_table$$Limit     0x1'58e0           --   Gb  - Linker created -
+?main                      0x1'5901          Code  Gb  cmain.o [8]
+AONProgIntHandler          0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+AONRTCIntHandler           0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+AUXADCIntHandler           0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+AUXCombEventIntHandler     0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+AUXCompAIntHandler         0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+AUXSWEvent0IntHandler      0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+AUXSWEvent1IntHandler      0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+AUXTimer2IntHandler        0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+BatMonIntHandler           0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+Board_init                 0x1'5241    0x16  Code  Gb  ti_drivers_config.obj [1]
+Board_initHook             0x1'53a1     0x2  Code  Wk  ti_drivers_config.obj [1]
+Board_sendExtFlashByte     0x1'5099   0x126  Code  Gb  ti_drivers_config.obj [1]
+Board_shutDownExtFlash     0x1'51eb    0x4a  Code  Gb  ti_drivers_config.obj [1]
+Board_wakeUpExtFlash       0x1'51bf    0x2c  Code  Gb  ti_drivers_config.obj [1]
+BusFaultIntHandler         0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+CPUwfi                     0x1'307d     0x4  Code  Lc  PowerCC26X2_nortos.c.obj [7]
+CSTACK$$Base            0x2002'3c00           --   Gb  - Linker created -
+CSTACK$$Limit           0x2002'4000           --   Gb  - Linker created -
+ClockP_Params_init         0x1'2ad5     0xe  Code  Gb  ClockPTimer_nortos.c.obj [7]
+ClockP_add                 0x1'2d1f    0x1a  Code  Gb  ClockPTimer_nortos.c.obj [7]
+ClockP_construct           0x1'2ce5    0x3a  Code  Gb  ClockPTimer_nortos.c.obj [7]
+ClockP_defaultParams    0x2000'2af8     0xc  Data  Lc  ClockPTimer_nortos.c.obj [7]
+ClockP_destruct            0x1'2d39    0x1a  Code  Gb  ClockPTimer_nortos.c.obj [7]
+ClockP_doTick              0x1'2cdd     0x8  Code  Gb  ClockPTimer_nortos.c.obj [7]
+ClockP_getCpuFreq          0x1'2dd1     0xa  Code  Gb  ClockPTimer_nortos.c.obj [7]
+ClockP_getSystemTickPeriod
+                           0x1'2ddb     0x6  Code  Gb  ClockPTimer_nortos.c.obj [7]
+ClockP_getTicks            0x1'2b53     0x4  Code  Gb  ClockPTimer_nortos.c.obj [7]
+ClockP_getTicksUntilInterrupt
+                           0x1'2b57    0x2a  Code  Gb  ClockPTimer_nortos.c.obj [7]
+ClockP_initialized      0x2000'1a7c     0x1  Data  Lc  ClockPTimer_nortos.c.obj [7]
+ClockP_isActive            0x1'2dcd     0x4  Code  Gb  ClockPTimer_nortos.c.obj [7]
+ClockP_module           0x2000'2838    0xa8  Data  Lc  ClockPTimer_nortos.c.obj [7]
+ClockP_scheduleNextTick
+                           0x1'2b81    0x18  Code  Gb  ClockPTimer_nortos.c.obj [7]
+ClockP_setTimeout          0x1'2dc9     0x4  Code  Gb  ClockPTimer_nortos.c.obj [7]
+ClockP_start               0x1'2d53    0x70  Code  Gb  ClockPTimer_nortos.c.obj [7]
+ClockP_startup             0x1'2ae3    0x70  Code  Gb  ClockPTimer_nortos.c.obj [7]
+ClockP_stop                0x1'2dc3     0x6  Code  Gb  ClockPTimer_nortos.c.obj [7]
+ClockP_tickPeriod       0x2000'1a80     0x4  Data  Gb  ClockPTimer_nortos.c.obj [7]
+ClockP_walkQueueDynamic
+                           0x1'2b99    0x60  Code  Gb  ClockPTimer_nortos.c.obj [7]
+ClockP_workFuncDynamic     0x1'2bf9    0xe2  Code  Gb  ClockPTimer_nortos.c.obj [7]
+CryptoIntHandler           0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+DebugMonIntHandler         0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+DisplayUart2Min_clear      0x1'55c3     0x2  Code  Gb  DisplayUart2.c.obj [2]
+DisplayUart2Min_clearLines
+                           0x1'55c5     0x2  Code  Gb  DisplayUart2.c.obj [2]
+DisplayUart2Min_close      0x1'5615     0x4  Code  Gb  DisplayUart2.c.obj [2]
+DisplayUart2Min_control
+                           0x1'562f     0x2  Code  Gb  DisplayUart2.c.obj [2]
+DisplayUart2Min_fxnTable
+                           0x1'58e0    0x20  Data  Gb  DisplayUart2.c.obj [2]
+DisplayUart2Min_getType
+                           0x1'5639     0x6  Code  Gb  DisplayUart2.c.obj [2]
+DisplayUart2Min_init       0x1'5589     0x2  Code  Gb  DisplayUart2.c.obj [2]
+DisplayUart2Min_open       0x1'558b    0x38  Code  Gb  DisplayUart2.c.obj [2]
+DisplayUart2Min_vprintf
+                           0x1'55c7    0x4e  Code  Gb  DisplayUart2.c.obj [2]
+Display_config             0x1'5998     0xc  Data  Gb  ti_drivers_config.obj [1]
+Display_count                0xf0c2     0x1  Data  Gb  ti_drivers_config.obj [1]
+Display_defaultParams      0x1'427c     0x1  Data  Gb  Display.c.obj [2]
+Display_doInit             0x1'4259    0x1a  Code  Gb  Display.c.obj [2]
+Display_doOpen             0x1'41ed    0x56  Code  Gb  Display.c.obj [2]
+Display_doPrintf           0x1'4245    0x14  Code  Gb  Display.c.obj [2]
+DynProgIntHandler          0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+FlashIntHandler            0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+GPIOIntHandler             0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+GPIO_config                0x1'5988    0x10  Data  Gb  ti_drivers_config.obj [1]
+GPIO_disableInt            0x1'2a2d    0x14  Code  Gb  GPIOCC26XX.c.obj [5]
+GPIO_hwiIntFxn             0x1'5259    0x3a  Code  Gb  GPIOCC26X2.c.obj [5]
+GPIO_init                  0x1'5293    0xde  Code  Gb  GPIOCC26X2.c.obj [5]
+GPIO_pinLowerBound           0xf0c3     0x1  Data  Gb  ti_drivers_config.obj [1]
+GPIO_pinUpperBound           0xf0d6     0x1  Data  Gb  ti_drivers_config.obj [1]
+GPIO_resetConfig           0x1'1f2b    0x2e  Code  Gb  GPIO.c.obj [5]
+GPIO_setCallback           0x1'1f15    0x16  Code  Gb  GPIO.c.obj [5]
+GPIO_setConfig             0x1'2a41     0x4  Code  Gb  GPIOCC26XX.c.obj [5]
+GPIO_setConfigAndMux       0x1'2a45    0x72  Code  Gb  GPIOCC26XX.c.obj [5]
+GPIO_write                 0x1'2ac5    0x10  Code  Gb  GPIOCC26XX.c.obj [5]
+HEAP$$Base              0x2000'2cd8           --   Gb  - Linker created -
+HEAP$$Limit             0x2000'6cd8           --   Gb  - Linker created -
+HwiP_Params_init           0x1'2025    0x12  Code  Gb  HwiPCC26XX_nortos.c.obj [7]
+HwiP_construct             0x1'1fb9    0x6c  Code  Gb  HwiPCC26XX_nortos.c.obj [7]
+HwiP_destruct              0x1'1f7f    0x18  Code  Gb  HwiPCC26XX_nortos.c.obj [7]
+HwiP_disable               0x1'1f65    0x10  Code  Gb  HwiPCC26XX_nortos.c.obj [7]
+HwiP_dispatch              0x1'1f97    0x14  Code  Lc  HwiPCC26XX_nortos.c.obj [7]
+HwiP_dispatchTable      0x2000'275c    0xd8  Data  Lc  HwiPCC26XX_nortos.c.obj [7]
+HwiP_enable                0x1'1f61     0x4  Code  Gb  HwiPCC26XX_nortos.c.obj [7]
+HwiP_inISR                 0x1'203f    0x12  Code  Gb  HwiPCC26XX_nortos.c.obj [7]
+HwiP_interruptsEnabled     0x1'1fab     0xe  Code  Gb  HwiPCC26XX_nortos.c.obj [7]
+HwiP_post                  0x1'2037     0x8  Code  Gb  HwiPCC26XX_nortos.c.obj [7]
+HwiP_restore               0x1'1f75     0xa  Code  Gb  HwiPCC26XX_nortos.c.obj [7]
+HwiP_swiPIntNum         0x2000'1a84     0x4  Data  Gb  HwiPCC26XX_nortos.c.obj [7]
+I2CIntHandler              0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+I2SIntHandler              0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+IntDefaultHandler          0x1'2e35     0x2  Code  Lc  interrupt.c.obj [4]
+List_put                   0x1'2fb1    0x20  Code  Gb  List.c.obj [5]
+List_remove                0x1'2fd9    0x24  Code  Gb  List.c.obj [5]
+MPUFaultIntHandler         0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+MutexP_create              0x1'12f1     0x6  Code  Gb  MutexP_nortos.c.obj [7]
+MutexP_lock                0x1'12f7     0x4  Code  Gb  MutexP_nortos.c.obj [7]
+MutexP_unlock              0x1'12fb     0x2  Code  Gb  MutexP_nortos.c.obj [7]
+NOROM_AUXSYSIFOpModeChange
+                           0x1'554d    0x30  Code  Gb  aux_sysif.c.obj [4]
+NOROM_CPUcpsid             0x1'2e15     0x8  Code  Gb  cpu.c.obj [4]
+NOROM_CPUcpsie             0x1'2e25     0x8  Code  Gb  cpu.c.obj [4]
+NOROM_CPUdelay             0x1'2e2d     0x8  Code  Gb  cpu.c.obj [4]
+NOROM_CPUprimask           0x1'2e1d     0x6  Code  Gb  cpu.c.obj [4]
+NOROM_FlashProgram         0x1'45fb    0x12  Code  Gb  flash.c.obj [4]
+NOROM_FlashSectorErase     0x1'45e9    0x12  Code  Gb  flash.c.obj [4]
+NOROM_IntRegister          0x1'2e37    0x48  Code  Gb  interrupt.c.obj [4]
+NOROM_IntUnregister        0x1'2e7f     0xa  Code  Gb  interrupt.c.obj [4]
+NOROM_OSCHF_AttemptToSwitchToXosc
+                           0x1'38cf    0x52  Code  Gb  osc.c.obj [4]
+NOROM_OSCHF_SwitchToRcOscTurnOffXosc
+                           0x1'3921    0x34  Code  Gb  osc.c.obj [4]
+NOROM_OSCHF_TurnOnXosc     0x1'38b1    0x1e  Code  Gb  osc.c.obj [4]
+NOROM_OSC_HPOSCRelativeFrequencyOffsetGet
+                           0x1'3955    0x3a  Code  Gb  osc.c.obj [4]
+NOROM_PRCMPowerDomainsAllOff
+                           0x1'2ffd    0x3e  Code  Gb  prcm.c.obj [4]
+NOROM_PRCMPowerDomainsAllOn
+                           0x1'303b    0x3c  Code  Gb  prcm.c.obj [4]
+NOROM_SetupTrimDevice      0x1'53a5    0x98  Code  Gb  setup.c.obj [4]
+NOROM_SysCtrlIdle          0x1'39b5    0x28  Code  Gb  sys_ctrl.c.obj [4]
+NOROM_SysCtrlStandby       0x1'39dd    0xc8  Code  Gb  sys_ctrl.c.obj [4]
+NOROM_ThisLibraryIsFor_CC13x2x7_CC26x2x7_HaltIfViolated
+                           0x1'5535    0x14  Code  Gb  chipinfo.c.obj [4]
+NVSCC26XX_close            0x1'4281     0x8  Code  Gb  NVSCC26XX.c.obj [5]
+NVSCC26XX_control          0x1'4289     0x6  Code  Gb  NVSCC26XX.c.obj [5]
+NVSCC26XX_erase            0x1'428f    0x2c  Code  Gb  NVSCC26XX.c.obj [5]
+NVSCC26XX_fxnTable         0x1'5800    0x28  Data  Gb  NVSCC26XX.c.obj [5]
+NVSCC26XX_getAttrs         0x1'42bb    0x18  Code  Gb  NVSCC26XX.c.obj [5]
+NVSCC26XX_init             0x1'42d3    0x42  Code  Gb  NVSCC26XX.c.obj [5]
+NVSCC26XX_lock             0x1'4315    0x12  Code  Gb  NVSCC26XX.c.obj [5]
+NVSCC26XX_open             0x1'4327    0x6a  Code  Gb  NVSCC26XX.c.obj [5]
+NVSCC26XX_read             0x1'4391    0x3e  Code  Gb  NVSCC26XX.c.obj [5]
+NVSCC26XX_unlock           0x1'43cf     0x8  Code  Gb  NVSCC26XX.c.obj [5]
+NVSCC26XX_write            0x1'43d7   0x11c  Code  Gb  NVSCC26XX.c.obj [5]
+NVS_close                  0x1'1259     0x6  Code  Gb  NVS.c.obj [5]
+NVS_config                 0x1'59a4     0xc  Data  Gb  ti_drivers_config.obj [1]
+NVS_count                    0xf0d7     0x1  Data  Gb  ti_drivers_config.obj [1]
+NVS_defaultParams          0x1'12ec     0x4  Data  Gb  NVS.c.obj [5]
+NVS_erase                  0x1'125f     0xa  Code  Gb  NVS.c.obj [5]
+NVS_getAttrs               0x1'1269     0x6  Code  Gb  NVS.c.obj [5]
+NVS_init                   0x1'126f    0x1e  Code  Gb  NVS.c.obj [5]
+NVS_open                   0x1'128d    0x38  Code  Gb  NVS.c.obj [5]
+NVS_read                   0x1'12d1     0xa  Code  Gb  NVS.c.obj [5]
+NVS_write                  0x1'12db     0xe  Code  Gb  NVS.c.obj [5]
+NoRTOS_start               0x1'5935     0x4  Code  Gb  NoRTOS.c.obj [7]
+OSCHfSourceSwitch          0x1'3881    0x30  Code  Lc  osc.c.obj [4]
+OSCIntHandler              0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+PendSVIntHandler           0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+PowerCC26X2_RCOSC_clockFunc
+                           0x1'3405    0x30  Code  Gb  PowerCC26X2_calibrateRCOSC.c.obj [5]
+PowerCC26X2_auxISR         0x1'31cb   0x156  Code  Gb  PowerCC26X2_calibrateRCOSC.c.obj [5]
+PowerCC26X2_calibrate      0x1'3321    0xe4  Code  Gb  PowerCC26X2_calibrateRCOSC.c.obj [5]
+PowerCC26X2_config         0x1'5974    0x14  Data  Gb  ti_drivers_config.obj [1]
+PowerCC26X2_disableTCXOQual
+                           0x1'2f09    0x1a  Code  Gb  PowerCC26X2_helpers.c.obj [5]
+PowerCC26X2_enableTCXOQual
+                           0x1'2eef    0x1a  Code  Gb  PowerCC26X2_helpers.c.obj [5]
+PowerCC26X2_initiateCalibration
+                           0x1'3171    0x5a  Code  Gb  PowerCC26X2_calibrateRCOSC.c.obj [5]
+PowerCC26X2_module      0x2000'18ec   0x174  Data  Gb  PowerCC26X2.c.obj [5]
+PowerCC26X2_oscClockSourceGet
+                           0x1'2eb3     0x8  Code  Gb  PowerCC26X2_helpers.c.obj [5]
+PowerCC26X2_oscCtlClearXtal
+                           0x1'2e99     0xa  Code  Gb  PowerCC26X2_helpers.c.obj [5]
+PowerCC26X2_oscDisableQualifiers
+                           0x1'2ebb    0x30  Code  Gb  PowerCC26X2_helpers.c.obj [5]
+PowerCC26X2_oschfSwitchToRcosc
+                           0x1'2eaf     0x4  Code  Gb  PowerCC26X2_helpers.c.obj [5]
+PowerCC26X2_oschfTrySwitchToXosc
+                           0x1'2eeb     0x4  Code  Gb  PowerCC26X2_helpers.c.obj [5]
+PowerCC26X2_prcmEnableCacheRetention
+                           0x1'2ea3     0xc  Code  Gb  PowerCC26X2_helpers.c.obj [5]
+PowerCC26X2_readCtrim      0x1'3b2f     0xa  Code  Gb  PowerCC26X2_calibrateRCOSC_helpers.c.obj [5]
+PowerCC26X2_readCtrimFract
+                           0x1'3b39     0xa  Code  Gb  PowerCC26X2_calibrateRCOSC_helpers.c.obj [5]
+PowerCC26X2_readRtrim      0x1'3b43     0xa  Code  Gb  PowerCC26X2_calibrateRCOSC_helpers.c.obj [5]
+PowerCC26X2_rtcSubSecInc
+                        0x2000'1a60     0x4  Data  Lc  PowerCC26X2.c.obj [5]
+PowerCC26X2_setAclkRefSrc
+                           0x1'3be1    0x30  Code  Gb  PowerCC26X2_calibrateRCOSC_helpers.c.obj [5]
+PowerCC26X2_setPeriphDeepSleepEnable
+                           0x1'2f3f     0x8  Code  Gb  PowerCC26X2_helpers.c.obj [5]
+PowerCC26X2_setSubSecIncToXoscLf
+                           0x1'2f4f    0x20  Code  Gb  PowerCC26X2_helpers.c.obj [5]
+PowerCC26X2_setTdcClkSrc24M
+                           0x1'3bb5    0x2c  Code  Gb  PowerCC26X2_calibrateRCOSC_helpers.c.obj [5]
+PowerCC26X2_swiKey      0x2000'2b04     0x4  Data  Lc  PowerCC26X2_nortos.c.obj [7]
+PowerCC26X2_switchToTCXO
+                           0x1'2f27     0xa  Code  Gb  PowerCC26X2_helpers.c.obj [5]
+PowerCC26X2_sysCtrlGetResetSource
+                           0x1'2f47     0x8  Code  Gb  PowerCC26X2_helpers.c.obj [5]
+PowerCC26X2_sysCtrlIdle
+                           0x1'2f3b     0x4  Code  Gb  PowerCC26X2_helpers.c.obj [5]
+PowerCC26X2_sysCtrlStandby
+                           0x1'2f31     0xa  Code  Gb  PowerCC26X2_helpers.c.obj [5]
+PowerCC26X2_sysCtrlUpdateVoltageRegulator
+                           0x1'2f6f     0x8  Code  Gb  PowerCC26X2_helpers.c.obj [5]
+PowerCC26X2_turnOnXosc     0x1'2f23     0x4  Code  Gb  PowerCC26X2_helpers.c.obj [5]
+PowerCC26X2_updateSubSecInc
+                           0x1'3ad1    0x5e  Code  Gb  PowerCC26X2_calibrateRCOSC_helpers.c.obj [5]
+PowerCC26X2_writeCtrim     0x1'3b4d    0x1a  Code  Gb  PowerCC26X2_calibrateRCOSC_helpers.c.obj [5]
+PowerCC26X2_writeCtrimFract
+                           0x1'3b67    0x1a  Code  Gb  PowerCC26X2_calibrateRCOSC_helpers.c.obj [5]
+PowerCC26X2_writeCtrimFractEn
+                           0x1'3b81    0x1a  Code  Gb  PowerCC26X2_calibrateRCOSC_helpers.c.obj [5]
+PowerCC26X2_writeRtrim     0x1'3b9b    0x1a  Code  Gb  PowerCC26X2_calibrateRCOSC_helpers.c.obj [5]
+PowerCC26X2_xosclfRtcCompNotifyObj
+                        0x2000'1a64    0x18  Data  Lc  PowerCC26X2.c.obj [5]
+PowerCC26XX_calibrate      0x1'27d5    0x20  Code  Gb  PowerCC26X2.c.obj [5]
+PowerCC26XX_schedulerDisable
+                           0x1'3143     0xc  Code  Gb  PowerCC26X2_nortos.c.obj [7]
+PowerCC26XX_schedulerRestore
+                           0x1'314f     0x8  Code  Gb  PowerCC26X2_nortos.c.obj [7]
+PowerCC26XX_standbyPolicy
+                           0x1'3081    0xc2  Code  Gb  PowerCC26X2_nortos.c.obj [7]
+Power_disablePolicy        0x1'2291    0x10  Code  Gb  PowerCC26X2.c.obj [5]
+Power_enablePolicy         0x1'22a1     0xc  Code  Gb  PowerCC26X2.c.obj [5]
+Power_getConstraintMask
+                           0x1'22ad     0x8  Code  Gb  PowerCC26X2.c.obj [5]
+Power_getDependencyCount
+                           0x1'22b5     0xc  Code  Gb  PowerCC26X2.c.obj [5]
+Power_getTransitionLatency
+                           0x1'22c1    0x1c  Code  Gb  PowerCC26X2.c.obj [5]
+Power_idleFunc             0x1'22dd    0x16  Code  Gb  PowerCC26X2.c.obj [5]
+Power_init                 0x1'22f3   0x140  Code  Gb  PowerCC26X2.c.obj [5]
+Power_registerNotify       0x1'2433    0x24  Code  Gb  PowerCC26X2.c.obj [5]
+Power_releaseConstraint
+                           0x1'2457    0x2c  Code  Gb  PowerCC26X2.c.obj [5]
+Power_releaseDependency
+                           0x1'2483    0xa0  Code  Gb  PowerCC26X2.c.obj [5]
+Power_setConstraint        0x1'2523    0x22  Code  Gb  PowerCC26X2.c.obj [5]
+Power_setDependency        0x1'254d    0xa4  Code  Gb  PowerCC26X2.c.obj [5]
+Power_sleep                0x1'25f1   0x1c6  Code  Gb  PowerCC26X2.c.obj [5]
+Power_unregisterNotify     0x1'27b7    0x1e  Code  Gb  PowerCC26X2.c.obj [5]
+QueueP_empty               0x1'345f     0xe  Code  Gb  QueueP_nortos.c.obj [7]
+QueueP_get                 0x1'346d    0x14  Code  Gb  QueueP_nortos.c.obj [7]
+QueueP_head                0x1'3489     0x4  Code  Gb  QueueP_nortos.c.obj [7]
+QueueP_init                0x1'345d     0x2  Code  Gb  QueueP_nortos.c.obj [7]
+QueueP_next                0x1'3495     0x4  Code  Gb  QueueP_nortos.c.obj [7]
+QueueP_put                 0x1'3499     0x2  Code  Gb  QueueP_nortos.c.obj [7]
+QueueP_remove              0x1'34b7     0xe  Code  Gb  QueueP_nortos.c.obj [7]
+RFCCPE0IntHandler          0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+RFCCPE1IntHandler          0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+RFCCmdAckIntHandler        0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+RFCHardwareIntHandler      0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+Region$$Table$$Base        0x1'58c0           --   Gb  - Linker created -
+Region$$Table$$Limit       0x1'58e0           --   Gb  - Linker created -
+RingBuf_construct          0x1'1cc5    0x12  Code  Gb  RingBuf.c.obj [5]
+RingBuf_flush              0x1'1d37    0x22  Code  Gb  RingBuf.c.obj [5]
+RingBuf_getConsume         0x1'1ce1    0x2c  Code  Gb  RingBuf.c.obj [5]
+RingBuf_getCount           0x1'1d0d     0x4  Code  Gb  RingBuf.c.obj [5]
+RingBuf_getPointer         0x1'1d11    0x1e  Code  Gb  RingBuf.c.obj [5]
+RingBuf_put                0x1'1d59    0x34  Code  Gb  RingBuf.c.obj [5]
+RingBuf_putAdvance         0x1'1d97    0x34  Code  Gb  RingBuf.c.obj [5]
+RingBuf_putPointer         0x1'1dcb    0x2a  Code  Gb  RingBuf.c.obj [5]
+SPIFFSNVS_close            0x1'10e5     0x6  Code  Gb  SPIFFSNVS.c.obj [10]
+SPIFFSNVS_config           0x1'10eb    0xac  Code  Gb  SPIFFSNVS.c.obj [10]
+SPIFFSNVS_lock             0x1'119d    0x1c  Code  Gb  SPIFFSNVS.c.obj [10]
+SPIFFSNVS_unlock           0x1'11b9    0x18  Code  Gb  SPIFFSNVS.c.obj [10]
+SPIFFS_close               0x1'0fd5    0x50  Code  Gb  spiffs_hydrogen.c.obj [10]
+SPIFFS_eof                 0x1'1045    0x62  Code  Gb  spiffs_hydrogen.c.obj [10]
+SPIFFS_format              0x1'0635    0x68  Code  Gb  spiffs_hydrogen.c.obj [10]
+SPIFFS_fremove             0x1'0de9    0x5e  Code  Gb  spiffs_hydrogen.c.obj [10]
+SPIFFS_fstat               0x1'0f05    0x58  Code  Gb  spiffs_hydrogen.c.obj [10]
+SPIFFS_lseek               0x1'0cf1    0xf8  Code  Gb  spiffs_hydrogen.c.obj [10]
+SPIFFS_mount               0x1'069d    0xfe  Code  Gb  spiffs_hydrogen.c.obj [10]
+SPIFFS_open                0x1'07ef   0x134  Code  Gb  spiffs_hydrogen.c.obj [10]
+SPIFFS_read                0x1'0929    0xee  Code  Gb  spiffs_hydrogen.c.obj [10]
+SPIFFS_unmount             0x1'079b    0x54  Code  Gb  spiffs_hydrogen.c.obj [10]
+SPIFFS_write               0x1'0c3b    0xb0  Code  Gb  spiffs_hydrogen.c.obj [10]
+SPIFFS_write_delegate      0x1'0a69   0x1cc  Code  Gb  spiffs_hydrogen.c.obj [10]
+SSI0IntHandler             0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+SSI1IntHandler             0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+STACK_TOP {Abs}         0x2002'4000          Data  Gb  <internal module>
+SVCallIntHandler           0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+SWEvent0IntHandler         0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+SemaphoreP_construct       0x1'2067    0x4e  Code  Gb  SemaphoreP_nortos.c.obj [7]
+SemaphoreP_constructBinary
+                           0x1'20b5    0x1a  Code  Gb  SemaphoreP_nortos.c.obj [7]
+SemaphoreP_create          0x1'20cf    0x16  Code  Gb  SemaphoreP_nortos.c.obj [7]
+SemaphoreP_createBinary
+                           0x1'20e5    0x10  Code  Gb  SemaphoreP_nortos.c.obj [7]
+SemaphoreP_defaultParams
+                        0x2000'1a88     0x8  Data  Gb  SemaphoreP_nortos.c.obj [7]
+SemaphoreP_delete          0x1'2105     0x4  Code  Gb  SemaphoreP_nortos.c.obj [7]
+SemaphoreP_destruct        0x1'2103     0x2  Code  Gb  SemaphoreP_nortos.c.obj [7]
+SemaphoreP_initialized  0x2000'1a90     0x1  Data  Lc  SemaphoreP_nortos.c.obj [7]
+SemaphoreP_pend            0x1'2109    0x8e  Code  Gb  SemaphoreP_nortos.c.obj [7]
+SemaphoreP_post            0x1'2197    0x3c  Code  Gb  SemaphoreP_nortos.c.obj [7]
+SwiP_Params_init           0x1'34c5    0x12  Code  Gb  SwiP_nortos.c.obj [7]
+SwiP_construct             0x1'34d9    0xb0  Code  Gb  SwiP_nortos.c.obj [7]
+SwiP_currentTrigger     0x2000'29e4     0x4  Data  Lc  SwiP_nortos.c.obj [7]
+SwiP_defaultParams         0x1'36c8    0x10  Data  Lc  SwiP_nortos.c.obj [7]
+SwiP_disable               0x1'358f    0x16  Code  Gb  SwiP_nortos.c.obj [7]
+SwiP_dispatch              0x1'35a5    0x80  Code  Gb  SwiP_nortos.c.obj [7]
+SwiP_handleHwi             0x1'3629    0x10  Code  Lc  SwiP_nortos.c.obj [7]
+SwiP_hwiStruct          0x2000'29e8    0x1c  Data  Lc  SwiP_nortos.c.obj [7]
+SwiP_initialized        0x2000'29d9     0x1  Data  Lc  SwiP_nortos.c.obj [7]
+SwiP_lockState          0x2000'29e0     0x4  Data  Lc  SwiP_nortos.c.obj [7]
+SwiP_post                  0x1'3641    0x4e  Code  Gb  SwiP_nortos.c.obj [7]
+SwiP_readyList          0x2000'2a04    0x20  Data  Lc  SwiP_nortos.c.obj [7]
+SwiP_readyMask          0x2000'29dc     0x4  Data  Lc  SwiP_nortos.c.obj [7]
+SwiP_restore               0x1'368f    0x2a  Code  Gb  SwiP_nortos.c.obj [7]
+SwiP_schedulerRunning   0x2000'29d8     0x1  Data  Lc  SwiP_nortos.c.obj [7]
+SysTickIntHandler          0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+SystemP_vsnprintf          0x1'4615     0x2  Code  Gb  SystemP_nortos.c.obj [7]
+TRNGIntHandler             0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+Timer0AIntHandler          0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+Timer0BIntHandler          0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+Timer1AIntHandler          0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+Timer1BIntHandler          0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+Timer2AIntHandler          0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+Timer2BIntHandler          0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+Timer3AIntHandler          0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+Timer3BIntHandler          0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+TimerP_Params_init         0x1'36d9     0xc  Code  Gb  TimerPCC26XX_nortos.c.obj [7]
+TimerP_construct           0x1'36e5    0x7e  Code  Gb  TimerPCC26XX_nortos.c.obj [7]
+TimerP_defaultParams    0x2000'1a94     0xc  Data  Lc  TimerPCC26XX_nortos.c.obj [7]
+TimerP_dynamicStub         0x1'3825    0x10  Code  Gb  TimerPCC26XX_nortos.c.obj [7]
+TimerP_getCurrentTick      0x1'3835    0x2e  Code  Gb  TimerPCC26XX_nortos.c.obj [7]
+TimerP_getMaxTicks         0x1'3763    0x1e  Code  Gb  TimerPCC26XX_nortos.c.obj [7]
+TimerP_handle           0x2000'1aa4     0x4  Data  Lc  TimerPCC26XX_nortos.c.obj [7]
+TimerP_hwiStruct        0x2000'1aa8    0x1c  Data  Lc  TimerPCC26XX_nortos.c.obj [7]
+TimerP_initialized      0x2000'1aa0     0x1  Data  Lc  TimerPCC26XX_nortos.c.obj [7]
+TimerP_setNextTick         0x1'37a1    0x32  Code  Gb  TimerPCC26XX_nortos.c.obj [7]
+TimerP_setThreshold        0x1'3781    0x20  Code  Gb  TimerPCC26XX_nortos.c.obj [7]
+TimerP_start               0x1'37e5    0x3e  Code  Gb  TimerPCC26XX_nortos.c.obj [7]
+TimerP_startup             0x1'37d3    0x12  Code  Gb  TimerPCC26XX_nortos.c.obj [7]
+TrimAfterColdResetWakeupFromShutDown
+                           0x1'543d    0x92  Code  Lc  setup.c.obj [4]
+UART0IntHandler            0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+UART1IntHandler            0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+UART2CC26X2_eventCallback
+                           0x1'18f5     0x2  Code  Lc  UART2CC26X2.c.obj [5]
+UART2CC26X2_getRxData      0x1'12fd    0x30  Code  Lc  UART2CC26X2.c.obj [5]
+UART2CC26X2_hwiIntFxn      0x1'18f9   0x252  Code  Lc  UART2CC26X2.c.obj [5]
+UART2CC26X2_initHw         0x1'1b4d   0x128  Code  Lc  UART2CC26X2.c.obj [5]
+UART2CC26X2_postNotifyFxn
+                           0x1'1c95    0x10  Code  Lc  UART2CC26X2.c.obj [5]
+UART2Support_disableRx     0x1'1567    0x24  Code  Gb  UART2CC26X2.c.obj [5]
+UART2Support_disableTx     0x1'158b     0xe  Code  Gb  UART2CC26X2.c.obj [5]
+UART2Support_dmaStartRx
+                           0x1'1599   0x10e  Code  Gb  UART2CC26X2.c.obj [5]
+UART2Support_dmaStartTx
+                           0x1'16a7    0xd8  Code  Gb  UART2CC26X2.c.obj [5]
+UART2Support_dmaStopRx     0x1'177f    0x76  Code  Gb  UART2CC26X2.c.obj [5]
+UART2Support_dmaStopTx     0x1'17f5    0x8a  Code  Gb  UART2CC26X2.c.obj [5]
+UART2Support_enableTx      0x1'187f     0xe  Code  Gb  UART2CC26X2.c.obj [5]
+UART2Support_powerRelConstraint
+                           0x1'188d    0x28  Code  Gb  UART2CC26X2.c.obj [5]
+UART2Support_sendData      0x1'18b5    0x2c  Code  Gb  UART2CC26X2.c.obj [5]
+UART2Support_txDone        0x1'18e1    0x12  Code  Gb  UART2CC26X2.c.obj [5]
+UART2_Params_init          0x1'4e15     0x8  Code  Gb  UART2.c.obj [5]
+UART2_close                0x1'132d    0x98  Code  Gb  UART2CC26X2.c.obj [5]
+UART2_config               0x1'59c8     0x8  Data  Gb  ti_drivers_config.obj [1]
+UART2_count                  0xf0de     0x1  Data  Gb  ti_drivers_config.obj [1]
+UART2_defaultParams        0x1'5878    0x24  Data  Gb  UART2.c.obj [5]
+UART2_open                 0x1'13c5   0x19c  Code  Gb  UART2CC26X2.c.obj [5]
+UART2_readCancel           0x1'1e87    0x58  Code  Wk  UART2.c.obj [5]
+UART2_rxDisable            0x1'1edf    0x34  Code  Wk  UART2.c.obj [5]
+UART2_write                0x1'563f     0xe  Code  Wk  UART2.c.obj [5]
+UART2_writeCancel          0x1'1dfd    0x8a  Code  Wk  UART2.c.obj [5]
+UART2_writeTimeout         0x1'564d    0x1a  Code  Wk  UART2.c.obj [5]
+UART2_writeTimeoutBlocking
+                           0x1'4e2f   0x174  Code  Gb  UART2.c.obj [5]
+UART2_writeTimeoutNonblocking
+                           0x1'4fa3    0xf4  Code  Gb  UART2.c.obj [5]
+UDMACC26XX_close           0x1'2255    0x3c  Code  Gb  UDMACC26XX.c.obj [5]
+UDMACC26XX_config          0x1'59b8     0x8  Data  Gb  ti_drivers_config.obj [1]
+UDMACC26XX_hwiIntFxn       0x1'21e1     0xc  Code  Gb  UDMACC26XX.c.obj [5]
+UDMACC26XX_open            0x1'21ed    0x5c  Code  Gb  UDMACC26XX.c.obj [5]
+UsageFaultIntHandler       0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+WatchdogIntHandler         0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+__aeabi_cdcmple            0x1'4965          Code  Gb  DblCmpLe.o [6]
+__aeabi_d2iz               0x1'4999          Code  Gb  DblToS32.o [6]
+__aeabi_d2uiz              0x1'4df1          Code  Gb  DblToU32.o [6]
+__aeabi_dmul               0x1'4c45          Code  Gb  DblMul.o [6]
+__aeabi_dsub               0x1'4b61          Code  Gb  DblAddSub.o [6]
+__aeabi_i2d                0x1'49d1          Code  Gb  S32ToDbl.o [6]
+__aeabi_ldiv0              0x1'3e69          Code  Gb  I64DivZer.o [8]
+__aeabi_memclr               0xf0d9          Code  Gb  ABImemclr.o [8]
+__aeabi_memclr4              0xf0e1          Code  Gb  ABImemclr4.o [8]
+__aeabi_memset               0xef69          Code  Gb  ABImemset.o [8]
+__aeabi_uldivmod           0x1'3c39          Code  Gb  I64DivMod.o [8]
+__ccfg                     0xa'ffa8    0x58  Data  Gb  ti_devices_config.obj [1]
+__cmain                    0x1'5901          Code  Gb  cmain.o [8]
+__data_GetMemChunk         0x1'05f5    0x2c  Code  Gb  xgetmemchunk.o [3]
+__data_GetMemChunk::start
+                        0x2000'2b08     0x4  Data  Lc  xgetmemchunk.o [3]
+__exit                     0x1'0621    0x14  Code  Gb  exit.o [9]
+__iar_Memset                 0xef69          Code  Gb  ABImemset.o [8]
+__iar_Memset4_word           0xf0e9          Code  Gb  ABImemset48.o [8]
+__iar_Memset8_word           0xf0e9          Code  Gb  ABImemset48.o [8]
+__iar_Memset_word            0xef71          Code  Gb  ABImemset.o [8]
+__iar_data_init3           0x1'5851    0x28  Code  Gb  data_init.o [8]
+__iar_dlfree               0x1'00b9   0x52c  Code  Gb  dlmalloc.o [3]
+__iar_dlmalloc               0xf1a5   0xf14  Code  Gb  dlmalloc.o [3]
+__iar_init_vfp             0x1'589d          Code  Gb  fpinit_M.o [6]
+__iar_lz77_init_single3
+                             0xefcf    0x7e  Code  Gb  lz77_init_single.o [8]
+__iar_program_start        0x1'5945          Code  Gb  cstartup_M.o [8]
+__iar_unaligned_memcpy       0xf04d          Code  Gb  ABImemcpy_unaligned.o [8]
+__iar_unaligned_memcpy4
+                             0xf06d          Code  Gb  ABImemcpy_unaligned.o [8]
+__iar_unaligned_memcpy8
+                             0xf06d          Code  Gb  ABImemcpy_unaligned.o [8]
+__iar_unaligned_strncpy
+                             0xeefd          Code  Gb  strncpy_unaligned.o [8]
+__iar_zero_init3           0x1'57c9    0x38  Code  Gb  zero_init3.o [8]
+__low_level_init           0x1'5839    0x12  Code  Gb  startup_cc13x2_cc26x2_iar.c.obj [7]
+__vector_table                  0x0    0xd8  Data  Gb  startup_cc13x2_cc26x2_iar.c.obj [7]
+_call_main                 0x1'590d          Code  Gb  cmain.o [8]
+_exit                      0x1'5939          Code  Gb  cexit.o [8]
+_gm_                    0x2000'2414   0x1d8  Data  Lc  dlmalloc.o [3]
+_hposcCoeffs            0x2000'2ad0    0x10  Data  Gb  osc.c.obj [4]
+abort                      0x1'05ed     0x6  Code  Gb  abort.o [3]
+clkFxn                     0x1'2065     0x2  Code  Gb  SemaphoreP_nortos.c.obj [7]
+configureRFCoreClocks      0x1'28a3     0x4  Code  Lc  PowerCC26X2.c.obj [5]
+configureXOSCHF            0x1'28fb    0xe4  Code  Lc  PowerCC26X2.c.obj [5]
+dataLength                 0x1'1ca4     0x4  Data  Lc  UART2CC26X2.c.obj [5]
+disableFlashCache          0x1'4577    0x38  Code  Lc  NVSCC26XX.c.obj [5]
+displayUART2Buffer      0x2000'2014   0x400  Data  Lc  ti_drivers_config.obj [1]
+displayUart2HWAttrs        0x1'5960    0x14  Data  Gb  ti_drivers_config.obj [1]
+displayUart2Object      0x2000'2ae0     0xc  Data  Gb  ti_drivers_config.obj [1]
+dmaUart1RxControlTableEntry {Abs}
+                        0x2000'1850    0x10  Data  Lc  ti_drivers_config.obj [1]
+dmaUart1TxControlTableEntry {Abs}
+                        0x2000'1860    0x10  Data  Lc  ti_drivers_config.obj [1]
+doEnablePolicy          0x2000'2b0d     0x1  Data  Lc  SemaphoreP_nortos.c.obj [7]
+doErase                    0x1'44f9    0x7e  Code  Lc  NVSCC26XX.c.obj [5]
+doPrint                    0x1'4619   0x2d2  Code  Lc  SystemP_nortos.c.obj [7]
+dummy_stack             0x2002'3c00     0x4  Data  Lc  startup_cc13x2_cc26x2_iar.c.obj [7]
+emptyClockFunc             0x1'286d     0x2  Code  Lc  PowerCC26X2.c.obj [5]
+exit                       0x1'5931     0x4  Code  Gb  exit.o [3]
+faultISR                   0x1'584d     0x2  Code  Lc  startup_cc13x2_cc26x2_iar.c.obj [7]
+flashBuf0 {Abs}              0x8000  0x6000  Data  Lc  ti_drivers_config.obj [1]
+formatNum                  0x1'48fd    0x4c  Code  Lc  SystemP_nortos.c.obj [7]
+free                       0x1'2e95     0x4  Code  Gb  heaptramp0.o [3]
+fs                      0x2000'1f8c    0x74  Data  Gb  spiffsinternal.obj [1]
+g_OpMode_to_order          0x1'5580     0x4  Data  Lc  aux_sysif.c.obj [4]
+g_Order_to_OpMode          0x1'5584     0x4  Data  Lc  aux_sysif.c.obj [4]
+g_pfnRAMVectors         0x2000'2c00    0xd8  Data  Lc  interrupt.c.obj [4]
+gpioCallbackFunctions   0x2000'28e0    0x7c  Data  Gb  ti_drivers_config.obj [1]
+gpioHwi                 0x2000'2a88    0x1c  Data  Lc  GPIOCC26X2.c.obj [5]
+gpioPinConfigs          0x2000'1870    0x7c  Data  Gb  ti_drivers_config.obj [1]
+gpioUserArgs            0x2000'295c    0x7c  Data  Gb  ti_drivers_config.obj [1]
+initCalled              0x2000'2a84     0x1  Data  Lc  GPIOCC26X2.c.obj [5]
+init_mparams                 0xf139    0x2c  Code  Lc  dlmalloc.o [3]
+init_top                     0xf165    0x34  Code  Lc  dlmalloc.o [3]
+intDefaultHandler          0x1'584f     0x2  Code  Lc  startup_cc13x2_cc26x2_iar.c.obj [7]
+isInitialized           0x2000'2b0f     0x1  Data  Lc  NVS.c.obj [5]
+localProgramStart          0x1'5829     0xe  Code  Gb  startup_cc13x2_cc26x2_iar.c.obj [7]
+main                       0x1'591f    0x12  Code  Gb  main_nortos.obj [1]
+mainThread                 0x1'3e6d   0x200  Code  Gb  spiffsinternal.obj [1]
+message                    0x1'41d4    0x18  Data  Gb  spiffsinternal.obj [1]
+mparams                 0x2000'2aa4    0x18  Data  Lc  dlmalloc.o [3]
+nmiISR                     0x1'584b     0x2  Code  Lc  startup_cc13x2_cc26x2_iar.c.obj [7]
+nopResourceHandler         0x1'286f     0x4  Code  Lc  PowerCC26X2.c.obj [5]
+notify                     0x1'2873    0x30  Code  Lc  PowerCC26X2.c.obj [5]
+nvsCC26XXHWAttrs           0x1'59c0     0x8  Data  Lc  ti_drivers_config.obj [1]
+nvsCC26XXObjects        0x2000'2b0e     0x1  Data  Gb  ti_drivers_config.obj [1]
+oscHfGlobals            0x2000'2abc    0x14  Data  Lc  osc.c.obj [4]
+oscillatorISR              0x1'27f5    0x76  Code  Lc  PowerCC26X2.c.obj [5]
+parityType                 0x1'1cac     0x8  Data  Lc  UART2CC26X2.c.obj [5]
+pendInProgress          0x2000'2b0c     0x1  Data  Lc  SemaphoreP_nortos.c.obj [7]
+readBuffer              0x2000'1f74    0x18  Data  Gb  spiffsinternal.obj [1]
+resourceDB                 0x1'5774    0x54  Data  Gb  PowerCC26X2.c.obj [5]
+restoreFlashCache          0x1'45af    0x1c  Code  Lc  NVSCC26XX.c.obj [5]
+rxFifoThreshold            0x1'1cbc     0x8  Data  Lc  UART2CC26X2.c.obj [5]
+sectorBaseMask          0x2000'2af4     0x4  Data  Lc  NVSCC26XX.c.obj [5]
+sectorSize              0x2000'2af0     0x4  Data  Lc  NVSCC26XX.c.obj [5]
+segment_holding              0xf11d    0x1c  Code  Lc  dlmalloc.o [3]
+spiffsFileDescriptorCache
+                        0x2000'1cc4    0xb0  Data  Lc  spiffsinternal.obj [1]
+spiffsReadWriteCache    0x2000'1d74   0x200  Data  Lc  spiffsinternal.obj [1]
+spiffsWorkBuffer        0x2000'1ac4   0x200  Data  Lc  spiffsinternal.obj [1]
+spiffs_cache_drop_page       0xe15f    0x18  Code  Gb  spiffs_cache.c.obj [10]
+spiffs_cache_fd_release
+                             0xe36d    0x3c  Code  Gb  spiffs_cache.c.obj [10]
+spiffs_cache_init            0xe3a9    0x84  Code  Gb  spiffs_cache.c.obj [10]
+spiffs_cache_page_allocate
+                             0xe119    0x46  Code  Lc  spiffs_cache.c.obj [10]
+spiffs_cache_page_allocate_by_fd
+                             0xe34b    0x22  Code  Gb  spiffs_cache.c.obj [10]
+spiffs_cache_page_free       0xe04f    0x62  Code  Lc  spiffs_cache.c.obj [10]
+spiffs_cache_page_get        0xe001    0x4e  Code  Lc  spiffs_cache.c.obj [10]
+spiffs_cache_page_get_by_fd
+                             0xe307    0x44  Code  Gb  spiffs_cache.c.obj [10]
+spiffs_cache_page_remove_oldest
+                             0xe0b1    0x68  Code  Lc  spiffs_cache.c.obj [10]
+spiffs_cb_object_event        0xee5   0x15e  Code  Gb  spiffs_nucleus.c.obj [10]
+spiffs_erase_block            0x43b    0xc4  Code  Gb  spiffs_nucleus.c.obj [10]
+spiffs_fd_find_new           0x28b5   0x10c  Code  Gb  spiffs_nucleus.c.obj [10]
+spiffs_fd_get                0x29f7    0x2e  Code  Gb  spiffs_nucleus.c.obj [10]
+spiffs_fd_return             0x29cd    0x2a  Code  Gb  spiffs_nucleus.c.obj [10]
+spiffs_fflush_cache        0x1'0f61    0x64  Code  Lc  spiffs_hydrogen.c.obj [10]
+spiffs_gc_check              0xe5c5   0x126  Code  Gb  spiffs_gc.c.obj [10]
+spiffs_gc_clean              0xe9f9   0x4da  Code  Gb  spiffs_gc.c.obj [10]
+spiffs_gc_erase_block        0xe42d    0x30  Code  Lc  spiffs_gc.c.obj [10]
+spiffs_gc_erase_page_stats
+                             0xe6eb    0xc6  Code  Gb  spiffs_gc.c.obj [10]
+spiffs_gc_find_candidate
+                             0xe7b1   0x248  Code  Gb  spiffs_gc.c.obj [10]
+spiffs_gc_quick              0xe45d   0x168  Code  Gb  spiffs_gc.c.obj [10]
+spiffs_hal_erase           0x1'11d1    0x10  Code  Lc  SPIFFSNVS.c.obj [10]
+spiffs_hal_read            0x1'11e1    0x16  Code  Lc  SPIFFSNVS.c.obj [10]
+spiffs_hal_write           0x1'11f9    0x1a  Code  Lc  SPIFFSNVS.c.obj [10]
+spiffs_hydro_write         0x1'0a17    0x52  Code  Lc  spiffs_hydrogen.c.obj [10]
+spiffs_obj_lu_find_entry_visitor
+                              0x287   0x1ae  Code  Gb  spiffs_nucleus.c.obj [10]
+spiffs_obj_lu_find_free
+                              0x66d    0x66  Code  Gb  spiffs_nucleus.c.obj [10]
+spiffs_obj_lu_find_free_obj_id
+                             0x26fd   0x1ae  Code  Gb  spiffs_nucleus.c.obj [10]
+spiffs_obj_lu_find_free_obj_id_bitmap_v
+                             0x2591    0xb2  Code  Lc  spiffs_nucleus.c.obj [10]
+spiffs_obj_lu_find_free_obj_id_compact_v
+                             0x2649    0xa2  Code  Lc  spiffs_nucleus.c.obj [10]
+spiffs_obj_lu_find_id         0x6d3    0x2c  Code  Gb  spiffs_nucleus.c.obj [10]
+spiffs_obj_lu_find_id_and_span
+                              0x77f    0x3a  Code  Gb  spiffs_nucleus.c.obj [10]
+spiffs_obj_lu_find_id_and_span_v
+                              0x6ff    0x80  Code  Lc  spiffs_nucleus.c.obj [10]
+spiffs_obj_lu_scan            0x527   0x140  Code  Gb  spiffs_nucleus.c.obj [10]
+spiffs_obj_lu_scan_v          0x4ff    0x28  Code  Lc  spiffs_nucleus.c.obj [10]
+spiffs_object_append         0x1119   0x634  Code  Gb  spiffs_nucleus.c.obj [10]
+spiffs_object_create          0xc21   0x1d0  Code  Gb  spiffs_nucleus.c.obj [10]
+spiffs_object_find_object_index_header_by_name
+                             0x1d4b    0x6c  Code  Gb  spiffs_nucleus.c.obj [10]
+spiffs_object_find_object_index_header_by_name_v
+                             0x1cd9    0x72  Code  Lc  spiffs_nucleus.c.obj [10]
+spiffs_object_modify         0x1761   0x56e  Code  Gb  spiffs_nucleus.c.obj [10]
+spiffs_object_open_by_page
+                             0x1043    0xc2  Code  Gb  spiffs_nucleus.c.obj [10]
+spiffs_object_read           0x23af   0x1e2  Code  Gb  spiffs_nucleus.c.obj [10]
+spiffs_object_truncate       0x1db7   0x5f2  Code  Gb  spiffs_nucleus.c.obj [10]
+spiffs_object_update_index_hdr
+                              0xdf1    0xe2  Code  Gb  spiffs_nucleus.c.obj [10]
+spiffs_page_allocate_data
+                              0x90d   0x142  Code  Gb  spiffs_nucleus.c.obj [10]
+spiffs_page_data_check         0xd9    0xa6  Code  Lc  spiffs_nucleus.c.obj [10]
+spiffs_page_delete            0xb77    0xaa  Code  Gb  spiffs_nucleus.c.obj [10]
+spiffs_page_index_check
+                              0x17f    0xb0  Code  Lc  spiffs_nucleus.c.obj [10]
+spiffs_page_move              0xa4f   0x128  Code  Gb  spiffs_nucleus.c.obj [10]
+spiffs_phys_cpy               0x22f    0x52  Code  Gb  spiffs_nucleus.c.obj [10]
+spiffs_phys_rd               0xe177    0xfa  Code  Gb  spiffs_cache.c.obj [10]
+spiffs_phys_wr               0xe271    0x96  Code  Gb  spiffs_cache.c.obj [10]
+spiffs_stat_pix            0x1'0e55    0xac  Code  Lc  spiffs_hydrogen.c.obj [10]
+spiffs_update_ix_map          0x7f1    0xda  Code  Lc  spiffs_nucleus.c.obj [10]
+spiffsnvsData           0x2000'2000    0x14  Data  Gb  spiffsinternal.obj [1]
+stopBits                   0x1'1ca8     0x2  Data  Lc  UART2CC26X2.c.obj [5]
+strcmp                       0xf0c5          Code  Gb  strcmp.o [8]
+strlen                     0x1'1221          Code  Gb  strlen.o [8]
+switchToTCXO               0x1'2a21     0xc  Code  Lc  PowerCC26X2.c.obj [5]
+switchXOSCHF               0x1'28a7    0x54  Code  Lc  PowerCC26X2.c.obj [5]
+txFifoThreshold            0x1'1cb4     0x8  Data  Lc  UART2CC26X2.c.obj [5]
+uDMAErrIntHandler          0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+uDMAIntHandler             0x1'584f     0x2  Code  Wk  startup_cc13x2_cc26x2_iar.c.obj [7]
+uart2CC26X2HWAttrs         0x1'571c    0x58  Data  Lc  ti_drivers_config.obj [1]
+uart2CC26X2Objects      0x2000'25ec   0x170  Data  Gb  ti_drivers_config.obj [1]
+uart2RxRingBuffer0      0x2000'2a44    0x20  Data  Lc  ti_drivers_config.obj [1]
+uart2TxRingBuffer0      0x2000'2a64    0x20  Data  Lc  ti_drivers_config.obj [1]
+udmaCC26XXHWAttrs          0x1'59b0     0x8  Data  Gb  ti_drivers_config.obj [1]
+udmaCC26XXObject        0x2000'2a24    0x20  Data  Gb  ti_drivers_config.obj [1]
+writeSem                0x2000'2aec     0x4  Data  Lc  NVSCC26XX.c.obj [5]
+
+
+[1] = /project/staging/core_examples/examples/nortos/LP_CC2652R7/drivers/spiffsinternal/iar
+[2] = display_cc26x2x7.a
+[3] = dl7M_tln.a
+[4] = driverlib.lib
+[5] = drivers_cc26x2x7.a
+[6] = m7M_tls.a
+[7] = nortos_cc26x2x7.a
+[8] = rt7M_tl.a
+[9] = shb_l.a
+[10] = spiffs_cc26xx.a
+
+  41'195 bytes of readonly  code memory
+     980 bytes of readonly  data memory
+  22'392 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

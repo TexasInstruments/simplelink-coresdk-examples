@@ -1,0 +1,524 @@
+﻿###############################################################################
+#
+# IAR ELF Linker V9.40.2.374/LNX for ARM BX               19/Apr/2024  13:35:04
+# Copyright 2007-2023 IAR Systems AB.
+#
+#    Output file  =  gpioshutdown.out
+#    Map file     =  gpioshutdown.map
+#    Command line =
+#        gpioshutdown.obj main_nortos.obj ti_devices_config.obj
+#        ti_drivers_config.obj
+#        -L/project/staging/core_examples/simplelink-lowpower-f3-sdk/source
+#        -L/project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos
+#        -fti_utils_build_linker.cmd.genlibs
+#        (ti/drivers/lib/iar/m0p/drivers_cc23x0r5.a
+#        lib/iar/m0p/nortos_cc23x0r5.a
+#        ti/devices/cc23x0r5/driverlib/lib/iar/driverlib.a) --config
+#        ../iar/cc23x0r5_nortos.icf --map gpioshutdown.map --silent
+#        --semihosting=iar_breakpoint --cpu=Cortex-M0+ -o gpioshutdown.out
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__CPP_Runtime   = 1
+__Heap_Handler  = DLMalloc
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The advanced heap was selected because the application calls
+memory allocation functions outside of system library functions,
+there are calls to deallocation functions in the application, and
+the application appears to be primarily optimized for speed.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at address 0x0 { ro section .resetVecs };
+"P2":  place in [from 0x4e02'0000 to 0x4e02'07ff] { section .ccfg };
+"P3":  place in [from 0x0 to 0x7'ffff] { ro };
+"P4":  place in [from 0x2000'0000 to 0x2000'8fff] { rw, section .ramVecs };
+define block HEAP with size = 16K, alignment = 8 { };
+"P5":  place in [from 0x2000'0000 to 0x2000'8fff] { block HEAP };
+define block CSTACK with size = 1K, alignment = 8 { section .stack };
+"A1":  place at end of [from 0x2000'0000 to 0x2000'8fff] { block CSTACK };
+do not initialize { section .stack, section .noinit };
+initialize by copy { rw };
+keep { section .resetVecs };
+keep { section .ccfg };
+
+No sections matched the following patterns:
+
+  ro section .log_data  in block LOG_DATA
+  ro section .log_ptr*  in block LOG_PTR
+  section .s2rram       in "P1"
+
+
+  Section            Kind         Address    Size  Object
+  -------            ----         -------    ----  ------
+"A0":                                        0x8c
+  .resetVecs         const            0x0    0x8c  startup_cc23x0r5_iar.c.obj [5]
+                                   - 0x8c    0x8c
+
+"P3":                                      0x2c80
+  .text              ro code         0x8c  0x1090  dlmalloc.o [2]
+  .text              ro code       0x111c     0xa  abort.o [2]
+  .rodata            const         0x1126     0x1  ti_drivers_config.obj [1]
+  .rodata            const         0x1127     0x1  ti_drivers_config.obj [1]
+  .text              ro code       0x1128    0x2c  xgetmemchunk.o [2]
+  .text              ro code       0x1154    0x4e  ABImemcpy.o [6]
+  .rodata            const         0x11a2     0x1  ti_drivers_config.obj [1]
+  .rodata            const         0x11a3     0x1  ti_drivers_config.obj [1]
+  .text              ro code       0x11a4    0x14  exit.o [7]
+  .text              ro code       0x11b8   0x418  PowerCC23X0.c.obj [4]
+  .text              ro code       0x15d0    0xf6  HwiPCC23X0_nortos.c.obj [5]
+  .text              ro code       0x16c8    0x64  lrfd.c.obj [3]
+  .text              ro code       0x172c   0x14c  interrupt.c.obj [3]
+  .text              ro code       0x1878   0x318  LED.c.obj [4]
+  .text              ro code       0x1b90   0x2d0  ClockPLPF3_nortos.c.obj [5]
+  .text              ro code       0x1e60    0xb8  PWM.c.obj [4]
+  .text              ro code       0x1f18    0xae  I32DivModFast.o [6]
+  .text              ro code       0x1fc8   0x244  GPIOLPF3.c.obj [4]
+  .text              ro code       0x220c    0x66  List.c.obj [4]
+  .text              ro code       0x2274     0x2  IntDivZer.o [6]
+  .text              ro code       0x2278   0x300  Button.c.obj [4]
+  .text              ro code       0x2578    0x48  GPIO.c.obj [4]
+  .text              ro code       0x25c0   0x1cc  ti_drivers_config.obj [1]
+  .text              ro code       0x278c     0x8  cpu.c.obj [3]
+  .text              ro code       0x2794     0x2  ti_drivers_config.obj [1]
+  .text              ro code       0x2798   0x158  SemaphoreP_nortos.c.obj [5]
+  .text              ro code       0x28f0   0x150  PowerCC23X0_nortos.c.obj [5]
+  .text              ro code       0x2a40    0x98  gpioshutdown.obj [1]
+  .text              ro code       0x2ad8    0x80  lz77_init_single.o [6]
+  .text              ro code       0x2b58    0x3c  zero_init3.o [6]
+  .text              ro code       0x2b94    0x36  startup_cc23x0r5_iar.c.obj [5]
+  .text              ro code       0x2bcc    0x2c  setup.c.obj [3]
+  .text              ro code       0x2bf8    0x28  data_init.o [6]
+  .iar.init_table    const         0x2c20    0x20  - Linker created -
+  .text              ro code       0x2c40    0x1e  cmain.o [6]
+  .text              ro code       0x2c5e    0x12  main_nortos.obj [1]
+  .text              ro code       0x2c70     0x8  exit.o [2]
+  .text              ro code       0x2c78     0x8  NoRTOS.c.obj [5]
+  .text              ro code       0x2c80     0xa  cexit.o [6]
+  .text              ro code       0x2c8c    0x1c  cstartup_M.o [6]
+  .rodata            const         0x2ca8    0x10  ti_drivers_config.obj [1]
+  .rodata            const         0x2cb8    0x10  ti_drivers_config.obj [1]
+  .rodata            const         0x2cc8     0x8  ti_drivers_config.obj [1]
+  .rodata            const         0x2cd0     0x8  ti_drivers_config.obj [1]
+  .rodata            const         0x2cd8     0x8  ti_drivers_config.obj [1]
+  .rodata            const         0x2ce0     0x4  ti_drivers_config.obj [1]
+  .rodata            const         0x2ce4     0x0  zero_init3.o [6]
+  .rodata            const         0x2ce4     0x0  lz77_init_single.o [6]
+  Initializer bytes  const         0x2ce4    0x25  <for P4-P5-1>
+                                 - 0x2d09  0x2c7d
+
+"P4-P5", part 1 of 3:                        0x88
+  P4-P5-1                     0x2000'0000    0x88  <Init block>
+    .data            inited   0x2000'0000    0x68  ti_drivers_config.obj [1]
+    .data            inited   0x2000'0068    0x10  PowerCC23X0.c.obj [4]
+    .data            inited   0x2000'0078     0x9  SemaphoreP_nortos.c.obj [5]
+    .data            inited   0x2000'0084     0x4  HwiPCC23X0_nortos.c.obj [5]
+                            - 0x2000'0088    0x88
+
+"P4-P5", part 2 of 3:                       0x554
+  .bss               zero     0x2000'0088   0x1d8  dlmalloc.o [2]
+  .bss               zero     0x2000'0260    0xb8  ti_drivers_config.obj [1]
+  .bss               zero     0x2000'0318    0x8c  HwiPCC23X0_nortos.c.obj [5]
+  .bss               zero     0x2000'03a4    0x68  ti_drivers_config.obj [1]
+  .bss               zero     0x2000'040c    0x68  ti_drivers_config.obj [1]
+  .bss               zero     0x2000'0474    0x54  gpioshutdown.obj [1]
+  .bss               zero     0x2000'04c8    0x40  PowerCC23X0.c.obj [4]
+  .bss               zero     0x2000'0508    0x24  ti_drivers_config.obj [1]
+  .bss               zero     0x2000'052c    0x20  GPIOLPF3.c.obj [4]
+  .bss               zero     0x2000'054c    0x20  PowerCC23X0.c.obj [4]
+  .bss               zero     0x2000'056c    0x20  ClockPLPF3_nortos.c.obj [5]
+  .bss               zero     0x2000'058c    0x18  dlmalloc.o [2]
+  .bss               zero     0x2000'05a4    0x14  PowerCC23X0_nortos.c.obj [5]
+  .bss               zero     0x2000'05b8     0xc  PowerCC23X0.c.obj [4]
+  .bss               zero     0x2000'05c4     0x8  PowerCC23X0.c.obj [4]
+  .bss               zero     0x2000'05cc     0x8  lrfd.c.obj [3]
+  .bss               zero     0x2000'05d4     0x4  xgetmemchunk.o [2]
+  .bss               zero     0x2000'05d8     0x2  SemaphoreP_nortos.c.obj [5]
+  .bss               zero     0x2000'05da     0x1  PWM.c.obj [4]
+                            - 0x2000'05db   0x553
+
+"P4-P5", part 3 of 3:                      0x4090
+  .ramVecs           uninit   0x2000'0600    0x8c  interrupt.c.obj [3]
+  HEAP                        0x2000'0690  0x4000  <Block>
+    HEAP             uninit   0x2000'0690  0x4000  <Block tail>
+                            - 0x2000'4690  0x4090
+
+"A1":                                       0x400
+  CSTACK                      0x2000'8c00   0x400  <Block>
+    .stack           uninit   0x2000'8c00     0x4  startup_cc23x0r5_iar.c.obj [5]
+    CSTACK           uninit   0x2000'8c04   0x3fc  <Block tail>
+                            - 0x2000'9000   0x400
+
+"P2":                                       0x800
+  .ccfg              const    0x4e02'0000   0x800  ti_devices_config.obj [1]
+                            - 0x4e02'0800   0x800
+
+Unused ranges:
+
+         From           To      Size
+         ----           --      ----
+       0x2d0c     0x7'ffff  0x7'd2f4
+  0x2000'05dc  0x2000'05ff      0x24
+  0x2000'4690  0x2000'8bff    0x4570
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address      Size
+          -------      ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0x553:
+          0x2000'0088  0x553
+
+Copy/lz77 (__iar_lz77_init_single3)
+    1 source range, total size 0x25 (27% of destination):
+               0x2ce4   0x25
+    1 destination range, total size 0x88:
+          0x2000'0000   0x88
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                      ro code  ro data  rw data
+    ------                      -------  -------  -------
+command line/config:
+    -----------------------------------------------------
+    Total:
+
+/project/staging/core_examples/examples/nortos/LP_EM_CC2340R5/drivers/gpioshutdown/iar: [1]
+    gpioshutdown.obj                152                84
+    main_nortos.obj                  18
+    ti_devices_config.obj                  2'048
+    ti_drivers_config.obj           462       92      532
+    -----------------------------------------------------
+    Total:                          632    2'140      616
+
+dl6M_tln.a: [2]
+    abort.o                          10
+    dlmalloc.o                    4'240               496
+    exit.o                            8
+    xgetmemchunk.o                   44                 4
+    -----------------------------------------------------
+    Total:                        4'302               500
+
+driverlib.a: [3]
+    cpu.c.obj                         8
+    interrupt.c.obj                 332               140
+    lrfd.c.obj                      100                 8
+    setup.c.obj                      44
+    -----------------------------------------------------
+    Total:                          484               148
+
+drivers_cc23x0r5.a: [4]
+    Button.c.obj                    768
+    GPIO.c.obj                       72
+    GPIOLPF3.c.obj                  580                32
+    LED.c.obj                       792
+    List.c.obj                      102
+    PWM.c.obj                       184                 1
+    PowerCC23X0.c.obj             1'048        4      132
+    -----------------------------------------------------
+    Total:                        3'546        4      165
+
+nortos_cc23x0r5.a: [5]
+    ClockPLPF3_nortos.c.obj         720                32
+    HwiPCC23X0_nortos.c.obj         246        2      144
+    NoRTOS.c.obj                      8
+    PowerCC23X0_nortos.c.obj        336                20
+    SemaphoreP_nortos.c.obj         344        3       11
+    startup_cc23x0r5_iar.c.obj       54      140        4
+    -----------------------------------------------------
+    Total:                        1'708      145      211
+
+rt6M_tl.a: [6]
+    ABImemcpy.o                      78
+    I32DivModFast.o                 174
+    IntDivZer.o                       2
+    cexit.o                          10
+    cmain.o                          30
+    cstartup_M.o                     28
+    data_init.o                      40
+    lz77_init_single.o              128
+    zero_init3.o                     60
+    -----------------------------------------------------
+    Total:                          550
+
+shb_l.a: [7]
+    exit.o                           20
+    -----------------------------------------------------
+    Total:                           20
+
+    Gaps                             14                 3
+    Linker created                            32   17'404
+---------------------------------------------------------
+    Grand Total:                 11'256    2'321   19'047
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                       Address   Size  Type      Object
+-----                       -------   ----  ----      ------
+.iar.init_table$$Base        0x2c20          --   Gb  - Linker created -
+.iar.init_table$$Limit       0x2c40          --   Gb  - Linker created -
+?main                        0x2c41         Code  Gb  cmain.o [6]
+Board_init                   0x2759   0x22  Code  Gb  ti_drivers_config.obj [1]
+Board_initHook               0x2795    0x2  Code  Wk  ti_drivers_config.obj [1]
+Board_sendExtFlashByte       0x25c1  0x126  Code  Gb  ti_drivers_config.obj [1]
+Board_shutDownExtFlash       0x2711   0x48  Code  Gb  ti_drivers_config.obj [1]
+Board_wakeUpExtFlash         0x26e7   0x2a  Code  Gb  ti_drivers_config.obj [1]
+ButtonHWAttrs                0x2cd0    0x8  Data  Lc  ti_drivers_config.obj [1]
+ButtonObjects           0x2000'0508   0x24  Data  Gb  ti_drivers_config.obj [1]
+Button_Params_init           0x2555    0xe  Code  Gb  Button.c.obj [4]
+Button_clockTimeoutHandler
+                             0x230f  0x174  Code  Lc  Button.c.obj [4]
+Button_config                0x2cd8    0x8  Data  Gb  ti_drivers_config.obj [1]
+Button_count                 0x11a2    0x1  Data  Gb  ti_drivers_config.obj [1]
+Button_defaultParams         0x2564   0x14  Data  Gb  Button.c.obj [4]
+Button_gpioCallbackFxn       0x22af   0x60  Code  Gb  Button.c.obj [4]
+Button_open                  0x2485   0xaa  Code  Gb  Button.c.obj [4]
+CPUDelay                     0x278d    0x8  Code  Gb  cpu.c.obj [3]
+CSTACK$$Base            0x2000'8c00          --   Gb  - Linker created -
+CSTACK$$Limit           0x2000'9000          --   Gb  - Linker created -
+ClockP_Params_init           0x1b91    0xc  Code  Gb  ClockPLPF3_nortos.c.obj [5]
+ClockP_add                   0x1d57   0x18  Code  Gb  ClockPLPF3_nortos.c.obj [5]
+ClockP_construct             0x1cf1   0x40  Code  Gb  ClockPLPF3_nortos.c.obj [5]
+ClockP_create                0x1d31   0x1a  Code  Gb  ClockPLPF3_nortos.c.obj [5]
+ClockP_defaultParams    0x2000'056c    0xc  Data  Lc  ClockPLPF3_nortos.c.obj [5]
+ClockP_destruct              0x1d4b    0xc  Code  Gb  ClockPLPF3_nortos.c.obj [5]
+ClockP_getSystemTickPeriod
+                             0x1e45    0x4  Code  Gb  ClockPLPF3_nortos.c.obj [5]
+ClockP_getSystemTicks        0x1e49    0x6  Code  Gb  ClockPLPF3_nortos.c.obj [5]
+ClockP_hwiCallback           0x1c49   0xa8  Code  Lc  ClockPLPF3_nortos.c.obj [5]
+ClockP_inWorkFunc       0x2000'0579    0x1  Data  Lc  ClockPLPF3_nortos.c.obj [5]
+ClockP_initialized      0x2000'0578    0x1  Data  Lc  ClockPLPF3_nortos.c.obj [5]
+ClockP_isActive              0x1e41    0x4  Code  Gb  ClockPLPF3_nortos.c.obj [5]
+ClockP_list             0x2000'057c    0x8  Data  Lc  ClockPLPF3_nortos.c.obj [5]
+ClockP_nextScheduledTick
+                        0x2000'0588    0x4  Data  Lc  ClockPLPF3_nortos.c.obj [5]
+ClockP_setTimeout            0x1e39    0x4  Code  Gb  ClockPLPF3_nortos.c.obj [5]
+ClockP_start                 0x1d6f   0x60  Code  Gb  ClockPLPF3_nortos.c.obj [5]
+ClockP_startDuringWorkFunc
+                        0x2000'057a    0x1  Data  Lc  ClockPLPF3_nortos.c.obj [5]
+ClockP_startup               0x1b9d   0x5a  Code  Gb  ClockPLPF3_nortos.c.obj [5]
+ClockP_stop                  0x1ddd   0x52  Code  Gb  ClockPLPF3_nortos.c.obj [5]
+ClockP_ticks            0x2000'0584    0x4  Data  Lc  ClockPLPF3_nortos.c.obj [5]
+ClockP_walkQueueDynamic
+                             0x1bf7   0x52  Code  Gb  ClockPLPF3_nortos.c.obj [5]
+GPIO_config                  0x2ca8   0x10  Data  Gb  ti_drivers_config.obj [1]
+GPIO_disableInt              0x1fc9    0xe  Code  Gb  GPIOLPF3.c.obj [4]
+GPIO_enableInt               0x1fd7   0x10  Code  Gb  GPIOLPF3.c.obj [4]
+GPIO_hwiIntFxn               0x1fe7   0x58  Code  Gb  GPIOLPF3.c.obj [4]
+GPIO_init                    0x203f   0xdc  Code  Gb  GPIOLPF3.c.obj [4]
+GPIO_pinLowerBound           0x1126    0x1  Data  Gb  ti_drivers_config.obj [1]
+GPIO_pinUpperBound           0x1127    0x1  Data  Gb  ti_drivers_config.obj [1]
+GPIO_read                    0x211b    0x8  Code  Gb  GPIOLPF3.c.obj [4]
+GPIO_resetConfig             0x258f   0x2a  Code  Gb  GPIO.c.obj [4]
+GPIO_setCallback             0x2579   0x16  Code  Gb  GPIO.c.obj [4]
+GPIO_setConfig               0x2123    0xa  Code  Gb  GPIOLPF3.c.obj [4]
+GPIO_setConfigAndMux         0x2179   0x58  Code  Gb  GPIOLPF3.c.obj [4]
+GPIO_setInterruptConfig
+                             0x212d   0x3c  Code  Gb  GPIOLPF3.c.obj [4]
+GPIO_write                   0x2169   0x10  Code  Gb  GPIOLPF3.c.obj [4]
+HEAP$$Base              0x2000'0690          --   Gb  - Linker created -
+HEAP$$Limit             0x2000'4690          --   Gb  - Linker created -
+HwiP_Params_init             0x1695   0x12  Code  Gb  HwiPCC23X0_nortos.c.obj [5]
+HwiP_clearInterrupt          0x15d1    0x8  Code  Gb  HwiPCC23X0_nortos.c.obj [5]
+HwiP_construct               0x15d9   0x68  Code  Gb  HwiPCC23X0_nortos.c.obj [5]
+HwiP_disable                 0x1641    0x8  Code  Gb  HwiPCC23X0_nortos.c.obj [5]
+HwiP_dispatch                0x1649   0x1c  Code  Gb  HwiPCC23X0_nortos.c.obj [5]
+HwiP_dispatchTable      0x2000'0318   0x8c  Data  Lc  HwiPCC23X0_nortos.c.obj [5]
+HwiP_enable                  0x1665    0x4  Code  Gb  HwiPCC23X0_nortos.c.obj [5]
+HwiP_enableInterrupt         0x1669    0x8  Code  Gb  HwiPCC23X0_nortos.c.obj [5]
+HwiP_inISR                   0x1671    0x8  Code  Gb  HwiPCC23X0_nortos.c.obj [5]
+HwiP_restore                 0x16a7    0x8  Code  Gb  HwiPCC23X0_nortos.c.obj [5]
+HwiP_setFunc                 0x16af   0x18  Code  Gb  HwiPCC23X0_nortos.c.obj [5]
+HwiP_swiPIntNum         0x2000'0084    0x4  Data  Gb  HwiPCC23X0_nortos.c.obj [5]
+IntClearPend                 0x181f   0x34  Code  Gb  interrupt.c.obj [3]
+IntEnable                    0x17fb   0x24  Code  Gb  interrupt.c.obj [3]
+IntRegister                  0x172d   0x38  Code  Gb  interrupt.c.obj [3]
+IntSetPriority               0x1765   0x96  Code  Gb  interrupt.c.obj [3]
+LEDHWAttrs                   0x2ce0    0x4  Data  Lc  ti_drivers_config.obj [1]
+LEDObjects              0x2000'0260   0xb8  Data  Gb  ti_drivers_config.obj [1]
+LED_config                   0x2cb8   0x10  Data  Gb  ti_drivers_config.obj [1]
+LED_count                    0x11a3    0x1  Data  Gb  ti_drivers_config.obj [1]
+LED_defaultParams            0x1b88    0x8  Data  Gb  LED.c.obj [4]
+LED_open                     0x18b5  0x142  Code  Gb  LED.c.obj [4]
+LED_setBrightnessLevel       0x19f9   0x42  Code  Gb  LED.c.obj [4]
+LED_setOff                   0x1a3b   0x5a  Code  Gb  LED.c.obj [4]
+LED_setOn                    0x1a95   0x36  Code  Gb  LED.c.obj [4]
+LED_startBlinking            0x1acb   0x6a  Code  Gb  LED.c.obj [4]
+LED_stopBlinking             0x1b45   0x22  Code  Gb  LED.c.obj [4]
+LED_toggle                   0x1b67   0x20  Code  Gb  LED.c.obj [4]
+LRFDApplyClockDependencies
+                             0x16e1   0x40  Code  Gb  lrfd.c.obj [3]
+LRFDSetClockDependency       0x16c9   0x18  Code  Gb  lrfd.c.obj [3]
+List_clearList               0x220d   0x14  Code  Gb  List.c.obj [4]
+List_put                     0x2221   0x26  Code  Gb  List.c.obj [4]
+List_remove                  0x2247   0x2c  Code  Gb  List.c.obj [4]
+NoRTOS_start                 0x2c79    0x8  Code  Gb  NoRTOS.c.obj [5]
+PWM_Params_init              0x1edd    0xe  Code  Gb  PWM.c.obj [4]
+PWM_close                    0x1e61    0xa  Code  Gb  PWM.c.obj [4]
+PWM_defaultParams            0x1f00   0x18  Data  Gb  PWM.c.obj [4]
+PWM_init                     0x1e6b   0x34  Code  Gb  PWM.c.obj [4]
+PWM_open                     0x1ea1   0x30  Code  Gb  PWM.c.obj [4]
+PWM_setDuty                  0x1eeb    0xa  Code  Gb  PWM.c.obj [4]
+PWM_start                    0x1ef5    0xa  Code  Gb  PWM.c.obj [4]
+PowerCC23X0_config           0x2cc8    0x8  Data  Gb  ti_drivers_config.obj [1]
+PowerCC23X0_enterStandby::controlPreStandby
+                        0x2000'0074    0x4  Data  Lc  PowerCC23X0.c.obj [4]
+PowerCC23X0_notify           0x1529   0x32  Code  Gb  PowerCC23X0.c.obj [4]
+PowerCC23X0_oscillatorISR
+                             0x1411   0x9a  Code  Lc  PowerCC23X0.c.obj [4]
+PowerCC23X0_rtcISR           0x14ab    0x8  Code  Lc  PowerCC23X0.c.obj [4]
+PowerCC23X0_setDependencyCount
+                             0x1565   0x1c  Code  Lc  PowerCC23X0.c.obj [4]
+PowerCC23X0_standbyPolicy
+                             0x28f1  0x126  Code  Gb  PowerCC23X0_nortos.c.obj [5]
+PowerCC23X0_startHFXT        0x14b5   0x6a  Code  Lc  PowerCC23X0.c.obj [4]
+PowerLPF3_selectLFXT         0x13e1   0x2c  Code  Gb  PowerCC23X0.c.obj [4]
+Power_disablePolicy          0x1229    0xa  Code  Gb  PowerCC23X0.c.obj [4]
+Power_enablePolicy           0x1233    0x8  Code  Gb  PowerCC23X0.c.obj [4]
+Power_getConstraintMask
+                             0x123b    0x6  Code  Gb  PowerCC23X0.c.obj [4]
+Power_getDependencyCount
+                             0x1241   0x22  Code  Gb  PowerCC23X0.c.obj [4]
+Power_idleFunc               0x1263   0x16  Code  Gb  PowerCC23X0.c.obj [4]
+Power_init                   0x11b9   0x70  Code  Gb  PowerCC23X0.c.obj [4]
+Power_setDependency          0x1279   0x4a  Code  Gb  PowerCC23X0.c.obj [4]
+Power_shutdown               0x12e5   0xa6  Code  Gb  PowerCC23X0.c.obj [4]
+Power_sleep                  0x1399   0x3a  Code  Gb  PowerCC23X0.c.obj [4]
+Region$$Table$$Base          0x2c20          --   Gb  - Linker created -
+Region$$Table$$Limit         0x2c40          --   Gb  - Linker created -
+STACK_TOP {Abs}         0x2000'9000         Data  Gb  <internal module>
+SemaphoreP_construct         0x279b   0x52  Code  Gb  SemaphoreP_nortos.c.obj [5]
+SemaphoreP_constructBinary
+                             0x27ed   0x20  Code  Gb  SemaphoreP_nortos.c.obj [5]
+SemaphoreP_defaultParams
+                        0x2000'0078    0x8  Data  Gb  SemaphoreP_nortos.c.obj [5]
+SemaphoreP_initialized  0x2000'0080    0x1  Data  Lc  SemaphoreP_nortos.c.obj [5]
+SemaphoreP_pend              0x280d   0x98  Code  Gb  SemaphoreP_nortos.c.obj [5]
+SemaphoreP_post              0x28a5   0x3c  Code  Gb  SemaphoreP_nortos.c.obj [5]
+SetupTrimDevice              0x2bcd   0x2c  Code  Gb  setup.c.obj [3]
+__aeabi_idiv0                0x2275         Code  Gb  IntDivZer.o [6]
+__aeabi_memcpy               0x1189         Code  Gb  ABImemcpy.o [6]
+__aeabi_memcpy4              0x1155         Code  Gb  ABImemcpy.o [6]
+__aeabi_memcpy8              0x1155         Code  Gb  ABImemcpy.o [6]
+__aeabi_uidiv                0x1f19         Code  Gb  I32DivModFast.o [6]
+__aeabi_uidivmod             0x1f19         Code  Gb  I32DivModFast.o [6]
+__ccfg_boot_cfg_crc32_begin {Abs}
+                        0x4e02'0000         Data  Gb  <internal module>
+__ccfg_boot_cfg_crc32_end {Abs}
+                        0x4e02'000b         Data  Gb  <internal module>
+__ccfg_crc32_begin {Abs}
+                        0x4e02'0010         Data  Gb  <internal module>
+__ccfg_crc32_end {Abs}  0x4e02'074b         Data  Gb  <internal module>
+__ccfg_debug_cfg_crc32_begin {Abs}
+                        0x4e02'07d0         Data  Gb  <internal module>
+__ccfg_debug_cfg_crc32_end {Abs}
+                        0x4e02'07fb         Data  Gb  <internal module>
+__ccfg_user_record_crc32_begin {Abs}
+                        0x4e02'0750         Data  Gb  <internal module>
+__ccfg_user_record_crc32_end {Abs}
+                        0x4e02'07cb         Data  Gb  <internal module>
+__cmain                      0x2c41         Code  Gb  cmain.o [6]
+__data_GetMemChunk           0x1129   0x2c  Code  Gb  xgetmemchunk.o [2]
+__data_GetMemChunk::start
+                        0x2000'05d4    0x4  Data  Lc  xgetmemchunk.o [2]
+__exit                       0x11a5   0x14  Code  Gb  exit.o [7]
+__iar_Memcpy                 0x1195         Code  Gb  ABImemcpy.o [6]
+__iar_data_init3             0x2bf9   0x28  Code  Gb  data_init.o [6]
+__iar_dlmalloc                0x119  0xff6  Code  Gb  dlmalloc.o [2]
+__iar_lz77_init_single3
+                             0x2ad9   0x80  Code  Gb  lz77_init_single.o [6]
+__iar_program_start          0x2c8d         Code  Gb  cstartup_M.o [6]
+__iar_zero_init3             0x2b59   0x3c  Code  Gb  zero_init3.o [6]
+__low_level_init             0x2bb1    0xc  Code  Gb  startup_cc23x0r5_iar.c.obj [5]
+__vector_table                  0x0   0x8c  Data  Gb  startup_cc23x0r5_iar.c.obj [5]
+_call_main                   0x2c4d         Code  Gb  cmain.o [6]
+_exit                        0x2c81         Code  Gb  cexit.o [6]
+_gm_                    0x2000'0088  0x1d8  Data  Lc  dlmalloc.o [2]
+abort                        0x111d    0xa  Code  Gb  abort.o [2]
+buttonCallback               0x2a41    0xc  Code  Lc  gpioshutdown.obj [1]
+ccfg                    0x4e02'0000  0x800  Data  Gb  ti_devices_config.obj [1]
+ckmHwi                  0x2000'04d0   0x1c  Data  Lc  PowerCC23X0.c.obj [4]
+clkFxn                       0x2799    0x2  Code  Gb  SemaphoreP_nortos.c.obj [5]
+clockHwi                0x2000'04ec   0x1c  Data  Gb  PowerCC23X0.c.obj [4]
+clockTimeoutHandler          0x1879   0x3c  Code  Lc  LED.c.obj [4]
+constraintCounts        0x2000'0068    0x4  Data  Lc  PowerCC23X0.c.obj [4]
+constraintMask          0x2000'0070    0x4  Data  Lc  PowerCC23X0.c.obj [4]
+doEnablePolicy          0x2000'05d9    0x1  Data  Lc  SemaphoreP_nortos.c.obj [5]
+dummy_stack             0x2000'8c00    0x4  Data  Lc  startup_cc23x0r5_iar.c.obj [5]
+exit                         0x2c71    0x8  Code  Gb  exit.o [2]
+faultISR                     0x2bc7    0x2  Code  Lc  startup_cc23x0r5_iar.c.obj [5]
+gpioCallbackFunctions   0x2000'03a4   0x68  Data  Gb  ti_drivers_config.obj [1]
+gpioHwi                 0x2000'0530   0x1c  Data  Lc  GPIOLPF3.c.obj [4]
+gpioPinConfigs          0x2000'0000   0x68  Data  Gb  ti_drivers_config.obj [1]
+gpioUserArgs            0x2000'040c   0x68  Data  Gb  ti_drivers_config.obj [1]
+initCalled              0x2000'052c    0x1  Data  Lc  GPIOLPF3.c.obj [4]
+init_mparams                   0xab   0x2a  Code  Lc  dlmalloc.o [2]
+init_top                       0xd5   0x38  Code  Lc  dlmalloc.o [2]
+intDefaultHandler            0x2bc9    0x2  Code  Lc  startup_cc23x0r5_iar.c.obj [5]
+isInitialized           0x2000'04c9    0x1  Data  Lc  PowerCC23X0.c.obj [4]
+isInitialized           0x2000'05da    0x1  Data  Lc  PWM.c.obj [4]
+isPolicyEnabled         0x2000'04c8    0x1  Data  Lc  PowerCC23X0.c.obj [4]
+localProgramStart            0x2b95   0x1a  Code  Gb  startup_cc23x0r5_iar.c.obj [5]
+lrfdClockDependencySets
+                        0x2000'05d0    0x4  Data  Lc  lrfd.c.obj [3]
+lrfdClocked             0x2000'05cc    0x1  Data  Lc  lrfd.c.obj [3]
+main                         0x2c5f   0x12  Code  Gb  main_nortos.obj [1]
+mainThread                   0x2a4d   0x7c  Code  Gb  gpioshutdown.obj [1]
+mparams                 0x2000'058c   0x18  Data  Lc  dlmalloc.o [2]
+msToTicks                    0x228b   0x24  Code  Lc  Button.c.obj [4]
+nmiISR                       0x2bc5    0x2  Code  Lc  startup_cc23x0r5_iar.c.obj [5]
+notifyList              0x2000'05c4    0x8  Data  Lc  PowerCC23X0.c.obj [4]
+pendInProgress          0x2000'05d8    0x1  Data  Lc  SemaphoreP_nortos.c.obj [5]
+policyFxn               0x2000'04cc    0x4  Data  Lc  PowerCC23X0.c.obj [4]
+powerState              0x2000'006c    0x1  Data  Lc  PowerCC23X0.c.obj [4]
+ramVectorTable          0x2000'0600   0x8c  Data  Lc  interrupt.c.obj [3]
+resourceCountsClkctl0   0x2000'054c   0x20  Data  Lc  PowerCC23X0.c.obj [4]
+resourceCountsLrfd      0x2000'05b8    0xc  Data  Lc  PowerCC23X0.c.obj [4]
+segment_holding                0x8d   0x1e  Code  Lc  dlmalloc.o [2]
+semHandle               0x2000'0474    0x4  Data  Gb  gpioshutdown.obj [1]
+semStruct               0x2000'0478   0x50  Data  Gb  gpioshutdown.obj [1]
+sysTimerResolutionShift
+                             0x2a38    0x8  Data  Lc  PowerCC23X0_nortos.c.obj [5]
+sysTimerTimeouts        0x2000'05a4   0x14  Data  Lc  PowerCC23X0_nortos.c.obj [5]
+timediff                     0x2279   0x12  Code  Lc  Button.c.obj [4]
+
+
+[1] = /project/staging/core_examples/examples/nortos/LP_EM_CC2340R5/drivers/gpioshutdown/iar
+[2] = dl6M_tln.a
+[3] = driverlib.a
+[4] = drivers_cc23x0r5.a
+[5] = nortos_cc23x0r5.a
+[6] = rt6M_tl.a
+[7] = shb_l.a
+
+  11'256 bytes of readonly  code memory
+   2'321 bytes of readonly  data memory
+  19'047 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

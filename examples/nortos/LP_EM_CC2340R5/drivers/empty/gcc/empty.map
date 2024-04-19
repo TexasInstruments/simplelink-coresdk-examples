@@ -1,0 +1,1346 @@
+Archive member included to satisfy reference by file (symbol)
+
+/project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIO.c.obj)
+                              ti_drivers_config.obj (GPIO_resetConfig)
+/project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+                              /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIO.c.obj) (GPIO_disableInt)
+/project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+                              ti_drivers_config.obj (Power_init)
+/project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+                              /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj) (Temperature_init)
+/project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(List.c.obj)
+                              /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj) (List_put)
+/project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+                              /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj) (BatMonSupportLPF3_init)
+/project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(NoRTOS.c.obj)
+                              main_nortos.obj (NoRTOS_start)
+/project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(posix_sleep.c.obj)
+                              empty.obj (sleep)
+/project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+                              /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(NoRTOS.c.obj) (SemaphoreP_defaultParams)
+/project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+                              /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj) (ClockP_startup)
+/project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+                              /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj) (HwiP_clearInterrupt)
+/project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(PowerCC23X0_nortos.c.obj)
+                              ti_drivers_config.obj (PowerCC23X0_standbyPolicy)
+/project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj)
+                              (resetISR)
+/project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(cpu.c.obj)
+                              ti_drivers_config.obj (CPUDelay)
+/project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+                              /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj) (IntRegister)
+/project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(lrfd.c.obj)
+                              /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj) (LRFDSetClockDependency)
+/project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(setup.c.obj)
+                              /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj) (SetupTrimDevice)
+/home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_clzsi2.o)
+                              /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj) (__clzsi2)
+/home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_aeabi_ldivmod.o)
+                              /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj) (__aeabi_ldivmod)
+/home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_muldi3.o)
+                              /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj) (__aeabi_lmul)
+/home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(bpabi.o)
+                              /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_aeabi_ldivmod.o) (__gnu_ldivmod_helper)
+/home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+                              /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_aeabi_ldivmod.o) (__aeabi_ldiv0)
+/home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_divdi3.o)
+                              /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(bpabi.o) (__divdi3)
+/home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_clzdi2.o)
+                              /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_divdi3.o) (__clzdi2)
+/home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-malloc.o)
+                              /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj) (malloc)
+/home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-memcpy-stub.o)
+                              /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj) (memcpy)
+/home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-memset.o)
+                              /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj) (memset)
+/home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-nano-freer.o)
+                              /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-malloc.o) (_free_r)
+/home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
+                              /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-malloc.o) (_malloc_r)
+/home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-sbrkr.o)
+                              /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-nano-mallocr.o) (_sbrk_r)
+/home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-impure.o)
+                              /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-malloc.o) (_impure_ptr)
+/home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-mlock.o)
+                              /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-nano-freer.o) (__malloc_lock)
+/home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-reent.o)
+                              /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-sbrkr.o) (errno)
+/home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+                              /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-mlock.o) (__retarget_lock_acquire_recursive)
+/home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(sbrk.o)
+                              /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-sbrkr.o) (_sbrk)
+
+Allocating common symbols
+Common symbol       size              file
+
+__lock___atexit_recursive_mutex
+                    0x1               /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+__lock___arc4random_mutex
+                    0x1               /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+errno               0x4               /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-reent.o)
+__lock___env_recursive_mutex
+                    0x1               /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+__lock___sinit_recursive_mutex
+                    0x1               /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+__lock___malloc_recursive_mutex
+                    0x1               /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+gpioCallbackFunctions
+                    0x68              ti_drivers_config.obj
+clockHwi            0x1c              /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+__lock___at_quick_exit_mutex
+                    0x1               /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+__lock___dd_hash_mutex
+                    0x1               /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+__lock___tz_mutex   0x1               /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+__lock___sfp_recursive_mutex
+                    0x1               /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+gpioUserArgs        0x68              ti_drivers_config.obj
+
+Discarded input sections
+
+ .text          0x0000000000000000        0x0 empty.obj
+ .data          0x0000000000000000        0x0 empty.obj
+ .bss           0x0000000000000000        0x0 empty.obj
+ .text          0x0000000000000000        0x0 main_nortos.obj
+ .data          0x0000000000000000        0x0 main_nortos.obj
+ .bss           0x0000000000000000        0x0 main_nortos.obj
+ .text          0x0000000000000000        0x0 ti_devices_config.obj
+ .data          0x0000000000000000        0x0 ti_devices_config.obj
+ .bss           0x0000000000000000        0x0 ti_devices_config.obj
+ .text          0x0000000000000000        0x0 ti_drivers_config.obj
+ .data          0x0000000000000000        0x0 ti_drivers_config.obj
+ .bss           0x0000000000000000        0x0 ti_drivers_config.obj
+ .text.Board_sendExtFlashByte
+                0x0000000000000000       0x50 ti_drivers_config.obj
+ .text.Board_wakeUpExtFlash
+                0x0000000000000000       0x30 ti_drivers_config.obj
+ .rodata.CONFIG_GPIO_LED_0_CONST
+                0x0000000000000000        0x1 ti_drivers_config.obj
+ .text          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIO.c.obj)
+ .data          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIO.c.obj)
+ .bss           0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIO.c.obj)
+ .text.GPIO_setCallback
+                0x0000000000000000       0x1c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIO.c.obj)
+ .text.GPIO_getCallback
+                0x0000000000000000       0x10 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIO.c.obj)
+ .text.GPIO_setUserArg
+                0x0000000000000000       0x14 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIO.c.obj)
+ .text.GPIO_getUserArg
+                0x0000000000000000       0x10 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIO.c.obj)
+ .text          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+ .data          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+ .bss           0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+ .text.GPIO_clearInt
+                0x0000000000000000       0x14 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+ .text.GPIO_enableInt
+                0x0000000000000000       0x1c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+ .text.GPIO_read
+                0x0000000000000000       0x10 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+ .text.GPIO_setInterruptConfig
+                0x0000000000000000       0x54 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+ .text.GPIO_getConfig
+                0x0000000000000000       0x54 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+ .text.GPIO_getMux
+                0x0000000000000000       0x14 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+ .text.GPIO_setConfigAndMux
+                0x0000000000000000       0x7c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+ .text          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .data          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .bss           0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .text.PowerCC23X0_hfxtCompensateFxn
+                0x0000000000000000      0x148 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .text.Power_setPolicy
+                0x0000000000000000        0xc /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .text.Power_getDependencyCount
+                0x0000000000000000       0x38 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .text.Power_getConstraintCount
+                0x0000000000000000       0x14 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .text.Power_getTransitionLatency
+                0x0000000000000000       0x28 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .text.Power_getTransitionState
+                0x0000000000000000        0xc /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .text.Power_registerNotify
+                0x0000000000000000       0x28 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .text.Power_unregisterNotify
+                0x0000000000000000       0x10 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .text.Power_setConstraint
+                0x0000000000000000       0x2c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .text.Power_releaseConstraint
+                0x0000000000000000       0x34 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .text.Power_releaseDependency
+                0x0000000000000000       0x70 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .text.Power_shutdown
+                0x0000000000000000      0x100 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .text.Power_reset
+                0x0000000000000000       0x14 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .text.PowerCC23X0_doWFI
+                0x0000000000000000        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .text.PowerLPF3_selectLFOSC
+                0x0000000000000000       0x64 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .text.PowerCC23X0_isValidResourceId
+                0x0000000000000000       0x30 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .text.PowerLPF3_initHFXTCompensation
+                0x0000000000000000       0x18 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .text.PowerLPF3_enableHFXTCompensation
+                0x0000000000000000       0x4c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .text.PowerLPF3_disableHFXTCompensation
+                0x0000000000000000       0x48 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .bss.PowerCC23X0_hfxtCompCoefficients
+                0x0000000000000000       0x14 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .bss.PowerCC23X0_hfxtCompEnabled
+                0x0000000000000000        0x1 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .bss.PowerCC23X0_hfxtCompNotifyObj
+                0x0000000000000000       0x18 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .text          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .data          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .bss           0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .text.thermalShutdownCallback
+                0x0000000000000000       0x10 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .text.updateThresholds
+                0x0000000000000000       0xe0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .text.temperatureEventCb
+                0x0000000000000000      0x12c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .text.Temperature_init
+                0x0000000000000000       0x40 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .text.Temperature_getTemperature
+                0x0000000000000000       0x44 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .text.Temperature_registerNotifyHigh
+                0x0000000000000000      0x12c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .text.Temperature_registerNotifyLow
+                0x0000000000000000      0x138 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .text.Temperature_registerNotifyRange
+                0x0000000000000000      0x12c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .text.Temperature_unregisterNotify
+                0x0000000000000000       0x70 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .text.TemperatureLPF3_enableTSDMonitoring
+                0x0000000000000000      0x128 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .text.TemperatureLPF3_disableTSDMonitoring
+                0x0000000000000000       0x70 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .text.TemperatureLPF3_triggerThermalShutdown
+                0x0000000000000000       0x10 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .bss.isInitialized
+                0x0000000000000000        0x1 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .bss.notificationList
+                0x0000000000000000        0x8 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .bss.thermalShutdown
+                0x0000000000000000       0x18 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .data.currentThresholdHigh
+                0x0000000000000000        0x2 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .data.currentThresholdLow
+                0x0000000000000000        0x2 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .debug_info    0x0000000000000000     0x1fad /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .debug_abbrev  0x0000000000000000      0x49c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .debug_loc     0x0000000000000000     0x1ef6 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .debug_aranges
+                0x0000000000000000       0x78 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .debug_ranges  0x0000000000000000      0x7c0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .debug_line    0x0000000000000000     0x134c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .debug_str     0x0000000000000000      0xaee /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .comment       0x0000000000000000       0x7a /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .debug_frame   0x0000000000000000      0x15c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .ARM.attributes
+                0x0000000000000000       0x2c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(TemperatureLPF3.c.obj)
+ .text          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(List.c.obj)
+ .data          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(List.c.obj)
+ .bss           0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(List.c.obj)
+ .text.List_get
+                0x0000000000000000       0x28 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(List.c.obj)
+ .text.List_insert
+                0x0000000000000000       0x28 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(List.c.obj)
+ .text.List_putHead
+                0x0000000000000000       0x24 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(List.c.obj)
+ .text          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+ .data          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+ .bss           0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+ .text.batMonHwiFxn
+                0x0000000000000000       0x54 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+ .text.BatMonSupportLPF3_init
+                0x0000000000000000       0x9c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+ .text.BatMonSupportLPF3_registerTemperatureCb
+                0x0000000000000000       0x20 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+ .text.BatMonSupportLPF3_registerBatteryCb
+                0x0000000000000000       0x20 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+ .bss.batMonHwi
+                0x0000000000000000       0x1c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+ .bss.batteryCb
+                0x0000000000000000        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+ .bss.batteryEventMask
+                0x0000000000000000        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+ .bss.isInitialized
+                0x0000000000000000        0x1 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+ .bss.temperatureCb
+                0x0000000000000000        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+ .bss.temperatureEventMask
+                0x0000000000000000        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+ .debug_info    0x0000000000000000      0x412 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+ .debug_abbrev  0x0000000000000000      0x1b2 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+ .debug_loc     0x0000000000000000      0x168 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+ .debug_aranges
+                0x0000000000000000       0x38 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+ .debug_ranges  0x0000000000000000       0x28 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+ .debug_line    0x0000000000000000      0x3c6 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+ .debug_str     0x0000000000000000      0x425 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+ .comment       0x0000000000000000       0x7a /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+ .debug_frame   0x0000000000000000       0x88 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+ .ARM.attributes
+                0x0000000000000000       0x2c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(BatMonSupportLPF3.c.obj)
+ .text          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(NoRTOS.c.obj)
+ .data          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(NoRTOS.c.obj)
+ .bss           0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(NoRTOS.c.obj)
+ .text.NoRTOS_getConfig
+                0x0000000000000000       0x20 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(NoRTOS.c.obj)
+ .text.NoRTOS_setConfig
+                0x0000000000000000       0x28 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(NoRTOS.c.obj)
+ .text          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(posix_sleep.c.obj)
+ .data          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(posix_sleep.c.obj)
+ .bss           0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(posix_sleep.c.obj)
+ .text.usleep   0x0000000000000000        0x8 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(posix_sleep.c.obj)
+ .text          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+ .data          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+ .bss           0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+ .text.SemaphoreP_constructBinary
+                0x0000000000000000       0x40 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+ .text.SemaphoreP_create
+                0x0000000000000000       0x68 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+ .text.SemaphoreP_createBinary
+                0x0000000000000000       0x44 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+ .text.SemaphoreP_createBinaryCallback
+                0x0000000000000000       0x40 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+ .text.SemaphoreP_delete
+                0x0000000000000000        0x8 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+ .text.SemaphoreP_Params_init
+                0x0000000000000000        0xc /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+ .text.SemaphoreP_staticObjectSize
+                0x0000000000000000        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+ .text          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .data          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .bss           0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .text.ClockP_Params_init
+                0x0000000000000000       0x10 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .text.ClockP_getTicksUntilInterrupt
+                0x0000000000000000       0x24 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .text.ClockP_walkQueueDynamic
+                0x0000000000000000       0x74 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .text.ClockP_construct
+                0x0000000000000000      0x174 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .text.ClockP_create
+                0x0000000000000000      0x17c /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .text.ClockP_delete
+                0x0000000000000000       0x18 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .text.ClockP_stop
+                0x0000000000000000       0x88 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .text.ClockP_setTimeout
+                0x0000000000000000        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .text.ClockP_setPeriod
+                0x0000000000000000        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .text.ClockP_getTimeout
+                0x0000000000000000       0x18 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .text.ClockP_getCpuFreq
+                0x0000000000000000        0xc /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .text.ClockP_getSystemTickPeriod
+                0x0000000000000000        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .text.ClockP_getSystemTicks
+                0x0000000000000000        0xc /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .text.ClockP_usleep
+                0x0000000000000000       0xe4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .text.ClockP_staticObjectSize
+                0x0000000000000000        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .data.ClockP_tickPeriod
+                0x0000000000000000        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .text          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+ .data          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+ .bss           0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+ .text.HwiP_create
+                0x0000000000000000       0x90 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+ .text.HwiP_delete
+                0x0000000000000000       0x18 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+ .text.HwiP_destruct
+                0x0000000000000000       0x14 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+ .text.HwiP_disableInterrupt
+                0x0000000000000000        0x8 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+ .text.HwiP_interruptsEnabled
+                0x0000000000000000        0xc /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+ .text.HwiP_inSwi
+                0x0000000000000000       0x20 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+ .text.HwiP_plug
+                0x0000000000000000        0x8 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+ .text.HwiP_post
+                0x0000000000000000        0x8 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+ .text.HwiP_setPriority
+                0x0000000000000000       0x1c /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+ .text.HwiP_staticObjectSize
+                0x0000000000000000        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+ .text          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(PowerCC23X0_nortos.c.obj)
+ .data          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(PowerCC23X0_nortos.c.obj)
+ .bss           0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(PowerCC23X0_nortos.c.obj)
+ .text          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj)
+ .data          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj)
+ .bss           0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj)
+ .data.__dso_handle
+                0x0000000000000000        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj)
+ .text          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(cpu.c.obj)
+ .data          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(cpu.c.obj)
+ .bss           0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(cpu.c.obj)
+ .text          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+ .data          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+ .bss           0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+ .text.IntDefaultHandler
+                0x0000000000000000        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+ .text.IntUnregister
+                0x0000000000000000       0x14 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+ .text.IntGetPriority
+                0x0000000000000000       0x30 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+ .text.IntIsEnabled
+                0x0000000000000000       0x34 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+ .text.IntDisable
+                0x0000000000000000       0x2c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+ .text.IntSetPend
+                0x0000000000000000       0x58 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+ .text.IntGetPend
+                0x0000000000000000       0x28 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+ .text          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(lrfd.c.obj)
+ .data          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(lrfd.c.obj)
+ .bss           0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(lrfd.c.obj)
+ .text.LRFDReleaseClockDependency
+                0x0000000000000000       0x60 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(lrfd.c.obj)
+ .text          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(setup.c.obj)
+ .data          0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(setup.c.obj)
+ .bss           0x0000000000000000        0x0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(setup.c.obj)
+ .data          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_clzsi2.o)
+ .bss           0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_clzsi2.o)
+ .text          0x0000000000000000       0x48 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_aeabi_ldivmod.o)
+ .data          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_aeabi_ldivmod.o)
+ .bss           0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_aeabi_ldivmod.o)
+ .ARM.attributes
+                0x0000000000000000       0x1e /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_aeabi_ldivmod.o)
+ .text          0x0000000000000000       0x50 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_muldi3.o)
+ .data          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_muldi3.o)
+ .bss           0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_muldi3.o)
+ .debug_frame   0x0000000000000000       0x34 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_muldi3.o)
+ .ARM.attributes
+                0x0000000000000000       0x2c /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_muldi3.o)
+ .text          0x0000000000000000       0x3c /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(bpabi.o)
+ .data          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(bpabi.o)
+ .bss           0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(bpabi.o)
+ .debug_frame   0x0000000000000000       0x38 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(bpabi.o)
+ .ARM.attributes
+                0x0000000000000000       0x2c /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(bpabi.o)
+ .text          0x0000000000000000        0x4 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+ .data          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+ .bss           0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x0000000000000000       0x1e /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+ .text          0x0000000000000000      0x1cc /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_divdi3.o)
+ .data          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_divdi3.o)
+ .bss           0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_divdi3.o)
+ .ARM.extab     0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_divdi3.o)
+ .ARM.exidx     0x0000000000000000        0x8 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_divdi3.o)
+ .debug_frame   0x0000000000000000       0x3c /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_divdi3.o)
+ .ARM.attributes
+                0x0000000000000000       0x2c /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_divdi3.o)
+ .text          0x0000000000000000       0x18 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_clzdi2.o)
+ .data          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_clzdi2.o)
+ .bss           0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_clzdi2.o)
+ .ARM.attributes
+                0x0000000000000000       0x1e /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_clzdi2.o)
+ .text          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-malloc.o)
+ .data          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-malloc.o)
+ .bss           0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-malloc.o)
+ .text.malloc   0x0000000000000000       0x14 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-malloc.o)
+ .text.free     0x0000000000000000       0x14 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-malloc.o)
+ .debug_frame   0x0000000000000000       0x40 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-malloc.o)
+ .ARM.attributes
+                0x0000000000000000       0x2c /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-malloc.o)
+ .text          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-memcpy-stub.o)
+ .data          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-memcpy-stub.o)
+ .bss           0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-memcpy-stub.o)
+ .text          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-memset.o)
+ .data          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-memset.o)
+ .bss           0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-memset.o)
+ .text          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-nano-freer.o)
+ .data          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-nano-freer.o)
+ .bss           0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-nano-freer.o)
+ .text._free_r  0x0000000000000000       0x94 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-nano-freer.o)
+ .debug_frame   0x0000000000000000       0x2c /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-nano-freer.o)
+ .ARM.attributes
+                0x0000000000000000       0x2c /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-nano-freer.o)
+ .text          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
+ .data          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
+ .bss           0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
+ .text._malloc_r
+                0x0000000000000000       0xbc /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
+ .bss.__malloc_free_list
+                0x0000000000000000        0x4 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
+ .bss.__malloc_sbrk_start
+                0x0000000000000000        0x4 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
+ .debug_frame   0x0000000000000000       0x30 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
+ .ARM.attributes
+                0x0000000000000000       0x2c /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-nano-mallocr.o)
+ .text          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-sbrkr.o)
+ .data          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-sbrkr.o)
+ .bss           0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-sbrkr.o)
+ .text._sbrk_r  0x0000000000000000       0x24 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-sbrkr.o)
+ .debug_frame   0x0000000000000000       0x2c /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-sbrkr.o)
+ .ARM.attributes
+                0x0000000000000000       0x2c /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-sbrkr.o)
+ .text          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-impure.o)
+ .data          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-impure.o)
+ .bss           0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-impure.o)
+ .data._impure_ptr
+                0x0000000000000000        0x4 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-impure.o)
+ .data.impure_data
+                0x0000000000000000       0x60 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-impure.o)
+ .rodata._global_impure_ptr
+                0x0000000000000000        0x4 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-impure.o)
+ .ARM.attributes
+                0x0000000000000000       0x2c /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-impure.o)
+ .text          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-mlock.o)
+ .data          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-mlock.o)
+ .bss           0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-mlock.o)
+ .text.__malloc_lock
+                0x0000000000000000       0x10 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-mlock.o)
+ .text.__malloc_unlock
+                0x0000000000000000       0x10 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-mlock.o)
+ .debug_frame   0x0000000000000000       0x40 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-mlock.o)
+ .ARM.attributes
+                0x0000000000000000       0x2c /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-mlock.o)
+ .text          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-reent.o)
+ .data          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-reent.o)
+ .bss           0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-reent.o)
+ .text.cleanup_glue
+                0x0000000000000000       0x1a /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-reent.o)
+ .text._reclaim_reent
+                0x0000000000000000       0xcc /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-reent.o)
+ .debug_frame   0x0000000000000000       0x48 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-reent.o)
+ .ARM.attributes
+                0x0000000000000000       0x2c /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-reent.o)
+ COMMON         0x0000000000000000        0x4 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-reent.o)
+ .text          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+ .data          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+ .bss           0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+ .text.__retarget_lock_init
+                0x0000000000000000        0x2 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+ .text.__retarget_lock_init_recursive
+                0x0000000000000000        0x2 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+ .text.__retarget_lock_close
+                0x0000000000000000        0x2 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+ .text.__retarget_lock_close_recursive
+                0x0000000000000000        0x2 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+ .text.__retarget_lock_acquire
+                0x0000000000000000        0x2 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+ .text.__retarget_lock_acquire_recursive
+                0x0000000000000000        0x2 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+ .text.__retarget_lock_try_acquire
+                0x0000000000000000        0x4 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+ .text.__retarget_lock_try_acquire_recursive
+                0x0000000000000000        0x4 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+ .text.__retarget_lock_release
+                0x0000000000000000        0x2 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+ .text.__retarget_lock_release_recursive
+                0x0000000000000000        0x2 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+ .debug_frame   0x0000000000000000       0xb0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+ .ARM.attributes
+                0x0000000000000000       0x2c /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+ COMMON         0x0000000000000000        0x9 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-lock.o)
+ .text          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(sbrk.o)
+ .data          0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(sbrk.o)
+ .bss           0x0000000000000000        0x0 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(sbrk.o)
+ .text._sbrk    0x0000000000000000       0x1c /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(sbrk.o)
+ .bss.heap_end.4144
+                0x0000000000000000        0x4 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(sbrk.o)
+ .debug_frame   0x0000000000000000       0x20 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(sbrk.o)
+ .ARM.attributes
+                0x0000000000000000       0x2c /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(sbrk.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x0000000000000000 0x0000000000080000 xr
+CCFG             0x000000004e020000 0x0000000000000800 r
+SRAM             0x0000000020000000 0x0000000000009000 xrw
+S2RRAM           0x0000000040098000 0x0000000000001000 rw
+LOG_DATA         0x0000000090000000 0x0000000000040000 r
+LOG_PTR          0x0000000094000008 0x0000000000040000 r
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD empty.obj
+LOAD main_nortos.obj
+LOAD ti_devices_config.obj
+LOAD ti_drivers_config.obj
+                0x0000000000000400                STACKSIZE = 0x400
+                0x0000000000002004                HEAPSIZE = 0x2004
+                0x0000000000000000                PROVIDE (_resetVecs_base_address = DEFINED (_resetVecs_base_address)?_resetVecs_base_address:0x0)
+
+.resetVecs      0x0000000000000000       0x40
+ *(.resetVecs)
+ .resetVecs     0x0000000000000000       0x40 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj)
+
+.ramVecs        0x0000000020000000       0x8c
+ *(.ramVecs)
+ .ramVecs       0x0000000020000000       0x8c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+                0x0000000020000400                UDMALPF3_CONFIG_BASE = 0x20000400
+                0x0000000020000400                DMA_CHANNEL0_CONTROL_TABLE_ENTRY_ADDRESS = (UDMALPF3_CONFIG_BASE + 0x0)
+                0x0000000020000410                DMA_CHANNEL1_CONTROL_TABLE_ENTRY_ADDRESS = (UDMALPF3_CONFIG_BASE + 0x10)
+                0x0000000020000420                DMA_CHANNEL2_CONTROL_TABLE_ENTRY_ADDRESS = (UDMALPF3_CONFIG_BASE + 0x20)
+                0x0000000020000430                DMA_CHANNEL3_CONTROL_TABLE_ENTRY_ADDRESS = (UDMALPF3_CONFIG_BASE + 0x30)
+                0x0000000020000440                DMA_CHANNEL4_CONTROL_TABLE_ENTRY_ADDRESS = (UDMALPF3_CONFIG_BASE + 0x40)
+                0x0000000020000450                DMA_CHANNEL5_CONTROL_TABLE_ENTRY_ADDRESS = (UDMALPF3_CONFIG_BASE + 0x50)
+                0x0000000020000460                DMA_CHANNEL6_CONTROL_TABLE_ENTRY_ADDRESS = (UDMALPF3_CONFIG_BASE + 0x60)
+                0x0000000020000470                DMA_CHANNEL7_CONTROL_TABLE_ENTRY_ADDRESS = (UDMALPF3_CONFIG_BASE + 0x70)
+                0x0000000020000480                DMA_CHANNEL0_ALT_CONTROL_TABLE_ENTRY_ADDRESS = (UDMALPF3_CONFIG_BASE + 0x80)
+                0x0000000020000490                DMA_CHANNEL1_ALT_CONTROL_TABLE_ENTRY_ADDRESS = (UDMALPF3_CONFIG_BASE + 0x90)
+                0x00000000200004a0                DMA_CHANNEL2_ALT_CONTROL_TABLE_ENTRY_ADDRESS = (UDMALPF3_CONFIG_BASE + 0xa0)
+                0x00000000200004b0                DMA_CHANNEL3_ALT_CONTROL_TABLE_ENTRY_ADDRESS = (UDMALPF3_CONFIG_BASE + 0xb0)
+                0x00000000200004c0                DMA_CHANNEL4_ALT_CONTROL_TABLE_ENTRY_ADDRESS = (UDMALPF3_CONFIG_BASE + 0xc0)
+                0x00000000200004d0                DMA_CHANNEL5_ALT_CONTROL_TABLE_ENTRY_ADDRESS = (UDMALPF3_CONFIG_BASE + 0xd0)
+                0x00000000200004e0                DMA_CHANNEL6_ALT_CONTROL_TABLE_ENTRY_ADDRESS = (UDMALPF3_CONFIG_BASE + 0xe0)
+                0x00000000200004f0                DMA_CHANNEL7_ALT_CONTROL_TABLE_ENTRY_ADDRESS = (UDMALPF3_CONFIG_BASE + 0xf0)
+                0x0000000000000000                UDMALPF3_channel0ControlTableEntry_is_placed = 0x0
+
+.dmaChannel0ControlTableEntry
+ *(.dmaChannel0ControlTableEntry)
+                0x0000000000000000                UDMALPF3_channel1ControlTableEntry_is_placed = 0x0
+
+.dmaChannel1ControlTableEntry
+ *(.dmaChannel1ControlTableEntry)
+                0x0000000000000000                UDMALPF3_channel2ControlTableEntry_is_placed = 0x0
+
+.dmaChannel2ControlTableEntry
+ *(.dmaChannel2ControlTableEntry)
+                0x0000000000000000                UDMALPF3_channel3ControlTableEntry_is_placed = 0x0
+
+.dmaChannel3ControlTableEntry
+ *(.dmaChannel3ControlTableEntry)
+                0x0000000000000000                UDMALPF3_channel4ControlTableEntry_is_placed = 0x0
+
+.dmaChannel4ControlTableEntry
+ *(.dmaChannel4ControlTableEntry)
+                0x0000000000000000                UDMALPF3_channel5ControlTableEntry_is_placed = 0x0
+
+.dmaChannel5ControlTableEntry
+ *(.dmaChannel5ControlTableEntry)
+                0x0000000000000000                UDMALPF3_channel6ControlTableEntry_is_placed = 0x0
+
+.dmaChannel6ControlTableEntry
+ *(.dmaChannel6ControlTableEntry)
+                0x0000000000000000                UDMALPF3_channel7ControlTableEntry_is_placed = 0x0
+
+.dmaChannel7ControlTableEntry
+ *(.dmaChannel7ControlTableEntry)
+                0x0000000000000000                UDMALPF3_channel0AltControlTableEntry_is_placed = 0x0
+
+.dmaChannel0AltControlTableEntry
+ *(.dmaChannel0AltControlTableEntry)
+                0x0000000000000000                UDMALPF3_channel1AltControlTableEntry_is_placed = 0x0
+
+.dmaChannel1AltControlTableEntry
+ *(.dmaChannel1AltControlTableEntry)
+                0x0000000000000000                UDMALPF3_channel2AltControlTableEntry_is_placed = 0x0
+
+.dmaChannel2AltControlTableEntry
+ *(.dmaChannel2AltControlTableEntry)
+                0x0000000000000000                UDMALPF3_channel3AltControlTableEntry_is_placed = 0x0
+
+.dmaChannel3AltControlTableEntry
+ *(.dmaChannel3AltControlTableEntry)
+                0x0000000000000000                UDMALPF3_channel4AltControlTableEntry_is_placed = 0x0
+
+.dmaChannel4AltControlTableEntry
+ *(.dmaChannel4AltControlTableEntry)
+                0x0000000000000000                UDMALPF3_channel5AltControlTableEntry_is_placed = 0x0
+
+.dmaChannel5AltControlTableEntry
+ *(.dmaChannel5AltControlTableEntry)
+                0x0000000000000000                UDMALPF3_channel6AltControlTableEntry_is_placed = 0x0
+
+.dmaChannel6AltControlTableEntry
+ *(.dmaChannel6AltControlTableEntry)
+                0x0000000000000000                UDMALPF3_channel7AltControlTableEntry_is_placed = 0x0
+
+.dmaChannel7AltControlTableEntry
+ *(.dmaChannel7AltControlTableEntry)
+
+.text           0x0000000000000040     0x1488
+ CREATE_OBJECT_SYMBOLS
+ *(.text)
+ .text          0x0000000000000040       0x3c /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_clzsi2.o)
+                0x0000000000000040                __clzsi2
+ *(.text.*)
+ .text.mainThread
+                0x000000000000007c       0x28 empty.obj
+                0x000000000000007c                mainThread
+ .text.startup.main
+                0x00000000000000a4       0x14 main_nortos.obj
+                0x00000000000000a4                main
+ .text.Board_shutDownExtFlash
+                0x00000000000000b8       0xbc ti_drivers_config.obj
+                0x00000000000000b8                Board_shutDownExtFlash
+ .text.Board_initHook
+                0x0000000000000174        0x4 ti_drivers_config.obj
+                0x0000000000000174                Board_initHook
+ .text.Board_init
+                0x0000000000000178       0x28 ti_drivers_config.obj
+                0x0000000000000178                Board_init
+ .text.GPIO_resetConfig
+                0x00000000000001a0       0x38 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIO.c.obj)
+                0x00000000000001a0                GPIO_resetConfig
+ .text.GPIO_hwiIntFxn
+                0x00000000000001d8       0x44 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+                0x00000000000001d8                GPIO_hwiIntFxn
+ .text.GPIO_disableInt
+                0x000000000000021c       0x14 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+                0x000000000000021c                GPIO_disableInt
+ .text.GPIO_init
+                0x0000000000000230      0x130 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+                0x0000000000000230                GPIO_init
+ .text.GPIO_setConfig
+                0x0000000000000360       0x78 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+                0x0000000000000360                GPIO_setConfig
+ .text.GPIO_toggle
+                0x00000000000003d8       0x14 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+                0x00000000000003d8                GPIO_toggle
+ .text.GPIO_write
+                0x00000000000003ec       0x18 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+                0x00000000000003ec                GPIO_write
+ .text.PowerCC23X0_rtcISR
+                0x0000000000000404       0x14 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .text.PowerCC23X0_startHFXT.part.0
+                0x0000000000000418       0xb0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .text.PowerCC23X0_oscillatorISR
+                0x00000000000004c8      0x128 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .text.Power_init
+                0x00000000000005f0       0xc0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+                0x00000000000005f0                Power_init
+ .text.Power_disablePolicy
+                0x00000000000006b0       0x10 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+                0x00000000000006b0                Power_disablePolicy
+ .text.Power_enablePolicy
+                0x00000000000006c0        0xc /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+                0x00000000000006c0                Power_enablePolicy
+ .text.Power_getConstraintMask
+                0x00000000000006cc        0xc /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+                0x00000000000006cc                Power_getConstraintMask
+ .text.Power_idleFunc
+                0x00000000000006d8       0x20 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+                0x00000000000006d8                Power_idleFunc
+ .text.Power_setDependency
+                0x00000000000006f8       0x6c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+                0x00000000000006f8                Power_setDependency
+ .text.Power_sleep
+                0x0000000000000764       0x80 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+                0x0000000000000764                Power_sleep
+ .text.PowerLPF3_selectLFXT
+                0x00000000000007e4       0x54 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+                0x00000000000007e4                PowerLPF3_selectLFXT
+ .text.PowerCC23X0_notify
+                0x0000000000000838       0x34 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+                0x0000000000000838                PowerCC23X0_notify
+ .text.List_clearList
+                0x000000000000086c       0x14 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(List.c.obj)
+                0x000000000000086c                List_clearList
+ .text.List_put
+                0x0000000000000880       0x24 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(List.c.obj)
+                0x0000000000000880                List_put
+ .text.List_remove
+                0x00000000000008a4       0x2c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(List.c.obj)
+                0x00000000000008a4                List_remove
+ .text.NoRTOS_start
+                0x00000000000008d0        0x8 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(NoRTOS.c.obj)
+                0x00000000000008d0                NoRTOS_start
+ .text.sleep    0x00000000000008d8        0x8 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(posix_sleep.c.obj)
+                0x00000000000008d8                sleep
+ .text.clkFxn   0x00000000000008e0        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+                0x00000000000008e0                clkFxn
+ .text.SemaphoreP_construct
+                0x00000000000008e4       0x68 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+                0x00000000000008e4                SemaphoreP_construct
+ .text.SemaphoreP_destruct
+                0x000000000000094c        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+                0x000000000000094c                SemaphoreP_destruct
+ .text.SemaphoreP_pend
+                0x0000000000000950      0x10c /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+                0x0000000000000950                SemaphoreP_pend
+ .text.SemaphoreP_post
+                0x0000000000000a5c       0x48 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+                0x0000000000000a5c                SemaphoreP_post
+ .text.sleepClkFxn
+                0x0000000000000aa4        0x8 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .text.ClockP_hwiCallback
+                0x0000000000000aac      0x110 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .text.sleepTicks
+                0x0000000000000bbc      0x190 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .text.ClockP_startup
+                0x0000000000000d4c       0xb0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+                0x0000000000000d4c                ClockP_startup
+ .text.ClockP_destruct
+                0x0000000000000dfc       0x10 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+                0x0000000000000dfc                ClockP_destruct
+ .text.ClockP_add
+                0x0000000000000e0c       0x1c /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+                0x0000000000000e0c                ClockP_add
+ .text.ClockP_start
+                0x0000000000000e28       0x80 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+                0x0000000000000e28                ClockP_start
+ .text.ClockP_isActive
+                0x0000000000000ea8        0x8 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+                0x0000000000000ea8                ClockP_isActive
+ .text.ClockP_sleep
+                0x0000000000000eb0       0x24 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+                0x0000000000000eb0                ClockP_sleep
+ .text.HwiP_dispatch
+                0x0000000000000ed4       0x24 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+                0x0000000000000ed4                HwiP_dispatch
+ .text.HwiP_clearInterrupt
+                0x0000000000000ef8        0x8 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+                0x0000000000000ef8                HwiP_clearInterrupt
+ .text.HwiP_construct
+                0x0000000000000f00       0x88 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+                0x0000000000000f00                HwiP_construct
+ .text.HwiP_disable
+                0x0000000000000f88        0xc /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+                0x0000000000000f88                HwiP_disable
+ .text.HwiP_enable
+                0x0000000000000f94        0x8 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+                0x0000000000000f94                HwiP_enable
+ .text.HwiP_enableInterrupt
+                0x0000000000000f9c        0x8 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+                0x0000000000000f9c                HwiP_enableInterrupt
+ .text.HwiP_inISR
+                0x0000000000000fa4       0x14 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+                0x0000000000000fa4                HwiP_inISR
+ .text.HwiP_Params_init
+                0x0000000000000fb8       0x14 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+                0x0000000000000fb8                HwiP_Params_init
+ .text.HwiP_restore
+                0x0000000000000fcc        0xc /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+                0x0000000000000fcc                HwiP_restore
+ .text.HwiP_setFunc
+                0x0000000000000fd8       0x18 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+                0x0000000000000fd8                HwiP_setFunc
+ .text.PowerCC23X0_standbyPolicy
+                0x0000000000000ff0      0x1d0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(PowerCC23X0_nortos.c.obj)
+                0x0000000000000ff0                PowerCC23X0_standbyPolicy
+ .text.resetISR
+                0x00000000000011c0        0xc /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj)
+                0x00000000000011c0                resetISR
+ .text.nmiISR   0x00000000000011cc        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj)
+ .text.faultISR
+                0x00000000000011d0        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj)
+ .text.defaultHandler
+                0x00000000000011d4        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj)
+ .text.localProgramStart
+                0x00000000000011d8       0x78 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj)
+                0x00000000000011d8                localProgramStart
+ .text._fini    0x0000000000001250        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj)
+                0x0000000000001250                _fini
+ .text.CPUDelay
+                0x0000000000001254        0x8 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(cpu.c.obj)
+                0x0000000000001254                CPUDelay
+ .text.IntRegister
+                0x000000000000125c       0x30 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+                0x000000000000125c                IntRegister
+ .text.IntSetPriority
+                0x000000000000128c       0xb4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+                0x000000000000128c                IntSetPriority
+ .text.IntEnable
+                0x0000000000001340       0x28 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+                0x0000000000001340                IntEnable
+ .text.IntClearPend
+                0x0000000000001368       0x40 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+                0x0000000000001368                IntClearPend
+ .text.LRFDSetClockDependency
+                0x00000000000013a8       0x60 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(lrfd.c.obj)
+                0x00000000000013a8                LRFDSetClockDependency
+ .text.LRFDApplyClockDependencies
+                0x0000000000001408       0x54 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(lrfd.c.obj)
+                0x0000000000001408                LRFDApplyClockDependencies
+ .text.SetupTrimDevice
+                0x000000000000145c       0x48 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(setup.c.obj)
+                0x000000000000145c                SetupTrimDevice
+ .text.memcpy   0x00000000000014a4       0x12 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-memcpy-stub.o)
+                0x00000000000014a4                memcpy
+ .text.memset   0x00000000000014b6       0x10 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-memset.o)
+                0x00000000000014b6                memset
+                0x00000000000014c8                . = ALIGN (0x4)
+ *fill*         0x00000000000014c6        0x2 
+ *(.ctors)
+                0x00000000000014c8                . = ALIGN (0x4)
+ *(.dtors)
+                0x00000000000014c8                . = ALIGN (0x4)
+                0x00000000000014c8                __init_array_start = .
+ *(.init_array*)
+                0x00000000000014c8                __init_array_end = .
+ *(.init)
+ *(.fini*)
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+
+.glue_7         0x00000000000014c8        0x0
+ .glue_7        0x00000000000014c8        0x0 linker stubs
+
+.glue_7t        0x00000000000014c8        0x0
+ .glue_7t       0x00000000000014c8        0x0 linker stubs
+
+.vfp11_veneer   0x00000000000014c8        0x0
+ .vfp11_veneer  0x00000000000014c8        0x0 linker stubs
+
+.v4_bx          0x00000000000014c8        0x0
+ .v4_bx         0x00000000000014c8        0x0 linker stubs
+
+.iplt           0x00000000000014c8        0x0
+ .iplt          0x00000000000014c8        0x0 empty.obj
+
+.rodata         0x00000000000014c8       0x1c
+ *(.rodata)
+ *(.rodata.*)
+ .rodata.GPIO_config
+                0x00000000000014c8       0x10 ti_drivers_config.obj
+                0x00000000000014c8                GPIO_config
+ .rodata.GPIO_pinLowerBound
+                0x00000000000014d8        0x1 ti_drivers_config.obj
+                0x00000000000014d8                GPIO_pinLowerBound
+ .rodata.GPIO_pinUpperBound
+                0x00000000000014d9        0x1 ti_drivers_config.obj
+                0x00000000000014d9                GPIO_pinUpperBound
+ *fill*         0x00000000000014da        0x2 
+ .rodata.PowerCC23X0_config
+                0x00000000000014dc        0x8 ti_drivers_config.obj
+                0x00000000000014dc                PowerCC23X0_config
+ *(.timestampPFormat)
+
+.data           0x000000002000008c       0x78 load address 0x00000000000014e4
+                0x00000000000014e4                __data_load__ = LOADADDR (.data)
+                0x000000002000008c                __data_start__ = .
+ *(.data)
+ *(.data.*)
+ .data.gpioPinConfigs
+                0x000000002000008c       0x68 ti_drivers_config.obj
+                0x000000002000008c                gpioPinConfigs
+ .data.powerState
+                0x00000000200000f4        0x1 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ *fill*         0x00000000200000f5        0x3 
+ .data.SemaphoreP_defaultParams
+                0x00000000200000f8        0x8 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+                0x00000000200000f8                SemaphoreP_defaultParams
+ .data.HwiP_swiPIntNum
+                0x0000000020000100        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+                0x0000000020000100                HwiP_swiPIntNum
+                0x0000000020000104                . = ALIGN (0x2)
+ *(.TI.ramfunc)
+                0x0000000020000104                . = ALIGN (0x4)
+                0x0000000020000104                __data_end__ = .
+
+.igot.plt       0x0000000020000104        0x0 load address 0x000000000000155c
+ .igot.plt      0x0000000020000104        0x0 empty.obj
+
+.ARM.exidx      0x000000000000155c        0x0
+                0x000000000000155c                __exidx_start = .
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x000000000000155c                __exidx_end = .
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+
+.nvs
+ *(.nvs)
+
+.ccfg           0x000000004e020000      0x800
+ *(.ccfg)
+ .ccfg          0x000000004e020000      0x800 ti_devices_config.obj
+                0x000000004e020000                ccfg
+
+.rel.dyn        0x000000004e020800        0x0
+ .rel.iplt      0x000000004e020800        0x0 empty.obj
+
+.bss            0x0000000020000104      0x240
+                0x0000000020000104                __bss_start__ = .
+ *(.shbss)
+ *(.bss)
+ *(.bss.*)
+ .bss.gpioHwi   0x0000000020000104       0x1c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+ .bss.initCalled
+                0x0000000020000120        0x1 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+ *fill*         0x0000000020000121        0x3 
+ .bss.ckmHwi    0x0000000020000124       0x1c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .bss.constraintCounts
+                0x0000000020000140        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .bss.constraintMask
+                0x0000000020000144        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .bss.controlPreStandby.4975
+                0x0000000020000148        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .bss.isInitialized
+                0x000000002000014c        0x1 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .bss.isPolicyEnabled
+                0x000000002000014d        0x1 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ *fill*         0x000000002000014e        0x2 
+ .bss.notifyList
+                0x0000000020000150        0x8 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .bss.policyFxn
+                0x0000000020000158        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .bss.resourceCountsClkctl0
+                0x000000002000015c       0x1f /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ *fill*         0x000000002000017b        0x1 
+ .bss.resourceCountsLrfd
+                0x000000002000017c        0xc /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .bss.SemaphoreP_initialized
+                0x0000000020000188        0x1 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+ .bss.doEnablePolicy
+                0x0000000020000189        0x1 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+ .bss.pendInProgress
+                0x000000002000018a        0x1 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+ *fill*         0x000000002000018b        0x1 
+ .bss.ClockP_defaultParams
+                0x000000002000018c        0xc /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .bss.ClockP_inWorkFunc
+                0x0000000020000198        0x1 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .bss.ClockP_initialized
+                0x0000000020000199        0x1 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ *fill*         0x000000002000019a        0x2 
+ .bss.ClockP_list
+                0x000000002000019c        0x8 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .bss.ClockP_nextScheduledTick
+                0x00000000200001a4        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .bss.ClockP_startDuringWorkFunc
+                0x00000000200001a8        0x1 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ *fill*         0x00000000200001a9        0x3 
+ .bss.ClockP_ticks
+                0x00000000200001ac        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .bss.HwiP_dispatchTable
+                0x00000000200001b0       0x8c /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+ .bss.sysTimerTimeouts
+                0x000000002000023c       0x14 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(PowerCC23X0_nortos.c.obj)
+ .bss.lrfdClockDependencySets
+                0x0000000020000250        0x4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(lrfd.c.obj)
+ .bss.lrfdClocked
+                0x0000000020000254        0x1 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(lrfd.c.obj)
+ *(COMMON)
+ *fill*         0x0000000020000255        0x3 
+ COMMON         0x0000000020000258       0xd0 ti_drivers_config.obj
+                0x0000000020000258                gpioCallbackFunctions
+                0x00000000200002c0                gpioUserArgs
+ COMMON         0x0000000020000328       0x1c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+                0x0000000020000328                clockHwi
+                0x0000000020000344                . = ALIGN (0x4)
+                0x0000000020000344                __bss_end__ = .
+
+.s2rram
+ *(.s2rram)
+
+.heap           0x0000000020000344     0x2004
+                0x0000000020000344                __heap_start__ = .
+                0x0000000020000344                end = __heap_start__
+                0x0000000020000344                _end = end
+                0x0000000020000344                __end = end
+                0x0000000020002348                . = (. + HEAPSIZE)
+ *fill*         0x0000000020000344     0x2004 
+ *(.heap)
+                0x0000000020002348                __heap_end__ = .
+                0x0000000020002348                __HeapLimit = __heap_end__
+
+.stack          0x0000000020002348      0x400
+                0x0000000020002348                _stack = .
+                0x0000000020002348                __stack = .
+ *(.stack)
+                0x0000000020002748                . = (. + STACKSIZE)
+ *fill*         0x0000000020002348      0x400 
+                0x0000000020002748                _stack_end = .
+                0x0000000020002748                __stack_end = .
+
+.log_data
+ *(.log_data)
+
+.log_ptr
+ *(.log_ptr*)
+LOAD ti_utils_build_linker.cmd.genlibs
+LOAD /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a
+LOAD /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a
+LOAD /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a
+LOAD /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a
+LOAD /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a
+LOAD /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libm.a
+LOAD /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a
+START GROUP
+LOAD /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a
+LOAD /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a
+END GROUP
+START GROUP
+LOAD /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a
+LOAD /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a
+END GROUP
+OUTPUT(empty.out elf32-littlearm)
+
+.debug_info     0x0000000000000000     0xe09e
+ .debug_info    0x0000000000000000      0x102 empty.obj
+ .debug_info    0x0000000000000102       0x82 main_nortos.obj
+ .debug_info    0x0000000000000184      0x4fe ti_devices_config.obj
+ .debug_info    0x0000000000000682      0x81c ti_drivers_config.obj
+ .debug_info    0x0000000000000e9e      0xbfa /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIO.c.obj)
+ .debug_info    0x0000000000001a98     0x1736 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+ .debug_info    0x00000000000031ce     0x1e9f /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .debug_info    0x000000000000506d      0xc31 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(List.c.obj)
+ .debug_info    0x0000000000005c9e      0x1ec /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(NoRTOS.c.obj)
+ .debug_info    0x0000000000005e8a      0x124 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(posix_sleep.c.obj)
+ .debug_info    0x0000000000005fae     0x14ac /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+ .debug_info    0x000000000000745a     0x228f /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .debug_info    0x00000000000096e9     0x1650 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+ .debug_info    0x000000000000ad39      0x2c5 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(PowerCC23X0_nortos.c.obj)
+ .debug_info    0x000000000000affe      0xbb6 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj)
+ .debug_info    0x000000000000bbb4       0xa5 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(cpu.c.obj)
+ .debug_info    0x000000000000bc59      0x748 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+ .debug_info    0x000000000000c3a1      0x233 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(lrfd.c.obj)
+ .debug_info    0x000000000000c5d4     0x1aca /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(setup.c.obj)
+
+.debug_abbrev   0x0000000000000000     0x2fee
+ .debug_abbrev  0x0000000000000000       0x95 empty.obj
+ .debug_abbrev  0x0000000000000095       0x43 main_nortos.obj
+ .debug_abbrev  0x00000000000000d8      0x127 ti_devices_config.obj
+ .debug_abbrev  0x00000000000001ff      0x28f ti_drivers_config.obj
+ .debug_abbrev  0x000000000000048e      0x2d6 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIO.c.obj)
+ .debug_abbrev  0x0000000000000764      0x500 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+ .debug_abbrev  0x0000000000000c64      0x575 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .debug_abbrev  0x00000000000011d9      0x25c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(List.c.obj)
+ .debug_abbrev  0x0000000000001435      0x108 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(NoRTOS.c.obj)
+ .debug_abbrev  0x000000000000153d       0xa7 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(posix_sleep.c.obj)
+ .debug_abbrev  0x00000000000015e4      0x44d /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+ .debug_abbrev  0x0000000000001a31      0x566 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .debug_abbrev  0x0000000000001f97      0x535 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+ .debug_abbrev  0x00000000000024cc      0x11e /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(PowerCC23X0_nortos.c.obj)
+ .debug_abbrev  0x00000000000025ea      0x35a /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj)
+ .debug_abbrev  0x0000000000002944       0x64 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(cpu.c.obj)
+ .debug_abbrev  0x00000000000029a8      0x331 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+ .debug_abbrev  0x0000000000002cd9      0x106 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(lrfd.c.obj)
+ .debug_abbrev  0x0000000000002ddf      0x20f /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(setup.c.obj)
+
+.debug_loc      0x0000000000000000     0x66e3
+ .debug_loc     0x0000000000000000       0x13 empty.obj
+ .debug_loc     0x0000000000000013       0xb8 ti_drivers_config.obj
+ .debug_loc     0x00000000000000cb      0x191 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIO.c.obj)
+ .debug_loc     0x000000000000025c      0xbcf /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+ .debug_loc     0x0000000000000e2b     0x13e1 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .debug_loc     0x000000000000220c      0x396 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(List.c.obj)
+ .debug_loc     0x00000000000025a2       0x32 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(NoRTOS.c.obj)
+ .debug_loc     0x00000000000025d4       0x4a /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(posix_sleep.c.obj)
+ .debug_loc     0x000000000000261e      0xd76 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+ .debug_loc     0x0000000000003394     0x1cc7 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .debug_loc     0x000000000000505b      0x810 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+ .debug_loc     0x000000000000586b      0x3c1 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(PowerCC23X0_nortos.c.obj)
+ .debug_loc     0x0000000000005c2c       0x54 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj)
+ .debug_loc     0x0000000000005c80      0x81b /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+ .debug_loc     0x000000000000649b      0x226 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(lrfd.c.obj)
+ .debug_loc     0x00000000000066c1       0x22 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(setup.c.obj)
+
+.debug_aranges  0x0000000000000000      0x658
+ .debug_aranges
+                0x0000000000000000       0x20 empty.obj
+ .debug_aranges
+                0x0000000000000020       0x20 main_nortos.obj
+ .debug_aranges
+                0x0000000000000040       0x18 ti_devices_config.obj
+ .debug_aranges
+                0x0000000000000058       0x40 ti_drivers_config.obj
+ .debug_aranges
+                0x0000000000000098       0x40 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIO.c.obj)
+ .debug_aranges
+                0x00000000000000d8       0x80 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+ .debug_aranges
+                0x0000000000000158      0x110 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .debug_aranges
+                0x0000000000000268       0x48 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(List.c.obj)
+ .debug_aranges
+                0x00000000000002b0       0x30 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(NoRTOS.c.obj)
+ .debug_aranges
+                0x00000000000002e0       0x28 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(posix_sleep.c.obj)
+ .debug_aranges
+                0x0000000000000308       0x78 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+ .debug_aranges
+                0x0000000000000380       0xd8 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .debug_aranges
+                0x0000000000000458       0xb8 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+ .debug_aranges
+                0x0000000000000510       0x20 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(PowerCC23X0_nortos.c.obj)
+ .debug_aranges
+                0x0000000000000530       0x48 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj)
+ .debug_aranges
+                0x0000000000000578       0x20 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(cpu.c.obj)
+ .debug_aranges
+                0x0000000000000598       0x70 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+ .debug_aranges
+                0x0000000000000608       0x30 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(lrfd.c.obj)
+ .debug_aranges
+                0x0000000000000638       0x20 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(setup.c.obj)
+
+.debug_ranges   0x0000000000000000      0xe98
+ .debug_ranges  0x0000000000000000       0x10 empty.obj
+ .debug_ranges  0x0000000000000010       0x10 main_nortos.obj
+ .debug_ranges  0x0000000000000020       0x60 ti_drivers_config.obj
+ .debug_ranges  0x0000000000000080       0x48 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIO.c.obj)
+ .debug_ranges  0x00000000000000c8      0x248 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+ .debug_ranges  0x0000000000000310      0x290 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .debug_ranges  0x00000000000005a0       0x38 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(List.c.obj)
+ .debug_ranges  0x00000000000005d8       0x20 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(NoRTOS.c.obj)
+ .debug_ranges  0x00000000000005f8       0x18 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(posix_sleep.c.obj)
+ .debug_ranges  0x0000000000000610      0x200 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+ .debug_ranges  0x0000000000000810      0x320 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .debug_ranges  0x0000000000000b30      0x160 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+ .debug_ranges  0x0000000000000c90       0x10 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(PowerCC23X0_nortos.c.obj)
+ .debug_ranges  0x0000000000000ca0       0x68 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj)
+ .debug_ranges  0x0000000000000d08       0x10 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(cpu.c.obj)
+ .debug_ranges  0x0000000000000d18      0x120 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+ .debug_ranges  0x0000000000000e38       0x50 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(lrfd.c.obj)
+ .debug_ranges  0x0000000000000e88       0x10 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(setup.c.obj)
+
+.debug_line     0x0000000000000000     0x7f47
+ .debug_line    0x0000000000000000      0x276 empty.obj
+ .debug_line    0x0000000000000276       0x77 main_nortos.obj
+ .debug_line    0x00000000000002ed      0x243 ti_devices_config.obj
+ .debug_line    0x0000000000000530      0x5fd ti_drivers_config.obj
+ .debug_line    0x0000000000000b2d      0x449 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIO.c.obj)
+ .debug_line    0x0000000000000f76      0xadd /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+ .debug_line    0x0000000000001a53     0x15e0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .debug_line    0x0000000000003033      0x4f0 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(List.c.obj)
+ .debug_line    0x0000000000003523      0x2a3 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(NoRTOS.c.obj)
+ .debug_line    0x00000000000037c6      0x24f /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(posix_sleep.c.obj)
+ .debug_line    0x0000000000003a15      0xa88 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+ .debug_line    0x000000000000449d     0x153a /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .debug_line    0x00000000000059d7      0xabb /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+ .debug_line    0x0000000000006492      0x607 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(PowerCC23X0_nortos.c.obj)
+ .debug_line    0x0000000000006a99      0x50a /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj)
+ .debug_line    0x0000000000006fa3      0x1e7 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(cpu.c.obj)
+ .debug_line    0x000000000000718a      0x76b /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+ .debug_line    0x00000000000078f5      0x3c4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(lrfd.c.obj)
+ .debug_line    0x0000000000007cb9      0x28e /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(setup.c.obj)
+
+.debug_str      0x0000000000000000     0x3014
+ .debug_str     0x0000000000000000      0x1dc empty.obj
+                                        0x22c (size before relaxing)
+ .debug_str     0x00000000000001dc       0x16 main_nortos.obj
+                                        0x1ad (size before relaxing)
+ .debug_str     0x00000000000001f2      0x2c4 ti_devices_config.obj
+                                        0x477 (size before relaxing)
+ .debug_str     0x00000000000004b6      0x203 ti_drivers_config.obj
+                                        0x672 (size before relaxing)
+ .debug_str     0x00000000000006b9      0x57a /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIO.c.obj)
+                                        0x6d1 (size before relaxing)
+ .debug_str     0x0000000000000c33      0x2e7 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+                                        0x9a8 (size before relaxing)
+ .debug_str     0x0000000000000f1a      0xa40 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+                                        0xda1 (size before relaxing)
+ .debug_str     0x000000000000195a       0x8c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(List.c.obj)
+                                        0x69e (size before relaxing)
+ .debug_str     0x00000000000019e6      0x10a /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(NoRTOS.c.obj)
+                                        0x319 (size before relaxing)
+ .debug_str     0x0000000000001af0       0x6c /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(posix_sleep.c.obj)
+                                        0x228 (size before relaxing)
+ .debug_str     0x0000000000001b5c      0x28a /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+                                        0x948 (size before relaxing)
+ .debug_str     0x0000000000001de6      0x3a5 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+                                        0xbe8 (size before relaxing)
+ .debug_str     0x000000000000218b      0x242 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+                                        0x900 (size before relaxing)
+ .debug_str     0x00000000000023cd      0x131 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(PowerCC23X0_nortos.c.obj)
+                                        0x37d (size before relaxing)
+ .debug_str     0x00000000000024fe      0x147 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj)
+                                        0x748 (size before relaxing)
+ .debug_str     0x0000000000002645       0xb1 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(cpu.c.obj)
+                                        0x210 (size before relaxing)
+ .debug_str     0x00000000000026f6      0x157 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+                                        0x3d8 (size before relaxing)
+ .debug_str     0x000000000000284d       0x9e /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(lrfd.c.obj)
+                                        0x2a7 (size before relaxing)
+ .debug_str     0x00000000000028eb      0x729 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(setup.c.obj)
+                                        0xb98 (size before relaxing)
+
+.comment        0x0000000000000000       0x79
+ .comment       0x0000000000000000       0x79 empty.obj
+                                         0x7a (size before relaxing)
+ .comment       0x0000000000000079       0x7a main_nortos.obj
+ .comment       0x0000000000000079       0x7a ti_devices_config.obj
+ .comment       0x0000000000000079       0x7a ti_drivers_config.obj
+ .comment       0x0000000000000079       0x7a /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIO.c.obj)
+ .comment       0x0000000000000079       0x7a /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+ .comment       0x0000000000000079       0x7a /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .comment       0x0000000000000079       0x7a /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(List.c.obj)
+ .comment       0x0000000000000079       0x7a /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(NoRTOS.c.obj)
+ .comment       0x0000000000000079       0x7a /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(posix_sleep.c.obj)
+ .comment       0x0000000000000079       0x7a /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+ .comment       0x0000000000000079       0x7a /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .comment       0x0000000000000079       0x7a /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+ .comment       0x0000000000000079       0x7a /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(PowerCC23X0_nortos.c.obj)
+ .comment       0x0000000000000079       0x7a /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj)
+ .comment       0x0000000000000079       0x7a /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(cpu.c.obj)
+ .comment       0x0000000000000079       0x7a /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+ .comment       0x0000000000000079       0x7a /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(lrfd.c.obj)
+ .comment       0x0000000000000079       0x7a /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(setup.c.obj)
+
+.ARM.attributes
+                0x0000000000000000       0x32
+ .ARM.attributes
+                0x0000000000000000       0x2b empty.obj
+ .ARM.attributes
+                0x000000000000002b       0x2b main_nortos.obj
+ .ARM.attributes
+                0x0000000000000056       0x32 ti_devices_config.obj
+ .ARM.attributes
+                0x0000000000000088       0x2b ti_drivers_config.obj
+ .ARM.attributes
+                0x00000000000000b3       0x2c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIO.c.obj)
+ .ARM.attributes
+                0x00000000000000df       0x2c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+ .ARM.attributes
+                0x000000000000010b       0x2c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .ARM.attributes
+                0x0000000000000137       0x2c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(List.c.obj)
+ .ARM.attributes
+                0x0000000000000163       0x2c /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(NoRTOS.c.obj)
+ .ARM.attributes
+                0x000000000000018f       0x2c /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(posix_sleep.c.obj)
+ .ARM.attributes
+                0x00000000000001bb       0x2c /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+ .ARM.attributes
+                0x00000000000001e7       0x2c /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .ARM.attributes
+                0x0000000000000213       0x2c /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+ .ARM.attributes
+                0x000000000000023f       0x2c /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(PowerCC23X0_nortos.c.obj)
+ .ARM.attributes
+                0x000000000000026b       0x2c /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj)
+ .ARM.attributes
+                0x0000000000000297       0x2c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(cpu.c.obj)
+ .ARM.attributes
+                0x00000000000002c3       0x2c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+ .ARM.attributes
+                0x00000000000002ef       0x2c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(lrfd.c.obj)
+ .ARM.attributes
+                0x000000000000031b       0x2c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(setup.c.obj)
+ .ARM.attributes
+                0x0000000000000347       0x1e /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp/libgcc.a(_clzsi2.o)
+ .ARM.attributes
+                0x0000000000000365       0x2c /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-memcpy-stub.o)
+ .ARM.attributes
+                0x0000000000000391       0x2c /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-memset.o)
+
+.debug_frame    0x0000000000000000      0xe70
+ .debug_frame   0x0000000000000000       0x28 empty.obj
+ .debug_frame   0x0000000000000028       0x28 main_nortos.obj
+ .debug_frame   0x0000000000000050       0x88 ti_drivers_config.obj
+ .debug_frame   0x00000000000000d8       0x6c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIO.c.obj)
+ .debug_frame   0x0000000000000144      0x13c /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(GPIOLPF3.c.obj)
+ .debug_frame   0x0000000000000280      0x2d4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(PowerCC23X0.c.obj)
+ .debug_frame   0x0000000000000554       0xb4 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/gcc/m0p/drivers_cc23x0r5.a(List.c.obj)
+ .debug_frame   0x0000000000000608       0x50 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(NoRTOS.c.obj)
+ .debug_frame   0x0000000000000658       0x40 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(posix_sleep.c.obj)
+ .debug_frame   0x0000000000000698      0x14c /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(SemaphoreP_nortos.c.obj)
+ .debug_frame   0x00000000000007e4      0x284 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(ClockPLPF3_nortos.c.obj)
+ .debug_frame   0x0000000000000a68      0x1b8 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(HwiPCC23X0_nortos.c.obj)
+ .debug_frame   0x0000000000000c20       0x30 /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(PowerCC23X0_nortos.c.obj)
+ .debug_frame   0x0000000000000c50       0x7c /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/gcc/m0p/nortos_cc23x0r5.a(startup_cc23x0r5_gcc.c.obj)
+ .debug_frame   0x0000000000000ccc       0x20 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(cpu.c.obj)
+ .debug_frame   0x0000000000000cec       0xdc /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(interrupt.c.obj)
+ .debug_frame   0x0000000000000dc8       0x40 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(lrfd.c.obj)
+ .debug_frame   0x0000000000000e08       0x20 /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/gcc/driverlib.a(setup.c.obj)
+ .debug_frame   0x0000000000000e28       0x28 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x0000000000000e50       0x20 /home/developer/.conan/data/arm-none-eabi-gcc/9.2019.q4.major-0/library-msp/ga/package/44fcf6b9a7fb86b2586303e3db40189d3b511830/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(lib_a-memset.o)

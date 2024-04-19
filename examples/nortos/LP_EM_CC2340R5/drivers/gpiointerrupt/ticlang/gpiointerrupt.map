@@ -1,0 +1,487 @@
+******************************************************************************
+            TI ARM Clang Linker Unix v3.2.0                    
+******************************************************************************
+>> Linked Fri Apr 19 13:35:14 2024
+
+OUTPUT FILE NAME:   <gpiointerrupt.out>
+ENTRY POINT SYMBOL: "resetISR"  address: 00000c99
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00080000  00000da3  0007f25d  R  X
+  SRAM                  20000000   00009000  00002735  000068cb  RW X
+  S2RRAM                40098000   00001000  00000000  00001000  RW  
+  CCFG                  4e020000   00000800  00000800  00000000  R   
+  LOG_DATA              90000000   00040000  00000000  00040000  R   
+  LOG_PTR               94000008   00040000  00000000  00040000  R   
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00000d53   00000d53    r-x
+  00000000    00000000    0000008c   0000008c    r-- .resetVecs
+  0000008c    0000008c    00000ca8   00000ca8    r-x .text
+  00000d34    00000d34    0000001f   0000001f    r-- .rodata
+00000d54    00000d54    00000008   00000008    rw-
+  00000d54    00000d54    00000008   00000008    rw- .args
+00000d5c    00000d5c    00000048   00000048    r--
+  00000d5c    00000d5c    00000048   00000048    r-- .cinit
+20000000    20000000    000022ac   00000000    rw-
+  20000000    20000000    00002000   00000000    rw- .sysmem
+  20002000    20002000    0000015d   00000000    rw- .data
+  20002160    20002160    0000014c   00000000    rw- .bss
+20008c00    20008c00    00000400   00000000    rw-
+  20008c00    20008c00    00000400   00000000    rw- .stack
+4e020000    4e020000    00000800   00000800    r--
+  4e020000    4e020000    00000800   00000800    r-- .ccfg
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.resetVecs 
+*          0    00000000    0000008c     
+                  00000000    0000008c     nortos_cc23x0r5.a : startup_cc23x0r5_ticlang.c.obj (.resetVecs)
+
+.binit     0    00000000    00000000     
+
+.text      0    0000008c    00000ca8     
+                  0000008c    00000140     nortos_cc23x0r5.a : PowerCC23X0_nortos.c.obj (.text.PowerCC23X0_standbyPolicy)
+                  000001cc    000000dc     drivers_cc23x0r5.a : GPIOLPF3.c.obj (.text.GPIO_init)
+                  000002a8    0000009c                        : PowerCC23X0.c.obj (.text.Power_init)
+                  00000344    00000078     nortos_cc23x0r5.a : HwiPCC23X0_nortos.c.obj (.text.HwiP_construct)
+                  000003bc    00000078     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.PowerCC23X0_oscillatorISR)
+                  00000434    00000078     libc.a : copy_decompress_lzss.c.obj (.text:decompress:lzss)
+                  000004ac    0000006c     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.PowerCC23X0_startHFXT)
+                  00000518    00000064                        : GPIOLPF3.c.obj (.text.GPIO_setConfigAndMux)
+                  0000057c    00000064     driverlib.a : interrupt.c.obj (.text.IntSetPriority)
+                  000005e0    00000064     gpiointerrupt.obj (.text.mainThread)
+                  00000644    00000058     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.Power_setDependency)
+                  0000069c    00000058     libclang_rt.builtins.a : clzsi2.c.obj (.text.__clzsi2)
+                  000006f4    00000054     ti_drivers_config.obj (.text.Board_shutDownExtFlash)
+                  00000748    00000054     driverlib.a : lrfd.c.obj (.text.LRFDApplyClockDependencies)
+                  0000079c    0000004c     ti_drivers_config.obj (.text.Board_sendExtFlashByte)
+                  000007e8    0000004c     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.Power_sleep)
+                  00000834    0000003c     libc.a : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit)
+                  00000870    00000038     drivers_cc23x0r5.a : GPIOLPF3.c.obj (.text.GPIO_hwiIntFxn)
+                  000008a8    00000038     driverlib.a : interrupt.c.obj (.text.IntClearPend)
+                  000008e0    00000034     ti_drivers_config.obj (.text.Board_wakeUpExtFlash)
+                  00000914    00000034     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.PowerCC23X0_notify)
+                  00000948    00000030                        : GPIO.c.obj (.text.GPIO_resetConfig)
+                  00000978    00000030     driverlib.a : interrupt.c.obj (.text.IntIsEnabled)
+                  000009a8    00000030     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.Power_getDependencyCount)
+                  000009d8    00000030                        : PowerCC23X0.c.obj (.text.Power_releaseConstraint)
+                  00000a08    0000002c     driverlib.a : interrupt.c.obj (.text.IntRegister)
+                  00000a34    0000002c     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.PowerCC23X0_setDependencyCount)
+                  00000a60    0000002c                        : PowerCC23X0.c.obj (.text.Power_setConstraint)
+                  00000a8c    0000002c     driverlib.a : setup.c.obj (.text.SetupTrimDevice)
+                  00000ab8    00000028     ti_drivers_config.obj (.text.Board_init)
+                  00000ae0    00000028     driverlib.a : interrupt.c.obj (.text.IntDisable)
+                  00000b08    00000028                 : interrupt.c.obj (.text.IntEnable)
+                  00000b30    00000024     nortos_cc23x0r5.a : HwiPCC23X0_nortos.c.obj (.text.HwiP_dispatch)
+                  00000b54    00000024     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.PowerLPF3_selectLFXT)
+                  00000b78    00000024     libc.a : boot_cortex_m.c.obj (.text:_c_int00)
+                  00000b9c    0000001c     drivers_cc23x0r5.a : GPIO.c.obj (.text.GPIO_setCallback)
+                  00000bb8    0000001c     driverlib.a : lrfd.c.obj (.text.LRFDSetClockDependency)
+                  00000bd4    0000001c     libc.a : args_main.c.obj (.text._args_main)
+                  00000bf0    00000016            : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset)
+                  00000c06    00000002     ti_drivers_config.obj (.text.Board_initHook)
+                  00000c08    00000014     drivers_cc23x0r5.a : GPIOLPF3.c.obj (.text.GPIO_disableInt)
+                  00000c1c    00000014                        : GPIOLPF3.c.obj (.text.GPIO_enableInt)
+                  00000c30    00000014                        : GPIOLPF3.c.obj (.text.GPIO_write)
+                  00000c44    00000012     libc.a : memcpy16.S.obj (.text:TI_memcpy_small)
+                  00000c56    00000012            : copy_decompress_none.c.obj (.text:decompress:none)
+                  00000c68    00000010     drivers_cc23x0r5.a : GPIOLPF3.c.obj (.text.GPIO_toggle)
+                  00000c78    00000010     nortos_cc23x0r5.a : HwiPCC23X0_nortos.c.obj (.text.HwiP_Params_init)
+                  00000c88    00000010     main_nortos.obj (.text.main)
+                  00000c98    00000010     nortos_cc23x0r5.a : startup_cc23x0r5_ticlang.c.obj (.text.resetISR)
+                  00000ca8    0000000e                       : HwiPCC23X0_nortos.c.obj (.text.HwiP_restore)
+                  00000cb6    0000000c                       : HwiPCC23X0_nortos.c.obj (.text.HwiP_disable)
+                  00000cc2    00000002                       : startup_cc23x0r5_ticlang.c.obj (.text.faultISR)
+                  00000cc4    0000000c     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.text.PowerCC23X0_rtcISR)
+                  00000cd0    0000000c                        : PowerCC23X0.c.obj (.text.Power_getConstraintMask)
+                  00000cdc    0000000a                        : GPIOLPF3.c.obj (.text.GPIO_setConfig)
+                  00000ce6    0000000a     gpiointerrupt.obj (.text.gpioButtonFxn0)
+                  00000cf0    0000000a     gpiointerrupt.obj (.text.gpioButtonFxn1)
+                  00000cfa    00000008     nortos_cc23x0r5.a : HwiPCC23X0_nortos.c.obj (.text.HwiP_clearInterrupt)
+                  00000d02    00000008                       : HwiPCC23X0_nortos.c.obj (.text.HwiP_enable)
+                  00000d0a    00000008                       : HwiPCC23X0_nortos.c.obj (.text.HwiP_enableInterrupt)
+                  00000d12    00000008                       : NoRTOS.c.obj (.text.NoRTOS_start)
+                  00000d1a    00000002                       : startup_cc23x0r5_ticlang.c.obj (.text.intDefaultHandler)
+                  00000d1c    00000008     libclang_rt.builtins.a : aeabi_memcpy.S.obj (.text.__aeabi_memcpy)
+                  00000d24    00000006     driverlib.a : cpu.c.obj (.text.CPUDelay)
+                  00000d2a    00000004     libc.a : pre_init.c.obj (.text._system_pre_init)
+                  00000d2e    00000004            : exit.c.obj (.text:abort)
+                  00000d32    00000002     nortos_cc23x0r5.a : startup_cc23x0r5_ticlang.c.obj (.text.nmiISR)
+
+.rodata    0    00000d34    0000001f     
+                  00000d34    00000010     ti_drivers_config.obj (.rodata.GPIO_config)
+                  00000d44    00000008     ti_drivers_config.obj (.rodata.PowerCC23X0_config)
+                  00000d4c    00000005     nortos_cc23x0r5.a : PowerCC23X0_nortos.c.obj (.rodata.sysTimerResolutionShift)
+                  00000d51    00000001     ti_drivers_config.obj (.rodata.GPIO_pinLowerBound)
+                  00000d52    00000001     ti_drivers_config.obj (.rodata.GPIO_pinUpperBound)
+
+.cinit     0    00000d5c    00000048     
+                  00000d5c    00000023     (.cinit..data.load) [load image, compression = lzss]
+                  00000d7f    00000001     --HOLE-- [fill = 0]
+                  00000d80    0000000c     (__TI_handler_table)
+                  00000d8c    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00000d94    00000010     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.sysmem    0    20000000    00002000     UNINITIALIZED
+                  20000000    00000010     libc.a : memory.c.obj (.sysmem)
+                  20000010    00001ff0     --HOLE--
+
+.data      0    20002000    0000015d     UNINITIALIZED
+                  20002000    0000008c     nortos_cc23x0r5.a : HwiPCC23X0_nortos.c.obj (.data.HwiP_dispatchTable)
+                  2000208c    00000068     ti_drivers_config.obj (.data.gpioPinConfigs)
+                  200020f4    0000003f     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.data..L_MergedGlobals.1)
+                  20002133    00000001                        : GPIOLPF3.c.obj (.data.initCalled)
+                  20002134    00000024                        : PowerCC23X0.c.obj (.data..L_MergedGlobals)
+                  20002158    00000004     nortos_cc23x0r5.a : HwiPCC23X0_nortos.c.obj (.data.HwiP_swiPIntNum)
+                  2000215c    00000001     driverlib.a : lrfd.c.obj (.data.lrfdClocked)
+
+.bss       0    20002160    0000014c     UNINITIALIZED
+                  20002160    00000068     (.common:gpioCallbackFunctions)
+                  200021c8    00000068     (.common:gpioUserArgs)
+                  20002230    0000001c     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.bss.ckmHwi)
+                  2000224c    0000001c                        : GPIOLPF3.c.obj (.bss.gpioHwi)
+                  20002268    0000001c     (.common:clockHwi)
+                  20002284    00000014     nortos_cc23x0r5.a : PowerCC23X0_nortos.c.obj (.bss.sysTimerTimeouts)
+                  20002298    00000008     drivers_cc23x0r5.a : PowerCC23X0.c.obj (.bss.notifyList)
+                  200022a0    00000004                        : PowerCC23X0.c.obj (.bss.PowerCC23X0_enterStandby.controlPreStandby)
+                  200022a4    00000004                        : PowerCC23X0.c.obj (.bss.constraintCounts)
+                  200022a8    00000004     driverlib.a : lrfd.c.obj (.bss.lrfdClockDependencySets)
+
+.ramVecs   0    20002300    0000008c     NOLOAD SECTION
+                  20002300    0000008c     driverlib.a : interrupt.c.obj (.ramVecs)
+
+.stack     0    20008c00    00000400     UNINITIALIZED
+                  20008c00    00000004     libc.a : boot_cortex_m.c.obj (.stack)
+                  20008c04    000003fc     --HOLE--
+
+.ccfg      0    4e020000    00000800     
+                  4e020000    00000800     ti_devices_config.obj (.ccfg)
+
+.log_data 
+*          0    90000000    00000000     COPY SECTION
+
+.log_ptr   0    94000008    00000000     COPY SECTION
+
+__llvm_prf_cnts 
+*          0    20000000    00000000     UNINITIALIZED
+
+__llvm_prf_bits 
+*          0    20000000    00000000     UNINITIALIZED
+
+.args      0    00000d54    00000008     
+                  00000d54    00000008     --HOLE-- [fill = 0]
+
+MODULE SUMMARY
+
+       Module                           code   ro data   rw data
+       ------                           ----   -------   -------
+    <current directory>
+       ti_devices_config.obj            0      2048      0      
+       ti_drivers_config.obj            254    26        312    
+       gpiointerrupt.obj                120    0         0      
+       main_nortos.obj                  16     0         0      
+    +--+--------------------------------+------+---------+---------+
+       Total:                           390    2074      312    
+                                                                
+    /home/developer/.conan/data/tiarmllvm/3.2.0.LTS-0/library-msp/ga/package/be241241e9d4718e5bab4eb33935bbb69606bb0c/lib/armv6m-ti-none-eabi/c/libc.a
+       copy_decompress_lzss.c.obj       120    0         0      
+       autoinit.c.obj                   60     0         0      
+       boot_cortex_m.c.obj              36     0         0      
+       args_main.c.obj                  28     0         0      
+       copy_zero_init.c.obj             22     0         0      
+       copy_decompress_none.c.obj       18     0         0      
+       memcpy16.S.obj                   18     0         0      
+       exit.c.obj                       4      0         0      
+       pre_init.c.obj                   4      0         0      
+    +--+--------------------------------+------+---------+---------+
+       Total:                           310    0         0      
+                                                                
+    /home/developer/.conan/data/tiarmllvm/3.2.0.LTS-0/library-msp/ga/package/be241241e9d4718e5bab4eb33935bbb69606bb0c/lib/clang/15.0.7/lib/armv6m-ti-none-eabi/libclang_rt.builtins.a
+       clzsi2.c.obj                     88     0         0      
+       aeabi_memcpy.S.obj               8      0         0      
+    +--+--------------------------------+------+---------+---------+
+       Total:                           96     0         0      
+                                                                
+    /project/staging/core_examples/simplelink-lowpower-f3-sdk/kernel/nortos/lib/ticlang/m0p/nortos_cc23x0r5.a
+       HwiPCC23X0_nortos.c.obj          222    0         144    
+       PowerCC23X0_nortos.c.obj         320    5         20     
+       startup_cc23x0r5_ticlang.c.obj   22     140       0      
+       NoRTOS.c.obj                     8      0         0      
+    +--+--------------------------------+------+---------+---------+
+       Total:                           572    145       164    
+                                                                
+    /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/devices/cc23x0r5/driverlib/lib/ticlang/driverlib.a
+       interrupt.c.obj                  328    0         140    
+       lrfd.c.obj                       112    0         5      
+       setup.c.obj                      44     0         0      
+       cpu.c.obj                        6      0         0      
+    +--+--------------------------------+------+---------+---------+
+       Total:                           490    0         145    
+                                                                
+    /project/staging/core_examples/simplelink-lowpower-f3-sdk/source/ti/drivers/lib/ticlang/m0p/drivers_cc23x0r5.a
+       PowerCC23X0.c.obj                844    0         171    
+       GPIOLPF3.c.obj                   462    0         29     
+       GPIO.c.obj                       76     0         0      
+    +--+--------------------------------+------+---------+---------+
+       Total:                           1382   0         200    
+                                                                
+       Heap:                            0      0         8192   
+       Stack:                           0      0         1024   
+       Linker Generated:                0      71        0      
+    +--+--------------------------------+------+---------+---------+
+       Grand Total:                     3240   2290      10037  
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00000d94 records: 2, size/record: 8, table size: 16
+	.data: load addr=00000d5c, load size=00000023 bytes, run addr=20002000, run size=0000015d bytes, compression=lzss
+	.bss: load addr=00000d8c, load size=00000008 bytes, run addr=20002160, run size=0000014c bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00000d80 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                          
+-------   ----                          
+00000ab9  Board_init                    
+00000c07  Board_initHook                
+0000079d  Board_sendExtFlashByte        
+000006f5  Board_shutDownExtFlash        
+000008e1  Board_wakeUpExtFlash          
+00000d2e  C$$EXIT                       
+00000d25  CPUDelay                      
+00000d34  GPIO_config                   
+00000c09  GPIO_disableInt               
+00000c1d  GPIO_enableInt                
+00000871  GPIO_hwiIntFxn                
+000001cd  GPIO_init                     
+00000d51  GPIO_pinLowerBound            
+00000d52  GPIO_pinUpperBound            
+00000949  GPIO_resetConfig              
+00000b9d  GPIO_setCallback              
+00000cdd  GPIO_setConfig                
+00000519  GPIO_setConfigAndMux          
+00000c69  GPIO_toggle                   
+00000c31  GPIO_write                    
+00000c79  HwiP_Params_init              
+00000cfb  HwiP_clearInterrupt           
+00000345  HwiP_construct                
+00000cb7  HwiP_disable                  
+00000b31  HwiP_dispatch                 
+00000d03  HwiP_enable                   
+00000d0b  HwiP_enableInterrupt          
+00000ca9  HwiP_restore                  
+20002158  HwiP_swiPIntNum               
+000008a9  IntClearPend                  
+00000ae1  IntDisable                    
+00000b09  IntEnable                     
+00000979  IntIsEnabled                  
+00000a09  IntRegister                   
+0000057d  IntSetPriority                
+00000749  LRFDApplyClockDependencies    
+00000bb9  LRFDSetClockDependency        
+00000d13  NoRTOS_start                  
+00000d44  PowerCC23X0_config            
+00000915  PowerCC23X0_notify            
+0000008d  PowerCC23X0_standbyPolicy     
+00000b55  PowerLPF3_selectLFXT          
+00000cd1  Power_getConstraintMask       
+000009a9  Power_getDependencyCount      
+000002a9  Power_init                    
+000009d9  Power_releaseConstraint       
+00000a61  Power_setConstraint           
+00000645  Power_setDependency           
+000007e9  Power_sleep                   
+00000a8d  SetupTrimDevice               
+00000c45  TI_memcpy_small               
+20009000  __STACK_END                   
+00000400  __STACK_SIZE                  
+00002000  __SYSMEM_SIZE                 
+00000000  __TI_ATRegion0_region_sz      
+00000000  __TI_ATRegion0_src_addr       
+00000000  __TI_ATRegion0_trg_addr       
+00000000  __TI_ATRegion1_region_sz      
+00000000  __TI_ATRegion1_src_addr       
+00000000  __TI_ATRegion1_trg_addr       
+00000000  __TI_ATRegion2_region_sz      
+00000000  __TI_ATRegion2_src_addr       
+00000000  __TI_ATRegion2_trg_addr       
+00000d94  __TI_CINIT_Base               
+00000da4  __TI_CINIT_Limit              
+00000da4  __TI_CINIT_Warm               
+00000d80  __TI_Handler_Table_Base       
+00000d8c  __TI_Handler_Table_Limit      
+00000835  __TI_auto_init_nobinit_nopinit
+00000435  __TI_decompress_lzss          
+00000c57  __TI_decompress_none          
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+00000000  __TI_static_base__            
+00000bf1  __TI_zero_init_nomemset       
+00000d1d  __aeabi_memcpy                
+00000d1d  __aeabi_memcpy4               
+00000d1d  __aeabi_memcpy8               
+ffffffff  __binit__                     
+00000d54  __c_args__                    
+0000069d  __clzsi2                      
+UNDEFED   __mpu_init                    
+20008c00  __stack                       
+20000000  __start___llvm_prf_bits       
+20000000  __start___llvm_prf_cnts       
+20000000  __stop___llvm_prf_bits        
+20000000  __stop___llvm_prf_cnts        
+00000bd5  _args_main                    
+00000b79  _c_int00                      
+20000000  _sys_memory                   
+UNDEFED   _system_post_cinit            
+00000d2b  _system_pre_init              
+00000d2f  abort                         
+ffffffff  binit                         
+4e020000  ccfg                          
+20002268  clockHwi                      
+00000ce7  gpioButtonFxn0                
+00000cf1  gpioButtonFxn1                
+20002160  gpioCallbackFunctions         
+2000208c  gpioPinConfigs                
+200021c8  gpioUserArgs                  
+00000c89  main                          
+000005e1  mainThread                    
+00000c99  resetISR                      
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                          
+-------   ----                          
+00000000  __TI_ATRegion0_region_sz      
+00000000  __TI_ATRegion0_src_addr       
+00000000  __TI_ATRegion0_trg_addr       
+00000000  __TI_ATRegion1_region_sz      
+00000000  __TI_ATRegion1_src_addr       
+00000000  __TI_ATRegion1_trg_addr       
+00000000  __TI_ATRegion2_region_sz      
+00000000  __TI_ATRegion2_src_addr       
+00000000  __TI_ATRegion2_trg_addr       
+00000000  __TI_static_base__            
+0000008d  PowerCC23X0_standbyPolicy     
+000001cd  GPIO_init                     
+000002a9  Power_init                    
+00000345  HwiP_construct                
+00000400  __STACK_SIZE                  
+00000435  __TI_decompress_lzss          
+00000519  GPIO_setConfigAndMux          
+0000057d  IntSetPriority                
+000005e1  mainThread                    
+00000645  Power_setDependency           
+0000069d  __clzsi2                      
+000006f5  Board_shutDownExtFlash        
+00000749  LRFDApplyClockDependencies    
+0000079d  Board_sendExtFlashByte        
+000007e9  Power_sleep                   
+00000835  __TI_auto_init_nobinit_nopinit
+00000871  GPIO_hwiIntFxn                
+000008a9  IntClearPend                  
+000008e1  Board_wakeUpExtFlash          
+00000915  PowerCC23X0_notify            
+00000949  GPIO_resetConfig              
+00000979  IntIsEnabled                  
+000009a9  Power_getDependencyCount      
+000009d9  Power_releaseConstraint       
+00000a09  IntRegister                   
+00000a61  Power_setConstraint           
+00000a8d  SetupTrimDevice               
+00000ab9  Board_init                    
+00000ae1  IntDisable                    
+00000b09  IntEnable                     
+00000b31  HwiP_dispatch                 
+00000b55  PowerLPF3_selectLFXT          
+00000b79  _c_int00                      
+00000b9d  GPIO_setCallback              
+00000bb9  LRFDSetClockDependency        
+00000bd5  _args_main                    
+00000bf1  __TI_zero_init_nomemset       
+00000c07  Board_initHook                
+00000c09  GPIO_disableInt               
+00000c1d  GPIO_enableInt                
+00000c31  GPIO_write                    
+00000c45  TI_memcpy_small               
+00000c57  __TI_decompress_none          
+00000c69  GPIO_toggle                   
+00000c79  HwiP_Params_init              
+00000c89  main                          
+00000c99  resetISR                      
+00000ca9  HwiP_restore                  
+00000cb7  HwiP_disable                  
+00000cd1  Power_getConstraintMask       
+00000cdd  GPIO_setConfig                
+00000ce7  gpioButtonFxn0                
+00000cf1  gpioButtonFxn1                
+00000cfb  HwiP_clearInterrupt           
+00000d03  HwiP_enable                   
+00000d0b  HwiP_enableInterrupt          
+00000d13  NoRTOS_start                  
+00000d1d  __aeabi_memcpy                
+00000d1d  __aeabi_memcpy4               
+00000d1d  __aeabi_memcpy8               
+00000d25  CPUDelay                      
+00000d2b  _system_pre_init              
+00000d2e  C$$EXIT                       
+00000d2f  abort                         
+00000d34  GPIO_config                   
+00000d44  PowerCC23X0_config            
+00000d51  GPIO_pinLowerBound            
+00000d52  GPIO_pinUpperBound            
+00000d54  __c_args__                    
+00000d80  __TI_Handler_Table_Base       
+00000d8c  __TI_Handler_Table_Limit      
+00000d94  __TI_CINIT_Base               
+00000da4  __TI_CINIT_Limit              
+00000da4  __TI_CINIT_Warm               
+00002000  __SYSMEM_SIZE                 
+20000000  __start___llvm_prf_bits       
+20000000  __start___llvm_prf_cnts       
+20000000  __stop___llvm_prf_bits        
+20000000  __stop___llvm_prf_cnts        
+20000000  _sys_memory                   
+2000208c  gpioPinConfigs                
+20002158  HwiP_swiPIntNum               
+20002160  gpioCallbackFunctions         
+200021c8  gpioUserArgs                  
+20002268  clockHwi                      
+20008c00  __stack                       
+20009000  __STACK_END                   
+4e020000  ccfg                          
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+ffffffff  __binit__                     
+ffffffff  binit                         
+UNDEFED   __mpu_init                    
+UNDEFED   _system_post_cinit            
+
+[105 symbols]
