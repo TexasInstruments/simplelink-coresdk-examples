@@ -1,17 +1,16 @@
 # SIMPLELINK LOW POWER F2 and F3 Core SDK Examples
-This repository contains TI's SimpleLink Low Power Core Software Development Kit (SDK) Examples for F2 and F3.
+This repository contains TI's SimpleLink Low Power Core Software Development Kit (Core SDK) Examples for F2 and F3 SDK's.
 
 ## Summary
 
-Something needed here
+This repository is a buildable version of just the Core SDK examples.  It clones the F2 and F3 GitHub SDKs as submodules and builds them before building the examples.
+
+The imports.mak files for both the F2 and F3 SDK's need to be edited.  This is necessary to reflect the local tool installation locations.  You can find detailed instructions in the Setup Instructions.
 
 ## Background
 
-Something needed here
+The examples in this repository are also available in the respective F2 and F3 SDKs.  This repository is a convenient way to focus on the examples, while the SDKs are only submodules. 
 
-## Features
-
-Something needed here
 
 ## Setup Instructions
 
