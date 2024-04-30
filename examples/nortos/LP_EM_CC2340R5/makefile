@@ -1,5 +1,5 @@
-SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR ?= $(abspath ../../..)
-include $(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/imports.mak
+COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR ?= $(abspath ../../..)
+include $(COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/imports.mak
 
 # Find all subdirectories
 NORTOS-GCC-SUBDIRS = $(wildcard */*/gcc/.)

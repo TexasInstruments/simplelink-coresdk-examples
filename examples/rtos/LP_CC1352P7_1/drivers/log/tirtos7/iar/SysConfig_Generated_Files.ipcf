@@ -10,7 +10,7 @@
         <path>$PROJ_DIR$/ti_utils_build_linker.cmd.genlibs</path>
         <path>$PROJ_DIR$/ti_sysbios_config.c</path>
         <path>$PROJ_DIR$/ti_drivers_config.c</path>
-        <path>$PROJ_DIR$/ti_log_config.h</path>
         <path>$PROJ_DIR$/ti_drivers_config.h</path>
+        <path>$PROJ_DIR$/ti_log_config.h</path>
     </files>
 </iarProjectConnection>

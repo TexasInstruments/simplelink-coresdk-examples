@@ -11,7 +11,7 @@
         <path>$PROJ_DIR$/ti_log_config.c</path>
         <path>$PROJ_DIR$/ti_freertos_portable_config.c</path>
         <path>$PROJ_DIR$/ti_freertos_config.c</path>
-        <path>$PROJ_DIR$/ti_log_config.h</path>
         <path>$PROJ_DIR$/ti_drivers_config.h</path>
+        <path>$PROJ_DIR$/ti_log_config.h</path>
     </files>
 </iarProjectConnection>
