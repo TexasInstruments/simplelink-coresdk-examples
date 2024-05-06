@@ -1,70 +1,157 @@
 # SIMPLELINK LOW POWER F2 and F3 Core SDK Examples
+
 This repository contains TI's SimpleLink Low Power Core Software Development Kit (Core SDK) Examples for F2 and F3 SDK's.
 
-## Summary
+## Repository Layout
 
-This repository is a buildable version of just the Core SDK examples.  It clones the F2 and F3 GitHub SDKs as submodules and builds them before building the examples.
+The **examples/** directory contains the same Core SDK examples provided in the F2 and F3
+SDKs, in the same directory structure.
 
-The imports.mak files for both the F2 and F3 SDK's need to be edited.  This is necessary to reflect the local tool installation locations.  You can find detailed instructions in the Setup Instructions.
+The SimpleLink Low Power F2 and F3 SDKs are provided as [Git
+submodules](https://www.git-scm.com/docs/gitsubmodules) in their respective
+subdirectories.  If you're only interested in devices supported by the F3 SDK,
+you will only need to initialize and update the F3 SDK submodule.
 
-## Background
+As a quick reference, you can initialize and update a single Git submodule in
+one step like this:
 
-The examples in this repository are also available in the respective F2 and F3 SDKs.  This repository is a convenient way to focus on the examples, while the SDKs are only submodules. 
+```bash
+# To initialize and update the F2 SDK
+.../simplelink-coresdk-examples$ git submodule update --init cc13xx_cc26xx_sdk
 
+# To initialize and update the F3 SDK
+.../simplelink-coresdk-examples$ git submodule update --init simplelink-lowpower-f3-sdk
+```
+
+Alternatively you can initialize/update _all_ submodules when cloning a repo
+with `git clone --recurse-submodules {repo-ref}`.  See Git documentation for
+details.
+
+Once initialized and updated, you can refer to each SDK's README.md and Release
+Notes for details on how to download its dependencies, and build its libraries.
+
+* [SimpleLink Low Power F2 SDK
+  README](https://github.com/TexasInstruments/cc13xx_cc26xx_sdk/blob/main/README.md)
+* [SimpleLink Low Power F3 SDK
+  README](https://github.com/TexasInstruments/simplelink-lowpower-f3-sdk/blob/main/README.md)
+
+> Note, the links above are to online copies of the latest SDK READMEs.  They
+> are useful for online readers, but be sure to consult the SDK submodule's
+> _actual_ README.md after cloning, checking out your branch/tag, and updating
+> your submodule, as details may change from release to release.
 
 ## Setup Instructions
 
-### Edit **imports.mak**
-The imports.mak file, located at the root of the SDK, is a generic sample and will not work out of the box.   Please update imports.mak with the tools (compilers, cmake, etc.) paths installed on your system.
+### Build SDK Libraries
 
-For a Linux build, settings must be updated to match your build system's setup.  The only outlier may be Python, as most python3.6+ interpreters will work.  Please note cmake must be 3.21+, or the builds will fail.  If using CCS ccs1220, the SysConfig installed is incompatible with the SDKs.  Either upgrade to the latest CCS or install SysConfig 1.17.0 from [https://www.ti.com/tool/SYSCONFIG](https://www.ti.com/tool/SYSCONFIG).  See [Resources](#resources) for URL's of tools that need installation to build the SDKs and examples.
+Each time you update an SDK submodule, you will need to build its libraries.
+This process _can_ vary between the different SDKs, so refer to each SDK's
+README.md for specifics, but generally you will need to edit the **imports.mak**
+file at the top, then run `make`.
 
-By default TICLANG and GCC toolchains are enabled.  If a toolchain is not needed, unset the compiler, for example, `GCC_ARMCOMPILER ?=`.
+Note that _sometimes_ the dependencies can vary from SDK to SDK.  For example,
+if you've been using the F2 SDK and SysConfig version X, and want to start using
+the F3 SDK, it may require a newer SysConfig version.  So, again, be sure to
+refer to each SDK's README.md and Release Notes.
 
-### Default imports.mak
+Often newer versions of dependencies are compatible, so you can use
+newer-and-compatible versions than the SDK was validated against.  But each SDK
+does have its own **imports.mak** so you _can_ specify different dependency
+versions for each SDK if needed.
 
-`SYSCONFIG_TOOL`         ?= /home/username/ti/CCS_Install/ccs/utils/sysconfig_1.17.0/sysconfig_cli.sh
+## Build Examples
 
-`FREERTOS_INSTALL_DIR`   ?= /home/username/FreeRTOSv202104.00
+After building the SDK libraries, you can build the coresdk examples.  The
+examples support a few ways to build:
 
-`CMAKE`                  ?= /home/username/cmake-3.21.3/bin/cmake
+* [Command line makefile](#build-examples-from-command-line)
+* [CCS IDE](#build-examples-from-ccs)
+* [IAR IDE](#build-examples-from-iar)
 
-`PYTHON`                 ?= python3
+### Build Examples From Command Line
 
-`TICLANG_ARMCOMPILER`    ?= /home/username/ti/CCS_Install/ccs/tools/compiler/ti-cgt-armllvm_2.1.3.LTS-0
+Remember, before building the examples, you must build the SDK libraries!
 
-`GCC_ARMCOMPILER`        ?= /home/username/ti/CCS_Install/ccs/tools/compiler/9.2019.q4.major-0
+To build a coresdk example from the command line using [GNU
+make](https://www.gnu.org/software/make/manual/make.html), change into the
+appropriate example's directory (e.g.
+**{rtos}/{board}/{drivers|tiutils|demos}/{example}/{rtos}/{toolchain}**), then run `make`.
 
-Edit **imports.mak** and update all dependencies to reflect your paths.
+```bash
+.../simplelink-coresdk-examples$ cd examples/rtos/LP_CC2651R3SIPA/drivers/empty/freertos/ticlang/
+.../ticlang$ make
+```
 
-Notably for Windows users, the _Windows_ variant of some tools may be required.
-For example, the `SYSCONFIG_TOOL` will need to have a **.bat** extension.
+Note, you can also clean the example with `make clean`.
 
-## Build SDK Libraries
-SDK libraries must exist before building any examples.  After editing imports.mak, build SDK libraries from the root  of the SDK (the same directory where imports.mak resides) by:
+### Build Examples From CCS
 
-$ `make`
+Remember, before building the examples, you must build the SDK libraries!
 
-The make will go through the SDK and build all libraries.  Depending on the build machine, the make will run for a few minutes.
+The examples also include TI Code Composer Studio (CCS) project support,
+enabling them to be imported into, and built by, CCS.
 
+Before importing the example, the SDK(s) location must be registered with CCS:
 
-## Resources
+1. Preferences->Code Composer Studio->Products
+2. Select Add...
+3. Navigate to the SDK submodule location
+4. Select Open
 
-Dependency download locations:
+Repeat for each SDK you will be using.  This registers the SDK with CCS.
+Successful registration of an SDK will show it in the "Discovered
+Products" list:
 
-* [SysConfig (SYSCONFIG_TOOL)](https://www.ti.com/tool/SYSCONFIG), or if using ccs1330+ it is part of CCS
-* [FreeRTOS (FREERTOS_INSTALL_DIR)](https://github.com/FreeRTOS/FreeRTOS/releases/download/202104.00/FreeRTOSv202104.00.zip)
-* [TI CLANG Compiler (TICLANG_ARMCOMPILER)](https://www.ti.com/tool/download/ARM-CGT-CLANG)
-* [ARM Gnu Toolchain (GCC_ARMCOMPILER)](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads/9-2019-q4-major)
+![CCS Add Products Dialog](images/add_products.png)
 
-## Windows Build Information
-- [WSL2 Instructions](Windows_WSL2_setup.md)
-## Supported Devices
+If using FreeRTOS, its location must also be configured in CCS:
 
-All devices supported by the SimpleLink Low Power F3 SDK.
+1. Preferences->Code Composer Studio->Build->Environment
+2. Select Add...
+3. Add the variable name `FREERTOS_INSTALL_DIR`
+4. Assign it to the absolute path of your installation of FreeRTOS
 
-## More Information
-For licensing information, please refer to licensing.
+![CCS FREERTOS_INSTALL_DIR Variable Assignment](images/FreeRTOS.png)
 
-## Technical Support
-Please consider creating a post on [TI's E2E forum](https://e2e.ti.com). Additionally, we welcome any feedback.
+Now you can import an example!
+
+1. Project->Import CCS Project...
+2. Select search-directory->Browse...
+3. Navigate to a directory within your clone of the example repo to search for
+   examples and Select Folder
+4. Select the example(s) you wish to import and press Finish
+
+![Import CCS Projects Dialog](images/select_ccsproject.png)
+
+### Build Examples from IAR
+
+Remember, before building the examples, you must build the SDK libraries!
+
+Follow the instructions in your respective SDK's Quick Start Guide:
+
+* [SimpleLink Low Power F2 SDK Quick Start Guide](https://dev.ti.com/tirex/explore/node?node=A__AC7UNBWx3i6iMAUzzhqKwA__com.ti.SIMPLELINK_CC13XX_CC26XX_SDK__BSEc4rl__LATEST)
+* [SimpleLink Low Power F3 SDK Quick Start Guide](https://dev.ti.com/tirex/explore/node?node=A__AC7UNBWx3i6iMAUzzhqKwA__com.ti.SIMPLELINK_LOWPOWER_F3_SDK__58mgN04__LATEST)
+
+## Troubleshooting
+
+When building on *nix platform (Linux/Mac) the library build may fail with an
+error similar to:
+
+```bash
+error: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib: Unsupported triple for mach-o cpu type: thumbv6m-ti-none-eabi
+```
+
+To fix, make sure the arm version of ranlib is in the path before the OS version
+of ranlib located in /usr/bin. Simply set the location of the gcc ARM ranlib
+ahead in the shell's path.  Example:
+
+```bash
+$ export `PATH`=/Users/username/ti/gcc_arm_none_eabi_9_2_1/arm-none-eabi/bin:$PATH
+```
+
+## SDK Association
+
+Click the links below to find the devices supported by each SDK.
+
+* [SimpleLink Low Power F2 SDK devices](images/simplelink_cc13xx_cc26xx_sdk.md)
+* [SimpleLink Low Power F3 SDK devices](images/simplelink_lowpower_f3_sdk.md)
