@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023, Texas Instruments Incorporated
+ * Copyright (c) 2023-2024, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,14 +51,7 @@
 #define S2RRAM_BUFFER_SIZE 0x200
 
 /* Define buffer to be placed in S2R RAM */
-#ifdef __IAR_SYSTEMS_ICC__
-    #pragma location = ".s2rram"
-#elif (defined(__GNUC__) || defined(__clang__))
-__attribute__((section(".s2rram")))
-#else
-    #error Unsupported Compiler
-#endif
-volatile uint8_t s2rramBuffer[S2RRAM_BUFFER_SIZE];
+__attribute__((section(".s2rram"))) volatile uint8_t s2rramBuffer[S2RRAM_BUFFER_SIZE];
 
 bool verifyBuffer(uint8_t *buffer, uint8_t expectedValue, uint32_t size)
 {

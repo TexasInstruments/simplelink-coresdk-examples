@@ -36,7 +36,7 @@
 
     <linkerFile>
         <override>true</override>
-        <path>$PROJ_DIR$/cc23x0r5_freertos.icf</path>
+        <path>$PROJ_DIR$/lpf3_freertos.icf</path>
     </linkerFile>
 
     <linkerExtraOptions>
@@ -77,7 +77,7 @@
 
     <files>
         <path reference="$PROJ_DIR$/Board.html">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/source/ti/boards/LP_EM_CC2340R5/Board.html</path>
-        <path copyTo="$PROJ_DIR$/cc23x0r5_freertos.icf">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/rtos/LP_EM_CC2340R5/drivers/sha2hash/freertos/iar/cc23x0r5_freertos.icf</path>
+        <path copyTo="$PROJ_DIR$/lpf3_freertos.icf">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/rtos/LP_EM_CC2340R5/drivers/sha2hash/freertos/iar/lpf3_freertos.icf</path>
         <path copyTo="$PROJ_DIR$/main_freertos.c">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/rtos/LP_EM_CC2340R5/drivers/sha2hash/freertos/main_freertos.c</path>
         <path copyTo="$PROJ_DIR$/README.html">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/rtos/LP_EM_CC2340R5/drivers/sha2hash/README.html</path>
         <path copyTo="$PROJ_DIR$/README.md">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/rtos/LP_EM_CC2340R5/drivers/sha2hash/README.md</path>

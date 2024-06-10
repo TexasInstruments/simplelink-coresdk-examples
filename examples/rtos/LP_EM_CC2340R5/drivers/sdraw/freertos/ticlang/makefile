@@ -32,7 +32,7 @@ CFLAGS += -I../.. \
 
 LFLAGS += "-L$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source" \
     ti_utils_build_linker.cmd.genlibs \
-    ../../freertos/ticlang/cc23x0r5_freertos.cmd \
+    ../../freertos/ticlang/lpf3_freertos.cmd \
     "-Wl,-m,$(NAME).map" \
     -Wl,--rom_model \
     -Wl,--warn_sections \

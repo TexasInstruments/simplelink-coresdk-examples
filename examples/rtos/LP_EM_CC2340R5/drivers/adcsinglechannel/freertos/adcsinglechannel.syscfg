@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2022, Texas Instruments Incorporated
+ * Copyright (c) 2018-2024, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,10 +49,7 @@ adc0.$name = "CONFIG_ADC_0";
 adc1.$name = "CONFIG_ADC_1";
 
 
-if (board.match(/CC32/)) {
-    adc0.$hardware = system.deviceData.board.components.OP_AMP.subComponents.AIN3;
-    adc1.$hardware = system.deviceData.board.components.OP_AMP.subComponents.AIN4;
-} else if (board.match(/CC(13)|(26)/)) {
+if (board.match(/CC(13)|(26)/)) {
     adc0.adc.adcPin.$assign = "DIO23";
     adc1.adc.adcPin.$assign = "DIO24";
 } else if (board.match(/CC23/)) {

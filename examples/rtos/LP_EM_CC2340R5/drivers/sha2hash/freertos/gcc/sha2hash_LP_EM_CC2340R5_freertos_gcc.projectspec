@@ -61,7 +61,6 @@
             -lnosys
             --specs=nano.specs
         "
-        enableSysConfigTool="true"
         sysConfigBuildOptions="
             --product ${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/.metadata/product.json
             --compiler gcc
@@ -82,7 +81,7 @@
         </file>
         <file path="${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/ti/boards/LP_EM_CC2340R5/Board.html" openOnCreation="false" excludeFromBuild="false" action="link">
         </file>
-        <file path="../../freertos/gcc/cc23x0r5_freertos.lds" openOnCreation="false" excludeFromBuild="false" action="copy">
+        <file path="../../freertos/gcc/lpf3_cc23xx_freertos.lds" openOnCreation="false" excludeFromBuild="false" action="copy">
         </file>
     </project>
 </projectSpec>

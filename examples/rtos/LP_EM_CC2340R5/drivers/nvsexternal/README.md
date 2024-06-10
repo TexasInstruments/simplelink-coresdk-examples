@@ -52,8 +52,9 @@ The connection will have the following settings:
 
 * The example will output the region attributes as defined by `CONFIG_NVSEXTERNAL`.
 
-* The example checks if the string, "SimpleLink SDK Non-Volatile Storage
- (NVS) Example" is present in non-volatile storage.
+* The example checks if the string,
+  "SimpleLink SDK Non-Volatile Storage (NVS) SPI Example." is present in
+  non-volatile storage.
     * If present, the string is displayed to the UART console. The entire flash
     sector is then erased.
     * If not present, the string is written to the non-volatile storage.

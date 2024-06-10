@@ -34,7 +34,7 @@
 
     <linkerFile>
         <override>true</override>
-        <path>$PROJ_DIR$/cc23x0r5_nortos.icf</path>
+        <path>$PROJ_DIR$/lpf3_nortos.icf</path>
     </linkerFile>
 
     <linkerExtraOptions>
@@ -74,10 +74,10 @@
 
     <files>
         <path reference="$PROJ_DIR$/Board.html">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/source/ti/boards/LP_EM_CC2340R5/Board.html</path>
-        <path copyTo="$PROJ_DIR$/cc23x0r5_nortos.icf">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/nortos/LP_EM_CC2340R5/drivers/i2ccontroller/iar/cc23x0r5_nortos.icf</path>
         <path copyTo="$PROJ_DIR$/cmdinterface.h">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/nortos/LP_EM_CC2340R5/drivers/i2ccontroller/cmdinterface.h</path>
         <path copyTo="$PROJ_DIR$/i2ccontroller.c">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/nortos/LP_EM_CC2340R5/drivers/i2ccontroller/i2ccontroller.c</path>
         <path copyTo="$PROJ_DIR$/i2ccontroller.syscfg">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/nortos/LP_EM_CC2340R5/drivers/i2ccontroller/i2ccontroller.syscfg</path>
+        <path copyTo="$PROJ_DIR$/lpf3_nortos.icf">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/nortos/LP_EM_CC2340R5/drivers/i2ccontroller/iar/lpf3_nortos.icf</path>
         <path copyTo="$PROJ_DIR$/main_nortos.c">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/nortos/LP_EM_CC2340R5/drivers/i2ccontroller/main_nortos.c</path>
         <path copyTo="$PROJ_DIR$/README.html">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/nortos/LP_EM_CC2340R5/drivers/i2ccontroller/README.html</path>
         <path copyTo="$PROJ_DIR$/README.md">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/nortos/LP_EM_CC2340R5/drivers/i2ccontroller/README.md</path>

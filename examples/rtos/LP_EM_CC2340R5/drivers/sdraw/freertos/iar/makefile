@@ -38,7 +38,7 @@ LFLAGS += "-L$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source" \
     --threaded_lib \
     "-L$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/kernel" \
     -fti_utils_build_linker.cmd.genlibs \
-    --config ../../freertos/iar/cc23x0r5_freertos.icf \
+    --config ../../freertos/iar/lpf3_freertos.icf \
     --map "$(NAME).map" \
     --silent \
     --semihosting=iar_breakpoint \
