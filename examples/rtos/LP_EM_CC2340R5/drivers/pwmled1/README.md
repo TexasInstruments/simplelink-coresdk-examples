@@ -30,8 +30,6 @@ The Board.html can also be found in your SDK installation:
 
 * Run the example.
 
-* The onboard LED will slowly vary in intensity.
-
 * The LED connected to `CONFIG_PWM_0` will fade-in and fade-out when running
 the application.
 

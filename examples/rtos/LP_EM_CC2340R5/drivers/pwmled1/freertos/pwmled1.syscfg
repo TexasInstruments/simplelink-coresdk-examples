@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2023, Texas Instruments Incorporated
+ * Copyright (c) 2018-2024, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -59,6 +59,15 @@ else if (board.match(/LP_EM_CC2340R5/)) {
     pwm0.timerObject.channel2Connection   = "Pin";
     pwm0.timerObject.timer.$assign        = "LGPT3";
     pwm0.timerObject.timer.ch2Pin.$assign = "DIO14";
+
+    scripting.suppress("@@@.+?@@@", pwm0.timerObject.timer, "ch2Pin");
+}
+else if (board.match(/LP_EM_CC3561EF_FPGA/)) {
+    var pwm0 = PWM.addInstance();
+    pwm0.$name                            = "CONFIG_PWM_0";
+    pwm0.timerObject.channel2Connection   = "Pin";
+    pwm0.timerObject.timer.$assign        = "GPT1";
+    pwm0.timerObject.timer.ch2Pin.$assign = "GPIO33";
 
     scripting.suppress("@@@.+?@@@", pwm0.timerObject.timer, "ch2Pin");
 }

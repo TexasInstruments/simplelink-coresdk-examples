@@ -34,7 +34,7 @@
 
     <linkerFile>
         <override>true</override>
-        <path>$PROJ_DIR$/cc23x0r5_nortos.icf</path>
+        <path>$PROJ_DIR$/lpf3_nortos.icf</path>
     </linkerFile>
 
     <linkerExtraOptions>
@@ -74,9 +74,9 @@
 
     <files>
         <path reference="$PROJ_DIR$/Board.html">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/source/ti/boards/LP_EM_CC2340R5/Board.html</path>
-        <path copyTo="$PROJ_DIR$/cc23x0r5_nortos.icf">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/nortos/LP_EM_CC2340R5/drivers/fatsdraw/iar/cc23x0r5_nortos.icf</path>
         <path copyTo="$PROJ_DIR$/fatsdraw.syscfg">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/nortos/LP_EM_CC2340R5/drivers/fatsdraw/fatsdraw.syscfg</path>
         <path copyTo="$PROJ_DIR$/fatsdraw_nortos.c">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/nortos/LP_EM_CC2340R5/drivers/fatsdraw/fatsdraw_nortos.c</path>
+        <path copyTo="$PROJ_DIR$/lpf3_nortos.icf">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/nortos/LP_EM_CC2340R5/drivers/fatsdraw/iar/lpf3_nortos.icf</path>
         <path copyTo="$PROJ_DIR$/main_nortos.c">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/nortos/LP_EM_CC2340R5/drivers/fatsdraw/main_nortos.c</path>
         <path copyTo="$PROJ_DIR$/README.html">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/nortos/LP_EM_CC2340R5/drivers/fatsdraw/README.html</path>
         <path copyTo="$PROJ_DIR$/README.md">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/nortos/LP_EM_CC2340R5/drivers/fatsdraw/README.md</path>

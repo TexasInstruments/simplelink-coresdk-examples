@@ -35,7 +35,7 @@ CFLAGS += -I.. \
 LFLAGS += "-L$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source" \
     "-L$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/kernel/nortos" \
     -fti_utils_build_linker.cmd.genlibs \
-    --config ../iar/cc23x0r5_nortos.icf \
+    --config ../iar/lpf3_nortos.icf \
     --map "$(NAME).map" \
     --silent \
     --semihosting=iar_breakpoint \

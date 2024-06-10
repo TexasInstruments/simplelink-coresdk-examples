@@ -54,6 +54,7 @@ CAN1.rejectNonMatching = false;
 if (board.match(/CC27/))
 {
     CAN1.interruptPriority = "4";
+    CAN1.$hardware = system.deviceData.board.components.LP_CAN_BUS;
 }
 else
 {

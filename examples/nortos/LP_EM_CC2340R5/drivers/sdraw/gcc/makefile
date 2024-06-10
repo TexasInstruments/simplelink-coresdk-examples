@@ -35,7 +35,7 @@ CFLAGS += -I.. \
     "-I$(GCC_ARMCOMPILER)/arm-none-eabi/include/newlib-nano" \
     "-I$(GCC_ARMCOMPILER)/arm-none-eabi/include"
 
-LFLAGS += -Wl,-T,../gcc/cc23x0r5_nortos.lds \
+LFLAGS += -Wl,-T,../gcc/lpf3_cc23xx_nortos.lds \
     "-Wl,-Map,$(NAME).map" \
     -mcpu=cortex-m0plus \
     "-L$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source" \

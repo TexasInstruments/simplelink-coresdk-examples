@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2023, Texas Instruments Incorporated
+ * Copyright (c) 2018-2024, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -81,19 +81,6 @@ if (board.match(/CC13|CC26/)) {
 
     spi0.$hardware = system.deviceData.board.components.LP_SPI;
     spi0.defaultTxBufferValue = "0xFF";
-}
-else if (board.match(/CC32/)) {
-    gpio2.gpioPin.$assign = "P18";
-    gpio3.gpioPin.$assign = "P03";
-
-    spi0.turboMode = false;
-    spi0.spi.dmaTxChannel.$assign = "UDMA_CH31";
-    spi0.spi.dmaRxChannel.$assign = "UDMA_CH30";
-    spi0.spi.sclkPin.$assign = "P05";
-    spi0.spi.pociPin.$assign = "P06";
-    spi0.spi.picoPin.$assign = "P07";
-    spi0.spi.csnPin.$assign = "P08";
-
 }
 else if (board.match(/CC23/) || board.match(/CC27/)) {
     gpio2.$hardware = system.deviceData.board.components.BUTTON0;

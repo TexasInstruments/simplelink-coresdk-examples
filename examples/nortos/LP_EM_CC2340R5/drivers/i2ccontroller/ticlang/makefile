@@ -31,7 +31,7 @@ CFLAGS += -I.. \
 LFLAGS += "-L$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source" \
     "-L$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/kernel/nortos" \
     ti_utils_build_linker.cmd.genlibs \
-    ../ticlang/cc23x0r5_nortos.cmd \
+    ../ticlang/lpf3_nortos.cmd \
     "-Wl,-m,$(NAME).map" \
     -Wl,--rom_model \
     -Wl,--warn_sections \

@@ -42,7 +42,6 @@
             -L${CG_TOOL_ROOT}/lib
             -llibc.a
         "
-        enableSysConfigTool="true"
         sysConfigBuildOptions="
             --product ${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/.metadata/product.json
             --compiler ticlang
@@ -65,7 +64,7 @@
         </file>
         <file path="${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/ti/boards/LP_EM_CC2340R5/Board.html" openOnCreation="false" excludeFromBuild="false" action="link">
         </file>
-        <file path="../ticlang/cc23x0r5_nortos.cmd" openOnCreation="false" excludeFromBuild="false" action="copy">
+        <file path="../ticlang/lpf3_nortos.cmd" openOnCreation="false" excludeFromBuild="false" action="copy">
         </file>
     </project>
 </projectSpec>

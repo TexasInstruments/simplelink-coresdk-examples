@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023, Texas Instruments Incorporated
+ * Copyright (c) 2023-2024, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -48,9 +48,13 @@
 #include DeviceFamily_constructPath(inc/hw_systim.h)
 
 /* Correct field-name deviations between CC23X0 and CC27XX */
-#if DeviceFamily_PARENT == DeviceFamily_PARENT_CC23X0
+#if (DeviceFamily_ID == DeviceFamily_ID_CC23X0R5) || (DeviceFamily_ID == DeviceFamily_ID_CC23X0R22)
     #define GPIO_EVTCFG_EVTEN_ENABLE GPIO_EVTCFG_EVTEN_EN
-    #define IOC_IOC0_INPEN_ENABLE    IOC_IOC0_INPEN_EN
+    #define IOC_IOC3_INPEN_ENABLE    IOC_IOC3_INPEN_EN
+#endif
+#if DeviceFamily_ID == DeviceFamily_ID_CC23X0R2
+    /* Used for calculating register offset, but does not exist for CC23X0R2 */
+    #define IOC_O_IOC0 0x00000100U
 #endif
 #if DeviceFamily_PARENT == DeviceFamily_PARENT_CC27XX
     #define EVTSVT_SYSTIMC1SEL_PUBID_GPIO_EVT EVTSVT_SYSTIMC1SEL_PUBID_GPIO_EVT0
@@ -79,8 +83,8 @@ const char rxExpectedMessage[] = "RX_ID_0";
 /* Variable holding the captured SYSTIM timer value */
 uint32_t capturedTimeUsec;
 
-/* Variable holding number of SYSTIM capture events triggered by UART RX/TX events.
- * Only used for debug purpose.
+/* Variable holding number of SYSTIM capture events triggered by UART RX/TX
+ * events. Only used for debug purpose.
  */
 volatile uint32_t uartEventCount;
 
@@ -114,8 +118,7 @@ static void sysTimerCallbackISR(uintptr_t arg)
     capturedTimeUsec = HWREG(SYSTIM_BASE + SYSTIM_O_CH1CC);
 
     /* Check if SYSTIM capture event was triggered by UART RX/TX event */
-    if ((eventStatus & (GPIO_RIS_DIO0_SET << CONFIG_GPIO_UART2_0_RX)) ||
-        (eventStatus & (GPIO_RIS_DIO0_SET << CONFIG_GPIO_UART2_0_TX)))
+    if ((eventStatus & (1 << CONFIG_GPIO_UART2_0_RX)) || (eventStatus & (1 << CONFIG_GPIO_UART2_0_TX)))
     {
         uartEventCount++;
 
@@ -125,7 +128,7 @@ static void sysTimerCallbackISR(uintptr_t arg)
     }
 
     /* Check if SYSTIM capture event was triggered by GPIO event */
-    if (eventStatus & (GPIO_RIS_DIO0_SET << CONFIG_GPIO_BUTTON_0))
+    if (eventStatus & (1 << CONFIG_GPIO_BUTTON_0))
     {
         SemaphoreP_post(semHandle);
         gpioEventCount++;
@@ -142,7 +145,7 @@ static void sysTimerCallbackISR(uintptr_t arg)
 }
 
 /*
- *  ======= Converts integer (32-bit) to ASCII-string (hexadecimal format) ======
+ *  ====== Converts integer (32-bit) to ASCII-string (hexadecimal format) ======
  */
 static void integerToAscii(uint32_t integerVal, char *asciiArray)
 {
@@ -207,10 +210,12 @@ void *mainThread(void *arg0)
      * ======== Demonstrate capture of UART RX event =========
      */
 
-    /* Configure GPIO and IOC to generate a GPIO event when a falling edge is detected on the UART RX pin */
+    /* Configure GPIO and IOC to generate a GPIO event when a falling edge is
+     * detected on the UART RX pin
+     */
     HWREG(GPIO_BASE + GPIO_O_EVTCFG) = GPIO_EVTCFG_DIOSEL_M & (CONFIG_GPIO_UART2_0_RX << GPIO_EVTCFG_DIOSEL_S);
     HWREG(GPIO_BASE + GPIO_O_EVTCFG) |= GPIO_EVTCFG_EVTEN_ENABLE;
-    HWREG(IOC_BASE + (IOC_O_IOC0 + (CONFIG_GPIO_UART2_0_RX * 4))) |= IOC_IOC0_EDGEDET_EDGE_NEG;
+    HWREG(IOC_BASE + (IOC_O_IOC0 + (CONFIG_GPIO_UART2_0_RX * 4))) |= IOC_IOC3_EDGEDET_EDGE_NEG;
 
     /* Configure GPIO event to be input to SYSTIM channel 1 */
     HWREG(EVTSVT_BASE + EVTSVT_O_SYSTIMC1SEL) = EVTSVT_SYSTIMC1SEL_PUBID_GPIO_EVT;
@@ -275,7 +280,9 @@ void *mainThread(void *arg0)
             }
         }
 
-        /* Signal that expected message was received. This will force exit of while-loop. */
+        /* Signal that expected message was received. This will force exit of
+         * while-loop.
+         */
         expectedUserMsgRecieved = true;
     }
 
@@ -287,30 +294,33 @@ void *mainThread(void *arg0)
      *  - Store captured time
      *  - Disable edge detection on UART RX pin within IOC
      *  - Clear any edge event status for UART RX pin
-     *  - Configure to generate a GPIO event when a falling edge is detected
-     *    on the UART TX pin. This requires the IOC pin input buffer to be enabled.
-     *  - Re-arm SYSTIM channel 1 capture for detection of event signal from GPIO
-     *    with rising edge.
+     *  - Configure to generate a GPIO event when a falling edge is detected on
+     *    the UART TX pin. This requires the IOC pin input buffer to be enabled.
+     *  - Re-arm SYSTIM channel 1 capture for detection of event signal from
+     *    GPIO with rising edge.
      *  - Note that the DIO number dependent IOCx register is addressed by using
      *    times four (* 4) as a DIO to register offset conversion.
      */
     rxTimestampUsec  = capturedTimeUsec;
     capturedTimeUsec = 0;
 
-    HWREG(IOC_BASE + (IOC_O_IOC0 + (CONFIG_GPIO_UART2_0_RX * 4))) &= ~IOC_IOC0_EDGEDET_EDGE_NEG;
+    /* Note: Using IOC_IOC3_xx defines because it exists for all devices */
+    HWREG(IOC_BASE + (IOC_O_IOC0 + (CONFIG_GPIO_UART2_0_RX * 4))) &= ~IOC_IOC3_EDGEDET_EDGE_NEG;
     GPIO_clearInt(CONFIG_GPIO_UART2_0_RX);
     HWREG(GPIO_BASE + GPIO_O_EVTCFG) = GPIO_EVTCFG_DIOSEL_M & (CONFIG_GPIO_UART2_0_TX << GPIO_EVTCFG_DIOSEL_S);
     HWREG(GPIO_BASE + GPIO_O_EVTCFG) |= GPIO_EVTCFG_EVTEN_ENABLE;
-    HWREG(IOC_BASE + (IOC_O_IOC0 + (CONFIG_GPIO_UART2_0_TX * 4))) |= (IOC_IOC0_EDGEDET_EDGE_NEG |
-                                                                      IOC_IOC0_INPEN_ENABLE);
+    HWREG(IOC_BASE + (IOC_O_IOC0 + (CONFIG_GPIO_UART2_0_TX * 4))) |= (IOC_IOC3_EDGEDET_EDGE_NEG |
+                                                                      IOC_IOC3_INPEN_ENABLE);
     HWREG(SYSTIM_BASE + SYSTIM_O_CH1CFG) = (SYSTIM_CH1CFG_INP_RISE | SYSTIM_CH1CFG_MODE_CAPT);
 
-    /* Send timestamp for the detected UART RX start bit and then disable edge detection on UART TX pin within IOC */
+    /* Send timestamp for the detected UART RX start bit and then disable edge
+     * detection on UART TX pin within IOC
+     */
     integerToAscii(rxTimestampUsec, timestampAsciiArray);
     bytesWritten = 0;
     UART2_write(uart, rxCaptureMessage, sizeof(rxCaptureMessage) - 1, &bytesWritten);
-    HWREG(IOC_BASE + (IOC_O_IOC0 + (CONFIG_GPIO_UART2_0_TX * 4))) &= ~(IOC_IOC0_EDGEDET_EDGE_NEG |
-                                                                       IOC_IOC0_INPEN_ENABLE);
+    HWREG(IOC_BASE + (IOC_O_IOC0 + (CONFIG_GPIO_UART2_0_TX * 4))) &= ~(IOC_IOC3_EDGEDET_EDGE_NEG |
+                                                                       IOC_IOC3_INPEN_ENABLE);
     bytesWritten = 0;
     UART2_write(uart, timestampAsciiArray, sizeof(timestampAsciiArray), &bytesWritten);
 
@@ -358,7 +368,9 @@ void *mainThread(void *arg0)
         Power_setConstraint(PowerLPF3_DISALLOW_STANDBY);
         SemaphoreP_pend(semHandle, SemaphoreP_WAIT_FOREVER);
 
-        /* Send timestamp for GPIO input event. Timestamp has already been captured by SYSTIM interrupt. */
+        /* Send timestamp for GPIO input event. Timestamp has already been
+         * captured by SYSTIM interrupt.
+         */
         gpioTimestampUsec = capturedTimeUsec;
         capturedTimeUsec  = 0;
         integerToAscii(gpioTimestampUsec, timestampAsciiArray);
