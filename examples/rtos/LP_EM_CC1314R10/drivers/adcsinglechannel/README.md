@@ -26,8 +26,9 @@ board-specific jumper settings.
 
 The Board.html can also be found in your SDK installation:
 
-        <SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
-
+```text
+<SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```
 
 ## Example Usage
 
@@ -35,17 +36,20 @@ The Board.html can also be found in your SDK installation:
 Display driver documentation found in the SimpleLink MCU SDK User's Guide.
 
 * Connect the ADC channels to the sampling sources.
-    * For quick testing, connect `CONFIG_ADC_0` to `GND` and `CONFIG_ADC_1` to `3V3`.
+    * For quick testing, connect `CONFIG_ADC_0` to `GND` and `CONFIG_ADC_1` to
+      `3V3`.
 
->__Important:__ Caution should be used when connecting the pins to analog inputs greater than 3VDC.
+> __Important:__ Caution should be used when connecting the pins to analog
+ inputs greater than 3VDC.
 
 * Open a serial session (e.g. [`PuTTY`](http://www.putty.org/ "PuTTY's
 Homepage"), etc.) to the appropriate COM port.
     * The COM port can be determined via Device Manager in Windows or via
-`ls /dev/tty*` in Linux.
+      `ls /dev/tty*` in Linux.
 
 The connection will have the following settings:
-```
+
+```text
     Baud-rate:     115200
     Data bits:          8
     Stop bits:          1
@@ -56,16 +60,17 @@ The connection will have the following settings:
 * Run the example.
 
 Example snippet of outputs:
-```
-        CONFIG_ADC_1 raw result (4): 230
 
-        CONFIG_ADC_1 convert result (4): 2500000 uV
-                    .                 .     .
-                    .                 .     .
-                    .                 .     .
-        CONFIG_ADC_1 raw result (9): 280
+```text
+    CONFIG_ADC_1 raw result (4): 230
 
-        CONFIG_ADC_1 convert result (9): 3000000 uV
+    CONFIG_ADC_1 convert result (4): 2500000 uV
+                .                 .     .
+                .                 .     .
+                .                 .     .
+    CONFIG_ADC_1 raw result (9): 280
+
+    CONFIG_ADC_1 convert result (9): 3000000 uV
 ```
 
 * The example outputs one sample from `CONFIG_ADC_0` and ten samples from

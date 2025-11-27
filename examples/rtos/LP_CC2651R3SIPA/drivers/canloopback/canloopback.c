@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023, Texas Instruments Incorporated
+ * Copyright (c) 2023-2024, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -69,8 +69,8 @@
      CAN_EVENT_ERR_PASSIVE | CAN_EVENT_RX_FIFO_MSG_LOST | CAN_EVENT_RX_RING_BUFFER_FULL |                            \
      CAN_EVENT_BIT_ERR_UNCORRECTED | CAN_EVENT_SPI_XFER_ERROR)
 
-/* Payload bytes indexed by 'dlc' field. */
-static const uint32_t DLCtoDataSize[DLC_TABLE_SIZE] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 12, 16, 20, 24, 32, 48, 64};
+/* Payload bytes indexed by Data Length Code (DLC) field. */
+static const uint32_t dlcToDataSize[DLC_TABLE_SIZE] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 12, 16, 20, 24, 32, 48, 64};
 
 /* The following globals are not designated as 'static' to allow CCS IDE access */
 
@@ -202,7 +202,7 @@ static void printRxMsg(void)
 
     if (rxElem.dlc < DLC_TABLE_SIZE)
     {
-        dataLen = DLCtoDataSize[rxElem.dlc];
+        dataLen = dlcToDataSize[rxElem.dlc];
 
         sprintf(formattedMsg + strlen(formattedMsg), "Data[%lu]: ", (unsigned long)dataLen);
 
@@ -253,7 +253,7 @@ static void verifyMsg(void)
     }
     else if (rxElem.dlc < DLC_TABLE_SIZE)
     {
-        dataLen = DLCtoDataSize[rxElem.dlc];
+        dataLen = dlcToDataSize[rxElem.dlc];
 
         for (i = 0U; i < dataLen; i++)
         {
@@ -338,7 +338,7 @@ static void txTestMsg(uint32_t id, uint32_t extID, uint32_t dlc, uint32_t fdForm
     txElem.efc = 0U;
     txElem.mm  = 1U;
 
-    for (i = 0U; i < DLCtoDataSize[txElem.dlc]; i++)
+    for (i = 0U; i < dlcToDataSize[txElem.dlc]; i++)
     {
         txElem.data[i] = i;
     }

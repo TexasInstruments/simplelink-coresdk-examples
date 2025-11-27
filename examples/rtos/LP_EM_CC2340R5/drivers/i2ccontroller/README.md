@@ -13,9 +13,9 @@ files. Additionally, the System Configuration file (\*.syscfg) present in the
 project may be opened with SysConfig's graphical user interface to determine
 pins and resources used.
 
-* `CONFIG_GPIO_LED_0` - Indicator LED
+* `CONFIG_GPIO_LED_0` - Indicator LED.
 * `CONFIG_I2C_0` - I2C bus used to communicate with the I2C target.
-* `CONFIG_Display_0` - Example output
+* `CONFIG_Display_0` - Example output.
 
 ## BoosterPacks, Board Resources & Jumper Settings
 
@@ -43,7 +43,7 @@ I2C controller and I2C target devices, in addition to __`GND`__.
 ## Example Usage
 
 * Example output is generated through use of Display driver APIs.
-  Refer to the Display driver documentation found in the SimpleLink MCU SDK User's Guide.
+  Refer to the Display driver documentation.
 * Open a serial session (for example [`PuTTY`][putty-homepage]) to the appropriate COM port.
     * The COM port can be determined via Device Manager in Windows or via `ls /dev/tty*` in Linux.
 
@@ -71,7 +71,7 @@ Run the example.
     Sending GET_STATUS until target responds
     ```
 
-3. When a valid response is received, the example displays this over UART
+3. When a valid response is received, the example displays this over UART:
 
     ```text
     Target responded!
@@ -109,7 +109,7 @@ This application uses one task:
 
 1. Opens and initializes an I2C driver object.
 
-2. Uses the I2C driver in blocking mode to send commands over the defined command interface
+2. Uses the I2C driver in blocking mode to send commands over the defined command interface.
 
 3. Prints command information via the UART.
 

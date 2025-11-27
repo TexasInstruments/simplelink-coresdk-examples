@@ -15,11 +15,10 @@ files. Additionally, the System Configuration file (\*.syscfg) present in the
 project may be opened with SysConfig's graphical user interface to determine
 pins and resources used.
 
-* `CONFIG_GPIO_LED_0` - Indicates the UART2 driver was initialized within `mainThread()`
-* `CONFIG_GPIO_LED_1` - Indicates execution of the SYSTIM channel 1 capture event ISR
-* `CONFIG_UART2_0` - Used to receive/send messages from/to the console of a serial session
-* `CONFIG_GPIO_BUTTON_0` - Forces timestamp to be captured and displayed when pressed
-
+* `CONFIG_GPIO_LED_0` - Indicates the UART2 driver was initialized within `mainThread()`.
+* `CONFIG_GPIO_LED_1` - Indicates execution of the SYSTIM channel 1 capture event ISR.
+* `CONFIG_UART2_0` - Used to receive/send messages from/to the console of a serial session.
+* `CONFIG_GPIO_BUTTON_0` - Forces timestamp to be captured and displayed when pressed.
 
 ## BoosterPacks, Board Resources & Jumper Settings
 
@@ -41,10 +40,11 @@ The Board.html can also be found in your SDK installation:
 
 * Open a serial session (e.g. [`PuTTY`](http://www.putty.org/ "PuTTY's
 Homepage"), etc.) to the appropriate COM port.
-  * The COM port can be determined via Device Manager in Windows or via
-`ls /dev/tty*` in Linux.
+    * The COM port can be determined via Device Manager in Windows or via
+      `ls /dev/tty*` in Linux.
 
-The connection should have the following settings
+The connection should have the following settings:
+
 ```text
     Baud-rate:  115200
     Data bits:       8
@@ -76,12 +76,11 @@ The timestamp is the number of microseconds from target reset.
 `Start listening for GPIO event!`
 
 * When BUTTON_0 is pressed the target will output the following message containing the
-timestamp (0xNNNNNNNN) for the detection of BUTTON_0 activation:
+timestamp (0xNNNNNNNN) for the detection of `CONFIG_GPIO_BUTTON_0` activation:
 `Captured GPIO input event at timestamp: 0xNNNNNNNN`
 The timestamp is the number of microseconds from target reset.
 The example will wait forever for BUTTON_0 to be pressed transferring the described
 message each time.
-
 
 ## Application Design Details
 

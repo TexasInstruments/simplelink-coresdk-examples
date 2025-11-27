@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019-2023, Texas Instruments Incorporated
+ * Copyright (c) 2019-2024, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -62,7 +62,7 @@
 #define NUM_SAMPLES 60
 
 /* Stack size in bytes */
-#define ALARMTHREADSTACKSIZE  512
+#define ALARMTHREADSTACKSIZE  1024
 
 /* Range of possible I2C target addresses */
 #define MIN_ADDRESS         0x08

@@ -3,9 +3,7 @@
 This example is the same as the "portable" example but instead of using
 POSIX APIs, it uses the native RTOS APIs. This example is still portable
 across devices (because of TI Drivers). This project requires less code/data
-space since there is no POSIX layer. This example is described in more detail
-in the _SDK User's Guide_ at
-&lt;SDK_INSTALL_DIR&gt;/docs/simplelink_mcu_sdk/Users_Guide.html.
+space since there is no POSIX layer.
 
 ## Peripherals & Pin Assignments
 
@@ -17,18 +15,18 @@ project may be opened with SysConfig's graphical user interface to determine
 pins and resources used.
 
 * `CONFIG_GPIO_LED_0` - Indicates that temperature has exceeded the alert
-threshold
+threshold.
 * `CONFIG_GPIO_BUTTON_1` - Used to restart the UART console.
-* `CONFIG_UART2_0` - Used for a simple console
-* `CONFIG_I2C_TMP` - Used to read temperature
+* `CONFIG_UART2_0` - Used for a simple console.
+* `CONFIG_I2C_TMP` - Used to read temperature.
 
-If using the [__Building Automation Sensors BoosterPack__][bp-bassensorsmkii], `CONFIG_GPIO_TMP_EN`
+If using the Building Automation Sensors BoosterPack, [__BP-BASSENSORSMKII__][bp-bassensorsmkii], `CONFIG_GPIO_TMP_EN`
 is used to power on the BoosterPack's temperature sensor.
 
 ## BoosterPacks, Board Resources & Jumper Settings
 
-* For boards without an on-board TMP sensor, This example requires a
-[__BP-BASSENSORSMKII BoosterPack__][bp-bassensorsmkii]. It has the TMP117
+* For boards without an on-board TMP sensor, this example requires a
+[__BP-BASSENSORSMKII__][bp-bassensorsmkii] BoosterPack. It has the TMP117
 sensor along with several I2C sensors.
 
 For board specific jumper settings, resources and BoosterPack modifications,
@@ -49,9 +47,9 @@ The Board.html can also be found in your SDK installation:
 * Open a serial session (e.g. [`PuTTY`](http://www.putty.org/ "PuTTY's
 Homepage"), etc.) to the appropriate COM port.
     * The COM port can be determined via Device Manager in Windows or via
-`ls /dev/tty*` in Linux.
+      `ls /dev/tty*` in Linux.
 
-The connection should have the following settings
+The connection should have the following settings:
 
 ```text
     Baud-rate:  115200
@@ -74,14 +72,14 @@ The connection should have the following settings
     t: display current temperature
 ```
 
-* The DIE temperature is displayed. You'll need to change the temperature of
-the actual TMP sensor to see a change.
+* The silicon die temperature is displayed. You'll need to change the
+temperature of the actual TMP sensor to see a change.
 
 * If you quit the console, the device will go into a lower power mode.
-To start the console back up, hit the restart button. Note: depending on the
-TMP sensor you are using, the initial readings of the TMP sensor might be
-invalid when coming out of the low power mode. Please refer to the TMP sensor
-data sheet for more details.
+To start the console back up, hit the restart button.
+    * __Note:__ depending on the TMP sensor you are using, the initial readings
+      of the TMP sensor might be invalid when coming out of the low power mode.
+      Please refer to the TMP sensor data sheet for more details.
 
 ## Application Design Details
 
@@ -115,4 +113,4 @@ SimpleLink Sensor and Actuator Plugin:
 richer API set for the TMP sensors, please refer to the SimpleLink
 Sensor and Actuator Plugin.
 
-[bp-bassensorsmkii]: http://www.ti.com/tool/bp-bassensorsmkii
+[bp-bassensorsmkii]: https://www.ti.com/tool/bp-bassensorsmkii

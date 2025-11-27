@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2023, Texas Instruments Incorporated
+ * Copyright (c) 2018-2024, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,6 +56,11 @@
 #define CONTROLLER_MSG ("Hello from controller, msg#: ")
 
 #define MAX_LOOP (10)
+
+#ifdef DeviceFamily_CC35XX
+    #define CONFIG_GPIO_LED_0 GPIO_INVALID_INDEX
+    #define CONFIG_GPIO_LED_1 GPIO_INVALID_INDEX
+#endif
 
 static Display_Handle display;
 

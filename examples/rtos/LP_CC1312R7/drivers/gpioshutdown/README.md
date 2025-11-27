@@ -8,10 +8,10 @@ functionality.
 
 ## Peripherals Exercised
 
-* `CONFIG_BUTTON_0` - Used to tell the device to enter shutdown.
-* `CONFIG_GPIO_WAKEUP_BUTTON` - Used as a wake-up source.
-* `CONFIG_LED_0` -  Lit when the device is active, not lit when in shutdown.
-* `CONFIG_LED_1` -  Will blink when coming out of shutdown.
+* `CONFIG_BUTTON_0` - Used to tell the device to enter shutdown
+* `CONFIG_GPIO_WAKEUP_BUTTON` - Used as a wake-up source
+* `CONFIG_LED_0` - Lit when the device is active, not lit when in shutdown
+* `CONFIG_LED_1` - Will blink when coming out of shutdown
 
 ## BoosterPacks, Board Resources & Jumper Settings
 
@@ -24,12 +24,13 @@ board-specific jumper settings.
 
 The Board.html can also be found in your SDK installation:
 
-        <SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```text
+<SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```
 
-> In order to get lowest shutdown current, the JTAG pins TMS and TCK should be
-disconnected by removing the relevant jumpers. TMS and TCK have internal pull-up
-and are driven low when inactive from the emulator, hence after programming the
-device these jumpers should be removed to avoid the extra leakage current.
+In order to get lowest shutdown current, it may be relevant to disconnect
+debug interface pins by removing relevant jumpers to avoid extra leakage
+current. Please see the __Board.html__ file.
 
 ## Example Usage
 

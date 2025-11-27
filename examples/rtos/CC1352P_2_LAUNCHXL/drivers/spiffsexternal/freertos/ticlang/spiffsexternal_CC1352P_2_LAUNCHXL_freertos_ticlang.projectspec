@@ -14,6 +14,7 @@
         name="spiffsexternal_CC1352P_2_LAUNCHXL_freertos_ticlang"
         configurations="Debug"
         toolChain="TICLANG"
+        cgtVersion="3.2.2"
         connection="TIXDS110_Connection.xml"
         device="Cortex M.CC1352P1F3"
         ignoreDefaultDeviceSettings="true"
@@ -44,7 +45,6 @@
             -L${CG_TOOL_ROOT}/lib
             -llibc.a
         "
-        enableSysConfigTool="true"
         sysConfigBuildOptions="
             --product ${COM_TI_SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR}/.metadata/product.json
             --compiler ticlang

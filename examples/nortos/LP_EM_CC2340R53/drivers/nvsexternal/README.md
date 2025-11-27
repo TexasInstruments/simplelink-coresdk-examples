@@ -1,4 +1,3 @@
----
 ## Example Summary
 
 This example shows how to use the Non-Volatile Storage (NVS) driver
@@ -27,20 +26,23 @@ board-specific jumper settings.
 
 The Board.html can also be found in your SDK installation:
 
-        <SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```text
+<SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```
 
 ## Example Usage
 
 * Example output is generated through use of Display driver APIs. Refer to the
-Display driver documentation found in the  SimpleLink MCU SDK User's Guide.
+Display driver documentation.
 
 * Open a serial session (e.g. [`PuTTY`](http://www.putty.org/ "PuTTY's
  Homepage"), etc.) to the appropriate COM port.
- * The COM port can be determined via Device Manager in Windows or via
- `ls /dev/tty*` in Linux.
+    * The COM port can be determined via Device Manager in Windows or via
+      `ls /dev/tty*` in Linux.
 
 The connection will have the following settings:
-```
+
+```text
     Baud-rate:     115200
     Data bits:          8
     Stop bits:          1
@@ -50,7 +52,8 @@ The connection will have the following settings:
 
 * Run the example.
 
-* The example will output the region attributes as defined by `CONFIG_NVSEXTERNAL`.
+* The example will output the region attributes as defined by
+  `CONFIG_NVSEXTERNAL`.
 
 * The example checks if the string,
   "SimpleLink SDK Non-Volatile Storage (NVS) SPI Example." is present in
@@ -59,17 +62,18 @@ The connection will have the following settings:
     sector is then erased.
     * If not present, the string is written to the non-volatile storage.
 
- * Disconnect the device from the debug session.
 
- * When prompted, reset the device. This will cause the application to
+* Disconnect the device from the debug session.
+
+* When prompted, reset the device. This will cause the application to
 start over.
 
-  * The sector size and region size will vary depending on the device specific
-  definitions in the board file.
+* The sector size and region size will vary depending on the device.
 
 The following is example output assuming the string was not present in non-volatile
 storage:
-```
+
+```text
     Sector Size: 0x1000
     Region Size: 0x4000
 
@@ -77,9 +81,11 @@ storage:
     Reset the device.
     ==================================================
 ```
+
 The following is example output assuming the string is present in non-volatile
 storage:
-```
+
+```text
     Sector Size: 0x1000
     Region Size: 0x4000
 
@@ -94,7 +100,7 @@ storage:
 * The application utilizes a single thread to demonstrate using the
  non-volatile storage region defined by `CONFIG_NVSEXTERNAL`.
 
- * `CONFIG_NVSEXTERNAL` defines non-volatile storage located on an off-chip
+* `CONFIG_NVSEXTERNAL` defines non-volatile storage located on an off-chip
  external flash memory location. The memory definitions may be found in the
  board file. After `NVS_open()`, the `nvsHandle` is associated with the memory
  region defined by `CONFIG_NVSEXTERNAL`.
@@ -103,12 +109,12 @@ storage:
 external flash and copied into RAM (`buffer`). This is performed through SPI
 transactions with the external flash device all contained inside the NVS SPI
 driver. The contents copied into `buffer` are compared to `signature`.
-  * If equal, the application displays the signature to the UART console. It is
+    * If equal, the application displays the signature to the UART console. It is
     important to note that the string was copied into RAM (`buffer`)
     during `NVS_read()`. This example displays the copied string stored in
     `buffer`. After the string is output to the UART console,
     the first sector in the NVS region is erased.
-  * If not equal, the application writes the string, `signature` to the
+    * If not equal, the application writes the string, `signature` to the
     NVS region. This is performed through SPI transactions with the external
     flash device all contained inside the NVS SPI driver.
 

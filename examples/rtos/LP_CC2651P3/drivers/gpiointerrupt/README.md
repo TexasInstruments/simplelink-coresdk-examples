@@ -12,7 +12,7 @@ project may be opened with SysConfig's graphical user interface to determine
 pins and resources used.
 
 * `CONFIG_GPIO_LED_0` - Indicates that the board was initialized within
-`mainThread()` also toggled by `CONFIG_GPIO_BUTTON_0`
+  `mainThread()` also toggled by `CONFIG_GPIO_BUTTON_0`
 * `CONFIG_GPIO_LED_1` - Toggled by `CONFIG_GPIO_BUTTON_1`
 * `CONFIG_GPIO_BUTTON_0` - Toggles `CONFIG_GPIO_LED_0`
 * `CONFIG_GPIO_BUTTON_1` - Toggles `CONFIG_GPIO_LED_1`
@@ -28,20 +28,23 @@ board-specific jumper settings.
 
 The Board.html can also be found in your SDK installation:
 
-        <SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```text
+<SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```
 
 ## Example Usage
 
 * Run the example. `CONFIG_GPIO_LED_0` turns ON to indicate driver
 initialization is complete.
 
-* `CONFIG_GPIO_LED_0` is toggled by pushing `CONFIG_GPIO_BUTTON_0`.
-* `CONFIG_GPIO_LED_1` is toggled by pushing `CONFIG_GPIO_BUTTON_1`.
+* `CONFIG_GPIO_LED_0` is toggled by pushing `CONFIG_GPIO_BUTTON_0`
+* `CONFIG_GPIO_LED_1` is toggled by pushing `CONFIG_GPIO_BUTTON_1`
 
 ## Application Design Details
 
-* The `gpioButtonFxn0`/`gpioButtonFxn1` functions are configured in the driver configuration
-file. These functions are called in the context of the GPIO interrupt.
+* The `gpioButtonFxn0`/`gpioButtonFxn1` functions are configured in the driver
+  configuration file. These functions are called in the context of the GPIO
+  interrupt.
 
 * Not all boards have more than one button, so `CONFIG_GPIO_LED_1` may not be
 toggled.

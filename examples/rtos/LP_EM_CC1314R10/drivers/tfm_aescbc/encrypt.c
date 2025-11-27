@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022, Texas Instruments Incorporated
+ * Copyright (c) 2022-2024, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -108,6 +108,10 @@ void *mainThread(void *arg0)
     KeyStore_PSA_setKeyUsageFlags(&attributes, (KEYSTORE_PSA_KEY_USAGE_DECRYPT | KEYSTORE_PSA_KEY_USAGE_ENCRYPT));
     KeyStore_PSA_setKeyAlgorithm(&attributes, KEYSTORE_PSA_ALG_CBC_NO_PADDING);
     KeyStore_PSA_setKeyType(&attributes, KEYSTORE_PSA_KEY_TYPE_AES);
+    KeyStore_PSA_setKeyLifetime(
+        &attributes,
+        KEYSTORE_PSA_KEY_LIFETIME_FROM_PERSISTENCE_AND_LOCATION(KEYSTORE_PSA_KEY_PERSISTENCE_VOLATILE,
+                                                                KEYSTORE_PSA_KEY_LOCATION_LOCAL_STORAGE));
 
     status = KeyStore_PSA_importKey(&attributes, &keyingMaterial[0], sizeof(keyingMaterial), &keyID);
 

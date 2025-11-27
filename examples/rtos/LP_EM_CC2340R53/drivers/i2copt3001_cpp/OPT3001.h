@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019-2023, Texas Instruments Incorporated
+ * Copyright (c) 2019-2024, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,7 +44,7 @@
  *  This example only works when the I2C driver is used in BLOCKING mode.
  *
  *  To gain a better of understanding of these definitions and functions, see
- *  the OPT3001 data sheet at http://www.ti.com/lit/ds/symlink/opt3001.pdf
+ *  the OPT3001 data sheet at https://www.ti.com/lit/ds/symlink/opt3001.pdf
  *
  ******************************************************************************
  */

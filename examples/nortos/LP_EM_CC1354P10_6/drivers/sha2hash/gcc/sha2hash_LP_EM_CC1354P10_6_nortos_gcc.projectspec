@@ -57,10 +57,9 @@
             -lgcc
             -lc
             -lm
-            -lnosys
             --specs=nano.specs
+            --specs=nosys.specs
         "
-        enableSysConfigTool="true"
         sysConfigBuildOptions="
             --product ${COM_TI_SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR}/.metadata/product.json
             --compiler gcc

@@ -1,8 +1,9 @@
 ## Example Summary
+
 This example shows how to use the SHA2 driver. The target accepts input over a
 serial port and displays back the hashed result. The input is limited to 256
 bytes. If more than 256 bytes are entered, the application will not accept
-additional input and hash the intial 256 bytes received.
+additional input and hash the initial 256 bytes received.
 
 ## Peripherals & Pin Assignments
 
@@ -24,17 +25,20 @@ board-specific jumper settings.
 
 The Board.html can also be found in your SDK installation:
 
-        <SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```text
+<SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```
 
 ## Example Usage
 
 * Open a serial session (e.g. [`PuTTY`](http://www.putty.org/ "PuTTY's
 Homepage"), etc.) to the appropriate COM port.
     * The COM port can be determined via Device Manager in Windows or via
-`ls /dev/tty*` in Linux.
+      `ls /dev/tty*` in Linux.
 
-The connection should have the following settings
-```
+The connection should have the following settings:
+
+```text
     Baud-rate:  115200
     Data bits:       8
     Stop bits:       1
@@ -64,5 +68,5 @@ string "This is a demo string." is
 This examples shows how to use the SHA2 driver in single step hash mode.
 
 > The example expects the input string to be encoded in ASCII binary format. The
-user must make sure that the character binary represention used by the host side
+user must make sure that the character binary representation used by the host side
 serial tool corresponds to that of the ASCII binary format.

@@ -39,27 +39,29 @@
 <h2 id="peripherals-pin-assignments">Peripherals &amp; Pin Assignments</h2>
 <p>When this project is built, the SysConfig tool will generate the TI-Driver configurations into the <strong>ti_drivers_config.c</strong> and <strong>ti_drivers_config.h</strong> files. Information on pins and resources used is present in both generated files. Additionally, the System Configuration file (*.syscfg) present in the project may be opened with SysConfig’s graphical user interface to determine pins and resources used.</p>
 <ul>
-<li><code>CONFIG_GPIO_LED_0</code> - Indicator LED</li>
-<li><code>CONFIG_GPIO_OPT3001_POWER</code> - OPT3001 power pin</li>
-<li><code>CONFIG_GPIO_OPT3001_INTERRUPT</code> - OPT3001 limit interrupt</li>
+<li><code>CONFIG_GPIO_LED_0</code> - Indicator LED.</li>
+<li><code>CONFIG_GPIO_OPT3001_POWER</code> - OPT3001 power pin.</li>
+<li><code>CONFIG_GPIO_OPT3001_INTERRUPT</code> - OPT3001 limit interrupt.</li>
 <li><code>CONFIG_I2C_OPT3001</code> - I2C bus used to communicate with the OPT3001 sensor.</li>
 </ul>
 <h2 id="boosterpacks-board-resources-jumper-settings">BoosterPacks, Board Resources &amp; Jumper Settings</h2>
-<p>This example requires a <a href="http://www.ti.com/tool/bp-bassensorsmkii"><strong>BP-BASSENSORSMKII BoosterPack</strong></a>.</p>
+<p>This example requires a <a href="https://www.ti.com/tool/bp-bassensorsmkii"><strong>BP-BASSENSORSMKII BoosterPack</strong></a>.</p>
 <p>For board specific jumper settings, resources and BoosterPack modifications, refer to the <strong>Board.html</strong> file.</p>
 <blockquote>
 <p>If you’re using an IDE such as Code Composer Studio (CCS) or IAR, please refer to Board.html in your project directory for resources used and board-specific jumper settings.</p>
 </blockquote>
 <p>The Board.html can also be found in your SDK installation:</p>
-<pre><code>    &lt;SDK_INSTALL_DIR&gt;/source/ti/boards/&lt;BOARD&gt;</code></pre>
+<pre class="text"><code>&lt;SDK_INSTALL_DIR&gt;/source/ti/boards/&lt;BOARD&gt;</code></pre>
 <h2 id="example-usage">Example Usage</h2>
 <ul>
-<li><p>Example output is generated through use of Display driver APIs. Refer to the Display driver documentation found in the SimpleLink MCU SDK User’s Guide.</p></li>
-<li>Open a serial session (e.g. <a href="http://www.putty.org/" title="PuTTY's Homepage"><code>PuTTY</code></a>, etc.) to the appropriate COM port.</li>
-<li><p>The COM port can be determined via Device Manager in Windows or via <code>ls /dev/tty*</code> in Linux.</p></li>
+<li><p>Example output is generated through use of Display driver APIs. Refer to the Display driver documentation.</p></li>
+<li>Open a serial session (e.g. <a href="http://www.putty.org/" title="PuTTY's Homepage"><code>PuTTY</code></a>, etc.) to the appropriate COM port.
+<ul>
+<li>The COM port can be determined via Device Manager in Windows or via <code>ls /dev/tty*</code> in Linux.</li>
+</ul></li>
 </ul>
 <p>The connection will have the following settings:</p>
-<pre><code>    Baud-rate:     115200
+<pre class="text"><code>    Baud-rate:     115200
     Data bits:          8
     Stop bits:          1
     Parity:          None
@@ -69,7 +71,7 @@
 <li><p>The examples first attempts to find every target address on the bus and print out the address to the console.</p></li>
 <li><p>The example will request lux samples from the OPT3001 and display them via the UART. A total of 60 lux samples are read and printed before the example exits. Terminal output should resemble:</p></li>
 </ul>
-<pre><code>    I2C Initialized!
+<pre class="text"><code>    I2C Initialized!
 
     I2C device found at address 0x40!
     I2C device found at address 0x44!
@@ -97,9 +99,9 @@
 
     I2C closed!</code></pre>
 <p>To test the interrupt feature, cover the OPT3001 to trigger the low limit interrupt. Conversely, expose the sensor to additional light to trigger the high limit interrupt. When the sensor detects a value outside of the limit registers, you should see a message that resembles:</p>
-<pre><code>    ALARM: Low limit crossed!
+<pre class="text"><code>    ALARM: Low limit crossed!
     The sensor detected a value of 3 lux.
-    The low limit is 20 lux</code></pre>
+    The low limit is 30 lux</code></pre>
 <h2 id="application-design-details">Application Design Details</h2>
 <p>This application uses two POSIX threads:</p>
 <p><code>mainThread</code> - performs the following actions:</p>
@@ -128,7 +130,7 @@
   with 100,000+ analog ICs and embedded processors, along with software, tools
   and the industry‘s largest sales/support staff.</p>
   <p>
-    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2025</a>, Texas Instruments Incorporated. All rights reserved. <br>
     <a href="https://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="https://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="https://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="https://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
   </p>
 </footer>

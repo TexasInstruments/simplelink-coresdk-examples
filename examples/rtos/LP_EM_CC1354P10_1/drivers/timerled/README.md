@@ -11,8 +11,8 @@ files. Additionally, the System Configuration file (\*.syscfg) present in the
 project may be opened with SysConfig's graphical user interface to determine
 pins and resources used.
 
-* `CONFIG_TIMER_0` - Timer instance that toggles the LED.
-* `CONFIG_GPIO_LED_0` - LED toggled in the callback function.
+* `CONFIG_TIMER_0` - Timer instance that toggles the LED
+* `CONFIG_GPIO_LED_0` - LED toggled in the callback function
 
 ## BoosterPacks, Board Resources & Jumper Settings
 
@@ -25,8 +25,9 @@ board-specific jumper settings.
 
 The Board.html can also be found in your SDK installation:
 
-        <SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
-
+```text
+<SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```
 
 ## Example Usage
 

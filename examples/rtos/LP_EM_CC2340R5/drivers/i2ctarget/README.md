@@ -14,8 +14,8 @@ files. Additionally, the System Configuration file (\*.syscfg) present in the
 project may be opened with SysConfig's graphical user interface to determine
 pins and resources used.
 
-* `CONFIG_GPIO_LED_0` - Indicator LED
-* `CONFIG_GPIO_LED_1` - Indicator LED toggling for incoming commands
+* `CONFIG_GPIO_LED_0` - Indicator LED.
+* `CONFIG_GPIO_LED_1` - Indicator LED toggling for incoming commands.
 * `CONFIG_I2C_0` - I2C bus used to communicate with the TMP sensor.
 
 ## BoosterPacks, Board Resources & Jumper Settings
@@ -50,9 +50,9 @@ Run the example.
 2. __`CONFIG_GPIO_LED_1`__ toggles when commands are received over the `CONFIG_I2C_0` I2C bus.
 
 3. The example implements 4 commands (see [cmdinterface.h])
-    * `CMD_CTL_SET_STATUS`: The example receives 1 byte and stores it in `rxBuffer[0]`
-    * `CMD_CTL_GET_STATUS`: The example returns the value stored in `rxBuffer[0]`
-    * `CMD_CTL_WRITE_BLOCK`: The example receives N bytes and stores it in `rxBuffer`
+    * `CMD_CTL_SET_STATUS`: The example receives 1 byte and stores it in `rxBuffer[0]`.
+    * `CMD_CTL_GET_STATUS`: The example returns the value stored in `rxBuffer[0]`.
+    * `CMD_CTL_WRITE_BLOCK`: The example receives N bytes and stores it in `rxBuffer`.
     * `CMD_CTL_READ_BLOCK`: The example fills `txBuffer` with 'Hello, I am the target!' and returns the N bytes
       requested by the I2C controller.
 
@@ -64,7 +64,7 @@ This application uses one task:
 
 1. Opens and initializes an I2CTarget driver object.
 
-2. Starts I2CTarget driver to send/receive data over the defined command interface
+2. Starts I2CTarget driver to send/receive data over the defined command interface.
 
 3. The task wakes up every 1 second.
 

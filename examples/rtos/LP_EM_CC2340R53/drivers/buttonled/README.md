@@ -11,8 +11,8 @@ files. Additionally, the System Configuration file (\*.syscfg) present in the
 project may be opened with SysConfig's graphical user interface to determine
 pins and resources used.
 
-* `CONFIG_BUTTON_0` - Button instance used to register button presses
-* `CONFIG_BUTTON_1` - Button instance used to register button presses
+* `CONFIG_BUTTON_0` - Button instance used to register button presses.
+* `CONFIG_BUTTON_1` - Button instance used to register button presses.
 * `CONFIG_LED_0` - LED instance used to control the onboard LED using GPIO.
 * `CONFIG_LED_1` - LED instance used to control the onboard LED using GPIO.
 * `CONFIG_LED_2` - LED instance used to control the onboard LED using PWM.
@@ -28,20 +28,23 @@ board-specific jumper settings.
 
 The Board.html can also be found in your SDK installation:
 
-        <SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```text
+<SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```
 
 ## Example Usage
 
 * Example output is generated through use of Display driver APIs. Refer to the
-Display driver documentation found in the SimpleLink MCU SDK User's Guide.
+Display driver documentation.
 
 * Open a serial session (e.g. [`PuTTY`](http://www.putty.org/ "PuTTY's
 Homepage"), etc.) to the appropriate COM port.
     * The COM port can be determined via Device Manager in Windows or via
-`ls /dev/tty*` in Linux.
+      `ls /dev/tty*` in Linux.
 
 The connection will have the following settings:
-```
+
+```text
     Baud-rate:     115200
     Data bits:          8
     Stop bits:          1

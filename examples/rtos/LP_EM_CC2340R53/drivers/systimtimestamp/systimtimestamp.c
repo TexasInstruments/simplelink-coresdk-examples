@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023-2024, Texas Instruments Incorporated
+ * Copyright (c) 2023-2025, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,25 +39,21 @@
 
 /* Driverlib header files */
 #include <ti/devices/DeviceFamily.h>
+#include DeviceFamily_constructPath(driverlib/evtsvt.h)
 #include DeviceFamily_constructPath(driverlib/interrupt.h)
 #include DeviceFamily_constructPath(inc/hw_types.h)
 #include DeviceFamily_constructPath(inc/hw_memmap.h)
 #include DeviceFamily_constructPath(inc/hw_ioc.h)
 #include DeviceFamily_constructPath(inc/hw_gpio.h)
-#include DeviceFamily_constructPath(inc/hw_evtsvt.h)
 #include DeviceFamily_constructPath(inc/hw_systim.h)
 
-/* Correct field-name deviations between CC23X0 and CC27XX */
-#if (DeviceFamily_ID == DeviceFamily_ID_CC23X0R5) || (DeviceFamily_ID == DeviceFamily_ID_CC23X0R22)
-    #define GPIO_EVTCFG_EVTEN_ENABLE GPIO_EVTCFG_EVTEN_EN
-    #define IOC_IOC3_INPEN_ENABLE    IOC_IOC3_INPEN_EN
-#endif
 #if DeviceFamily_ID == DeviceFamily_ID_CC23X0R2
     /* Used for calculating register offset, but does not exist for CC23X0R2 */
     #define IOC_O_IOC0 0x00000100U
-#endif
-#if DeviceFamily_PARENT == DeviceFamily_PARENT_CC27XX
-    #define EVTSVT_SYSTIMC1SEL_PUBID_GPIO_EVT EVTSVT_SYSTIMC1SEL_PUBID_GPIO_EVT0
+
+    /* CC23X0R2 uses slightly different names */
+    #define GPIO_EVTCFG_EVTEN_EN GPIO_EVTCFG_EVTEN_ENABLE
+    #define IOC_IOC3_INPEN_EN    IOC_IOC3_INPEN_ENABLE
 #endif
 
 /* Driver Header files */
@@ -214,11 +210,11 @@ void *mainThread(void *arg0)
      * detected on the UART RX pin
      */
     HWREG(GPIO_BASE + GPIO_O_EVTCFG) = GPIO_EVTCFG_DIOSEL_M & (CONFIG_GPIO_UART2_0_RX << GPIO_EVTCFG_DIOSEL_S);
-    HWREG(GPIO_BASE + GPIO_O_EVTCFG) |= GPIO_EVTCFG_EVTEN_ENABLE;
+    HWREG(GPIO_BASE + GPIO_O_EVTCFG) |= GPIO_EVTCFG_EVTEN_EN;
     HWREG(IOC_BASE + (IOC_O_IOC0 + (CONFIG_GPIO_UART2_0_RX * 4))) |= IOC_IOC3_EDGEDET_EDGE_NEG;
 
     /* Configure GPIO event to be input to SYSTIM channel 1 */
-    HWREG(EVTSVT_BASE + EVTSVT_O_SYSTIMC1SEL) = EVTSVT_SYSTIMC1SEL_PUBID_GPIO_EVT;
+    EVTSVTConfigureEvent(EVTSVT_SUB_SYSTIMC1, EVTSVT_PUB_GPIO_EVT);
 
     /* Configure SYSTIM to capture event on channel 1.
      *   - Capture re-arm is disabled
@@ -233,7 +229,7 @@ void *mainThread(void *arg0)
      *     capture value which is done in the sysTimerCallbackISR() function.
      */
     HwiP_construct(&systimHwi, INT_CPUIRQ0, sysTimerCallbackISR, NULL);
-    HWREG(EVTSVT_BASE + EVTSVT_O_CPUIRQ0SEL) = EVTSVT_CPUIRQ0SEL_PUBID_SYSTIM1;
+    EVTSVTConfigureEvent(EVTSVT_SUB_CPUIRQ0, EVTSVT_PUB_SYSTIM1);
     HwiP_enableInterrupt(INT_CPUIRQ0);
 
     /* Turn on user RED LED to indicate successful initialization */
@@ -308,9 +304,8 @@ void *mainThread(void *arg0)
     HWREG(IOC_BASE + (IOC_O_IOC0 + (CONFIG_GPIO_UART2_0_RX * 4))) &= ~IOC_IOC3_EDGEDET_EDGE_NEG;
     GPIO_clearInt(CONFIG_GPIO_UART2_0_RX);
     HWREG(GPIO_BASE + GPIO_O_EVTCFG) = GPIO_EVTCFG_DIOSEL_M & (CONFIG_GPIO_UART2_0_TX << GPIO_EVTCFG_DIOSEL_S);
-    HWREG(GPIO_BASE + GPIO_O_EVTCFG) |= GPIO_EVTCFG_EVTEN_ENABLE;
-    HWREG(IOC_BASE + (IOC_O_IOC0 + (CONFIG_GPIO_UART2_0_TX * 4))) |= (IOC_IOC3_EDGEDET_EDGE_NEG |
-                                                                      IOC_IOC3_INPEN_ENABLE);
+    HWREG(GPIO_BASE + GPIO_O_EVTCFG) |= GPIO_EVTCFG_EVTEN_EN;
+    HWREG(IOC_BASE + (IOC_O_IOC0 + (CONFIG_GPIO_UART2_0_TX * 4))) |= (IOC_IOC3_EDGEDET_EDGE_NEG | IOC_IOC3_INPEN_EN);
     HWREG(SYSTIM_BASE + SYSTIM_O_CH1CFG) = (SYSTIM_CH1CFG_INP_RISE | SYSTIM_CH1CFG_MODE_CAPT);
 
     /* Send timestamp for the detected UART RX start bit and then disable edge
@@ -319,8 +314,7 @@ void *mainThread(void *arg0)
     integerToAscii(rxTimestampUsec, timestampAsciiArray);
     bytesWritten = 0;
     UART2_write(uart, rxCaptureMessage, sizeof(rxCaptureMessage) - 1, &bytesWritten);
-    HWREG(IOC_BASE + (IOC_O_IOC0 + (CONFIG_GPIO_UART2_0_TX * 4))) &= ~(IOC_IOC3_EDGEDET_EDGE_NEG |
-                                                                       IOC_IOC3_INPEN_ENABLE);
+    HWREG(IOC_BASE + (IOC_O_IOC0 + (CONFIG_GPIO_UART2_0_TX * 4))) &= ~(IOC_IOC3_EDGEDET_EDGE_NEG | IOC_IOC3_INPEN_EN);
     bytesWritten = 0;
     UART2_write(uart, timestampAsciiArray, sizeof(timestampAsciiArray), &bytesWritten);
 
@@ -347,7 +341,7 @@ void *mainThread(void *arg0)
 
     /* Enable GPIO to publish event on BUTTON_0 DIO to EVTSVT */
     HWREG(GPIO_BASE + GPIO_O_EVTCFG) = GPIO_EVTCFG_DIOSEL_M & (CONFIG_GPIO_BUTTON_0 << GPIO_EVTCFG_DIOSEL_S);
-    HWREG(GPIO_BASE + GPIO_O_EVTCFG) |= GPIO_EVTCFG_EVTEN_ENABLE;
+    HWREG(GPIO_BASE + GPIO_O_EVTCFG) |= GPIO_EVTCFG_EVTEN_EN;
 
     /* Loop forever listening for GPIO events from BUTTON_0 pin */
     while (1)

@@ -35,7 +35,7 @@
 <div id="content">
   <h1></h1>
 <h2 id="example-summary">Example Summary</h2>
-<p>This example shows how to use the SHA2 driver. The target accepts input over a serial port and displays back the hashed result. The input is limited to 256 bytes. If more than 256 bytes are entered, the application will not accept additional input and hash the intial 256 bytes received.</p>
+<p>This example shows how to use the SHA2 driver. The target accepts input over a serial port and displays back the hashed result. The input is limited to 256 bytes. If more than 256 bytes are entered, the application will not accept additional input and hash the initial 256 bytes received.</p>
 <h2 id="peripherals-pin-assignments">Peripherals &amp; Pin Assignments</h2>
 <p>When this project is built, the SysConfig tool will generate the TI-Driver configurations into the <strong>ti_drivers_config.c</strong> and <strong>ti_drivers_config.h</strong> files. Information on pins and resources used is present in both generated files. Additionally, the System Configuration file (*.syscfg) present in the project may be opened with SysConfig’s graphical user interface to determine pins and resources used.</p>
 <h2 id="boosterpacks-board-resources-jumper-settings">BoosterPacks, Board Resources &amp; Jumper Settings</h2>
@@ -44,7 +44,7 @@
 <p>If you’re using an IDE such as Code Composer Studio (CCS) or IAR, please refer to Board.html in your project directory for resources used and board-specific jumper settings.</p>
 </blockquote>
 <p>The Board.html can also be found in your SDK installation:</p>
-<pre><code>    &lt;SDK_INSTALL_DIR&gt;/source/ti/boards/&lt;BOARD&gt;</code></pre>
+<pre class="text"><code>&lt;SDK_INSTALL_DIR&gt;/source/ti/boards/&lt;BOARD&gt;</code></pre>
 <h2 id="example-usage">Example Usage</h2>
 <ul>
 <li>Open a serial session (e.g. <a href="http://www.putty.org/" title="PuTTY's Homepage"><code>PuTTY</code></a>, etc.) to the appropriate COM port.
@@ -52,8 +52,8 @@
 <li>The COM port can be determined via Device Manager in Windows or via <code>ls /dev/tty*</code> in Linux.</li>
 </ul></li>
 </ul>
-<p>The connection should have the following settings</p>
-<pre><code>    Baud-rate:  115200
+<p>The connection should have the following settings:</p>
+<pre class="text"><code>    Baud-rate:  115200
     Data bits:       8
     Stop bits:       1
     Parity:       None
@@ -68,7 +68,7 @@
 <h2 id="application-design-details">Application Design Details</h2>
 <p>This examples shows how to use the SHA2 driver in single step hash mode.</p>
 <blockquote>
-<p>The example expects the input string to be encoded in ASCII binary format. The user must make sure that the character binary represention used by the host side serial tool corresponds to that of the ASCII binary format.</p>
+<p>The example expects the input string to be encoded in ASCII binary format. The user must make sure that the character binary representation used by the host side serial tool corresponds to that of the ASCII binary format.</p>
 </blockquote>
 <!-- Close div from before_body_template.html -->
 </div>
@@ -77,7 +77,7 @@
   with 100,000+ analog ICs and embedded processors, along with software, tools
   and the industry‘s largest sales/support staff.</p>
   <p>
-    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2025</a>, Texas Instruments Incorporated. All rights reserved. <br>
     <a href="https://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="https://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="https://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="https://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
   </p>
 </footer>

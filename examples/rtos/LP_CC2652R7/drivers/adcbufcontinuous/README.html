@@ -48,7 +48,7 @@
 <p>If you’re using an IDE such as Code Composer Studio (CCS) or IAR, please refer to Board.html in your project directory for resources used and board-specific jumper settings.</p>
 </blockquote>
 <p>The Board.html can also be found in your SDK installation:</p>
-<pre><code>    &lt;SDK_INSTALL_DIR&gt;/source/ti/boards/&lt;BOARD&gt;</code></pre>
+<pre class="text"><code>&lt;SDK_INSTALL_DIR&gt;/source/ti/boards/&lt;BOARD&gt;</code></pre>
 <h2 id="example-usage">Example Usage</h2>
 <ul>
 <li>Connect the ADC channel to a sampling source.
@@ -67,22 +67,33 @@
 </ul></li>
 </ul>
 <p>The connection will have the following settings:</p>
-<pre><code>    Baud-rate:     115200
+<pre class="text"><code>    Baud-rate:     115200
     Data bits:          8
     Stop bits:          1
     Parity:          None
     Flow Control:    None</code></pre>
 <ul>
-<li><p>Run the example.</p></li>
+<li>Run the example.</li>
+</ul>
+<p>Example snippet of outputs:</p>
+<pre class="text"><code>    Starting the ADCBufContinuous example
+    Buffer 0 finished:
+    Average: 3298384 uV
+    Buffer 1 finished:
+    Average: 3298384 uV
+    Buffer 2 finished:
+    Average: 3298384 uV
+    ...</code></pre>
+<ul>
 <li><p>The target will send packages of 50 samples and a header to the serial session. The buffer number and its average microvolt value is displayed on respective new lines.</p></li>
 <li><p>Note that many ADCBuf driver implementations use the DMA peripheral in a ping pong buffer configuration. Because of this setting breakpoints while active ADC conversions and DMA transactions are happening will result in unreliable behavior. It is recommended to not set breakpoints in this code example and instead read results via the UART terminal.</p></li>
 </ul>
 <h2 id="application-design-details">Application Design Details</h2>
 <ul>
 <li><p>A single task sets up the UART connection to the serial console and starts a continuous conversion with the ADCBuf driver. After this is completed, the task sleeps forever.</p></li>
-<li>The ADCBuf driver performs 50 samples at 200 Hz each.
+<li>The ADCBuf driver performs 50 samples at 1000 Hz each.
 <ul>
-<li>The driver supports higher sampling rates; however, 200 Hz was chosen for easily interpretable output. The maximum sampling rates are device specific.</li>
+<li>The driver supports higher sampling rates; however, 1000 Hz was chosen for easily interpretable output. The maximum sampling rates are device specific.</li>
 </ul></li>
 <li><p>The callback function <code>adcBufCallback</code> is called whenever an ADC buffer is full. The contents of the buffer are first adjusted so that raw results are comparable between devices of the same make. The adjusted values are then converted into microvolts to be human-readable. Lastly, the buffer number and its average microvolt value is displayed via UART.</p></li>
 </ul>
@@ -97,7 +108,7 @@
   with 100,000+ analog ICs and embedded processors, along with software, tools
   and the industry‘s largest sales/support staff.</p>
   <p>
-    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2023</a>, Texas Instruments Incorporated. All rights reserved. <br>
+    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
     <a href="https://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="https://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="https://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="https://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
   </p>
 </footer>

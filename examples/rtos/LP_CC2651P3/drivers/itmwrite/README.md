@@ -10,18 +10,20 @@ standalone tools.
 
 * `CONFIG_GPIO_LED_0` - Indicates that the board was initialized within `mainThread()`
 
-## Resources & Jumper Settings
+## BoosterPacks, Board Resources & Jumper Settings
 
-> If you're using an IDE (such as CCS or IAR), please refer to Board.html in
-your project directory for resources used and board-specific jumper settings.
-Otherwise, you can find Board.html in the directory
-&lt;SDK_INSTALL_DIR&gt;/source/ti/boards/&lt;BOARD&gt;.
+For board specific jumper settings, resources and BoosterPack modifications,
+refer to the __Board.html__ file.
 
-If using CC32xx, then the device must be debugged in SWD mode and the SOP
-jumper must be placed in position 0 in order to send ITM messages
-on the SWO pin.
+> If you're using an IDE such as Code Composer Studio (CCS) or IAR, please
+refer to Board.html in your project directory for resources used and
+board-specific jumper settings.
 
-If using CC13XX/26XX the SWO jumper must be connected on the LaunchPad.
+The Board.html can also be found in your SDK installation:
+
+```text
+<SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```
 
 ## Example Usage
 
@@ -29,14 +31,12 @@ If using CC13XX/26XX the SWO jumper must be connected on the LaunchPad.
 Port. Do not use the "Application/User UART" port. This should be a value
 like `COM22`.
 
-* Follow the setup instructions under the "Install tilogger command line tool"
-heading in &lt;SDK_INSTALL_DIR&gt;tools/log/tiutils/Readme.html to generate a
-virtual environment, and to install the required tools. Stop when you reach the
-"Using the tilogger command line interface tool" section and move on to the next
-step in this document.
+* Follow the setup instructions in the "Install tilogger command line tool"
+section in `<SDK_INSTALL_DIR>/tools/log/tiutils/Readme.html` to generate a
+virtual environment, and to install the required tools.
 
 * Make sure you have started a terminal in the
-&lt;SDK_INSTALL_DIR&gt;tools/log/tiutils/ folder and activated the virtual
+`<SDK_INSTALL_DIR>/tools/log/tiutils/` folder and activated the virtual
 environment from the previous step by running `> ./.venv/Scripts/activate`.
 Some terminals will now display an extra note with the prompt
 (e.g. `(.venv)` in PowerShell) indicating that a venv is active.
@@ -48,12 +48,12 @@ where `<PORT>` is the COM port from the first step (for example
 * Build and flash the example using CCS or another tool. Once the firmware is
 flashed, disconnect the debugger. ITM output will not display if the debugger
 is connected.
-
-* NOTE: For CC13X4/26X4 boards, ITM will only output data while a debugger *is*
-connected. For these devices, it is necessary to launch a debug session instead
-of simply flashing the target. While remaining in the debug session, the device
-can be reset to output the reset-frame over ITM using the debugger. In CCS this
-can done from the menu `Run -> Reset -> Board Reset (automatic connect/disconnect)`.
+    * __NOTE:__ For CC13X4/26X4 boards, ITM will only output data while a debugger
+      *is* connected. For these devices, it is necessary to launch a debug
+      session instead of simply flashing the target. While remaining in the
+      debug session, the device can be reset to output the reset-frame over ITM
+      using the debugger. In CCS this can done from the menu
+      `Run -> Reset -> Board Reset (automatic connect/disconnect)`.
 
 * Reset the board. `CONFIG_GPIO_LED_0` turns ON to indicate driver initialization
 is complete. The ITM tool will not begin printing until it receives a reset
@@ -149,13 +149,11 @@ software messages and DWT messages from the target.
 
 * A single thread, `mainThread`, configures and accesses the ITM.
 
+* __NOTE:__ When using any SensorTag(STK) Board, the XDS110 debugger must be
+selected with the 4-wire JTAG connection within your projects' debugger
+configuration.
+
 FreeRTOS:
 
 * Please view the `FreeRTOSConfig.h` header file for example configuration
 information.
-
-IAR:
-
-* When using any SensorTag(STK) Board, the XDS110 debugger must be
-selected with the 4-wire JTAG connection within your projects' debugger
-configuration.

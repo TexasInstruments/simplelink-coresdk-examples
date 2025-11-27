@@ -11,8 +11,8 @@ files. Additionally, the System Configuration file (\*.syscfg) present in the
 project may be opened with SysConfig's graphical user interface to determine
 pins and resources used.
 
-* `CONFIG_GPIO_LED_0`      - Indicator LED
-* `CONFIG_GPIO_BUTTON_0`   - Used to control the application
+* `CONFIG_GPIO_LED_0`      - Indicator LED.
+* `CONFIG_GPIO_BUTTON_0`   - Used to control the application.
 * `CONFIG_WATCHDOG_0`      - Watchdog driver instance.
 
 ## BoosterPacks, Board Resources & Jumper Settings
@@ -26,7 +26,9 @@ board-specific jumper settings.
 
 The Board.html can also be found in your SDK installation:
 
-        <SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```text
+<SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```
 
 ## Example Usage
 
@@ -60,7 +62,7 @@ specified in the board file.
 * The application demonstrates how to configure the reload value at runtime.
 Not all devices support `Watchdog_convertMsToTicks()` and
 `Watchdog_setReload()`. `Watchdog_convertMsToTicks()` will return `0` if the
-APIs are not support or if the specified reloadValue is not valid. This example
+APIs are not supported, or if the specified reloadValue is not valid. This example
 configures the reload value to be the same value used in the board file.
 
 * The application's `mainThread` enters an infinite loop which periodically

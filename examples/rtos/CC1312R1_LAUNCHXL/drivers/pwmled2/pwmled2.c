@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015-2019, Texas Instruments Incorporated
+ * Copyright (c) 2015-2024, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,7 @@
 void *mainThread(void *arg0)
 {
     /* Period and duty in microseconds */
-    uint16_t pwmPeriod = 3000;
+    uint16_t pwmPeriod = 1000;
     uint16_t duty      = 0;
     uint16_t dutyInc   = 100;
 

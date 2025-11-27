@@ -39,10 +39,10 @@
 <h2 id="peripherals-pin-assignments">Peripherals &amp; Pin Assignments</h2>
 <p>When this project is built, the SysConfig tool will generate the TI-Driver configurations into the <strong>ti_drivers_config.c</strong> and <strong>ti_drivers_config.h</strong> files. Information on pins and resources used is present in both generated files. Additionally, the System Configuration file (*.syscfg) present in the project may be opened with SysConfig’s graphical user interface to determine pins and resources used.</p>
 <ul>
-<li><code>CONFIG_GPIO_LED_0</code> - Indicates the UART2 driver was initialized within <code>mainThread()</code></li>
-<li><code>CONFIG_GPIO_LED_1</code> - Indicates execution of the SYSTIM channel 1 capture event ISR</li>
-<li><code>CONFIG_UART2_0</code> - Used to receive/send messages from/to the console of a serial session</li>
-<li><code>CONFIG_GPIO_BUTTON_0</code> - Forces timestamp to be captured and displayed when pressed</li>
+<li><code>CONFIG_GPIO_LED_0</code> - Indicates the UART2 driver was initialized within <code>mainThread()</code>.</li>
+<li><code>CONFIG_GPIO_LED_1</code> - Indicates execution of the SYSTIM channel 1 capture event ISR.</li>
+<li><code>CONFIG_UART2_0</code> - Used to receive/send messages from/to the console of a serial session.</li>
+<li><code>CONFIG_GPIO_BUTTON_0</code> - Forces timestamp to be captured and displayed when pressed.</li>
 </ul>
 <h2 id="boosterpacks-board-resources-jumper-settings">BoosterPacks, Board Resources &amp; Jumper Settings</h2>
 <p>For board specific jumper settings, resources and BoosterPack modifications, refer to the <strong>Board.html</strong> file.</p>
@@ -53,10 +53,12 @@
 <p><code>text &lt;SDK_INSTALL_DIR&gt;/source/ti/boards/&lt;BOARD&gt; \</code></p>
 <h2 id="example-usage">Example Usage</h2>
 <ul>
-<li>Open a serial session (e.g. <a href="http://www.putty.org/" title="PuTTY's Homepage"><code>PuTTY</code></a>, etc.) to the appropriate COM port.</li>
+<li>Open a serial session (e.g. <a href="http://www.putty.org/" title="PuTTY's Homepage"><code>PuTTY</code></a>, etc.) to the appropriate COM port.
+<ul>
 <li>The COM port can be determined via Device Manager in Windows or via <code>ls /dev/tty*</code> in Linux.</li>
+</ul></li>
 </ul>
-<p>The connection should have the following settings</p>
+<p>The connection should have the following settings:</p>
 <pre class="text"><code>    Baud-rate:  115200
     Data bits:       8
     Stop bits:       1
@@ -69,7 +71,7 @@
 <li><p>The target will respond with the following message containing the timestamp (0xNNNNNNNN) for the detection of the UART RX start bit of the message typed by the user: <code>Captured UART RX start bit at timestamp: 0xNNNNNNNN</code> The timestamp is the number of microseconds from target reset.</p></li>
 <li><p>The target will then output the following message containing the timestamp (0xNNNNNNNN) for the detection of the UART TX start bit of the previous message transferred by the target: <code>Captured UART TX start bit at timestamp: 0xNNNNNNNN</code> The timestamp is the number of microseconds from target reset.</p></li>
 <li><p>The target transfers the following message to the serial session: <code>Start listening for GPIO event!</code></p></li>
-<li><p>When BUTTON_0 is pressed the target will output the following message containing the timestamp (0xNNNNNNNN) for the detection of BUTTON_0 activation: <code>Captured GPIO input event at timestamp: 0xNNNNNNNN</code> The timestamp is the number of microseconds from target reset. The example will wait forever for BUTTON_0 to be pressed transferring the described message each time.</p></li>
+<li><p>When BUTTON_0 is pressed the target will output the following message containing the timestamp (0xNNNNNNNN) for the detection of <code>CONFIG_GPIO_BUTTON_0</code> activation: <code>Captured GPIO input event at timestamp: 0xNNNNNNNN</code> The timestamp is the number of microseconds from target reset. The example will wait forever for BUTTON_0 to be pressed transferring the described message each time.</p></li>
 </ul>
 <h2 id="application-design-details">Application Design Details</h2>
 <ul>
@@ -86,7 +88,7 @@
   with 100,000+ analog ICs and embedded processors, along with software, tools
   and the industry‘s largest sales/support staff.</p>
   <p>
-    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2025</a>, Texas Instruments Incorporated. All rights reserved. <br>
     <a href="https://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="https://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="https://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="https://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
   </p>
 </footer>

@@ -47,6 +47,7 @@
             -lstdc++
             -mcpu=cortex-m0plus
             -L${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source
+            -fno-lto
             -L${PROJECT_BUILD_DIR}/syscfg
             -lti_utils_build_linker.cmd.genlibs
             -march=armv6-m
@@ -58,8 +59,11 @@
             -lgcc
             -lc
             -lm
-            -lnosys
             --specs=nano.specs
+        "
+        postBuildStep="
+            &quot;${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/tools/common/crc_tool/crc_tool&quot; patch-image --elf &quot;${BuildDirectory}/${BuildArtifactFileBaseName}.out&quot; --symbol-prefix ti_utils_build_GenMap_sym_CRC --output &quot;${BuildDirectory}/${BuildArtifactFileBaseName}.out&quot;;
+            &quot;${CG_TOOL_ROOT}/bin/arm-none-eabi-objcopy&quot; -O ihex &quot;${BuildDirectory}/${BuildArtifactFileBaseName}.out&quot; &quot;${BuildDirectory}/${BuildArtifactFileBaseName}.hex&quot;
         "
         sysConfigBuildOptions="
             --product ${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/.metadata/product.json
@@ -82,6 +86,8 @@
         <file path="../../freertos/main_freertos.c" openOnCreation="false" excludeFromBuild="false" action="copy">
         </file>
         <file path="../../freertos/i2copt3001_cpp.syscfg" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="../../syscall_stubs.c" openOnCreation="false" excludeFromBuild="false" action="copy">
         </file>
         <file path="${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/ti/boards/LP_EM_CC2340R5/Board.html" openOnCreation="false" excludeFromBuild="false" action="link">
         </file>

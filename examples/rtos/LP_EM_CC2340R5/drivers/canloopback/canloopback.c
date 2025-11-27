@@ -157,7 +157,7 @@ static void printEvent(void)
 /*
  *  ======== eventPrintThread ========
  */
-static void *eventPrintThread(void *arg0)
+void *eventPrintThread(void *arg0)
 {
     int retc;
 
@@ -176,8 +176,6 @@ static void *eventPrintThread(void *arg0)
 
         printEvent();
     }
-
-    return (NULL);
 }
 
 /*
@@ -453,6 +451,4 @@ void *mainThread(void *arg0)
         /* Print the received messages only */
         processRxMsg(false);
     }
-
-    return (NULL);
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020-2023, Texas Instruments Incorporated - http://www.ti.com
+ * Copyright (c) 2020-2025, Texas Instruments Incorporated - http://www.ti.com
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,13 +42,6 @@
 #include <semaphore.h>
 #include <signal.h>
 #include <ti/log/Log.h>
-#include <ti/log/LogSinkBuf.h>
-
-#include <ti/devices/DeviceFamily.h>
-
-#if (defined(DeviceFamily_PARENT) && (DeviceFamily_PARENT != DeviceFamily_PARENT_CC23X0))
-    #include <ti/log/LogSinkITM.h>
-#endif
 
 #define WORK_INTERVAL (5) /* 5 sec */
 
@@ -67,13 +60,14 @@ void *mainThread(void *arg0)
     int retc;
     uint8_t bufferToLog[] = {0, 1, 2, 3, 4, 5};
 
-    /* Greet the user, send this to both modules */
+    /* Greet the user, send this to all modules */
     Log_printf(LogModule_App1, Log_DEBUG, "Hello World!");
     Log_printf(LogModule_App2, Log_DEBUG, "Hello World!");
+    Log_printf(LogModule_App3, Log_DEBUG, "Hello World!");
 
     /* Send out a buffer that simulates runtime data
      * This function should be used sparingly as it will actually store/send
-     * all the the data in the buffer over the log transport
+     * all the data in the buffer over the log transport.
      *
      * However, it is useful for outputting data that not available at compile
      * time. Examples of this include data from RF stacks or serial drivers
@@ -134,5 +128,6 @@ void *mainThread(void *arg0)
 static void log_clkFxn()
 {
     Log_printf(LogModule_App2, Log_VERBOSE, "log_clkFxn: post semaphore");
+    Log_printf(LogModule_App3, Log_VERBOSE, "log_clkFxn: post semaphore");
     sem_post(&sem);
 }

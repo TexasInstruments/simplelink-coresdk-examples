@@ -71,15 +71,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </header>
 <div id="content">
   <h1></h1>
-<h2 id="log-example">Log Example</h2>
+<h1 id="log-example">Log Example</h1>
 <p>This example shows how to instrument your source code using <code>Log</code>, as well as using the respective tools to capture and view log output from the target.</p>
-<h2 id="resources-jumper-settings">Resources &amp; Jumper Settings</h2>
+<h2 id="boosterpacks-board-resources-jumper-settings">BoosterPacks, Board Resources &amp; Jumper Settings</h2>
+<p>For board specific jumper settings, resources and BoosterPack modifications, refer to the <strong>Board.html</strong> file.</p>
 <blockquote>
-<p>If you’re using an IDE (such as CCS or IAR), please refer to Board.html in your project directory for resources used and board-specific jumper settings. Otherwise, you can find Board.html in the directory &lt;SDK_INSTALL_DIR&gt;/source/ti/boards/&lt;BOARD&gt;.</p>
+<p>If you’re using an IDE such as Code Composer Studio (CCS) or IAR, please refer to Board.html in your project directory for resources used and board-specific jumper settings.</p>
 </blockquote>
-<p>If using CC13XX/26XX the SWO jumper must be connected on the LaunchPad.</p>
+<p>The Board.html can also be found in your SDK installation:</p>
+<pre class="text"><code>&lt;SDK_INSTALL_DIR&gt;/source/ti/boards/&lt;BOARD&gt;</code></pre>
+<p>If using a CC13XX/26XX LaunchPad, the SWO jumper must be mounted for this example.</p>
 <ul>
-<li>NOTE: For CC13X4/26X4 boards, ITM will only output data while a debugger is connected. For these devices, it is necessary to launch a debug session instead of simply flashing the target and running it. While remaining in the debug session, the device can be reset to output the reset-frame over ITM using the debugger. In CCS this can done from the menu <code>Run -&gt; Reset</code></li>
+<li><strong>NOTE:</strong> For CC13X4/26X4 boards, ITM will only output data while a debugger is connected. For these devices, it is necessary to launch a debug session instead of simply flashing the target and running it. While remaining in the debug session, the device can be reset to output the reset-frame over ITM using the debugger. In CCS this can be done from the menu <code>Run -&gt; Reset</code>. The reset-frame is required for the tilogger tool to start parsing.</li>
+<li><strong>NOTE:</strong> If LogSinkUART is used, there is no need to reset the device to start parsing logs via the tilogger tool.</li>
 </ul>
 <h2 id="definitions">Definitions</h2>
 <p>The following terms are used throughout the Readme.</p>
@@ -112,92 +116,89 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <td>The binary representation of a log when it is stored or transported by a given sink. The log record format varys slightly with each sink depending on their implementation and needs. However, they all convey the same information.</td>
 </tr>
 <tr class="even">
-<td>Link Time Optimization (LTO)</td>
+<td><code>Link Time Optimization (LTO)</code></td>
 <td>A feature of some toolchains that can significantly reduce the code overhead of the log statements through a process called dead code elimination. In order to maximize the benefits of this, all static libraries and application files should have LTO enabled.</td>
 </tr>
 </tbody>
 </table>
 <h3 id="highlights">Highlights</h3>
+<p>This example</p>
 <ul>
-<li>Exercises the Logging API showing common use cases.</li>
-<li>Uses two separate LogModules.
+<li>Exercises the Logging API showing common use cases</li>
+<li>Uses three separate LogModules:
 <ul>
 <li><code>LogModule_App1</code> uses the default sink LogSinkBuf which routes logs to memory</li>
-<li><code>LogModule_App2</code> is a second module that routes logs to ITM on devices which supports it</li>
+<li><code>LogModule_App2</code> is a second module that routes logs to UART</li>
+<li><code>LogModule_App3</code> is a third module that routes logs to ITM on devices which supports it, and otherwise to memory using the same LogSinkBuf as <code>LogModule_App1</code></li>
 </ul></li>
-<li>Exercises the ITM and buffer based loggers (<code>LogSinkBuf</code>, <code>LogSinkITM</code>).</li>
-<li>Application runs in a task which wakes up every 5 seconds.</li>
+<li>Exercises the UART, ITM and buffer loggers (<code>LogSinkUART</code>, <code>LogSinkITM</code>, <code>LogSinkBuf</code>)</li>
+<li>Runs a task which wakes up every 5 seconds</li>
 </ul>
-<h3 id="beta-disclaimer">Beta Disclaimer</h3>
-<p>The logging ecosystem and this example are to be considered beta quality. They are not recommended for use in production code by TI. APIs and behaviour will change in future releases. Please report issues or feedback to <a href="https://e2e.ti.com/"><strong>E2E</strong></a>.</p>
-<p>TI is seeking feedback in the following areas:</p>
-<ul>
-<li>Presentation/configuration of logging in SysConfig.</li>
-<li>Log API</li>
-</ul>
+<p><strong>NOTE:</strong> LogSinkBuf requires Runtime (RTOS) Objects which is currently not available in IAR and CCS Theia. Thus, there is no proper visualizer for these messages besides inspecting their records in memory. Also, when LTO is enabled, the compiler will make Runtime (RTOS) Objects unable to find the right state variables to read out the log records from SRAM. The UART and ITM transports are supported across all IDEs/toolchains.</p>
+<p><strong>NOTE:</strong> Not all devices support ITM Logging. To see if your device does, see the device datasheet or SysConfig.</p>
 <h3 id="overview">Overview</h3>
-<p>The example uses two log modules that each use a different log sink.</p>
+<p>The example uses three log modules that each use a different log sink.</p>
 <p>The routing of the log data is controlled by the relevant LogModule instance in SysConfig. This routing is controlled at the module level. That is, all log data from a given module goes to the same log sink. Each LogModule can also be individually configured to be enabled or not, and the settings for each log sink can also be configured.</p>
-<p>The big picture:</p>
-<pre><code>file.c --&gt;|[x]--&gt; LogSinkBuf  --&gt; memory, ROV
-          |[ ]--&gt; LogSinkITM  --&gt; ITM, Wireshark
-            ^
-            |
-LogModule --+</code></pre>
 <p>Visualization of logs depends on their transport. This is discussed in the following section.</p>
 <h2 id="log-visualization">Log Visualization</h2>
-<p>Each log module is routed to a different log sink. Due to the differing nature of the transport mechanisms used by the back end delegates, they are visualized using different methods. The table below shows the tooling used for visualizing the different types of logs.</p>
+<p>Each log module is routed to a different log sink. Due to the differing nature of the transport mechanisms used by the backend delegates, they are visualized using different methods. The table below shows the tooling used for visualizing the different types of logs.</p>
 <table>
 <thead>
 <tr class="header">
 <th>Logger</th>
+<th>Transport</th>
 <th>Visualization tool</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><code>LogSinkBuf</code></td>
-<td>Runtime Object View (ROV) 2</td>
+<td>memory</td>
+<td>Runtime (RTOS) Objects</td>
 </tr>
 <tr class="even">
+<td><code>LogSinkUART</code></td>
+<td>UART</td>
+<td>TI Python Backend + stdout/Wireshark</td>
+</tr>
+<tr class="odd">
 <td><code>LogSinkITM</code></td>
-<td>Wireshark + TI Python Backend</td>
+<td>ITM</td>
+<td>TI Python Backend + stdout/Wireshark</td>
 </tr>
 </tbody>
 </table>
-<p>The log statements can be viewed independently. It is not required to have both host side tools running in order for the example to run.</p>
+<p>The log statements can be viewed independently. It is not required to have both host side tools running in order for the example to run. For more information on the host side tools, see README.md in <code>&lt;SDK_INSTALL_DIR&gt;/tools/log/tiutils</code>.</p>
+<p><strong>NOTE:</strong> When using the tilogger host side tool, please make sure it is up-to-date to avoid compatibility issues.</p>
 <h2 id="example-usage">Example Usage</h2>
-<p>This demo illustrates a working example of logging. Note that some log sinks require special hardware initialization. In this example, both LogSinkITM and LogSinkBuf are used. Please refer to the documentation of the particular log sink for more information on usage.</p>
+<p>This demo illustrates a working example of logging. Since this example uses SysConfig, initialization of the log sinks is automatically handled in <code>Board_init()</code>.</p>
+<p><strong>NOTE:</strong> If you are not using SysConfig, remember to include the sink’s header file and call the corresponding <code>LogSink*_init()</code> before calling other Log_ APIs.</p>
+<p>In this example LogSinkBuf, LogSinkUART and LogSinkITM are used. Please refer to the documentation of the particular log sink for more information on usage.</p>
 <h3 id="import-and-build-the-example">Import and Build the Example</h3>
 <ol>
 <li><p>Import the project into your workspace.</p></li>
 <li><p>Build the project.</p></li>
 </ol>
 <h3 id="load-and-run-the-program">Load and Run the Program</h3>
-<p>This program uses ROV to display program output.</p>
 <ol>
-<li>Follow the Quick Start Guide instructions in the readme in <code>&lt;SDK_INSTALL_DIR&gt;/tools/log/tiutils</code></li>
+<li><p>Follow the steps in the “Quick Start Guide” section of the readme in <code>&lt;SDK_INSTALL_DIR&gt;/tools/log/tiutils</code> to setup the logger tool.</p></li>
 <li><p>Load the program.</p></li>
-<li><p>To view LogSinkBuf statements: Launch ROV.</p>
-<pre><code>Tools -&gt; Runtime Object View</code></pre>
-<p>Open the ROV <code>LogSinkBuf</code> view</p>
-<pre><code>Tools &gt; Runtime Object View
-Connect
-LogSinkBuf
-LogSinkBuf &gt; Records</code></pre>
+<li><p>To view LogSinkBuf statements: Launch Runtime (RTOS) Objects while in a debug session.</p>
+<pre class="text"><code>view -&gt; Runtime (RTOS) Objects</code></pre>
+<p>Open the Runtime Objects <code>LogSinkBuf</code> view</p>
+<pre class="text"><code>view -&gt; Runtime (RTOS) Objects
+Module Name -&gt; LogSinkBuf</code></pre>
 <p>Enable continuous refresh to see the output as it is generated. The default refresh rate is 1 second.</p></li>
-<li><p>To view LogSinkITM statements: Launch Wireshark.</p>
-<p>Follow the steps in the “Extracting some Logs” section of the readme in <code>&lt;SDK_INSTALL_DIR&gt;/tools/log/tiutils</code></p></li>
+<li><p>To view LogSinkUART or LogSinkITM statements: Follow the steps in the “Extracting Logs” section of the readme in <code>&lt;SDK_INSTALL_DIR&gt;/tools/log/tiutils</code>.</p></li>
 <li><p>Run the program.</p>
-<p>In ROV, you will see the initial start up message, followed by a count update every 5 seconds.</p>
-<pre><code>count=1
+<p>In Runtime Objects, you will see the initial start up message, followed by a count update every 5 seconds.</p>
+<pre class="text"><code>count=1
 count=2
 count=3</code></pre>
-<p>In Wireshark, you will see the initial start up message (Hello world), and messages whenever the application’s semaphore is posted</p>
-<pre><code>log_clkFxn: post semaphore
+<p>Using LogSinkUART or LogSinkITM, you will see the initial start up message (Hello world) in Wireshark or stdout, and messages whenever the application’s semaphore is posted.</p>
+<pre class="text"><code>log_clkFxn: post semaphore
 ...</code></pre></li>
 </ol>
-<p>Note: LogSinkBuf requires ROV2 which is not available in IAR. Thus, there is no proper visualizer for these messages besides inspecting their records in memory. The ITM transport is supported across all IDEs/toolchains.</p>
 <h2 id="conditional-log-inclusion">Conditional Log Inclusion</h2>
 <p>Log invocations are conditionally included in the final program based on the settings of the corresponding log module, if link-time optimization is enabled. If the log module is disabled, or the log-level for the particular invocation is insufficient, the linker will perform dead-code elimination, and optimize the call away.</p>
 <p>It is therefore recommended to build with link time optimization if the toolchain supports it.</p>
@@ -211,10 +212,12 @@ count=3</code></pre>
 <p>In log.c, you will see the following code which prints a greeting:</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="pp">#include </span><span class="im">&lt;ti/log/Log.h&gt;</span>
 
-Log_printf(LogModule_App1, Log_DEBUG, <span class="st">&quot;Hello World!&quot;</span>);</code></pre></div>
+Log_printf(LogModule_App1, Log_DEBUG, <span class="st">&quot;Hello World!&quot;</span>);
+Log_printf(LogModule_App2, Log_DEBUG, <span class="st">&quot;Hello World!&quot;</span>);
+Log_printf(LogModule_App3, Log_DEBUG, <span class="st">&quot;Hello World!&quot;</span>);</code></pre></div>
 <p>The above code will implicitly declare a log module called LogModule_App1. This means that a logModule called LogModule_App1 must be defined, most easily by SysConfig. The log data associated with this log module will be routed to the logger instance specified by LogModule_App1.</p>
 <h2 id="adding-modules">Adding Modules</h2>
-<p>All log statements in the above example use either LogModule_App1 or LogModule_App2. Log modules are useful for grouping and sorting log statements that share configrations such as severity levels and sinks. In order to create a new module follow the steps below:</p>
+<p>All log statements in the above example use either LogModule_App1, LogModule_App2 or LogModule_App3. Log modules are useful for grouping and sorting log statements that share configurations such as severity levels and sinks. In order to create a new module follow the steps below:</p>
 <ol>
 <li>Define a module name</li>
 <li>Create a Log module in SysConfig with the given name</li>
@@ -225,9 +228,12 @@ Log_printf(LogModule_App1, Log_DEBUG, <span class="st">&quot;Hello World!&quot;<
 <ul>
 <li>Log Modules - a list of all defined log modules, along with their respective configurations</li>
 <li>Log Sinks - this lists all available sinks that logs can be routed to</li>
-<li>LogSinkBuf - all instances of LogSinkBuf. Each instances is a seperate memory area that logs can be written to. Each sink can be configured separately.</li>
+<li>LogSinkBuf - all instances of LogSinkBuf. Each instances is a separate memory area that logs can be written to. Each sink can be configured separately.</li>
+<li>LogSinkUART - depending on the device, there may be more than one available UART sink.</li>
 <li>LogSinkITM - due to hardware limitations, there is only one available ITM sink. However, several different modules may use it as a sink.</li>
 </ul>
+<h2 id="feedback">Feedback</h2>
+<p>Please report issues or feedback to <a href="https://e2e.ti.com/"><strong>E2E</strong></a>.</p>
 <!-- Close div from before_body_template.html -->
 </div>
 <footer id="tiFooter">
@@ -235,7 +241,7 @@ Log_printf(LogModule_App1, Log_DEBUG, <span class="st">&quot;Hello World!&quot;<
   with 100,000+ analog ICs and embedded processors, along with software, tools
   and the industry‘s largest sales/support staff.</p>
   <p>
-    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2025</a>, Texas Instruments Incorporated. All rights reserved. <br>
     <a href="https://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="https://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="https://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="https://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
   </p>
 </footer>

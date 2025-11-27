@@ -48,19 +48,37 @@
 <p>If you’re using an IDE such as Code Composer Studio (CCS) or IAR, please refer to Board.html in your project directory for resources used and board-specific jumper settings.</p>
 </blockquote>
 <p>The Board.html can also be found in your SDK installation:</p>
-<pre><code>    &lt;SDK_INSTALL_DIR&gt;/source/ti/boards/&lt;BOARD&gt;</code></pre>
+<pre class="text"><code>&lt;SDK_INSTALL_DIR&gt;/source/ti/boards/&lt;BOARD&gt;</code></pre>
 <h2 id="example-usage">Example Usage</h2>
 <ul>
-<li>Steps to run the example:</li>
+<li>Steps to run the example with CCS:</li>
 </ul>
 <ol>
 <li>Launch the CCS debug session.</li>
 <li>Select <em>Tools</em> -&gt; <em>Debugger Options</em> -&gt; <em>Auto Run and Launch Options</em>. Disable Auto Run Option “On a program load or restart”. Set “Remember My Settings” to allow this setting to persist for subsequent debug sessions.</li>
-<li>Exit and relaunch the debug session. Execution should be paused at <code>_c_int00()</code>. Steps 2 &amp; 3 can be skipped for subsequent debug sessions.</li>
-<li>Select <em>Run</em> -&gt; <em>Load</em> -&gt; <em>Load Program</em>. Select <code>tfm_s.axf</code> located in <code>&lt;SDK_INSTALL_DIR&gt;/tfm_s/build/cc26x4/production_full/Release/outputs/</code> to program the Secure image. This will overwrite the NS application symbols.</li>
+<li>Exit and relaunch the debug session. Execution should be suspended at <code>_c_int00()</code> or <code>ResetISR()</code>. Steps 2 &amp; 3 can be skipped for subsequent debug sessions.</li>
+<li>Select <em>Run</em> -&gt; <em>Load</em> -&gt; <em>Load Program</em>. Select <code>tfm_s.axf</code> located in <code>&lt;SDK_INSTALL_DIR&gt;/tfm_s/build/cc26x4/production_full/Release/bin/</code> to program the Secure image. This will overwrite the NS application symbols.</li>
 <li>To restore NS application symbols: Select <em>Run</em> -&gt; <em>Load</em> -&gt; <em>Add Symbols</em>. Select the NS application <code>tfm_empty_XXXX.out</code>.</li>
-<li>PC register should be 0xD100 (Secure entry point) if above steps were done correctly.</li>
+<li>Execution should be suspended at <code>Reset_Handler()</code> if the above steps were done correctly.</li>
 <li>Set breakpoints if desired and resume execution to run the example.</li>
+</ol>
+<ul>
+<li>Steps to run the example with CCS Theia:</li>
+</ul>
+<ol>
+<li>Open the project properties, select <strong>Debug</strong>. Select “Cortex_M33_0” for the <em>Core</em> and “Auto Run and Launch Options” for the <em>Category</em>. Disable Auto Run Option “On a program load or restart”.</li>
+<li>Launch the CCS debug session.</li>
+<li>Execution should be suspended at <code>_c_int00()</code> or <code>ResetISR()</code>.</li>
+<li>Select <em>Run</em> -&gt; <em>Load</em> -&gt; <em>Load Program</em>. Select <code>tfm_s.axf</code> located in <code>&lt;SDK_INSTALL_DIR&gt;/tfm_s/build/cc26x4/production_full/Release/bin/</code> to program the Secure image. This will overwrite the NS application symbols.</li>
+<li>To restore NS application symbols: Select <em>Run</em> -&gt; <em>Load</em> -&gt; <em>Add Symbols</em>. Select the NS application <code>tfm_empty_XXXX.out</code>.</li>
+<li>Execution should be suspended at <code>Reset_Handler()</code> if the above steps were done correctly.</li>
+<li>Set breakpoints if desired and resume execution to run the example.</li>
+</ol>
+<ul>
+<li>Steps to run the example with IAR:</li>
+</ul>
+<ol>
+<li>This example is not currently supported for IAR.</li>
 </ol>
 <ul>
 <li>The example lights <code>CONFIG_GPIO_LED_0</code> as part of the initialization in the <code>mainThread()</code>. This thread then toggles the LED at a 1 second rate.</li>
@@ -81,7 +99,7 @@
   with 100,000+ analog ICs and embedded processors, along with software, tools
   and the industry‘s largest sales/support staff.</p>
   <p>
-    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2023</a>, Texas Instruments Incorporated. All rights reserved. <br>
+    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
     <a href="https://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="https://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="https://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="https://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
   </p>
 </footer>

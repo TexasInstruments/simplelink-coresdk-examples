@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2023, Texas Instruments Incorporated
+ * Copyright (c) 2018-2024, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,6 +37,7 @@
 const Board             = scripting.addModule("/ti/drivers/Board");
 const Power             = scripting.addModule("/ti/drivers/Power");
 const LogModule         = scripting.addModule("/ti/log/LogModule");
+const LogSinkUART       = scripting.addModule("/ti/log/LogSinkUART");
 
 /* ======== Kernel Configuration ======== */
 system.getScript("kernel_config_release.syscfg.js");
@@ -49,7 +50,7 @@ if(!board.match(/CC23.0/)) {
 }
 
 /**
- * Create two log modules and route them to different log sinks.
+ * Create three log modules and route them to different log sinks.
  * This means that LogModule_App1 records will be routed to the log buffer
  * and LogModule_App2 records will be routed to ITM if the platform supports it
  */
@@ -58,8 +59,12 @@ LogModule.enable_INFO    = true;
 
 var LogModule_App1 = LogModule.addInstance();
 var LogModule_App2 = LogModule.addInstance();
+var LogModule_App3 = LogModule.addInstance();
+const LogSinkUART1 = LogSinkUART.addInstance();
+
 LogModule_App1.$name = "LogModule_App1"
 LogModule_App2.$name = "LogModule_App2"
+LogModule_App3.$name = "LogModule_App3"
 LogModule_App1.loggerSink = "/ti/log/LogSinkBuf"
 
 LogModule_App1.enable_VERBOSE = true;
@@ -68,11 +73,18 @@ LogModule_App1.enable_INFO    = true;
 LogModule_App2.enable_VERBOSE = true;
 LogModule_App2.enable_INFO    = true;
 
+LogModule_App3.enable_VERBOSE = true;
+LogModule_App3.enable_INFO    = true;
+
+
+LogModule_App2.loggerSink   = "/ti/log/LogSinkUART"
+LogModule_App2.logger       = LogSinkUART1;
+
 if(!board.match(/CC23.0/)) {
-    LogModule_App2.loggerSink = "/ti/log/LogSinkITM"
+    LogModule_App3.loggerSink = "/ti/log/LogSinkITM"
 }
 else {
-    LogModule_App2.loggerSink = "/ti/log/LogSinkBuf"
+    LogModule_App3.loggerSink = "/ti/log/LogSinkBuf"
 }
 
 if (board.match(/CC13../) || board.match(/CC26../)) {
@@ -82,6 +94,20 @@ if (board.match(/CC13../) || board.match(/CC26../)) {
     } else {
         ITM.swoPin.$assign  = "DIO18";
     }
+}
+else if(board.match(/CC27../)) {
+    ITM.swoPin.swoResource.$assign = "DIO11";
+    scripting.suppress("Connected to hardware*", ITM.swoPin, "swoResource");
+}
+
+if (board.match(/LP_EM_CC2745P10_SOCKET|LP_EM_CC2745R10_SOCKET/))
+{
+    LogSinkUART1.uart.uart.txPin.$assign = "boosterpack.4";
+    scripting.suppress("Connected to hardware*", LogSinkUART1.uart.uart, "txPin");
+}
+else
+{
+    LogSinkUART1.uart.$hardware         = system.deviceData.board.components.XDS110UART;
 }
 
 var GPIO = scripting.addModule("/ti/drivers/GPIO");

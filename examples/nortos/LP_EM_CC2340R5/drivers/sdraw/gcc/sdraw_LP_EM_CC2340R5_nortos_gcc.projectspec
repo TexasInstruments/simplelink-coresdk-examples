@@ -43,6 +43,7 @@
         linkerBuildOptions="
             -mcpu=cortex-m0plus
             -L${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source
+            -fno-lto
             -eresetISR
             -L${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/kernel/nortos
             -L${PROJECT_BUILD_DIR}/syscfg
@@ -56,8 +57,12 @@
             -lgcc
             -lc
             -lm
-            -lnosys
             --specs=nano.specs
+            --specs=nosys.specs
+        "
+        postBuildStep="
+            &quot;${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/tools/common/crc_tool/crc_tool&quot; patch-image --elf &quot;${BuildDirectory}/${BuildArtifactFileBaseName}.out&quot; --symbol-prefix ti_utils_build_GenMap_sym_CRC --output &quot;${BuildDirectory}/${BuildArtifactFileBaseName}.out&quot;;
+            &quot;${CG_TOOL_ROOT}/bin/arm-none-eabi-objcopy&quot; -O ihex &quot;${BuildDirectory}/${BuildArtifactFileBaseName}.out&quot; &quot;${BuildDirectory}/${BuildArtifactFileBaseName}.hex&quot;
         "
         sysConfigBuildOptions="
             --product ${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/.metadata/product.json

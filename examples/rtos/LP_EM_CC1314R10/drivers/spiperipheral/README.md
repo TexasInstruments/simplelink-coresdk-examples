@@ -1,7 +1,7 @@
 ## Example Summary
 
-Demonstrates how to use SPI driver in peripheral mode to communicate with another
-SimpleLink device.  To run this example successfully, another SimpleLink
+Demonstrates how to use SPI driver in peripheral mode to communicate with
+another SimpleLink device.  To run this example successfully, another SimpleLink
 device running the `spicontroller` example is required.
 
 ## Peripherals & Pin Assignments
@@ -14,10 +14,10 @@ project may be opened with SysConfig's graphical user interface to determine
 pins and resources used.
 
 * `CONFIG_SPI_CONTROLLER` - SPI peripheral assigned as a controller
-* `CONFIG_SPI_CONTROLLER_READY` - GPIO managed by controller to notify the peripheral
-`CONFIG_SPI_CONTROLLER` has been opened
-* `CONFIG_SPI_PERIPHERAL_READY` - GPIO to notify the controller the peripheral is ready for a
-transfer
+* `CONFIG_SPI_CONTROLLER_READY` - GPIO managed by controller to notify the
+  peripheral `CONFIG_SPI_CONTROLLER` has been opened
+* `CONFIG_SPI_PERIPHERAL_READY` - GPIO to notify the controller the peripheral
+  is ready for a transfer
 * `CONFIG_GPIO_LED_0` - Indicator LED
 * `CONFIG_GPIO_LED_1` - Indicator LED
 
@@ -36,8 +36,8 @@ The Board.html can also be found in your SDK installation:
 <SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
 ```
 
-Before running the example the following pins must be connected between controller
-& peripheral devices.
+Before running the example the following pins must be connected between
+controller & peripheral devices.
 
   |     SPI Controller LaunchPad      |      SPI Peripheral LaunchPad     |
   |:---------------------------------:|:---------------------------------:|
@@ -62,7 +62,8 @@ Display driver documentation found in the SimpleLink MCU SDK User's Guide.
 
 * Open a serial session (e.g. [`PuTTY`](http://www.putty.org/ "PuTTY's
 Homepage"), etc.) to the appropriate COM port.
-  * The COM port can be determined via Device Manager in Windows or via `ls /dev/tty*` in Linux.
+    * The COM port can be determined via Device Manager in Windows or via
+      `ls /dev/tty*` in Linux.
 
 The connection will have the following settings:
 
@@ -76,10 +77,11 @@ The connection will have the following settings:
 
 * Run the example. `CONFIG_GPIO_LED_0` turns ON to show the example is running.
 
-* Once the controller is running, controller and peripheral devices will exchange messages in
-a loop.  While the SPI transaction is taking place, `CONFIG_GPIO_LED1` will
-toggle on/off indicating transfers are occuring.  After a transfer is complete,
-the messages are printed via UART. The loop is repeated `MAX_LOOP` times.
+* Once the controller is running, controller and peripheral devices will
+exchange messages in a loop.  While the SPI transaction is taking place,
+`CONFIG_GPIO_LED1` will toggle on/off indicating transfers are occuring.  After
+a transfer is complete, the messages are printed via UART. The loop is repeated
+`MAX_LOOP` times.
 
 Messages should appear as follows:
 
@@ -108,22 +110,23 @@ Messages should appear as follows:
 This application uses a single thread:
 
 `peripheralThread` - waits for controller to open `CONFIG_SPI_CONTROLLER`, opens
-`CONFIG_SPI_PERIPHERAL`, creates the peripheral message and prepares a transfer.  The
-`CONFIG_SPI_PERIPHERAL_READY` pin is pulled low to notify the controller it is ready.
-Once the transfer complete, peripheral pulls `CONFIG_SPI_PERIPHERAL_READY` high, prepares
-the next transaction and pulls `CONFIG_SPI_PERIPHERAL_READY` low again.  A total of
-`MAX_LOOP` SPI transactions are performed in this manner.
+`CONFIG_SPI_PERIPHERAL`, creates the peripheral message and prepares a transfer.
+The `CONFIG_SPI_PERIPHERAL_READY` pin is pulled low to notify the controller it
+is ready. Once the transfer complete, peripheral pulls
+`CONFIG_SPI_PERIPHERAL_READY` high, prepares the next transaction and pulls
+`CONFIG_SPI_PERIPHERAL_READY` low again.  A total of `MAX_LOOP` SPI transactions
+are performed in this manner.
 
 The `peripheralThread` performs the following actions:
 
 1. Before performing transfers, we must make sure both, `spicontroller` &
-`spiperipheral` applications are synchronized with each other.  The peripheral will set
-`CONFIG_SPI_PERIPHERAL_READY` to 1 to notify the controller it is ready to synchronize.
-The peripheral will then wait for the controller to pull `CONFIG_SPI_CONTROLLER_READY` high in
-acknowledgment.
+`spiperipheral` applications are synchronized with each other.  The peripheral
+will set `CONFIG_SPI_PERIPHERAL_READY` to 1 to notify the controller it is ready
+to synchronize. The peripheral will then wait for the controller to pull
+`CONFIG_SPI_CONTROLLER_READY` high in acknowledgment.
 
-2. Waits until controller has opened `CONFIG_SPI_CONTROLLER`.  Controller will pull
-`CONFIG_SPI_CONTROLLER_READY` low once it has opened its SPI peripheral.
+2. Waits until controller has opened `CONFIG_SPI_CONTROLLER`.  Controller will
+pull `CONFIG_SPI_CONTROLLER_READY` low once it has opened its SPI peripheral.
 
 3. Opens `CONFIG_SPI_PERIPHERAL` in callback mode.
 
@@ -133,12 +136,12 @@ peripheral, msg# n`, where n is the iteration number.
 5. Toggles `CONFIG_GPIO_LED_1`.
 
 6. Performs the SPI transfer in callback mode.  If the transfer is successful,
-`CONFIG_SPI_PERIPHERAL_READY` is pulled low to notify the controller the peripheral is ready
-for a transfer and the peripheral waits until the transfer has completed.  Otherwise, an
-error message is printed to the UART.
+`CONFIG_SPI_PERIPHERAL_READY` is pulled low to notify the controller the
+peripheral is ready for a transfer and the peripheral waits until the transfer
+has completed.  Otherwise, an error message is printed to the UART.
 
-7. Once the transfer is completed, `CONFIG_SPI_PERIPHERAL_READY` is pulled high to
-notify controller peripheral is not ready for another transfer.
+7. Once the transfer is completed, `CONFIG_SPI_PERIPHERAL_READY` is pulled high
+to notify controller peripheral is not ready for another transfer.
 
 8. Repeats from step 4 for `MAX_LOOP` iterations.
 

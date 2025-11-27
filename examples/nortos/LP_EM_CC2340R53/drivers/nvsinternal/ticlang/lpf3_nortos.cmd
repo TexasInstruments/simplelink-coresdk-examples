@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2024, Texas Instruments Incorporated
+ * Copyright (c) 2021-2025, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -64,7 +64,14 @@
 /* The starting address of the application.  Normally the interrupt vectors  */
 /* must be located at the beginning of the application.                      */
 #define FLASH_BASE              ti_utils_build_GenMap_FLASH0_BASE
+#if (defined(ti_utils_build_GenMap_HSM_FW_BASE) && (ti_utils_build_GenMap_HSM_FW_BASE < ti_utils_build_GenMap_FLASH0_BASE + ti_utils_build_GenMap_FLASH0_SIZE))
+/* The last part of Flash is reserved for the HSM FW, if it overlaps.
+ * Otherwise Flash size stays the same.
+ */
+#define FLASH_SIZE              (ti_utils_build_GenMap_HSM_FW_BASE - ti_utils_build_GenMap_FLASH0_BASE)
+#else
 #define FLASH_SIZE              ti_utils_build_GenMap_FLASH0_SIZE
+#endif
 #define RAM_BASE                ti_utils_build_GenMap_RAM0_BASE
 #define RAM_SIZE                ti_utils_build_GenMap_RAM0_SIZE
 #if defined(ti_utils_build_GenMap_S2RRAM_BASE) && \
@@ -79,20 +86,24 @@
 #define SCFG_BASE               ti_utils_build_GenMap_SCFG_BASE
 #define SCFG_SIZE               ti_utils_build_GenMap_SCFG_SIZE
 #endif
-#if defined(ti_utils_build_GenMap_HSMOTP_BASE) && \
-    defined(ti_utils_build_GenMap_HSMOTP_SIZE)
-#define HSMOTP_BASE             ti_utils_build_GenMap_HSMOTP_BASE
-#define HSMOTP_SIZE             ti_utils_build_GenMap_HSMOTP_SIZE
-#endif
 
 /* System memory map */
 
 MEMORY
 {
     /* Application stored in and executes from internal flash */
+#if defined(ti_utils_build_GenMap_SECURE_BOOT_FLASH_BASE)
+    FLASH (RX) : origin = ti_utils_build_GenMap_SECURE_BOOT_FLASH_BASE, length = ti_utils_build_GenMap_SECURE_BOOT_FLASH_SIZE
+#else
     FLASH (RX) : origin = FLASH_BASE, length = FLASH_SIZE
+#endif
+
     /* Application uses internal RAM for data */
+#if defined(ti_utils_build_GenMap_SECURE_BOOT_RAM_BASE)
+    SRAM (RWX) : origin = ti_utils_build_GenMap_SECURE_BOOT_RAM_BASE, length = ti_utils_build_GenMap_SECURE_BOOT_RAM_SIZE
+#else
     SRAM (RWX) : origin = RAM_BASE, length = RAM_SIZE
+#endif
 
 #if defined(S2RRAM_BASE) && defined(S2RRAM_SIZE)
     /* S2RRAM is intended for the S2R radio module, but it can also be used by
@@ -107,10 +118,6 @@ MEMORY
     /* Security configuration region */
     SCFG (R): origin = SCFG_BASE, length = SCFG_SIZE
 #endif
-#if defined(HSMOTP_BASE) && defined(HSMOTP_SIZE)
-    /* HSM OTP region */
-    HSMOTP (R): origin = HSMOTP_BASE, length = HSMOTP_SIZE
-#endif
 
     /* Explicitly placed off target for the storage of logging data.
      * The ARM memory map allocates 1 GB of external memory from 0x60000000 - 0x9FFFFFFF.
@@ -124,7 +131,11 @@ MEMORY
 
 SECTIONS
 {
+#if defined(ti_utils_build_GenMap_SECURE_BOOT_FLASH_BASE)
+    .resetVecs      :   > ti_utils_build_GenMap_SECURE_BOOT_FLASH_BASE
+#else
     .resetVecs      :   > FLASH_BASE
+#endif
     .text           :   > FLASH
     .TI.ramfunc     : {} load=FLASH, run=SRAM, table(BINIT)
     .const          :   > FLASH
@@ -139,9 +150,6 @@ SECTIONS
 
 #if defined(SCFG_BASE) && defined(SCFG_SIZE)
     .scfg           :   > SCFG
-#endif
-#if defined(HSMOTP_BASE) && defined(HSMOTP_SIZE)
-    .hsmotp         :   > HSMOTP
 #endif
 
     .ramVecs        :   > SRAM, type = NOLOAD, ALIGN(256)

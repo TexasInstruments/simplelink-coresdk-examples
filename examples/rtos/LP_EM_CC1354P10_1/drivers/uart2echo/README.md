@@ -11,7 +11,8 @@ files. Additionally, the System Configuration file (\*.syscfg) present in the
 project may be opened with SysConfig's graphical user interface to determine
 pins and resources used.
 
-* `CONFIG_GPIO_LED_0` - Indicates the UART2 driver was initialized within `mainThread()`
+* `CONFIG_GPIO_LED_0` - Indicates the UART2 driver was initialized within
+  `mainThread()`
 * `CONFIG_UART2_0` - Used to echo characters from host serial session
 
 ## BoosterPacks, Board Resources & Jumper Settings
@@ -25,18 +26,20 @@ board-specific jumper settings.
 
 The Board.html can also be found in your SDK installation:
 
-        <SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
-
+```text
+<SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```
 
 ## Example Usage
 
 * Open a serial session (e.g. [`PuTTY`](http://www.putty.org/ "PuTTY's
 Homepage"), etc.) to the appropriate COM port.
     * The COM port can be determined via Device Manager in Windows or via
-`ls /dev/tty*` in Linux.
+      `ls /dev/tty*` in Linux.
 
-The connection should have the following settings
-```
+The connection should have the following settings:
+
+```text
     Baud-rate:  115200
     Data bits:       8
     Stop bits:       1
@@ -58,8 +61,8 @@ the following is displayed:
 * This example shows how to initialize the UART2 driver in blocking read
 and write mode and echo characters back to a console.
 
-* A single thread, `mainThread`, reads a character from `CONFIG_UART2_0` and writes it
-back.
+* A single thread, `mainThread`, reads a character from `CONFIG_UART2_0` and
+writes it back.
 
 FreeRTOS:
 

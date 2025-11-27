@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015-2019, Texas Instruments Incorporated
+ * Copyright (c) 2015-2025, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -97,9 +97,14 @@ void *mainThread(void *arg0)
 
     /* Open a Watchdog driver instance */
     Watchdog_Params_init(&params);
-    params.callbackFxn    = (Watchdog_Callback)watchdogCallback;
+    params.callbackFxn = (Watchdog_Callback)watchdogCallback;
+#ifdef DeviceFamily_CC35XX
+    /* Debug stalling not supported on CC35XX */
+    params.debugStallMode = Watchdog_DEBUG_STALL_OFF;
+#else
     params.debugStallMode = Watchdog_DEBUG_STALL_ON;
-    params.resetMode      = Watchdog_RESET_ON;
+#endif
+    params.resetMode = Watchdog_RESET_ON;
 
     watchdogHandle = Watchdog_open(CONFIG_WATCHDOG_0, &params);
     if (watchdogHandle == NULL)

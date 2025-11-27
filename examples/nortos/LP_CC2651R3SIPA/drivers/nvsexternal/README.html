@@ -34,13 +34,12 @@
 </header>
 <div id="content">
   <h1></h1>
-<hr />
 <h2 id="example-summary">Example Summary</h2>
 <p>This example shows how to use the Non-Volatile Storage (NVS) driver to read and write data to off-chip external flash memory. The external SPI flash is accessed by the NVS SPI driver.</p>
 <h2 id="peripherals-pin-assignments">Peripherals &amp; Pin Assignments</h2>
 <p>When this project is built, the SysConfig tool will generate the TI-Driver configurations into the <strong>ti_drivers_config.c</strong> and <strong>ti_drivers_config.h</strong> files. Information on pins and resources used is present in both generated files. Additionally, the System Configuration file (*.syscfg) present in the project may be opened with SysConfig’s graphical user interface to determine pins and resources used.</p>
 <ul>
-<li><code>CONFIG_NVSEXTERNAL</code> - Non-volatile storage used by a NVS driver instance.</li>
+<li><code>CONFIG_NVSEXTERNAL</code> - Non-volatile storage used by a NVS driver instance</li>
 </ul>
 <h2 id="boosterpacks-board-resources-jumper-settings">BoosterPacks, Board Resources &amp; Jumper Settings</h2>
 <p>For board specific jumper settings, resources and BoosterPack modifications, refer to the <strong>Board.html</strong> file.</p>
@@ -48,15 +47,17 @@
 <p>If you’re using an IDE such as Code Composer Studio (CCS) or IAR, please refer to Board.html in your project directory for resources used and board-specific jumper settings.</p>
 </blockquote>
 <p>The Board.html can also be found in your SDK installation:</p>
-<pre><code>    &lt;SDK_INSTALL_DIR&gt;/source/ti/boards/&lt;BOARD&gt;</code></pre>
+<pre class="text"><code>&lt;SDK_INSTALL_DIR&gt;/source/ti/boards/&lt;BOARD&gt;</code></pre>
 <h2 id="example-usage">Example Usage</h2>
 <ul>
 <li><p>Example output is generated through use of Display driver APIs. Refer to the Display driver documentation found in the SimpleLink MCU SDK User’s Guide.</p></li>
-<li>Open a serial session (e.g. <a href="http://www.putty.org/" title="PuTTY's Homepage"><code>PuTTY</code></a>, etc.) to the appropriate COM port.</li>
-<li><p>The COM port can be determined via Device Manager in Windows or via <code>ls /dev/tty*</code> in Linux.</p></li>
+<li>Open a serial session (e.g. <a href="http://www.putty.org/" title="PuTTY's Homepage"><code>PuTTY</code></a>, etc.) to the appropriate COM port.
+<ul>
+<li>The COM port can be determined via Device Manager in Windows or via <code>ls /dev/tty*</code> in Linux.</li>
+</ul></li>
 </ul>
 <p>The connection will have the following settings:</p>
-<pre><code>    Baud-rate:     115200
+<pre class="text"><code>    Baud-rate:     115200
     Data bits:          8
     Stop bits:          1
     Parity:          None
@@ -64,24 +65,24 @@
 <ul>
 <li><p>Run the example.</p></li>
 <li><p>The example will output the region attributes as defined by <code>CONFIG_NVSEXTERNAL</code>.</p></li>
-<li>The example checks if the string, “SimpleLink SDK Non-Volatile Storage (NVS) Example” is present in non-volatile storage.
+<li>The example checks if the string, “SimpleLink SDK Non-Volatile Storage (NVS) SPI Example.” is present in non-volatile storage.
 <ul>
 <li>If present, the string is displayed to the UART console. The entire flash sector is then erased.</li>
 <li>If not present, the string is written to the non-volatile storage.</li>
 </ul></li>
 <li><p>Disconnect the device from the debug session.</p></li>
 <li><p>When prompted, reset the device. This will cause the application to start over.</p></li>
-<li><p>The sector size and region size will vary depending on the device specific definitions in the board file.</p></li>
+<li><p>The sector size and region size will vary depending on the device.</p></li>
 </ul>
 <p>The following is example output assuming the string was not present in non-volatile storage:</p>
-<pre><code>    Sector Size: 0x1000
+<pre class="text"><code>    Sector Size: 0x1000
     Region Size: 0x4000
 
     Writing signature to SPI flash...
     Reset the device.
     ==================================================</code></pre>
 <p>The following is example output assuming the string is present in non-volatile storage:</p>
-<pre><code>    Sector Size: 0x1000
+<pre class="text"><code>    Sector Size: 0x1000
     Region Size: 0x4000
 
     SimpleLink SDK Non-Volatile Storage (NVS) SPI Example.
@@ -92,9 +93,11 @@
 <ul>
 <li><p>The application utilizes a single thread to demonstrate using the non-volatile storage region defined by <code>CONFIG_NVSEXTERNAL</code>.</p></li>
 <li><p><code>CONFIG_NVSEXTERNAL</code> defines non-volatile storage located on an off-chip external flash memory location. The memory definitions may be found in the board file. After <code>NVS_open()</code>, the <code>nvsHandle</code> is associated with the memory region defined by <code>CONFIG_NVSEXTERNAL</code>.</p></li>
-<li>A block of memory equal to the size of <code>signature</code> bytes is read from external flash and copied into RAM (<code>buffer</code>). This is performed through SPI transactions with the external flash device all contained inside the NVS SPI driver. The contents copied into <code>buffer</code> are compared to <code>signature</code>.</li>
+<li>A block of memory equal to the size of <code>signature</code> bytes is read from external flash and copied into RAM (<code>buffer</code>). This is performed through SPI transactions with the external flash device all contained inside the NVS SPI driver. The contents copied into <code>buffer</code> are compared to <code>signature</code>.
+<ul>
 <li>If equal, the application displays the signature to the UART console. It is important to note that the string was copied into RAM (<code>buffer</code>) during <code>NVS_read()</code>. This example displays the copied string stored in <code>buffer</code>. After the string is output to the UART console, the first sector in the NVS region is erased.</li>
-<li><p>If not equal, the application writes the string, <code>signature</code> to the NVS region. This is performed through SPI transactions with the external flash device all contained inside the NVS SPI driver.</p></li>
+<li>If not equal, the application writes the string, <code>signature</code> to the NVS region. This is performed through SPI transactions with the external flash device all contained inside the NVS SPI driver.</li>
+</ul></li>
 <li><p>At the end of execution, the application prompts the user to reset the device. Upon a reset, the contents of volatile memory (RAM) are lost. The example application restarts.</p></li>
 <li><p>The <code>NVS_WRITE_ERASE</code> flag is used with the <code>NVS_write()</code> API to ensure the flash sector is erased prior to performing a write. This flag will erase <code>NVS_Attrs.sectorSize</code> bytes of memory starting at the offset specified with <code>NVS_write()</code>.</p></li>
 <li><p>The <code>NVS_WRITE_POST_VERIFY</code> flag is also used with the <code>NVS_write()</code> API to ensure the flash memory was successfully written.</p></li>
@@ -110,7 +113,7 @@
   with 100,000+ analog ICs and embedded processors, along with software, tools
   and the industry‘s largest sales/support staff.</p>
   <p>
-    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2023</a>, Texas Instruments Incorporated. All rights reserved. <br>
+    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
     <a href="https://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="https://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="https://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="https://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
   </p>
 </footer>

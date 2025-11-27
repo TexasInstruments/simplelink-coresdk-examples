@@ -14,6 +14,7 @@
         name="i2secho_LP_CC2651R3SIPA_freertos_ticlang"
         configurations="Debug"
         toolChain="TICLANG"
+        cgtVersion="3.2.2"
         connection="TIXDS110_Connection.xml"
         device="Cortex M.CC2651R3"
         ignoreDefaultDeviceSettings="true"
@@ -44,7 +45,6 @@
             -L${CG_TOOL_ROOT}/lib
             -llibc.a
         "
-        enableSysConfigTool="true"
         sysConfigBuildOptions="
             --product ${COM_TI_SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR}/.metadata/product.json
             --compiler ticlang

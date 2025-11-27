@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2022, Texas Instruments Incorporated
+ * Copyright (c) 2016-2024, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,15 +51,6 @@
 
 #define THREADSTACKSIZE (768)
 
-/* Inputs to the ADC on the CC32XX launchpads are downscaled by a factor of 0.42
- * Multiplying the conversion output with 2.365 will provide compensated output.
- */
-#if DeviceFamily_PARENT == DeviceFamily_PARENT_CC32XX
-    #define COMPENSATION_FACTOR 2365
-#else
-    #define COMPENSATION_FACTOR 1000
-#endif
-
 /* ADC conversion result variables */
 uint16_t adcValue0;
 uint32_t adcValue0MicroVolt;
@@ -93,7 +84,7 @@ void *threadFxn0(void *arg0)
     if (res == ADC_STATUS_SUCCESS)
     {
 
-        adcValue0MicroVolt = (COMPENSATION_FACTOR * ADC_convertRawToMicroVolts(adc, adcValue0)) / 1000;
+        adcValue0MicroVolt = ADC_convertRawToMicroVolts(adc, adcValue0);
 
         Display_printf(display, 0, 0, "CONFIG_ADC_0 raw result: %d\n", adcValue0);
         Display_printf(display, 0, 0, "CONFIG_ADC_0 convert result: %d uV\n", adcValue0MicroVolt);
@@ -136,7 +127,7 @@ void *threadFxn1(void *arg0)
         if (res == ADC_STATUS_SUCCESS)
         {
 
-            adcValue1MicroVolt[i] = (COMPENSATION_FACTOR * (ADC_convertToMicroVolts(adc, adcValue1[i]))) / 1000;
+            adcValue1MicroVolt[i] = ADC_convertToMicroVolts(adc, adcValue1[i]);
 
             Display_printf(display, 0, 0, "CONFIG_ADC_1 raw result (%d): %d\n", i, adcValue1[i]);
             Display_printf(display, 0, 0, "CONFIG_ADC_1 convert result (%d): %d uV\n", i, adcValue1MicroVolt[i]);

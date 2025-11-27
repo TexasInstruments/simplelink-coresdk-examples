@@ -16,7 +16,7 @@ pins and resources used.
 * `CONFIG_GPIO_LED_0` - Indicator LED
 * `CONFIG_GPIO_OPT3001_POWER` - OPT3001 power pin
 * `CONFIG_GPIO_OPT3001_INTERRUPT` - OPT3001 limit interrupt
-* `CONFIG_I2C_OPT3001` - I2C bus used to communicate with the OPT3001 sensor.
+* `CONFIG_I2C_OPT3001` - I2C bus used to communicate with the OPT3001 sensor
 
 ## BoosterPacks, Board Resources & Jumper Settings
 
@@ -32,7 +32,9 @@ board-specific jumper settings.
 
 The Board.html can also be found in your SDK installation:
 
-        <SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```text
+<SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```
 
 ## Example Usage
 
@@ -41,12 +43,12 @@ Display driver documentation found in the SimpleLink MCU SDK User's Guide.
 
 * Open a serial session (e.g. [`PuTTY`](http://www.putty.org/ "PuTTY's
  Homepage"), etc.) to the appropriate COM port.
- * The COM port can be determined via Device Manager in Windows or via
- `ls /dev/tty*` in Linux.
+    * The COM port can be determined via Device Manager in Windows or via
+      `ls /dev/tty*` in Linux.
 
 The connection will have the following settings:
 
-```
+```text
     Baud-rate:     115200
     Data bits:          8
     Stop bits:          1
@@ -64,7 +66,7 @@ and print out the address to the console.
 via the UART. A total of 60 lux samples are read and printed before
 the example exits. Terminal output should resemble:
 
-```
+```text
     I2C Initialized!
 
     I2C device found at address 0x40!
@@ -99,10 +101,10 @@ interrupt. Conversely, expose the sensor to additional light to trigger the
 high limit interrupt. When the sensor detects a value outside of the limit
 registers, you should see a message that resembles:
 
-```
+```text
     ALARM: Low limit crossed!
     The sensor detected a value of 3 lux.
-    The low limit is 20 lux
+    The low limit is 30 lux
 ```
 
 ## Application Design Details
@@ -143,4 +145,4 @@ FreeRTOS:
 * Please view the `FreeRTOSConfig.h` header file for example configuration
 information.
 
-[bp-bassensorsmkii]: http://www.ti.com/tool/bp-bassensorsmkii
+[bp-bassensorsmkii]: https://www.ti.com/tool/bp-bassensorsmkii

@@ -35,11 +35,11 @@
 <div id="content">
   <h1></h1>
 <h2 id="example-summary">Example Summary</h2>
-<p>This application moves into and out of shutdown. The state is controlled by buttons. <code>CONFIG_BUTTON_0</code> will send the device into shutdown, while <code>CONFIG_GPIO_WAKEUP_BUTTON</code> will wake-up the device. A special LED toggling sequence is used when waking from shutdown to demonstrate the get-reset-source functionality.</p>
+<p>This application moves into and out of shutdown. The state is controlled by buttons. <code>CONFIG_BUTTON_SHUTDOWN</code> will send the device into shutdown, while <code>CONFIG_GPIO_WAKEUP</code> will wake-up the device. A special LED toggling sequence is used when waking from shutdown to demonstrate the get-reset-source functionality.</p>
 <h2 id="peripherals-exercised">Peripherals Exercised</h2>
 <ul>
-<li><code>CONFIG_BUTTON_0</code> - Used to tell the device to enter shutdown.</li>
-<li><code>CONFIG_GPIO_WAKEUP_BUTTON</code> - Used as a wake-up source.</li>
+<li><code>CONFIG_BUTTON_SHUTDOWN</code> - Used to tell the device to enter shutdown.</li>
+<li><code>CONFIG_GPIO_WAKEUP</code> - Used as a wake-up source.</li>
 <li><code>CONFIG_LED_0</code> - Lit when the device is active, not lit when in shutdown.</li>
 <li><code>CONFIG_LED_1</code> - Will blink when coming out of shutdown.</li>
 </ul>
@@ -49,16 +49,14 @@
 <p>If you’re using an IDE such as Code Composer Studio (CCS) or IAR, please refer to Board.html in your project directory for resources used and board-specific jumper settings.</p>
 </blockquote>
 <p>The Board.html can also be found in your SDK installation:</p>
-<pre><code>    &lt;SDK_INSTALL_DIR&gt;/source/ti/boards/&lt;BOARD&gt;</code></pre>
-<blockquote>
-<p>In order to get lowest shutdown current, the JTAG pins TMS and TCK should be disconnected by removing the relevant jumpers. TMS and TCK have internal pull-up and are driven low when inactive from the emulator, hence after programming the device these jumpers should be removed to avoid the extra leakage current.</p>
-</blockquote>
+<pre class="text"><code>&lt;SDK_INSTALL_DIR&gt;/source/ti/boards/&lt;BOARD&gt;</code></pre>
+<p>In order to get lowest shutdown current, it may be relevant to disconnect debug interface pins by removing relevant jumpers to avoid extra leakage current. Please see the <strong>Board.html</strong> file.</p>
 <h2 id="example-usage">Example Usage</h2>
 <ul>
-<li>Run the example. Use <code>CONFIG_BUTTON_0</code> and <code>CONFIG_GPIO_WAKEUP_BUTTON</code> to shutdown and wake-up the device. Try the RESET button to compare the different start-up sequences used.</li>
+<li>Run the example. Use <code>CONFIG_BUTTON_SHUTDOWN</code> and <code>CONFIG_GPIO_WAKEUP</code> to shutdown and wake-up the device. Try the RESET button to compare the different start-up sequences used.</li>
 </ul>
 <blockquote>
-<p>It is not possible to do a proper shutdown sequence with the debugger connected. For correct behaviour, this example must be run with the debugger disconnected by resetting or performing a power-cycle of the device.</p>
+<p>It is not possible to do a proper shutdown sequence with the debugger connected. For correct behavior, this example must be run with the debugger disconnected by resetting or performing a power-cycle of the device.</p>
 </blockquote>
 <h2 id="application-design-details">Application Design Details</h2>
 <ul>
@@ -76,7 +74,7 @@
   with 100,000+ analog ICs and embedded processors, along with software, tools
   and the industry‘s largest sales/support staff.</p>
   <p>
-    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2025</a>, Texas Instruments Incorporated. All rights reserved. <br>
     <a href="https://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="https://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="https://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="https://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
   </p>
 </footer>

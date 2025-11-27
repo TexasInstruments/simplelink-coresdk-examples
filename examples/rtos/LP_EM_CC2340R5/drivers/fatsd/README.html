@@ -39,37 +39,36 @@
 <h2 id="peripherals-pin-assignments">Peripherals &amp; Pin Assignments</h2>
 <p>When this project is built, the SysConfig tool will generate the TI-Driver configurations into the <strong>ti_drivers_config.c</strong> and <strong>ti_drivers_config.h</strong> files. Information on pins and resources used is present in both generated files. Additionally, the System Configuration file (*.syscfg) present in the project may be opened with SysConfig’s graphical user interface to determine pins and resources used.</p>
 <ul>
-<li><code>CONFIG_GPIO_LED_0</code> - Indicates that the driver was initialized within <code>mainThread()</code></li>
-<li><code>CONFIG_SDFatFS_0</code> - Connection to SD card</li>
+<li><code>CONFIG_GPIO_LED_0</code> - Indicates that the driver was initialized within <code>mainThread()</code>.</li>
+<li><code>CONFIG_SDFatFS_0</code> - Connection to SD card.</li>
 </ul>
 <h2 id="boosterpacks-board-resources-jumper-settings">BoosterPacks, Board Resources &amp; Jumper Settings</h2>
-<p>This example requires a <a href="http://www.ti.com/tool/boostxl-sharp128"><strong>BOOSTXL-SHARP128 LCD &amp; SD Card BoosterPack</strong></a>.</p>
+<p>This example requires a <a href="https://www.ti.com/tool/boostxl-sharp128"><strong>BOOSTXL-SHARP128 LCD &amp; SD Card BoosterPack</strong></a>.</p>
 <p>For board specific jumper settings, resources and BoosterPack modifications, refer to the <strong>Board.html</strong> file.</p>
 <blockquote>
 <p>If you’re using an IDE such as Code Composer Studio (CCS) or IAR, please refer to Board.html in your project directory for resources used and board-specific jumper settings.</p>
 </blockquote>
 <p>The Board.html can also be found in your SDK installation:</p>
-<pre><code>    &lt;SDK_INSTALL_DIR&gt;/source/ti/boards/&lt;BOARD&gt;</code></pre>
+<pre class="text"><code>&lt;SDK_INSTALL_DIR&gt;/source/ti/boards/&lt;BOARD&gt;</code></pre>
 <h2 id="example-usage">Example Usage</h2>
 <ul>
-<li><p>Example output is generated through use of Display driver APIs. Refer to the Display driver documentation found in the SimpleLink MCU SDK User’s Guide.</p></li>
-<li>Open a serial session
+<li><p>Example output is generated through use of Display driver APIs. Refer to the Display driver documentation.</p></li>
+<li>Open a serial session (e.g. <a href="http://www.putty.org/" title="PuTTY's Homepage"><code>PuTTY</code></a>, etc.) to the appropriate COM port.
 <ul>
-<li>(e.g. <a href="http://www.putty.org/" title="PuTTY's Homepage"><code>PuTTY</code></a>, etc.) to the appropriate COM port.</li>
 <li>The COM port can be determined via Device Manager in Windows or via <code>ls /dev/tty*</code> in Linux.</li>
 </ul></li>
 </ul>
 <p>The connection will have the following settings:</p>
-<pre><code>    Baud-rate:     115200
+<pre class="text"><code>    Baud-rate:     115200
     Data bits:          8
     Stop bits:          1
     Parity:          None
     Flow Control:    None</code></pre>
 <ul>
 <li><p>Run the example. <code>CONFIG_GPIO_LED_0</code> turns ON to indicate driver initialization is complete.</p></li>
-<li><p>The example proceeds to read the SD card. If the <em>input.txt</em> file is not found, the file is created on the SD card with the following text:</p></li>
+<li><p>The example proceeds to read the SD card. If an <em>input.txt</em> file is not found, the file is created on the SD card with the following text:</p></li>
 </ul>
-<pre><code>    &quot;***********************************************************************\n&quot;
+<pre class="text"><code>    &quot;***********************************************************************\n&quot;
     &quot;0         1         2         3         4         5         6         7\n&quot;
     &quot;01234567890123456789012345678901234567890123456789012345678901234567890\n&quot;
     &quot;This is some text to be inserted into the inputfile if there isn't     \n&quot;
@@ -83,11 +82,11 @@
 </ul>
 <h2 id="application-design-details">Application Design Details</h2>
 <ul>
-<li><p>The FatFs source is included and pre-built, together with support for TI-RTOS or FreeRTOS synchronization. Also included is an implementation of the “device I/O” model for the TI compiler C runtime support (RTS) library. This provides transparent support for using the C stdio.h library functions (<code>fopen</code>, <code>fread</code>, <code>fwrite</code>, etc…) instead of the raw, project-specific, API functions provided by FatFs (<code>f_open</code>, <code>f_write</code>).</p></li>
+<li><p>The FatFS source is included and pre-built, together with support for TI-RTOS or FreeRTOS synchronization. Also included is an implementation of the “device I/O” model for the TI compiler C runtime support (RTS) library. This provides transparent support for using the C stdio.h library functions (<code>fopen</code>, <code>fread</code>, <code>fwrite</code>, etc…) instead of the raw, project-specific, API functions provided by FatFS (<code>f_open</code>, <code>f_write</code>).</p></li>
 <li><p>This application demonstrates how to use the SD Card driver to read and write data onto an SD Card using the aforementioned standard CIO runtime system calls.</p></li>
 <li><p>Within the application, the <code>fatfsPrefix</code> parameter is used as the namespace “prefix” for the C RTS fopen() function. See the TI C Compiler User’s Guide for more details. This prefix must be supplied as part of the filename when calling fopen(). For example, with the default value of “fat”, an application would use:</p></li>
 </ul>
-<pre><code>    FILE * fp = fopen(&quot;fat:/signal.dat&quot;, &quot;w&quot;);</code></pre>
+<pre class="text"><code>    FILE * fp = fopen(&quot;fat:/signal.dat&quot;, &quot;w&quot;);</code></pre>
 <p>Additional Features:</p>
 <ul>
 <li>Users also have the option of writing to a RAM disk using either the CIO runtime system calls or raw FatFS API’s. Refer to the FatFS documentation for more information.</li>
@@ -95,28 +94,29 @@
 <p>This application uses one thread:</p>
 <p>The <code>mainThread</code> performs the following actions:</p>
 <ol>
-<li><p>Creates and initializes the SDFatFS driver object.</p></li>
+<li><p>Create and initialize the SDFatFS driver object.</p></li>
 <li><p>Open the <em>input.txt</em> file. If not found, create the file for reading and writing. Write the default message to the file.</p></li>
 <li><p>Open the <em>output.txt</em> file. Content will be overwritten if found.</p></li>
 <li><p>Copy the contents of <em>input.txt</em> to <em>output.txt</em>. Close both files afterwards.</p></li>
 <li><p>Open <em>output.txt</em>, read the file and print the contents using the Display driver.</p></li>
-<li><p>The <em>output.txt</em> file and SDFatFS driver are closed and the example is terminated.</p></li>
+<li><p>Close the <em>output.txt</em> file and SDFatFS driver, and terminate the example.</p></li>
 </ol>
-<p>TI-RTOS:</p>
+<h3 id="ti-rtos">TI-RTOS</h3>
 <ul>
 <li>The <code>timespec</code> structure must be initialized with the current UNIX seconds count in order to write files with accurate timestamps. This is due to the fact that the BIOS Seconds module rather than the RTS library <code>time()</code> function is used.</li>
 </ul>
-<p>FreeRTOS:</p>
+<h3 id="freertos">FreeRTOS</h3>
 <ul>
 <li><p>The compiler specific RTS library functions for <code>time()</code> and <code>localtime()</code> are used. It is not necessary to initialize the <code>timespec</code> structure.</p></li>
 <li><p>Please view the <code>FreeRTOSConfig.h</code> header file for example configuration information.</p></li>
 </ul>
+<h3 id="nortos">NORTOS</h3>
+<ul>
+<li>The timestamp is a constant value, Jan 1 2017 00:00:00.</li>
+</ul>
 <h2 id="references">References</h2>
 <ul>
-<li>The FatFS libraries in this example are configured for use without Long File Name (VFAT) or XFAT support. If you chose to reconfigure and build FatFS to include these features, you may be required to license the appropriate patents from Microsoft. For more information, please refer to: <a href="http://elm-chan.org/fsw/ff/en/appnote.html#lfn" class="uri">http://elm-chan.org/fsw/ff/en/appnote.html#lfn</a>
-<ul>
-<li>The FatFs project homepage: <a href="http://elm-chan.org/fsw/ff/00index_e.html" class="uri">http://elm-chan.org/fsw/ff/00index_e.html</a></li>
-</ul></li>
+<li>The FatFS libraries in this example are configured for use without Long File Name (VFAT) or XFAT support. If you chose to reconfigure and build FatFS to include these features, you may be required to license the appropriate patents from Microsoft. For more information, please refer to: <a href="http://elm-chan.org/fsw/ff/en/appnote.html#lfn" class="uri">http://elm-chan.org/fsw/ff/en/appnote.html#lfn</a></li>
 </ul>
 <!-- Close div from before_body_template.html -->
 </div>
@@ -125,7 +125,7 @@
   with 100,000+ analog ICs and embedded processors, along with software, tools
   and the industry‘s largest sales/support staff.</p>
   <p>
-    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2025</a>, Texas Instruments Incorporated. All rights reserved. <br>
     <a href="https://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="https://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="https://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="https://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
   </p>
 </footer>

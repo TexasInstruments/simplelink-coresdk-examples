@@ -14,7 +14,7 @@ files. Additionally, the System Configuration file (\*.syscfg) present in the
 project may be opened with SysConfig's graphical user interface to determine
 pins and resources used.
 
-* `CONFIG_NVSEXTERNAL` - NVS instance which will be used by the file system.
+* `CONFIG_NVSEXTERNAL` - NVS instance which will be used by the file system
 
 ## BoosterPacks, Board Resources & Jumper Settings
 
@@ -27,7 +27,9 @@ board-specific jumper settings.
 
 The Board.html can also be found in your SDK installation:
 
-        <SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```text
+<SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```
 
 ## Example Usage
 
@@ -36,11 +38,12 @@ Display driver documentation found in the  SimpleLink MCU SDK User's Guide.
 
 * Open a serial session (e.g. [`PuTTY`](http://www.putty.org/ "PuTTY's
  Homepage"), etc.) to the appropriate COM port.
-* The COM port can be determined via Device Manager in Windows or via
- `ls /dev/tty*` in Linux.
+    * The COM port can be determined via Device Manager in Windows or via
+      `ls /dev/tty*` in Linux.
 
 The connection will have the following settings:
-```
+
+```text
     Baud-rate:     115200
     Data bits:          8
     Stop bits:          1
@@ -61,12 +64,11 @@ the application will create "spiffsFile" and write "Hello from SPIFFS!!!" to it.
     * When prompted, reset the device. This will cause the application to start
 over.
 
-
     __NOTE__: This application will erase flash memory if no file system is found.
 
-
 The following is an example output.
-```
+
+```text
     Mounting file system...
     File system not found; creating new SPIFFS fs...
     Creating spiffsFile...
@@ -74,8 +76,10 @@ The following is an example output.
     Reset the device.
     ==================================================
 ```
+
 After device reset:
-```
+
+```text
     Mounting file system...
     Reading spiffsFile...
 
@@ -86,42 +90,38 @@ After device reset:
     ==================================================
 ```
 
-
 ## Application Design Details
 
 * SPIFFS source is included and pre-built with support for TI-RTOS or FreeRTOS
 synchronization.  A SPIFFSNVS driver is included in the library which serves as
-the interface between the SPIFFS file system and the NVS driver.  The SPIFFS file
-system will operate within the memory region allocated for a NVS driver
-instance.  NVS driver specifications are found in the application's board file.
-Refer to NVS driver documentation for configuration details.
+the interface between the SPIFFS file system and the NVS driver.  The SPIFFS
+file system will operate within the memory region allocated for a NVS driver
+instance.  Refer to the NVS driver documentation for configuration details.
 
 * To use a SPIFFS file system some configuration parameters and RAM must be
 provided at runtime (all sizes in bytes):
     * Amount of memory allocated for SPIFFS - This is the amount of memory that
-has been allocated for NVS driver instance which SPIFFS will work within.  This
-is configurable in the application's board file.
+      has been allocated for NVS driver instance which SPIFFS will work within.
     * Physical block size (also known as sector size) - Amount of flash cleared
-on a single erase operation.  This varies according to the type of memory and is
-defined in the NVS configuration in the application's board file.
+      on a single erase operation.  This varies according to the type of memory
+      and is defined in the NVS configuration in SysConfig.
     * Logical block size - The file system divides the entire memory region into
-logical blocks.  This value must be an integer multiple of the physical block
-size:
-> logical_block_size = n * physical_block_size
-    * Logical page size - The file system divides logical blocs into logical
-pages.  Files are divided into pages when stored in memory.  The logical block
-size must also be an integer multiple of the logical page size:
-> logical_block_size = i * logical_page_size
+      logical blocks.  This value must be an integer multiple of the physical
+      block size (`logical_block_size = n * physical_block_size`)
+    * Logical page size - The file system divides logical blocks into logical
+      pages. Files are divided into pages when stored in memory. The logical
+      block size must also be an integer multiple of the logical page size
+      (`logical_block_size = i * logical_page_size`)
     * A RAM 'work' buffer - This is memory used internally by SPIFFS.  This must
-be twice the logical page size (2 * logical_page_size) in length.
+      be twice the logical page size (`2 * logical_page_size`) in length.
     * A RAM file descriptor cache - Temporary storage for the file descriptors
-of frequently used files.
+      of frequently used files.
 
 * The application utilizes a single thread (`mainThread`) to demonstrate how to
 use SPIFFS APIs to read and write files.
 
-* SPIFFSNVS_config() is called to:
-    * Open NVS driver instance in which SPIFFS file system will exits.
+* `SPIFFSNVS_config()` is called to:
+    * Open NVS driver instance in which SPIFFS file system will exist.
     * Validate configuration parameters.
     * Initialize SPIFFS configuration and file system structures.
 
@@ -138,12 +138,12 @@ written to it.
 * At the end of execution, the application prompts the user to reset the
 device. Upon a reset, the application will start over.
 
-
 FreeRTOS:
 
 * Please view the `FreeRTOSConfig.h` header file for example configuration
 information.
 
 ## References
+
 SPIFFS design and usage documentation can be found here:
-    https://github.com/pellepl/spiffs
+[https://github.com/pellepl/spiffs](https://github.com/pellepl/spiffs)

@@ -3,9 +3,10 @@
 Example that uses the I2S driver to echo the audio received from the
 Line In (Audio source) over the Line Out (headphones|speakers).
 This example shows:
- * How to initialize the I2S driver in streaming mode with audio echo
- * How to achieve I2S transfers with CD quality (16bits - 44.1 kHz)
- * How to treat (filter) sample data
+
+* How to initialize the I2S driver in streaming mode with audio echo
+* How to achieve I2S transfers with CD quality (16bits - 44.1 kHz)
+* How to treat (filter) sample data
 
 ## Peripherals & Pin Assignments
 
@@ -36,7 +37,9 @@ board-specific jumper settings.
 
 The Board.html can also be found in your SDK installation:
 
-        <SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```text
+<SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```
 
 * A pair of (headphones|speakers) and an audio source (smartphone) are
 required to observe functionality.
@@ -77,7 +80,7 @@ some transaction of the `i2sReadList` will be finished).
 read interface), treated and sent out (by the write interface).
 Here is a scheme showing the path followed by a transaction:
 
-```
+```text
 
     `i2sReadList`          `treatmentList`          `i2sWriteList`
     [Transaction] ... (1)   [Transaction] ... (2)   [Transaction]....  (3)
@@ -112,4 +115,4 @@ FreeRTOS:
 * Please view the `FreeRTOSConfig.h` header file for example configuration
 information.
 
-[cc3200audboost]: http://www.ti.com/tool/cc3200audboost
+[cc3200audboost]: https://www.ti.com/tool/cc3200audboost

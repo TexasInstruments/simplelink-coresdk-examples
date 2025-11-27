@@ -91,6 +91,19 @@ else if (board.match(/CC27/)) {
     /* Set the child SPI instance to use the default LP SPI bus */
     sd.spiInstance.$hardware = system.deviceData.board.components.LP_SPI;
 }
+else if (board === "LP_EM_CC2674P10") {
+    /* The LP_EM_CC2674P10 board does not have a DIO connected to BP.8, so the
+     * alternative Chip Select pin on BP.12 (SD_CD*) will be used instead.
+     */
+    sd.sdCSPin.$assign = "boosterpack.12";
+    /* Set the child SPI instance to use the default LP SPI bus */
+    sd.spiInstance.$hardware = system.deviceData.board.components.LP_SPI;
+
+    /* Suppress warning that BP.12 is connected to BTN-2. This is acceptable
+     * because the button is not used in this example
+     */
+    scripting.suppress("Connected to hardware*", sd, "sdCSPin");
+}
 else {
     sd.$hardware = SD_BOOST.components.SD_CARD;
 }

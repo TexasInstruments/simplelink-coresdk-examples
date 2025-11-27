@@ -58,10 +58,8 @@
             -lgcc
             -lc
             -lm
-            -lnosys
             --specs=nano.specs
         "
-        enableSysConfigTool="true"
         sysConfigBuildOptions="
             --product ${COM_TI_SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR}/.metadata/product.json
             --compiler gcc
@@ -83,6 +81,8 @@
         <file path="../../freertos/main_freertos.c" openOnCreation="false" excludeFromBuild="false" action="copy">
         </file>
         <file path="../../freertos/i2copt3001_cpp.syscfg" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="../../syscall_stubs.c" openOnCreation="false" excludeFromBuild="false" action="copy">
         </file>
         <file path="${COM_TI_SIMPLELINK_CC13XX_CC26XX_SDK_INSTALL_DIR}/source/ti/boards/LP_EM_CC1314R10/Board.html" openOnCreation="false" excludeFromBuild="false" action="link">
         </file>

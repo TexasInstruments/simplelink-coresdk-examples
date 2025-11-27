@@ -12,7 +12,7 @@ files. Additionally, the System Configuration file (\*.syscfg) present in the
 project may be opened with SysConfig's graphical user interface to determine
 pins and resources used.
 
-* `CONFIG_NVSINTERNAL` - Non-volatile storage used by a NVS driver instance.
+* `CONFIG_NVSINTERNAL` - Non-volatile storage used by a NVS driver instance
 
 ## BoosterPacks, Board Resources & Jumper Settings
 
@@ -25,7 +25,9 @@ board-specific jumper settings.
 
 The Board.html can also be found in your SDK installation:
 
-        <SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```text
+<SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```
 
 ## Example Usage
 
@@ -34,11 +36,12 @@ Display driver documentation found in the SimpleLink MCU SDK User's Guide.
 
 * Open a serial session (e.g. [`PuTTY`](http://www.putty.org/ "PuTTY's
  Homepage"), etc.) to the appropriate COM port.
-* The COM port can be determined via Device Manager in Windows or via
- `ls /dev/tty*` in Linux.
+    * The COM port can be determined via Device Manager in Windows or via
+      `ls /dev/tty*` in Linux.
 
 The connection will have the following settings:
-```
+
+```text
     Baud-rate:     115200
     Data bits:          8
     Stop bits:          1
@@ -48,7 +51,8 @@ The connection will have the following settings:
 
 * Run the example.
 
-* The example will output the region attributes as defined by `CONFIG_NVSINTERNAL`.
+* The example will output the region attributes as defined by
+  `CONFIG_NVSINTERNAL`.
 
 * The example checks if the string, "SimpleLink SDK Non-Volatile Storage
  (NVS) Example" is present in non-volatile storage.
@@ -56,22 +60,22 @@ The connection will have the following settings:
     sector is then erased.
     * If not present, the string is written to the non-volatile storage.
 
- * Disconnect the device from the debug session.
+* Disconnect the device from the debug session.
 
- * When prompted, reset the device. This will cause the application to
+* When prompted, reset the device. This will cause the application to
  start over.
 
- * The region base address, sector size and region size will vary depending on
- the device specific definitions in the board file.
+* The region base address, sector size and region size will vary depending on
+ the device.
 
- * NOTE FOR GCC: Sysconfig is not able to place the NVS region at the
+* NOTE FOR GCC: Sysconfig is not able to place the NVS region at the
  address specified by the "Region Base" configuration parameter (0x10000 in
  this example). If your application requires the NVS region to begin at a
  specific location, the linker script must be modified to explicitly place
  the .nvs section at the desired address. For example to place the .nvs
  section at 0x10000, the .nvs section should look as follows:
 
-```
+```text
     SECTIONS: {
 
     ...
@@ -87,7 +91,8 @@ The connection will have the following settings:
 
 The following is example output assuming the string was not present in non-volatile
 storage:
-```
+
+```text
     Region Base Address: 0x1B000
     Sector Size: 0x1000
     Region Size: 0x4000
@@ -96,9 +101,11 @@ storage:
     Reset the device.
     ==================================================
 ```
+
 The following is example output assuming the string is present in non-volatile
 storage:
-```
+
+```text
     Region Base Address: 0x1B000
     Sector Size: 0x1000
     Region Size: 0x4000
@@ -114,7 +121,7 @@ storage:
 * The application utilizes a single thread to demonstrate using the
  non-volatile storage region defined by `CONFIG_NVSINTERNAL`.
 
- * `CONFIG_NVSINTERNAL` defines a non-volatile storage located on the device's on-chip
+* `CONFIG_NVSINTERNAL` defines a non-volatile storage located on the device's on-chip
  internal flash memory. The memory definitions may be found in the board file.
  After `NVS_open()`, the `nvsHandle` is associated with the memory region
  defined by `CONFIG_NVSINTERNAL`.
@@ -124,12 +131,12 @@ copied into RAM (`buffer`). An offset of 0 is used with the `NVS_read()` call.
 The NVS memory location read is therefore equal to the NVS region base address,
 `NVS_Attrs.baseAddress`. The contents copied into `buffer` are compared to
 `signature`.
-  * If equal, the application displays the signature to the UART console. It is
+    * If equal, the application displays the signature to the UART console. It is
     important to note that the string was copied into RAM (`buffer`)
     during `NVS_read()`. This example chooses to display the string directly
     from the NVS region in flash. After the string is output to the UART
     console, the first sector in the NVS region is erased.
-  * If not equal, the application writes the string, `signature` to the
+    * If not equal, the application writes the string, `signature` to the
     NVS region. An offset of 0 is specified with the `NVS_write` call. The
     NVS memory location written to is therefore equal to the NVS region base
     address, `NVS_Attrs.baseAddress`.

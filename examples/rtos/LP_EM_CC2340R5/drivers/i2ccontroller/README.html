@@ -40,9 +40,9 @@
 <h2 id="peripherals-pin-assignments">Peripherals &amp; Pin Assignments</h2>
 <p>When this project is built, the SysConfig tool will generate the TI-Driver configurations into the <strong>ti_drivers_config.c</strong> and <strong>ti_drivers_config.h</strong> files. Information on pins and resources used is present in both generated files. Additionally, the System Configuration file (*.syscfg) present in the project may be opened with SysConfig’s graphical user interface to determine pins and resources used.</p>
 <ul>
-<li><code>CONFIG_GPIO_LED_0</code> - Indicator LED</li>
+<li><code>CONFIG_GPIO_LED_0</code> - Indicator LED.</li>
 <li><code>CONFIG_I2C_0</code> - I2C bus used to communicate with the I2C target.</li>
-<li><code>CONFIG_Display_0</code> - Example output</li>
+<li><code>CONFIG_Display_0</code> - Example output.</li>
 </ul>
 <h2 id="boosterpacks-board-resources-jumper-settings">BoosterPacks, Board Resources &amp; Jumper Settings</h2>
 <p>For board specific jumper settings, resources and BoosterPack modifications, refer to the <strong>Board.html</strong> file.</p>
@@ -72,7 +72,7 @@
 </table>
 <h2 id="example-usage">Example Usage</h2>
 <ul>
-<li>Example output is generated through use of Display driver APIs. Refer to the Display driver documentation found in the SimpleLink MCU SDK User’s Guide.</li>
+<li>Example output is generated through use of Display driver APIs. Refer to the Display driver documentation.</li>
 <li>Open a serial session (for example <a href="http://www.putty.org" title="PuTTY's homepage"><code>PuTTY</code></a>) to the appropriate COM port.
 <ul>
 <li>The COM port can be determined via Device Manager in Windows or via <code>ls /dev/tty*</code> in Linux.</li>
@@ -90,7 +90,7 @@ Flow Control:    None</code></pre>
 <pre class="text"><code>Starting the i2ccontroller example</code></pre></li>
 <li><p>The I2C controller sends the <code>CMD_CTL_GET_STATUS</code> command until a valid response is received.</p>
 <pre class="text"><code>Sending GET_STATUS until target responds</code></pre></li>
-<li><p>When a valid response is received, the example displays this over UART</p>
+<li><p>When a valid response is received, the example displays this over UART:</p>
 <pre class="text"><code>Target responded!</code></pre></li>
 <li>The I2C controller now enters a loop where it will loop through 4 commands.
 <ol>
@@ -116,7 +116,7 @@ READ_BLOCK returned 'Hello, I am the target!'</code></pre></li>
 <p><code>'mainThread'</code> - performs the following actions:</p>
 <ol>
 <li><p>Opens and initializes an I2C driver object.</p></li>
-<li><p>Uses the I2C driver in blocking mode to send commands over the defined command interface</p></li>
+<li><p>Uses the I2C driver in blocking mode to send commands over the defined command interface.</p></li>
 <li><p>Prints command information via the UART.</p></li>
 <li><p>The task sleeps for 1 second between each command.</p></li>
 </ol>
@@ -131,7 +131,7 @@ READ_BLOCK returned 'Hello, I am the target!'</code></pre></li>
   with 100,000+ analog ICs and embedded processors, along with software, tools
   and the industry‘s largest sales/support staff.</p>
   <p>
-    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2025</a>, Texas Instruments Incorporated. All rights reserved. <br>
     <a href="https://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="https://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="https://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="https://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
   </p>
 </footer>

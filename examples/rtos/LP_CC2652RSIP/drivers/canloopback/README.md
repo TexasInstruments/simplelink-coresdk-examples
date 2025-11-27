@@ -10,7 +10,8 @@ This example uses the CAN driver to perform the following actions:
 
 4) Verify the received messages match the transmitted messages.
 
-5) Disable loopback test mode to allow reception of messages from other nodes on the CAN bus.
+5) Disable loopback test mode to allow reception of messages from other nodes on
+   the CAN bus.
 
 Since *external* loopback is utilized, the transmitted CAN messages can be
 received by other nodes connected to the CAN bus. All received messages are
@@ -45,17 +46,20 @@ board-specific jumper settings.
 
 The Board.html can also be found in your SDK installation:
 
-        <SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```text
+<SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```
 
 ## Example Usage
 
 * Open a serial session (e.g. [`PuTTY`](http://www.putty.org/ "PuTTY's
 Homepage"), etc.) to the appropriate COM port.
     * The COM port can be determined via Device Manager in Windows or via
-`ls /dev/tty*` in Linux.
+      `ls /dev/tty*` in Linux.
 
 The connection should have the following settings:
-```
+
+```text
     Baud-rate:  115200
     Data bits:       8
     Stop bits:       1
@@ -70,7 +74,7 @@ initialization is complete.
 
 Sample UART Output:
 
-```
+```text
     Starting CAN Driver Loopback and Receive Demo...
 
     > Tx Finished: 0x1

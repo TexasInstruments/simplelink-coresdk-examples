@@ -27,7 +27,9 @@ board-specific jumper settings.
 
 The Board.html can also be found in your SDK installation:
 
-        <SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```text
+<SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```
 
 ## Example Usage
 
@@ -42,10 +44,11 @@ inputs greater than 3VDC.
 * Open a serial session (e.g. [`PuTTY`](http://www.putty.org/ "PuTTY's
 Homepage"), etc.) to the appropriate COM port.
     * The COM port can be determined via Device Manager in Windows or via
-`ls /dev/tty*` in Linux.
+      `ls /dev/tty*` in Linux.
 
 The connection will have the following settings:
-```
+
+```text
     Baud-rate:     115200
     Data bits:          8
     Stop bits:          1
@@ -54,6 +57,19 @@ The connection will have the following settings:
 ```
 
 * Run the example.
+
+Example snippet of outputs:
+
+```text
+    Starting the ADCBufContinuous example
+    Buffer 0 finished:
+    Average: 3298384 uV
+    Buffer 1 finished:
+    Average: 3298384 uV
+    Buffer 2 finished:
+    Average: 3298384 uV
+    ...
+```
 
 * The target will send packages of 50 samples and a header to the serial
 session. The buffer number and its average microvolt value is displayed
@@ -71,8 +87,8 @@ example and instead read results via the UART terminal.
 a continuous conversion with the ADCBuf driver. After this is completed, the
 task sleeps forever.
 
-* The ADCBuf driver performs 50 samples at 200 Hz each.
-    * The driver supports higher sampling rates; however, 200 Hz was chosen for
+* The ADCBuf driver performs 50 samples at 1000 Hz each.
+    * The driver supports higher sampling rates; however, 1000 Hz was chosen for
 easily interpretable output. The maximum sampling rates are device specific.
 
 * The callback function `adcBufCallback` is called whenever an ADC buffer is
@@ -80,7 +96,6 @@ full. The contents of the buffer are first adjusted so that raw results are
 comparable between devices of the same make. The adjusted values are then
 converted into microvolts to be human-readable. Lastly, the buffer number and
 its average microvolt value is displayed via UART.
-
 
 FreeRTOS:
 

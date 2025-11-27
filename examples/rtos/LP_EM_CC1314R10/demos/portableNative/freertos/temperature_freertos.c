@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2023, Texas Instruments Incorporated
+ * Copyright (c) 2016-2024, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -58,23 +58,8 @@
 /*
  *  ======== TMP Registers ========
  */
-#define TMP006_REG 0x0001 /* Die Temp Result Register for TMP006 */
-#define TMP_BP_REG 0x0000 /* Die Temp Result Register for BP TMP sensor */
-
-/*
- *  The CC32XX LaunchPads come with an on-board TMP006 or TMP116 temperature
- *  sensor depending on the revision. Newer revisions come with the TMP116.
- *  The Build Automation Sensors (BP-BASSESENSORSMKII) BoosterPack
- *  contains a TMP117.
- *
- *  We are using the DIE temperature because it's cool!
- *
- *  Additionally: no calibration is being done on the TMPxxx device to simplify
- *  the example code.
- */
-#define TMP006_ADDR    0x41;
-#define TMP_BP_ADDR    0x48;
-#define TMP116_LP_ADDR 0x49;
+#define TMP_BP_REG  0x0000 /* Die Temp Result Register for BP TMP sensor */
+#define TMP_BP_ADDR 0x48;
 
 /* Temperature written by the temperature thread and read by console thread */
 volatile float temperatureC;
@@ -195,30 +180,13 @@ void temperatureThread(void *arg0)
     i2cTransaction.readBuf    = rxBuffer;
     i2cTransaction.readCount  = 2;
 
-    /*
-     * Determine which I2C sensor is present.
-     * We will prefer sensors in this order: TMP117 (on BoosterPacks),
-     * TMP116 (on-board CC32XX LaunchPads), and last TMP006
-     * (on older CC32XX LaunchPads).
-     */
     /* Try BP TMP values */
     txBuffer[0]                  = TMP_BP_REG;
     i2cTransaction.targetAddress = TMP_BP_ADDR;
     if (!I2C_transfer(i2c, &i2cTransaction))
     {
-        /* Not BP TMP, try LP TMP116 */
-        i2cTransaction.targetAddress = TMP116_LP_ADDR;
-        if (!I2C_transfer(i2c, &i2cTransaction))
-        {
-            /* Not a TMP116 try TMP006*/
-            txBuffer[0]                  = TMP006_REG;
-            i2cTransaction.targetAddress = TMP006_ADDR;
-            if (!I2C_transfer(i2c, &i2cTransaction))
-            {
-                /* Could not resolve a sensor, error */
-                while (1) {}
-            }
-        }
+        /* Could not resolve a sensor, error */
+        while (1) {}
     }
 
     /*

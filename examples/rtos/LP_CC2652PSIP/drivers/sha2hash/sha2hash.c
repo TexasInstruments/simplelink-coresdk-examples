@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017-2021, Texas Instruments Incorporated
+ * Copyright (c) 2017-2024, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -111,6 +111,11 @@ void *mainThread(void *arg0)
     /* Open SHA2 */
     sha2Handle = SHA2_open(0, NULL);
 
+    /* !!! WARNING !!!
+     * For CC27XX devices, the SHA2 driver relies on a single HW accelerator for its hash operations.
+     * If the boot-up sequence of the HW accelerator or its corresponding SW architecture initialization fails,
+     * the SHA2 driver will return a NULL handle.
+     */
     if (!sha2Handle)
     {
         /* SHA2_open() failed */

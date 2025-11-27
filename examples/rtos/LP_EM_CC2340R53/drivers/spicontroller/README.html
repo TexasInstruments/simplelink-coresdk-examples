@@ -39,11 +39,11 @@
 <h2 id="peripherals-pin-assignments">Peripherals &amp; Pin Assignments</h2>
 <p>When this project is built, the SysConfig tool will generate the TI-Driver configurations into the <strong>ti_drivers_config.c</strong> and <strong>ti_drivers_config.h</strong> files. Information on pins and resources used is present in both generated files. Additionally, the System Configuration file (*.syscfg) present in the project may be opened with SysConfig’s graphical user interface to determine pins and resources used.</p>
 <ul>
-<li><code>CONFIG_SPI_CONTROLLER</code> - SPI peripheral assigned as a controller</li>
-<li><code>CONFIG_SPI_CONTROLLER_READY</code> - GPIO managed by controller to notify the peripheral <code>CONFIG_SPI_CONTROLLER</code> has been opened</li>
-<li><code>CONFIG_SPI_PERIPHERAL_READY</code> - GPIO to notify the controller the peripheral is ready for a transfer</li>
-<li><code>CONFIG_GPIO_LED_0</code> - Indicator LED</li>
-<li><code>CONFIG_GPIO_LED_1</code> - Indicator LED</li>
+<li><code>CONFIG_SPI_CONTROLLER</code> - SPI peripheral assigned as a controller.</li>
+<li><code>CONFIG_SPI_CONTROLLER_READY</code> - GPIO managed by controller to notify the peripheral <code>CONFIG_SPI_CONTROLLER</code> has been opened.</li>
+<li><code>CONFIG_SPI_PERIPHERAL_READY</code> - GPIO to notify the controller the peripheral is ready for a transfer.</li>
+<li><code>CONFIG_GPIO_LED_0</code> - Indicator LED.</li>
+<li><code>CONFIG_GPIO_LED_1</code> - Indicator LED.</li>
 </ul>
 <h2 id="boosterpacks-board-resources-jumper-settings">BoosterPacks, Board Resources &amp; Jumper Settings</h2>
 <p>This example requires two LaunchPads.</p>
@@ -94,9 +94,11 @@
 </ul>
 <h2 id="example-usage">Example Usage</h2>
 <ul>
-<li><p>Example output is generated through use of Display driver APIs. Refer to the Display driver documentation found in the SimpleLink MCU SDK User’s Guide.</p></li>
-<li>Open a serial session (e.g. <a href="http://www.putty.org/" title="PuTTY's Homepage"><code>PuTTY</code></a>, etc.) to the appropriate COM port.</li>
-<li><p>The COM port can be determined via Device Manager in Windows or via <code>ls /dev/tty*</code> in Linux.</p></li>
+<li><p>Example output is generated through use of Display driver APIs. Refer to the Display driver documentation.</p></li>
+<li>Open a serial session (e.g. <a href="http://www.putty.org/" title="PuTTY's Homepage"><code>PuTTY</code></a>, etc.) to the appropriate COM port.
+<ul>
+<li>The COM port can be determined via Device Manager in Windows or via <code>ls /dev/tty*</code> in Linux.</li>
+</ul></li>
 </ul>
 <p>The connection will have the following settings:</p>
 <pre class="text"><code>    Baud-rate:     115200
@@ -105,7 +107,7 @@
     Parity:          None
     Flow Control:    None</code></pre>
 <ul>
-<li><p>Run the example. <code>CONFIG_GPIO_LED_0</code> turns ON to show the example is running.</p></li>
+<li><p>Run the example. <code>CONFIG_GPIO_LED_0</code> turns ON to show the example is running</p></li>
 <li><p>Once the peripheral is running, controller and peripheral devices will exchange messages in a loop. While the SPI transactions are taking place, <code>CONFIG_GPIO_LED_1</code> will toggle on/off indicating transfers are occurring. After a transfer is complete, the messages are printed via UART. The loop is repeated <code>MAX_LOOP</code> times.</p></li>
 </ul>
 <p>Messages should appear as follows:</p>
@@ -152,7 +154,7 @@
   with 100,000+ analog ICs and embedded processors, along with software, tools
   and the industry‘s largest sales/support staff.</p>
   <p>
-    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
+    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2025</a>, Texas Instruments Incorporated. All rights reserved. <br>
     <a href="https://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="https://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="https://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="https://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
   </p>
 </footer>

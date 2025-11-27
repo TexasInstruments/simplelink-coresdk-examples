@@ -39,17 +39,17 @@
 <h2 id="peripherals-pin-assignments">Peripherals &amp; Pin Assignments</h2>
 <p>When this project is built, the SysConfig tool will generate the TI-Driver configurations into the <strong>ti_drivers_config.c</strong> and <strong>ti_drivers_config.h</strong> files. Information on pins and resources used is present in both generated files. Additionally, the System Configuration file (*.syscfg) present in the project may be opened with SysConfig’s graphical user interface to determine pins and resources used.</p>
 <ul>
-<li><code>CONFIG_GPIO_LED_0</code> - Indicates the SD card was successfully initialized.</li>
+<li><code>CONFIG_GPIO_LED_0</code> - Indicates the SD card was successfully initialized</li>
 <li><code>CONFIG_SD_0</code> - SD driver instance</li>
 </ul>
 <h2 id="boosterpacks-board-resources-jumper-settings">BoosterPacks, Board Resources &amp; Jumper Settings</h2>
-<p>This example requires a <a href="http://www.ti.com/tool/boostxl-sharp128"><strong>BOOSTXL-SHARP128 LCD &amp; SD Card BoosterPack</strong></a> and a micro SD card.</p>
+<p>This example requires a <a href="https://www.ti.com/tool/boostxl-sharp128"><strong>BOOSTXL-SHARP128 LCD &amp; SD Card BoosterPack</strong></a> and a micro SD card.</p>
 <p>For board specific jumper settings, resources and BoosterPack modifications, refer to the <strong>Board.html</strong> file.</p>
 <blockquote>
 <p>If you’re using an IDE such as Code Composer Studio (CCS) or IAR, please refer to Board.html in your project directory for resources used and board-specific jumper settings.</p>
 </blockquote>
 <p>The Board.html can also be found in your SDK installation:</p>
-<pre><code>    &lt;SDK_INSTALL_DIR&gt;/source/ti/boards/&lt;BOARD&gt;</code></pre>
+<pre class="text"><code>        &lt;SDK_INSTALL_DIR&gt;/source/ti/boards/&lt;BOARD&gt;</code></pre>
 <h2 id="example-usage">Example Usage</h2>
 <ul>
 <li><p>Example output is generated through use of Display driver APIs. Refer to the Display driver documentation found in the SimpleLink MCU SDK User’s Guide.</p></li>
@@ -58,8 +58,8 @@
 <li>The COM port can be determined via Device Manager in Windows or via <code>ls /dev/tty*</code> in Linux.</li>
 </ul></li>
 </ul>
-<p>The connection should have the following settings</p>
-<pre><code>    Baud-rate:  115200
+<p>The connection should have the following settings:</p>
+<pre class="text"><code>    Baud-rate:  115200
     Data bits:       8
     Stop bits:       1
     Parity:       None
@@ -67,12 +67,14 @@
 <ul>
 <li><p>Edit the sdraw.c file and set WRITEENABLE to 1, and build the example. This will allow data to be written to the SD card. <strong>WARNING:</strong> Any file system present on the SD card will be overwritten and corrupted by this action!</p></li>
 <li><p>Run the example. <code>CONFIG_GPIO_LED_0</code> turns on to indicate successful driver initialization.</p></li>
-<li><p>The example reads and displays information about the SD card. An example is shown below:</p>
-<pre><code>======== SD Card Information ========
+<li><p>The example reads and displays information about the SD card. An example is shown below:</p></li>
+</ul>
+<pre class="text"><code>======== SD Card Information ========
 Sectors:                15196160
 Sector Size:            512 bytes
 Card Capacity:          7420 MB
-=====================================</code></pre></li>
+=====================================</code></pre>
+<ul>
 <li><p>The example proceeds to write data to the SD card.</p></li>
 <li><p>The example then reads back any data written.</p></li>
 <li><p>The data read is compared with the data written. If they do not match, an error message will be displayed.</p></li>
@@ -100,7 +102,7 @@ Card Capacity:          7420 MB
   with 100,000+ analog ICs and embedded processors, along with software, tools
   and the industry‘s largest sales/support staff.</p>
   <p>
-    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2023</a>, Texas Instruments Incorporated. All rights reserved. <br>
+    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
     <a href="https://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="https://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="https://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="https://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
   </p>
 </footer>

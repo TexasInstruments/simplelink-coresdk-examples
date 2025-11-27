@@ -21,10 +21,11 @@ SimpleLink MCU SDK User's Guide.
 * Open a serial session (e.g. [`PuTTY`](http://www.putty.org/ "PuTTY's
 Homepage"), etc.) to the appropriate COM port.
     * The COM port can be determined via Device Manager in Windows or via
-`ls /dev/tty*` in Linux.
+      `ls /dev/tty*` in Linux.
 
 * The connection will have the following settings:
-```
+
+```text
     Baud-rate:     115200
     Data bits:          8
     Stop bits:          1
@@ -36,7 +37,7 @@ Homepage"), etc.) to the appropriate COM port.
 
 * Once the example is run, a JSON string should be visible over UART:
 
-```
+```text
     JSON template created
 
     JSON object created from template

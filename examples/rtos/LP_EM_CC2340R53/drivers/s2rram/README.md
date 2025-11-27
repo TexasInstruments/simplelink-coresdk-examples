@@ -33,12 +33,12 @@ The Board.html can also be found in your SDK installation:
 ## Example Usage
 
 * Example output is generated through use of Display driver APIs. Refer to the
-Display driver documentation found in the  SimpleLink MCU SDK User's Guide.
+Display driver documentation.
 
 * Open a serial session (e.g. [`PuTTY`](http://www.putty.org/ "PuTTY's
  Homepage"), etc.) to the appropriate COM port.
-* The COM port can be determined via Device Manager in Windows or via
- `ls /dev/tty*` in Linux.
+    * The COM port can be determined via Device Manager in Windows or via
+      `ls /dev/tty*` in Linux.
 
 The connection will have the following settings:
 
@@ -56,8 +56,8 @@ Run the example.
 * The example will then perform the following sequence twice: write to S2R
     RAM, perform a dummy operation, and then verify that the S2R RAM contents
     remains unchanged. The two dummy operations are:
-    * Sleep
-    * Write to UART
+    * Sleep.
+    * Write to UART.
 
 The following is the expected example output.
 
@@ -87,6 +87,7 @@ There are some important limitations described in the list below:
     * Since the S2R RAM module is not clocked at boot, you cannot place
       initialized data in S2R RAM, since the auto-initialization sequence at
       startup will fail.
+
 * The S2R RAM is not retained through STANDBY
     * If the application relies on the S2R RAM being retained, it must not put
       the device in STANDBY for the period that the S2R RAM content must remain
@@ -107,21 +108,25 @@ application. The key aspects are described in the list below.
 
 * The application declares an uninitialized array `s2rramBuffer` and places it in
 the `.s2rram` section.
+
 * To be able to read and write to the buffer, the S2R RAM must be clocked. This is
   achieved by setting a power dependency on the S2R RAM using this statement:
-  `Power_setDependency(PowerLPF3_PERIPH_LFRD_S2RRAM);`
+  `Power_setDependency(PowerLPF3_PERIPH_LFRD_S2RRAM);`.
+
 * When performing the `sleep(1)` dummy operation, we must ensure that the device
   is not put into STANDBY, otherwise the verification might fail because the S2R
   RAM is not retained through STANDBY. To achieve this we set a power constraint
   to disallow STANDBY using this statement:
-  `Power_setConstraint(PowerLPF3_DISALLOW_STANDBY);`
+  `Power_setConstraint(PowerLPF3_DISALLOW_STANDBY);`.
+
 * When performing the dummy operation to write to UART, we do not need set a
   power constraint because we know that that particular API call will never
   result in the device entering STANDBY. The power constraint is therefore
-  released with this statement: `Power_releaseConstraint(PowerLPF3_DISALLOW_STANDBY);`
+  released with this statement: `Power_releaseConstraint(PowerLPF3_DISALLOW_STANDBY);`.
+
 * At the end of the `mainThread` function, we release the dependency on S2R RAM,
   since it is no longer needed. This is done with the following statement:
-  `Power_releaseDependency(PowerLPF3_PERIPH_LFRD_S2RRAM);`
+  `Power_releaseDependency(PowerLPF3_PERIPH_LFRD_S2RRAM);`.
 
 FreeRTOS:
 

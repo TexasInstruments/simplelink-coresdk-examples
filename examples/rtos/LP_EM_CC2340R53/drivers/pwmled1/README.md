@@ -11,7 +11,7 @@ files. Additionally, the System Configuration file (\*.syscfg) present in the
 project may be opened with SysConfig's graphical user interface to determine
 pins and resources used.
 
-* `CONFIG_PWM_0` - PWM instance used to control brightness of LED
+* `CONFIG_PWM_0` - PWM instance used to control brightness of LED0.
 
 ## BoosterPacks, Board Resources & Jumper Settings
 
@@ -24,7 +24,9 @@ board-specific jumper settings.
 
 The Board.html can also be found in your SDK installation:
 
-        <SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```text
+<SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```
 
 ## Example Usage
 

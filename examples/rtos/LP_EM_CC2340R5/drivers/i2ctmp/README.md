@@ -11,9 +11,9 @@ files. Additionally, the System Configuration file (\*.syscfg) present in the
 project may be opened with SysConfig's graphical user interface to determine
 pins and resources used.
 
-* `CONFIG_GPIO_LED_0` - Indicator LED
+* `CONFIG_GPIO_LED_0` - Indicator LED.
 * `CONFIG_I2C_TMP` - I2C bus used to communicate with the TMP sensor.
-* `CONFIG_GPIO_TMP_EN` - Optional TMP power pin
+* `CONFIG_GPIO_TMP_EN` - Optional TMP power pin.
 
 ## BoosterPacks, Board Resources & Jumper Settings
 
@@ -36,11 +36,12 @@ The Board.html can also be found in your SDK installation:
 ## Example Usage
 
 * Example output is generated through use of Display driver APIs. Refer to the
-Display driver documentation found in the SimpleLink MCU SDK User's Guide.
+Display driver documentation.
 
 * Open a serial session (e.g. [`PuTTY`](http://www.putty.org/ "PuTTY's
  Homepage"), etc.) to the appropriate COM port.
-  * The COM port can be determined via Device Manager in Windows or via `ls /dev/tty*` in Linux.
+    * The COM port can be determined via Device Manager in Windows or via
+      `ls /dev/tty*` in Linux.
 
 The connection will have the following settings:
 
@@ -54,7 +55,8 @@ Flow Control:    None
 
 Run the example.
 
-1. `CONFIG_GPIO_LED_0` turns ON to indicate the I2C driver initialization is complete.
+1. `CONFIG_GPIO_LED_0` turns ON to indicate the I2C driver initialization is
+   complete.
 
     ```text
     I2C Initialized!
@@ -62,8 +64,8 @@ Run the example.
 
 2. If required, the TMP sensor is enabled using a GPIO output.
 
-3. The I2C bus is queried for all supported TMP sensors. The output varies depending on
-which TMP sensor(s) is found.
+3. The I2C bus is queried for all supported TMP sensors. The output varies
+depending on which TMP sensor(s) is found.
 
     ```text
     I2C target address 0x49 not acknowledged!
@@ -118,4 +120,4 @@ FreeRTOS:
 * Please view the `FreeRTOSConfig.h` header file for example configuration
 information.
 
-[bp-bassensorsmkii]: http://www.ti.com/tool/bp-bassensorsmkii
+[bp-bassensorsmkii]: https://www.ti.com/tool/bp-bassensorsmkii

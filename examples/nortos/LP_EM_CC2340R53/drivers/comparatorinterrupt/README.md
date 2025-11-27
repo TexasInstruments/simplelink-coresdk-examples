@@ -1,23 +1,25 @@
 ## Example Summary
 
-This example uses the Comparator driver to detect a voltage threshold and toggle an LED.
+This example uses the Comparator driver to detect a voltage threshold and toggle
+an LED.
 
 ## Peripherals & Pin Assignments
 
 When this project is built, the SysConfig tool will generate the TI-Driver
 configurations into the __ti_drivers_config.c__ and __ti_drivers_config.h__
 files. Information on pins and resources used is present in both generated
-files. Note for this example the positive terminal is used as a reference.
-And the input voltage is on the negative terminal. The negative terminal is
-determined by the comparator module ID. Additionally, the System Configuration file (\*.syscfg)
-present in the project may be opened with SysConfig's graphical user interface to determine
-pins and resources used.
+files. Note for this example the positive terminal is used as a reference. And
+the input voltage is on the negative terminal. The negative terminal is
+determined by the comparator module ID. Additionally, the System Configuration
+file (\*.syscfg) present in the project may be opened with SysConfig's graphical
+user interface to determine pins and resources used.
 
-* `CONFIG_GPIO_LED_0`    - Indicates that the driver was initialized within `mainThread()`
-* `CONFIG_GPIO_BUTTON_0` - Configure `LaunchPad Button BTN-1` in `mainThread()` to
-  serve as input trigger to the comparator.
-* `CONFIG_COMPARATOR_0`  - Defines the comparator peripheral, `Positive
-                        Terminal`, `Negative Terminal`, and `Output Pin`.
+* `CONFIG_GPIO_LED_0` - Indicates that the driver was initialized within
+  `mainThread()`.
+* `CONFIG_GPIO_BUTTON_0` - Configure `LaunchPad Button BTN-1` in `mainThread()`
+  to serve as input trigger to the comparator.
+* `CONFIG_COMPARATOR_0` - Defines the comparator peripheral, `Positive
+  Terminal`, `Negative Terminal`, and `Output Pin`.
 
 ## BoosterPacks, Board Resources & Jumper Settings
 
@@ -30,13 +32,16 @@ board-specific jumper settings.
 
 The Board.html can also be found in your SDK installation:
 
-        <SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```text
+<SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```
 
 ## Example Usage
 
-* Connect a jumper between `LaunchPad Button BTN-1` and `Comparator Positive Input (A1)`.
+* Connect a jumper between `LaunchPad Button BTN-1` and `Comparator Positive
+  Input (A1)`.
 
-* Run the example
+* Run the example.
 
 * Press `BTN-1` (Left Button on the launch pad) to trigger a voltage level
 change. The example has been set up to toggle LED0, the red LED on the

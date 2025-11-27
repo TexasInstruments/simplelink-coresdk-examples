@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015-2021, Texas Instruments Incorporated
+ * Copyright (c) 2015-2024, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -129,7 +129,7 @@ void *mainThread(void *arg0)
     adcBufParams.callbackFxn       = adcBufCallback;
     adcBufParams.recurrenceMode    = ADCBuf_RECURRENCE_MODE_CONTINUOUS;
     adcBufParams.returnMode        = ADCBuf_RETURN_MODE_CALLBACK;
-    adcBufParams.samplingFrequency = 200;
+    adcBufParams.samplingFrequency = 1000;
     adcBuf                         = ADCBuf_open(CONFIG_ADCBUF_0, &adcBufParams);
 
     /* Configure the conversion struct */

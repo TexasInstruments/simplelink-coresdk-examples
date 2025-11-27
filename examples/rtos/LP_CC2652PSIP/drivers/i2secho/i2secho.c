@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015-2020, Texas Instruments Incorporated
+ * Copyright (c) 2015-2024, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -327,18 +327,14 @@ void *mainThread(void *arg0)
     int detachState;
 
     /* Call driver init functions */
-    I2S_init();
-
-/* On CC32XX, do not enable GPIO due to an LED/I2S pin conflict */
-#if !(defined(DeviceFamily_CC3200) || defined(DeviceFamily_CC3220) || defined(DeviceFamily_CC3235))
     GPIO_init();
+    I2S_init();
 
     /* Configure the LED pin */
     GPIO_setConfig(CONFIG_GPIO_LED_0, GPIO_CFG_OUT_STD | GPIO_CFG_OUT_LOW);
 
     /* Turn on user LED */
     GPIO_write(CONFIG_GPIO_LED_0, CONFIG_GPIO_LED_ON);
-#endif
 
     /* Set priority and stack size attributes */
     pthread_attr_init(&attrs);

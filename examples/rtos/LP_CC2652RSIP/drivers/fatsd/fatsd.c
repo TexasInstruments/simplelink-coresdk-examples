@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015-2022, Texas Instruments Incorporated
+ * Copyright (c) 2015-2024, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -70,14 +70,14 @@ const char inputfile[]  = "fat:" STR(DRIVE_NUM) ":input.txt";
 const char outputfile[] = "fat:" STR(DRIVE_NUM) ":output.txt";
 
 const char textarray[]
-    __attribute__((aligned(4))) = "***********************************************************************\n"
-                                  "0         1         2         3         4         5         6         7\n"
-                                  "01234567890123456789012345678901234567890123456789012345678901234567890\n"
-                                  "This is some text to be inserted into the inputfile if there isn't\n"
-                                  "already an existing file located on the media.\n"
-                                  "If an inputfile already exists, or if the file was already once\n"
-                                  "generated, then the inputfile will NOT be modified.\n"
-                                  "***********************************************************************\n";
+    __attribute__((aligned(4))) = "***********************************************************************\r\n"
+                                  "0         1         2         3         4         5         6         7\r\n"
+                                  "01234567890123456789012345678901234567890123456789012345678901234567890\r\n"
+                                  "This is some text to be inserted into the inputfile if there isn't\r\n"
+                                  "already an existing file located on the media.\r\n"
+                                  "If an inputfile already exists, or if the file was already once\r\n"
+                                  "generated, then the inputfile will NOT be modified.\r\n"
+                                  "***********************************************************************\r\n";
 
 static Display_Handle display;
 
@@ -148,20 +148,20 @@ void *mainThread(void *arg0)
     /* Turn on user LED */
     GPIO_write(CONFIG_GPIO_LED_0, CONFIG_GPIO_LED_ON);
 
-    Display_printf(display, 0, 0, "Starting the fatsd example\n");
-    Display_printf(display, 0, 0, "This example requires a FAT filesystem on the SD card.\n");
-    Display_printf(display, 0, 0, "You will get errors if your SD card is not formatted with a filesystem.\n");
+    Display_printf(display, 0, 0, "Starting the fatsd example\r\n");
+    Display_printf(display, 0, 0, "This example requires a FAT filesystem on the SD card.\r\n");
+    Display_printf(display, 0, 0, "You will get errors if your SD card is not formatted with a filesystem.\r\n");
 
     /* Mount and register the SD Card */
     sdfatfsHandle = SDFatFS_open(CONFIG_SDFatFS_0, DRIVE_NUM);
     if (sdfatfsHandle == NULL)
     {
-        Display_printf(display, 0, 0, "Error starting the SD card\n");
+        Display_printf(display, 0, 0, "Error starting the SD card\r\n");
         while (1) {}
     }
     else
     {
-        Display_printf(display, 0, 0, "Drive %u is mounted\n", DRIVE_NUM);
+        Display_printf(display, 0, 0, "Drive %u is mounted\r\n", DRIVE_NUM);
     }
 
     /* Try to open the source file */
@@ -177,10 +177,10 @@ void *mainThread(void *arg0)
             Display_printf(display,
                            0,
                            0,
-                           "Error: \"%s\" could not be created.\nPlease check the "
-                           "Board.html if additional jumpers are necessary.\n",
+                           "Error: \"%s\" could not be created.\r\nPlease check the "
+                           "Board.html if additional jumpers are necessary.\r\n",
                            inputfile);
-            Display_printf(display, 0, 0, "Aborting...\n");
+            Display_printf(display, 0, 0, "Aborting...\r\n");
             while (1) {}
         }
 
@@ -190,24 +190,24 @@ void *mainThread(void *arg0)
         /* Reset the internal file pointer */
         rewind(src);
 
-        Display_printf(display, 0, 0, "done\n");
+        Display_printf(display, 0, 0, "done\r\n");
     }
     else
     {
-        Display_printf(display, 0, 0, "Using existing copy of \"%s\"\n", inputfile);
+        Display_printf(display, 0, 0, "Using existing copy of \"%s\"\r\n", inputfile);
     }
 
     /* Create a new file object for the file copy */
     dst = fopen(outputfile, "w");
     if (!dst)
     {
-        Display_printf(display, 0, 0, "Error opening \"%s\"\n", outputfile);
-        Display_printf(display, 0, 0, "Aborting...\n");
+        Display_printf(display, 0, 0, "Error opening \"%s\"\r\n", outputfile);
+        Display_printf(display, 0, 0, "Aborting...\r\n");
         while (1) {}
     }
     else
     {
-        Display_printf(display, 0, 0, "Starting file copy\n");
+        Display_printf(display, 0, 0, "Starting file copy\r\n");
     }
 
     /*
@@ -235,7 +235,7 @@ void *mainThread(void *arg0)
         bytesWritten = fwrite(cpy_buff, 1, bytesRead, dst);
         if (bytesWritten < bytesRead)
         {
-            Display_printf(display, 0, 0, "Disk Full\n");
+            Display_printf(display, 0, 0, "Disk Full\r\n");
             break; /* Error or Disk Full */
         }
 
@@ -257,7 +257,7 @@ void *mainThread(void *arg0)
     Display_printf(display,
                    0,
                    0,
-                   "File \"%s\" (%u B) copied to \"%s\" (Wrote %u B)\n",
+                   "File \"%s\" (%u B) copied to \"%s\" (Wrote %u B)\r\n",
                    inputfile,
                    filesize,
                    outputfile,
@@ -267,8 +267,8 @@ void *mainThread(void *arg0)
     dst = fopen(outputfile, "r");
     if (!dst)
     {
-        Display_printf(display, 0, 0, "Error opening \"%s\"\n", outputfile);
-        Display_printf(display, 0, 0, "Aborting...\n");
+        Display_printf(display, 0, 0, "Error opening \"%s\"\r\n", outputfile);
+        Display_printf(display, 0, 0, "Aborting...\r\n");
         while (1) {}
     }
 
@@ -291,7 +291,7 @@ void *mainThread(void *arg0)
 
     /* Stopping the SDCard */
     SDFatFS_close(sdfatfsHandle);
-    Display_printf(display, 0, 0, "Drive %u unmounted\n", DRIVE_NUM);
+    Display_printf(display, 0, 0, "Drive %u unmounted\r\n", DRIVE_NUM);
 
     return (NULL);
 }

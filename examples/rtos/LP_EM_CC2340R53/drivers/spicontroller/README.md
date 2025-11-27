@@ -13,13 +13,13 @@ files. Additionally, the System Configuration file (\*.syscfg) present in the
 project may be opened with SysConfig's graphical user interface to determine
 pins and resources used.
 
-* `CONFIG_SPI_CONTROLLER` - SPI peripheral assigned as a controller
+* `CONFIG_SPI_CONTROLLER` - SPI peripheral assigned as a controller.
 * `CONFIG_SPI_CONTROLLER_READY` - GPIO managed by controller to notify the
-peripheral `CONFIG_SPI_CONTROLLER` has been opened
+peripheral `CONFIG_SPI_CONTROLLER` has been opened.
 * `CONFIG_SPI_PERIPHERAL_READY` - GPIO to notify the controller the peripheral
-is ready for a transfer
-* `CONFIG_GPIO_LED_0` - Indicator LED
-* `CONFIG_GPIO_LED_1` - Indicator LED
+is ready for a transfer.
+* `CONFIG_GPIO_LED_0` - Indicator LED.
+* `CONFIG_GPIO_LED_1` - Indicator LED.
 
 ## BoosterPacks, Board Resources & Jumper Settings
 
@@ -60,11 +60,11 @@ between both boards.
 ## Example Usage
 
 * Example output is generated through use of Display driver APIs. Refer to the
-Display driver documentation found in the SimpleLink MCU SDK User's Guide.
+Display driver documentation.
 
 * Open a serial session (e.g. [`PuTTY`](http://www.putty.org/ "PuTTY's
 Homepage"), etc.) to the appropriate COM port.
-  * The COM port can be determined via Device Manager in Windows or via `ls /dev/tty*` in Linux.
+    * The COM port can be determined via Device Manager in Windows or via `ls /dev/tty*` in Linux.
 
 The connection will have the following settings:
 
@@ -76,7 +76,7 @@ The connection will have the following settings:
     Flow Control:    None
 ```
 
-* Run the example. `CONFIG_GPIO_LED_0` turns ON to show the example is running.
+* Run the example. `CONFIG_GPIO_LED_0` turns ON to show the example is running
 
 * Once the peripheral is running, controller and peripheral devices will
 exchange messages in a loop.  While the SPI transactions are taking place,
@@ -110,11 +110,11 @@ Messages should appear as follows:
 
 This application uses a single thread:
 
-`controllerThread` - creates the controller SPI message, opens `CONFIG_SPI_CONTROLLER` and
-waits for the peripheral to be ready for a SPI transfer.  When the peripheral is ready it
-starts the transfer.  Once complete, the controller prepares the next transaction
-and waits for the peripheral once more.  A total of `MAX_LOOP` SPI transactions are
-performed in this manner.
+`controllerThread` - creates the controller SPI message, opens
+`CONFIG_SPI_CONTROLLER` and waits for the peripheral to be ready for a SPI
+transfer. When the peripheral is ready it starts the transfer. Once complete,
+the controller prepares the next transaction and waits for the peripheral once
+more. A total of `MAX_LOOP` SPI transactions are performed in this manner.
 
 The `controllerThread` performs the following actions:
 
@@ -128,7 +128,7 @@ to synchronize. The controller will then wait for the peripheral to set
 Setting `CONFIG_SPI_CONTROLLER_READY` will notify the peripheral
 `CONFIG_SPI_CONTROLLER` has been opened.
 
-3. Waits for the peripheral to be ready for the SPI transfer.  The peripheral
+3. Waits for the peripheral to be ready for the SPI transfer. The peripheral
 will pull `CONFIG_SPI_PERIPHERAL_READY` low when ready for a transfer.
 
 4. Creates a SPI transaction structure and sets txBuffer to `Hello from

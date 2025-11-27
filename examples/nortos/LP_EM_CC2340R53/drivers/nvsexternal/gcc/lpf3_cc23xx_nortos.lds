@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2024, Texas Instruments Incorporated
+ * Copyright (c) 2021-2025, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,18 +37,32 @@ HEAPSIZE = 8196; /* Size of heap buffer used by HeapMem */
 
 MEMORY
 {
-    FLASH (RX) : ORIGIN = ti_utils_build_GenMap_FLASH0_BASE, LENGTH = ti_utils_build_GenMap_FLASH0_SIZE
+    /* If HSM FW is used and overlapping the user-accessible flash, reserve
+     * space for it. 
+     * The multiple ternary operators for the length are hard to understand, 
+     * this is the logic implemented by them:
+     * if (DEFINED(ti_utils_build_GenMap_HSM_FW_BASE)) {
+     *   // If HSM FW overlaps the user-accessible flash, reserve space for it,
+     *   // otherwise use the default flash size
+     *   if (ti_utils_build_GenMap_HSM_FW_BASE < (ti_utils_build_GenMap_FLASH0_BASE + ti_utils_build_GenMap_FLASH0_SIZE)) {
+     *     LENGTH = ti_utils_build_GenMap_HSM_FW_BASE - ti_utils_build_GenMap_FLASH0_BASE
+     *   } else {
+     *     LENGTH = ti_utils_build_GenMap_FLASH0_SIZE
+     *   }
+     * } else {
+     *   LENGTH = ti_utils_build_GenMap_FLASH0_SIZE
+     * }*/
+    FLASH (RX) : ORIGIN = ti_utils_build_GenMap_FLASH0_BASE,
+                 LENGTH = DEFINED(ti_utils_build_GenMap_HSM_FW_BASE) ? ((ti_utils_build_GenMap_HSM_FW_BASE < (ti_utils_build_GenMap_FLASH0_BASE + ti_utils_build_GenMap_FLASH0_SIZE)) ? (ti_utils_build_GenMap_HSM_FW_BASE - ti_utils_build_GenMap_FLASH0_BASE) : ti_utils_build_GenMap_FLASH0_SIZE) : ti_utils_build_GenMap_FLASH0_SIZE
     /*
      * Customer Configuration Area and Bootloader Backdoor configuration in
-     * flash, up to 512 bytes
+     * flash.
      */
     CCFG (R)   : ORIGIN = ti_utils_build_GenMap_CCFG_BASE, LENGTH = ti_utils_build_GenMap_CCFG_SIZE
     SRAM (RWX) : ORIGIN = ti_utils_build_GenMap_RAM0_BASE, LENGTH = ti_utils_build_GenMap_RAM0_SIZE
 
     /* Security Configuration Area (SCFG) - if device supports it */
     SCFG (R)    : ORIGIN = DEFINED(ti_utils_build_GenMap_SCFG_BASE) ? ti_utils_build_GenMap_SCFG_BASE : 0x0, LENGTH = DEFINED(ti_utils_build_GenMap_SCFG_SIZE) ? ti_utils_build_GenMap_SCFG_SIZE : 0x0
-    /* HSM OTP Area (HSMOTP) - if device supports it */
-    HSMOTP (R) : ORIGIN = 0x4E020800, LENGTH = 0x800
 
     /* S2RRAM - if device supports it.  Intended for the S2R radio module, but
      * it can also be used by the application with some limitations. Please
@@ -77,8 +91,11 @@ REGION_ALIAS("REGION_ARM_EXTAB", FLASH);
 
 SECTIONS {
 
+    /* If _resetVecs_base_address is not defined, define it as the flash base
+     * address.
+     */
     PROVIDE (_resetVecs_base_address =
-        DEFINED(_resetVecs_base_address) ? _resetVecs_base_address : 0x0);
+        DEFINED(_resetVecs_base_address) ? _resetVecs_base_address : ti_utils_build_GenMap_FLASH0_BASE);
 
     .resetVecs (_resetVecs_base_address) : AT (_resetVecs_base_address) {
         KEEP (*(.resetVecs))
@@ -218,11 +235,6 @@ SECTIONS {
     {
         KEEP(*(.scfg));
     } > SCFG
-
-    .hsmotp :
-    {
-        KEEP(*(.hsmotp));
-    } > HSMOTP
 
     .bss : {
         __bss_start__ = .;

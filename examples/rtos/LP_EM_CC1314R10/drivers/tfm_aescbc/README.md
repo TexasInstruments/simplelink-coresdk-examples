@@ -42,17 +42,20 @@ board-specific jumper settings.
 
 The Board.html can also be found in your SDK installation:
 
-        <SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```text
+<SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```
 
 ## Example Usage
 
 * Open a serial session (e.g. [`PuTTY`](http://www.putty.org/ "PuTTY's
  Homepage"), etc.) to the appropriate COM port.
-* The COM port can be determined via Device Manager in Windows or via `ls
- /dev/tty*` in Linux.
+    * The COM port can be determined via Device Manager in Windows or via `ls
+     /dev/tty*` in Linux.
 
 The connection will have the following settings:
-```
+
+```text
     Baud-rate:     115200
     Data bits:          8
     Stop bits:          1
@@ -60,20 +63,40 @@ The connection will have the following settings:
     Flow Control:    None
 ```
 
-* Steps to run the example:
+* Steps to run the example with CCS:
   1. Launch the CCS debug session.
-  2. Select *Tools* -> *Debugger Options* -> *Auto Run and Launch Options*. Disable Auto
-   Run Option "On a program load or restart". Set "Remember My Settings" to
-   allow this setting to persist for subsequent debug sessions.
-  3. Exit and relaunch the debug session. Execution should be paused at `_c_int00()`.
-   Steps 2 & 3 can be skipped for subsequent debug sessions.
+  2. Select *Tools* -> *Debugger Options* -> *Auto Run and Launch Options*.
+   Disable Auto Run Option "On a program load or restart". Set "Remember My
+   Settings" to allow this setting to persist for subsequent debug sessions.
+  3. Exit and relaunch the debug session. Execution should be suspended at
+   `_c_int00()` or `ResetISR()`. Steps 2 & 3 can be skipped for subsequent
+   debug sessions.
   4. Select *Run* -> *Load* -> *Load Program*.  Select `tfm_s.axf` located in
-   `<SDK_INSTALL_DIR>/tfm_s/build/cc26x4/production_full/Release/outputs/`
-   to program the Secure image.  This will overwrite the NS application symbols.
-   5. To restore NS application symbols: Select *Run* -> *Load* -> *Add Symbols*.  Select the NS application `tfm_aescbc_XXXX.out`.
-   6. PC register should be 0xD100 (Secure entry point) if above steps were done
-   correctly.
-   7. Set breakpoints if desired and resume execution to run the example.
+   `<SDK_INSTALL_DIR>/tfm_s/build/cc26x4/production_full/Release/bin/` to
+   program the Secure image.  This will overwrite the NS application symbols.
+  5. To restore NS application symbols: Select *Run* -> *Load* -> *Add Symbols*.
+   Select the NS application `tfm_aescbc_XXXX.out`.
+  6. Execution should be suspended at `Reset_Handler()` if the above steps were
+   done correctly.
+  7. Set breakpoints if desired and resume execution to run the example.
+
+* Steps to run the example with CCS Theia:
+  1. Open the project properties, select __Debug__. Select "Cortex_M33_0" for the
+   *Core* and "Auto Run and Launch Options" for the *Category*. Disable Auto Run
+   Option "On a program load or restart".
+  2. Launch the CCS debug session.
+  3. Execution should be suspended at `_c_int00()` or `ResetISR()`.
+  4. Select *Run* -> *Load* -> *Load Program*.  Select `tfm_s.axf` located in
+   `<SDK_INSTALL_DIR>/tfm_s/build/cc26x4/production_full/Release/bin/` to
+   program the Secure image.  This will overwrite the NS application symbols.
+  5. To restore NS application symbols: Select *Run* -> *Load* -> *Add Symbols*.
+   Select the NS application `tfm_aescbc_XXXX.out`.
+  6. Execution should be suspended at `Reset_Handler()` if the above steps were
+   done correctly.
+  7. Set breakpoints if desired and resume execution to run the example.
+
+* Steps to run the example with IAR:
+  1. This example is not currently supported for IAR.
 
 ## Application Design Details
 

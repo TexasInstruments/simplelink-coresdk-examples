@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2022, Texas Instruments Incorporated
+ * Copyright (c) 2016-2024, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,10 +46,6 @@
 #include <ti/drivers/UART2.h>
 
 #include <ti/devices/DeviceFamily.h>
-#if (DeviceFamily_PARENT == DeviceFamily_PARENT_CC32XX)
-    #include <ti/drivers/Power.h>
-    #include <ti/drivers/power/PowerCC32XX.h>
-#endif
 
 /* Driver configuration */
 #include "ti_drivers_config.h"
@@ -171,31 +167,12 @@ void *consoleThread(void *arg0)
     UART2_Handle uart2;
     int retc;
 
-#if (DeviceFamily_PARENT == DeviceFamily_PARENT_CC32XX)
-    /*
-     *  The CC32XX examples by default do not have power management enabled.
-     *  This allows a better debug experience. With the power management
-     *  enabled, if the device goes into a low power mode the emulation
-     *  session is lost.
-     *  Let's enable it and also configure the button to wake us up.
-     */
-    PowerCC32XX_Wakeup wakeup;
-
-    PowerCC32XX_getWakeup(&wakeup);
-    wakeup.wakeupGPIOFxnLPDS = gpioButtonFxn;
-    PowerCC32XX_configureWakeup(&wakeup);
-    Power_enablePolicy();
-
-#else
-
     /* Configure the button pin */
     GPIO_setConfig(CONFIG_GPIO_BUTTON_0, GPIO_CFG_IN_PU | GPIO_CFG_IN_INT_FALLING);
 
     /* install Button callback and enable it */
     GPIO_setCallback(CONFIG_GPIO_BUTTON_0, gpioButtonFxn);
     GPIO_enableInt(CONFIG_GPIO_BUTTON_0);
-
-#endif
 
     retc = sem_init(&semConsole, 0, 0);
     if (retc == -1)

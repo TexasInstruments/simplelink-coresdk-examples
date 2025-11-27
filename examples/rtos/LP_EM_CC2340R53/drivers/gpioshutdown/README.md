@@ -1,17 +1,17 @@
 ## Example Summary
 
 This application moves into and out of shutdown. The state is controlled by
-buttons. `CONFIG_BUTTON_0` will send the device into shutdown, while
-`CONFIG_GPIO_WAKEUP_BUTTON` will wake-up the device. A special LED toggling
+buttons. `CONFIG_BUTTON_SHUTDOWN` will send the device into shutdown, while
+`CONFIG_GPIO_WAKEUP` will wake-up the device. A special LED toggling
 sequence is used when waking from shutdown to demonstrate the get-reset-source
 functionality.
 
 ## Peripherals Exercised
 
-* `CONFIG_BUTTON_0` - Used to tell the device to enter shutdown.
-* `CONFIG_GPIO_WAKEUP_BUTTON` - Used as a wake-up source.
-* `CONFIG_LED_0` -  Lit when the device is active, not lit when in shutdown.
-* `CONFIG_LED_1` -  Will blink when coming out of shutdown.
+* `CONFIG_BUTTON_SHUTDOWN` - Used to tell the device to enter shutdown.
+* `CONFIG_GPIO_WAKEUP` - Used as a wake-up source.
+* `CONFIG_LED_0` - Lit when the device is active, not lit when in shutdown.
+* `CONFIG_LED_1` - Will blink when coming out of shutdown.
 
 ## BoosterPacks, Board Resources & Jumper Settings
 
@@ -24,21 +24,22 @@ board-specific jumper settings.
 
 The Board.html can also be found in your SDK installation:
 
-        <SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```text
+<SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+```
 
-> In order to get lowest shutdown current, the JTAG pins TMS and TCK should be
-disconnected by removing the relevant jumpers. TMS and TCK have internal pull-up
-and are driven low when inactive from the emulator, hence after programming the
-device these jumpers should be removed to avoid the extra leakage current.
+In order to get lowest shutdown current, it may be relevant to disconnect
+debug interface pins by removing relevant jumpers to avoid extra leakage
+current. Please see the __Board.html__ file.
 
 ## Example Usage
 
-* Run the example. Use `CONFIG_BUTTON_0` and `CONFIG_GPIO_WAKEUP_BUTTON` to
+* Run the example. Use `CONFIG_BUTTON_SHUTDOWN` and `CONFIG_GPIO_WAKEUP` to
 shutdown and wake-up the device. Try the RESET button to compare the different
 start-up sequences used.
 
 > It is not possible to do a proper shutdown sequence with the
-debugger connected. For correct behaviour, this example must be run with the
+debugger connected. For correct behavior, this example must be run with the
 debugger disconnected by resetting or performing a power-cycle of the device.
 
 ## Application Design Details

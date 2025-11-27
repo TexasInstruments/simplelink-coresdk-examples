@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2022, Texas Instruments Incorporated
+ * Copyright (c) 2018-2024, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,8 +49,7 @@
     #define SPIFFS_LOGICAL_BLOCK_SIZE (2048)
 #elif (DeviceFamily_PARENT == DeviceFamily_PARENT_CC13X0_CC26X0 || \
        DeviceFamily_PARENT == DeviceFamily_PARENT_CC13X2_CC26X2 || \
-       DeviceFamily_PARENT == DeviceFamily_PARENT_CC13X1_CC26X1 || \
-       DeviceFamily_PARENT == DeviceFamily_PARENT_CC32XX || DeviceFamily_PARENT == DeviceFamily_PARENT_CC23X0)
+       DeviceFamily_PARENT == DeviceFamily_PARENT_CC13X1_CC26X1 || DeviceFamily_PARENT == DeviceFamily_PARENT_CC23X0)
     #define SPIFFS_LOGICAL_BLOCK_SIZE (8192)
 #else
     #warning Invalid Device Family defined

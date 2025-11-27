@@ -39,7 +39,7 @@
 <h2 id="peripherals-pin-assignments">Peripherals &amp; Pin Assignments</h2>
 <p>When this project is built, the SysConfig tool will generate the TI-Driver configurations into the <strong>ti_drivers_config.c</strong> and <strong>ti_drivers_config.h</strong> files. Information on pins and resources used is present in both generated files. Additionally, the System Configuration file (*.syscfg) present in the project may be opened with SysConfig’s graphical user interface to determine pins and resources used.</p>
 <ul>
-<li><code>CONFIG_NVSEXTERNAL</code> - NVS instance which will be used by the file system.</li>
+<li><code>CONFIG_NVSEXTERNAL</code> - NVS instance which will be used by the file system</li>
 </ul>
 <h2 id="boosterpacks-board-resources-jumper-settings">BoosterPacks, Board Resources &amp; Jumper Settings</h2>
 <p>For board specific jumper settings, resources and BoosterPack modifications, refer to the <strong>Board.html</strong> file.</p>
@@ -47,15 +47,17 @@
 <p>If you’re using an IDE such as Code Composer Studio (CCS) or IAR, please refer to Board.html in your project directory for resources used and board-specific jumper settings.</p>
 </blockquote>
 <p>The Board.html can also be found in your SDK installation:</p>
-<pre><code>    &lt;SDK_INSTALL_DIR&gt;/source/ti/boards/&lt;BOARD&gt;</code></pre>
+<pre class="text"><code>&lt;SDK_INSTALL_DIR&gt;/source/ti/boards/&lt;BOARD&gt;</code></pre>
 <h2 id="example-usage">Example Usage</h2>
 <ul>
 <li><p>Example output is generated through use of Display driver APIs. Refer to the Display driver documentation found in the SimpleLink MCU SDK User’s Guide.</p></li>
-<li>Open a serial session (e.g. <a href="http://www.putty.org/" title="PuTTY's Homepage"><code>PuTTY</code></a>, etc.) to the appropriate COM port.</li>
-<li><p>The COM port can be determined via Device Manager in Windows or via <code>ls /dev/tty*</code> in Linux.</p></li>
+<li>Open a serial session (e.g. <a href="http://www.putty.org/" title="PuTTY's Homepage"><code>PuTTY</code></a>, etc.) to the appropriate COM port.
+<ul>
+<li>The COM port can be determined via Device Manager in Windows or via <code>ls /dev/tty*</code> in Linux.</li>
+</ul></li>
 </ul>
 <p>The connection will have the following settings:</p>
-<pre><code>    Baud-rate:     115200
+<pre class="text"><code>    Baud-rate:     115200
     Data bits:          8
     Stop bits:          1
     Parity:          None
@@ -71,14 +73,14 @@
 <strong>NOTE</strong>: This application will erase flash memory if no file system is found.</li>
 </ul>
 <p>The following is an example output.</p>
-<pre><code>    Mounting file system...
+<pre class="text"><code>    Mounting file system...
     File system not found; creating new SPIFFS fs...
     Creating spiffsFile...
     Writing to spiffsFile...
     Reset the device.
     ==================================================</code></pre>
 <p>After device reset:</p>
-<pre><code>    Mounting file system...
+<pre class="text"><code>    Mounting file system...
     Reading spiffsFile...
 
     spiffsFile: Hello from SPIFFS!!!
@@ -88,26 +90,20 @@
     ==================================================</code></pre>
 <h2 id="application-design-details">Application Design Details</h2>
 <ul>
-<li><p>SPIFFS source is included and pre-built with support for TI-RTOS or FreeRTOS synchronization. A SPIFFSNVS driver is included in the library which serves as the interface between the SPIFFS file system and the NVS driver. The SPIFFS file system will operate within the memory region allocated for a NVS driver instance. NVS driver specifications are found in the application’s board file. Refer to NVS driver documentation for configuration details.</p></li>
+<li><p>SPIFFS source is included and pre-built with support for TI-RTOS or FreeRTOS synchronization. A SPIFFSNVS driver is included in the library which serves as the interface between the SPIFFS file system and the NVS driver. The SPIFFS file system will operate within the memory region allocated for a NVS driver instance. Refer to the NVS driver documentation for configuration details.</p></li>
 <li>To use a SPIFFS file system some configuration parameters and RAM must be provided at runtime (all sizes in bytes):
 <ul>
-<li>Amount of memory allocated for SPIFFS - This is the amount of memory that has been allocated for NVS driver instance which SPIFFS will work within. This is configurable in the application’s board file.</li>
-<li>Physical block size (also known as sector size) - Amount of flash cleared on a single erase operation. This varies according to the type of memory and is defined in the NVS configuration in the application’s board file.</li>
-<li><p>Logical block size - The file system divides the entire memory region into logical blocks. This value must be an integer multiple of the physical block size:</p>
-<blockquote>
-<p>logical_block_size = n * physical_block_size</p>
-</blockquote></li>
-<li><p>Logical page size - The file system divides logical blocs into logical pages. Files are divided into pages when stored in memory. The logical block size must also be an integer multiple of the logical page size:</p>
-<blockquote>
-<p>logical_block_size = i * logical_page_size</p>
-</blockquote></li>
-<li>A RAM ‘work’ buffer - This is memory used internally by SPIFFS. This must be twice the logical page size (2 * logical_page_size) in length.</li>
-<li><p>A RAM file descriptor cache - Temporary storage for the file descriptors of frequently used files.</p></li>
+<li>Amount of memory allocated for SPIFFS - This is the amount of memory that has been allocated for NVS driver instance which SPIFFS will work within.</li>
+<li>Physical block size (also known as sector size) - Amount of flash cleared on a single erase operation. This varies according to the type of memory and is defined in the NVS configuration in SysConfig.</li>
+<li>Logical block size - The file system divides the entire memory region into logical blocks. This value must be an integer multiple of the physical block size (<code>logical_block_size = n * physical_block_size</code>)</li>
+<li>Logical page size - The file system divides logical blocks into logical pages. Files are divided into pages when stored in memory. The logical block size must also be an integer multiple of the logical page size (<code>logical_block_size = i * logical_page_size</code>)</li>
+<li>A RAM ‘work’ buffer - This is memory used internally by SPIFFS. This must be twice the logical page size (<code>2 * logical_page_size</code>) in length.</li>
+<li>A RAM file descriptor cache - Temporary storage for the file descriptors of frequently used files.</li>
 </ul></li>
 <li><p>The application utilizes a single thread (<code>mainThread</code>) to demonstrate how to use SPIFFS APIs to read and write files.</p></li>
-<li>SPIFFSNVS_config() is called to:
+<li><code>SPIFFSNVS_config()</code> is called to:
 <ul>
-<li>Open NVS driver instance in which SPIFFS file system will exits.</li>
+<li>Open NVS driver instance in which SPIFFS file system will exist.</li>
 <li>Validate configuration parameters.</li>
 <li>Initialize SPIFFS configuration and file system structures.</li>
 </ul></li>
@@ -129,7 +125,7 @@
   with 100,000+ analog ICs and embedded processors, along with software, tools
   and the industry‘s largest sales/support staff.</p>
   <p>
-    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2023</a>, Texas Instruments Incorporated. All rights reserved. <br>
+    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2024</a>, Texas Instruments Incorporated. All rights reserved. <br>
     <a href="https://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="https://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="https://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="https://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
   </p>
 </footer>

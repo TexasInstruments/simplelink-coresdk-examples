@@ -64,7 +64,7 @@ Display driver documentation found in the SimpleLink MCU SDK User's Guide.
 
 * Open a serial session (e.g. [`PuTTY`](http://www.putty.org/ "PuTTY's
 Homepage"), etc.) to the appropriate COM port.
-  * The COM port can be determined via Device Manager in Windows or via `ls /dev/tty*` in Linux.
+    * The COM port can be determined via Device Manager in Windows or via `ls /dev/tty*` in Linux.
 
 The connection will have the following settings:
 
@@ -76,7 +76,7 @@ The connection will have the following settings:
     Flow Control:    None
 ```
 
-* Run the example. `CONFIG_GPIO_LED_0` turns ON to show the example is running.
+* Run the example. `CONFIG_GPIO_LED_0` turns ON to show the example is running
 
 * Once the peripheral is running, controller and peripheral devices will
 exchange messages in a loop.  While the SPI transactions are taking place,
@@ -110,11 +110,11 @@ Messages should appear as follows:
 
 This application uses a single thread:
 
-`controllerThread` - creates the controller SPI message, opens `CONFIG_SPI_CONTROLLER` and
-waits for the peripheral to be ready for a SPI transfer.  When the peripheral is ready it
-starts the transfer.  Once complete, the controller prepares the next transaction
-and waits for the peripheral once more.  A total of `MAX_LOOP` SPI transactions are
-performed in this manner.
+`controllerThread` - creates the controller SPI message, opens
+`CONFIG_SPI_CONTROLLER` and waits for the peripheral to be ready for a SPI
+transfer.  When the peripheral is ready it starts the transfer.  Once complete,
+the controller prepares the next transaction and waits for the peripheral once
+more.  A total of `MAX_LOOP` SPI transactions are performed in this manner.
 
 The `controllerThread` performs the following actions:
 
