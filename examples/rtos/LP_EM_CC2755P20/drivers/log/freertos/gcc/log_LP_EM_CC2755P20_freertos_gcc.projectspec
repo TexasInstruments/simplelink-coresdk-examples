@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectSpec>
+    <applicability>
+        <when>
+            <context
+                deviceFamily="ARM"
+                deviceId="Cortex M.CC2755P20"
+            />
+        </when>
+    </applicability>
+
+    <project
+        title="Log Instrumentation"
+        name="log_LP_EM_CC2755P20_freertos_gcc"
+        configurations="Debug"
+        toolChain="GNU"
+        connection="TIXDS110_Connection.xml"
+        device="Cortex M.CC2755P20"
+        ignoreDefaultDeviceSettings="true"
+        ignoreDefaultCCSSettings="true"
+        products="com.ti.SIMPLELINK_LOWPOWER_F3_SDK;sysconfig"
+        compilerBuildOptions="
+            -I${PROJECT_ROOT}
+            -I${PROJECT_ROOT}/${ConfigName}
+            -Dti_log_Log_ENABLE
+            -O3
+            -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source
+            -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/tfm_s/build/cc27xx/production_full/Release/export/tfm/inc
+            -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/third_party/tfm/config
+            -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/third_party/tfm/interface/include
+            -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/third_party/tfm/secure_fw/include
+            -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/third_party/psa_crypto/include
+            -DMBEDTLS_CONFIG_FILE=&quot;&lt;configs/config-hsm.h&gt;&quot;
+            -DMBEDTLS_PSA_CRYPTO_CONFIG_FILE=&quot;&lt;configs/config-psa-crypto-hsm.h&gt;&quot;
+            -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/third_party/mbedtls/include
+            -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/third_party/mbedtls/ti
+            -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/third_party/mbedtls/ti/port
+            -D_REENT_SMALL
+            -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/kernel/freertos
+            -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/ti/posix/gcc
+            -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/third_party/freertos/include
+            -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/third_party/freertos/portable/GCC/ARM_CM33_NTZ/non_secure
+            -mcpu=cortex-m33
+            -mthumb
+            -std=c99
+            -std=c++11
+            -mfloat-abi=hard
+            -mfpu=fpv5-sp-d16
+            -ffunction-sections
+            -fdata-sections
+            -g
+            -Wall
+            -I${CG_TOOL_ROOT}/arm-none-eabi/include/newlib-nano
+            -I${CG_TOOL_ROOT}/arm-none-eabi/include
+        "
+        linkerBuildOptions="
+            -mcpu=cortex-m33
+            -L${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source
+            -L${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/tfm_s
+            -fno-lto
+            -L${PROJECT_BUILD_DIR}/syscfg
+            -lti_utils_build_linker.cmd.genlibs
+            -mthumb
+            -mfloat-abi=hard
+            -mfpu=fpv5-sp-d16
+            -nostartfiles
+            -static
+            -Wl,--gc-sections
+            -lgcc
+            -lc
+            -lm
+            --specs=nano.specs
+        "
+        postBuildStep="
+            &quot;${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/tools/common/crc_tool/crc_tool&quot; patch-image --elf &quot;${BuildDirectory}/${BuildArtifactFileBaseName}.out&quot; --symbol-prefix ti_utils_build_GenMap_sym_CRC --output &quot;${BuildDirectory}/${BuildArtifactFileBaseName}.out&quot;;
+            &quot;${CG_TOOL_ROOT}/bin/arm-none-eabi-objcopy&quot; -O ihex &quot;${BuildDirectory}/${BuildArtifactFileBaseName}.out&quot; &quot;${BuildDirectory}/${BuildArtifactFileBaseName}.hex&quot;
+        "
+        sysConfigBuildOptions="
+            --product ${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/.metadata/product.json
+            --compiler gcc
+        "
+        description="Example showing TI logger">
+        <property name="buildProfile" value="release"/>
+        <property name="isHybrid" value="true"/>
+        <file path="../../README.md" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="../../README.html" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="../../log.c" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="../../freertos/main_freertos.c" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="../../freertos/log.syscfg" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/ti/boards/LP_EM_CC2755P20/Board.html" openOnCreation="false" excludeFromBuild="false" action="link">
+        </file>
+        <file path="../../freertos/gcc/lpf3_cc27xx_freertos.lds" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+    </project>
+</projectSpec>

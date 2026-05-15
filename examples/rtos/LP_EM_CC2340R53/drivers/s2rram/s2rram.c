@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023-2024, Texas Instruments Incorporated
+ * Copyright (c) 2023-2025, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -85,7 +85,7 @@ void *mainThread(void *arg0)
     Display_printf(displayHandle, 0, 0, "Starting the s2rram example");
 
     /* Ensure that S2R RAM is clocked */
-    Power_setDependency(PowerLPF3_PERIPH_LFRD_S2RRAM);
+    Power_setDependency(PowerLPF3_PERIPH_LRFD_S2RRAM);
 
     Display_printf(displayHandle, 0, 0, "Writing 0xAA to all bytes in S2R RAM buffer.");
 
@@ -152,7 +152,7 @@ void *mainThread(void *arg0)
     }
 
     /* Remove dependency on S2R RAM, since we are not using it anymore */
-    Power_releaseDependency(PowerLPF3_PERIPH_LFRD_S2RRAM);
+    Power_releaseDependency(PowerLPF3_PERIPH_LRFD_S2RRAM);
 
     return (NULL);
 }

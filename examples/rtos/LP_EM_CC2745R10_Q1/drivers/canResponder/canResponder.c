@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024, Texas Instruments Incorporated
+ * Copyright (c) 2024-2026, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -107,8 +107,11 @@ static void handleEvent(void)
 {
     if (curEvent == CAN_EVENT_RX_DATA_AVAIL)
     {
+
+#ifdef CONFIG_GPIO_LED_1
         /* Turn on LED1, indicating a message has been received */
         GPIO_write(CONFIG_GPIO_LED_1, CONFIG_GPIO_LED_ON);
+#endif /* CONFIG_GPIO_LED_1 */
 
         rxEventCnt++;
         processRxMsg();
@@ -119,10 +122,15 @@ static void handleEvent(void)
         {
             sprintf(formattedMsg, "> Response sent.\r\n\n");
 
+#ifdef CONFIG_GPIO_LED_1
+
             /* Delay to allow the LED1 flash to be visible */
             usleep(1000);
+
             /* Turn off LED1, indicating response was sent */
             GPIO_write(CONFIG_GPIO_LED_1, CONFIG_GPIO_LED_OFF);
+
+#endif /* CONFIG_GPIO_LED_1 */
         }
         else if (curEvent == CAN_EVENT_BUS_ON)
         {
@@ -177,11 +185,19 @@ static void printRxMsg(void)
 
     sprintf(formattedMsg + strlen(formattedMsg), "TS: 0x%04x\r\n", rxElem.rxts);
 
+#ifndef CAN_SUPPORTS_DCAN
+
     sprintf(formattedMsg + strlen(formattedMsg), "CAN FD: %u\r\n", rxElem.fdf);
+
+#endif /* CAN_SUPPORTS_DCAN */
 
     sprintf(formattedMsg + strlen(formattedMsg), "DLC: %u\r\n", rxElem.dlc);
 
+#ifndef CAN_SUPPORTS_DCAN
+
     sprintf(formattedMsg + strlen(formattedMsg), "BRS: %u\r\n", rxElem.brs);
+
+#endif /* CAN_SUPPORTS_DCAN */
 
     sprintf(formattedMsg + strlen(formattedMsg), "ESI: %u\r\n", rxElem.esi);
 
@@ -226,10 +242,14 @@ static void sendResponse(void)
 
     txElem.rtr = rxElem.rtr;
     txElem.xtd = rxElem.xtd;
+#ifndef CAN_SUPPORTS_DCAN
     txElem.esi = rxElem.esi;
     txElem.brs = rxElem.brs;
+#endif /* CAN_SUPPORTS_DCAN */
     txElem.dlc = rxElem.dlc;
+#ifndef CAN_SUPPORTS_DCAN
     txElem.fdf = rxElem.fdf;
+#endif /* CAN_SUPPORTS_DCAN */
     txElem.efc = 0U;
     txElem.mm  = 2U;
 
@@ -314,8 +334,12 @@ void *responderThread(void *arg0)
         UART2_write(uart2Handle, formattedMsg, strlen(formattedMsg), NULL);
     }
 
+#ifdef CONFIG_GPIO_LED_0
+
     /* Turn on LED0 to indicate successful initialization */
     GPIO_write(CONFIG_GPIO_LED_0, CONFIG_GPIO_LED_ON);
+
+#endif /* CONFIG_GPIO_LED_0 */
 
     /* Loop forever */
     while (1)

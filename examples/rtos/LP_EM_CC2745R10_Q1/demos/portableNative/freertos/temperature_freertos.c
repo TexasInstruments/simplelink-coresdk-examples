@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2024, Texas Instruments Incorporated
+ * Copyright (c) 2016-2026, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -59,7 +59,9 @@
  *  ======== TMP Registers ========
  */
 #define TMP_BP_REG  0x0000 /* Die Temp Result Register for BP TMP sensor */
-#define TMP_BP_ADDR 0x48;
+#define TMP_BP_ADDR 0x48
+
+#define TMP_RESOLUTION_C 0.0078125
 
 /* Temperature written by the temperature thread and read by console thread */
 volatile float temperatureC;
@@ -103,7 +105,7 @@ static void postSem(TimerHandle_t xTimer)
  *
  *  A non-zero return indicates a failure.
  */
-SemaphoreHandle_t setupTimer(TimerHandle_t *TimerHandle_t, unsigned int ms)
+SemaphoreHandle_t setupTimer(TimerHandle_t *timer, unsigned int ms)
 {
     SemaphoreHandle_t xSemaphore;
     int retc;
@@ -115,19 +117,19 @@ SemaphoreHandle_t setupTimer(TimerHandle_t *TimerHandle_t, unsigned int ms)
     }
 
     /* Create the timer that wakes up the thread that will pend on the sem. */
-    *TimerHandle_t = xTimerCreate(NULL,               // pcTimerName
-                                  pdMS_TO_TICKS(ms),  // xTimerPeriod
-                                  pdTRUE,             // uxAutoReload
-                                  (void *)xSemaphore, // pvTimerID
-                                  postSem);           // pxCallbackFunction
+    *timer = xTimerCreate(NULL,               // pcTimerName
+                          pdMS_TO_TICKS(ms),  // xTimerPeriod
+                          pdTRUE,             // uxAutoReload
+                          (void *)xSemaphore, // pvTimerID
+                          postSem);           // pxCallbackFunction
 
-    if (*TimerHandle_t == NULL)
+    if (*timer == NULL)
     {
         vSemaphoreDelete(xSemaphore);
         return (NULL);
     }
 
-    retc = xTimerStart(*TimerHandle_t, pdMS_TO_TICKS(ms));
+    retc = xTimerStart(*timer, pdMS_TO_TICKS(ms));
     if (retc == pdFAIL)
     {
         vSemaphoreDelete(xSemaphore);
@@ -152,12 +154,13 @@ void temperatureThread(void *arg0)
     TimerHandle_t timerHandle;
     SemaphoreHandle_t xTemperatureSemaphore;
     int retc;
+    int16_t tempRaw;
 
     /* Configure the LED and if applicable, the TMP_EN pin */
     GPIO_setConfig(CONFIG_GPIO_LED_0, GPIO_CFG_OUT_STD | GPIO_CFG_OUT_LOW);
 #ifdef CONFIG_GPIO_TMP_EN
     GPIO_setConfig(CONFIG_GPIO_TMP_EN, GPIO_CFG_OUT_STD | GPIO_CFG_OUT_HIGH);
-    /* 1.5 ms reset time for the TMP sensor */
+    /* 1 second reset time for the TMP sensor */
     sleep(1);
 #endif
 
@@ -211,8 +214,8 @@ void temperatureThread(void *arg0)
              *  in a thread-safe manner.
              */
             taskENTER_CRITICAL();
-            temperatureC = (rxBuffer[0] << 6) | (rxBuffer[1] >> 2);
-            temperatureC *= 0.03125;
+            tempRaw      = (int16_t)((rxBuffer[0] << 8) | rxBuffer[1]);
+            temperatureC = tempRaw * TMP_RESOLUTION_C;
             temperatureF = temperatureC * 9 / 5 + 32;
             taskEXIT_CRITICAL();
 

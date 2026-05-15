@@ -38,7 +38,6 @@
             -ffunction-sections
             -fdata-sections
             -g
-            -gstrict-dwarf
             -Wall
             -I${CG_TOOL_ROOT}/arm-none-eabi/include/newlib-nano
             -I${CG_TOOL_ROOT}/arm-none-eabi/include
@@ -69,7 +68,6 @@
             --compiler gcc
         "
         description="Demonstrates how to use the SPI driver in controller mode to communicate with another device as peripheral">
-
         <property name="buildProfile" value="release"/>
         <property name="isHybrid" value="true"/>
         <file path="../../spicontroller.c" openOnCreation="false" excludeFromBuild="false" action="copy">

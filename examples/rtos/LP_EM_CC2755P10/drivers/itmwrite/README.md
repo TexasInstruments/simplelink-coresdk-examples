@@ -55,6 +55,7 @@ is connected.
       using the debugger. In CCS this can done from the menu
       `Run -> Reset -> Board Reset (automatic connect/disconnect)`.
 
+    * __NOTE:__ For CC35X1 boards, default baud rate is 10 Mbps.
 * Reset the board. `CONFIG_GPIO_LED_0` turns ON to indicate driver initialization
 is complete. The ITM tool will not begin printing until it receives a reset
 frame.

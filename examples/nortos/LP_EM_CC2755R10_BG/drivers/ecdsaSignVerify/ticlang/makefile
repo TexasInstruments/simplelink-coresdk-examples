@@ -25,17 +25,35 @@ OBJECTS = ecdsaSignVerify.obj ecdsaTestVector.obj main_nortos.obj $(patsubst %.c
 NAME = ecdsaSignVerify
 
 
+DFLAGS += -gdwarf-3
+
 CFLAGS += -I.. \
     -I. \
     $(addprefix @,$(SYSCFG_OPT_FILES)) \
     -Oz \
     "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source" \
+    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/tfm_s/build/cc27xx/production_full/Release/export/tfm/inc" \
+    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/tfm/config" \
+    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/tfm/interface/include" \
+    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/tfm/secure_fw/include" \
+    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/psa_crypto/include" \
+    -DMBEDTLS_CONFIG_FILE="<configs/config-hsm.h>" \
+    -DMBEDTLS_PSA_CRYPTO_CONFIG_FILE="<configs/config-psa-crypto-hsm.h>" \
+    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/mbedtls/include" \
+    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/mbedtls/ti" \
+    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/mbedtls/ti/port" \
     "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/kernel/nortos" \
     "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/kernel/nortos/posix" \
-    -gdwarf-3 \
     -mcpu=cortex-m33 \
     -mfloat-abi=hard \
-    -mfpu=fpv5-sp-d16
+    -mfpu=fpv5-sp-d16 \
+    -Wall
+
+
+ifneq ($(CONFIG),RELEASE)
+# Add debug flags by default (excluded only when CONFIG=RELEASE)
+CFLAGS += $(DFLAGS)
+endif
 
 LFLAGS += "-L$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source" \
     "-L$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/tfm_s" \

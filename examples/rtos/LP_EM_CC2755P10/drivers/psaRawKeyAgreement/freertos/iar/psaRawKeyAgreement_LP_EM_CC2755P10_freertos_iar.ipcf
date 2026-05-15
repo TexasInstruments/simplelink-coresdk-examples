@@ -17,16 +17,28 @@
     <includePath>
         <path>$PROJ_DIR$</path>
         <path>$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/source</path>
+        <path>$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/tfm_s/build/cc27xx/production_full/Release/export/tfm/inc</path>
+        <path>$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/source/third_party/tfm/config</path>
+        <path>$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/source/third_party/tfm/interface/include</path>
+        <path>$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/source/third_party/tfm/secure_fw/include</path>
+        <path>$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/source/third_party/psa_crypto/include</path>
+        <path>$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/source/third_party/mbedtls/include</path>
+        <path>$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/source/third_party/mbedtls/ti</path>
+        <path>$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/source/third_party/mbedtls/ti/port</path>
         <path>$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/kernel/freertos</path>
         <path>$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/source/ti/posix/iar</path>
         <path>$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/source/third_party/freertos/include</path>
         <path>$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/source/third_party/freertos/portable/IAR/ARM_CM33_NTZ/non_secure</path>
     </includePath>
 
+    <defines>
+        <define>MBEDTLS_CONFIG_FILE=&lt;configs/config-hsm.h&gt;</define>
+        <define>MBEDTLS_PSA_CRYPTO_CONFIG_FILE=&lt;configs/config-psa-crypto-hsm.h&gt;</define>
+    </defines>
+
     <extraOptions>
         <args>
             <arg>-f$PROJ_DIR$/ti_utils_build_compiler.opt</arg>
-            <arg>--debug</arg>
             <arg>--silent</arg>
             <arg>-e</arg>
             <arg>--aeabi</arg>
@@ -84,6 +96,7 @@
         <path copyTo="$PROJ_DIR$/main_freertos.c">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/rtos/LP_EM_CC2755P10/drivers/psaRawKeyAgreement/freertos/main_freertos.c</path>
         <path copyTo="$PROJ_DIR$/psaRawKeyAgreement.c">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/rtos/LP_EM_CC2755P10/drivers/psaRawKeyAgreement/psaRawKeyAgreement.c</path>
         <path copyTo="$PROJ_DIR$/psaRawKeyAgreement.syscfg">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/rtos/LP_EM_CC2755P10/drivers/psaRawKeyAgreement/freertos/psaRawKeyAgreement.syscfg</path>
+        <path copyTo="$PROJ_DIR$/README.html">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/rtos/LP_EM_CC2755P10/drivers/psaRawKeyAgreement/README.html</path>
         <path copyTo="$PROJ_DIR$/README.md">$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/examples/rtos/LP_EM_CC2755P10/drivers/psaRawKeyAgreement/README.md</path>
     </files>
 </iarProjectConnection>

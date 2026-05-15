@@ -637,7 +637,7 @@
             <data>
         <buildActions>
                 <buildAction>
-                    <cmdline>"$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/tools/common/crc_tool/crc_tool" patch-image --elf "$TARGET_DIR$/$TARGET_BNAME$.out" --symbol-prefix ti_utils_build_GenMap_sym_CRC --output "$TARGET_DIR$/$TARGET_BNAME$.out"</cmdline>
+                    <cmdline>&quot;$SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR$/tools/common/crc_tool/crc_tool&quot; patch-image --elf &quot;$TARGET_DIR$/$TARGET_BNAME$.out&quot; --symbol-prefix ti_utils_build_GenMap_sym_CRC --output &quot;$TARGET_DIR$/$TARGET_BNAME$.out&quot;</cmdline>
                     <workingDirectory>$PROJ_DIR$/$CONFIG_NAME$</workingDirectory>
                     <buildSequence>postLink</buildSequence>
                         <outputs>
@@ -647,7 +647,7 @@
                         </outputs>
                 </buildAction>
                 <buildAction>
-                    <cmdline>"$TOOLKIT_DIR$/bin/ielftool" --ihex "$TARGET_DIR$/$TARGET_BNAME$.out" "$TARGET_DIR$/$TARGET_BNAME$.hex"</cmdline>
+                    <cmdline>&quot;$TOOLKIT_DIR$/bin/ielftool&quot; --ihex &quot;$TARGET_DIR$/$TARGET_BNAME$.out&quot; &quot;$TARGET_DIR$/$TARGET_BNAME$.hex&quot;</cmdline>
                     <workingDirectory>$PROJ_DIR$/$CONFIG_NAME$</workingDirectory>
                     <buildSequence>postLink</buildSequence>
                         <outputs>

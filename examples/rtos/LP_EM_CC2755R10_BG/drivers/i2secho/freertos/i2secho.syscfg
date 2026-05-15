@@ -77,12 +77,13 @@ i2s.$name = "CONFIG_I2S_0";
  *  - CC2651P and CC2653 LaunchPads
  *  - LP_EM_CC2674P10
  *  - CC27xx LaunchPads
+ *  - CC35XX LaunchPads
  * Signal names and wiring below are taken from
  * https://www.ti.com/lit/pdf/swru383, Figure 2-1.
  *
  * Other boards will use the CC3200AUDBOOST directly from SysCfg
  */
-if ((board.match(/CC13.[12]/) && !board.match(/CC1312PSIP/)) || board.match(/CC2651P|CC2653P/) || board.match(/CC27/) || (board === "LP_EM_CC2674P10")) {
+if ((board.match(/CC13.[12]/) && !board.match(/CC1312PSIP/)) || board.match(/CC2651P|CC2653P/) || board.match(/CC27/) || (board === "LP_EM_CC2674P10") || board.match(/CC35/)) {
 
     /* Set default pin assignments. They will be overridden as needed. */
     let sd0Assignment  = "boosterpack.29";   // CC3200AUDBOOST DIN
@@ -90,7 +91,14 @@ if ((board.match(/CC13.[12]/) && !board.match(/CC1312PSIP/)) || board.match(/CC2
     let sckAssignment  = "boosterpack.28";   // CC3200AUDBOOST BCLK
     let wsAssignment   = "boosterpack.27";   // CC3200AUDBOOST FSYNC
 
-    if(board.match(/CC27/))
+    if (board.match(/CC35/))
+    {
+        sd0Assignment = "boosterpack.3";  // CC3200AUDBOOST DIN
+        sd1Assignment = "boosterpack.4";  // CC3200AUDBOOST DOUT
+        sckAssignment = "boosterpack.38";  // CC3200AUDBOOST BCLK
+        wsAssignment  = "boosterpack.37";  // CC3200AUDBOOST FSYNC
+    }
+    else if (board.match(/CC27/))
     {
         if(board.match(/CC2755R10_BG/))
         {
@@ -109,7 +117,7 @@ if ((board.match(/CC13.[12]/) && !board.match(/CC1312PSIP/)) || board.match(/CC2
         scripting.suppress("Connected to hardware*", i2s.i2s, "SCKPin");
         scripting.suppress("Connected to hardware*", i2s.i2s, "WSPin");
     }
-    else if(board === "LP_EM_CC2674P10")
+    else if (board === "LP_EM_CC2674P10")
     {
         /* The BoostPack's DIN, DOUT and FSYNC/WCLK signal pins are not
          * compatible with LP_EM_CC2674P10.

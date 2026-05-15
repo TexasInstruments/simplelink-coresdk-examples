@@ -36,6 +36,8 @@ AFLAGS += -I../.. \
     "-I$(IAR_ARMCOMPILER)/inc/c" \
     --cpu Cortex-M0+
 
+DFLAGS += --debug
+
 CFLAGS += -I../.. \
     -I. \
     $(addprefix -f,$(SYSCFG_OPT_FILES)) \
@@ -46,7 +48,6 @@ CFLAGS += -I../.. \
     "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/ti/posix/iar" \
     "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/freertos/include" \
     "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/freertos/portable/IAR/ARM_CM0" \
-    --debug \
     --silent \
     -e \
     --aeabi \
@@ -54,6 +55,12 @@ CFLAGS += -I../.. \
     --diag_suppress=Pa050 \
     --cpu=Cortex-M0+ \
     --vla
+
+
+ifneq ($(CONFIG),RELEASE)
+# Add debug flags by default (excluded only when CONFIG=RELEASE)
+CFLAGS += $(DFLAGS)
+endif
 
 LFLAGS += "-L$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source" \
     --diag_suppress=Li065 \
@@ -63,7 +70,7 @@ LFLAGS += "-L$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source" \
     --config ../../freertos/iar/lpf3_freertos.icf \
     --map "$(NAME).map" \
     --silent \
-    --semihosting=iar_breakpoint \
+    "$(if $(filter RELEASE,$(CONFIG)),,--semihosting=iar_breakpoint)" \
     --cpu=Cortex-M0+
 
 all: postbuild

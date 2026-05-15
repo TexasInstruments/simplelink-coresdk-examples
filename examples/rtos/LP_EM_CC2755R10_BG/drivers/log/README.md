@@ -60,12 +60,12 @@ This example
   `LogSinkBuf`)
 * Runs a task which wakes up every 5 seconds
 
-__NOTE:__ LogSinkBuf requires Runtime (RTOS) Objects which is
-currently not available in IAR and CCS Theia. Thus, there is no proper
-visualizer for these messages besides inspecting their records in memory. Also,
-when LTO is enabled, the compiler will make Runtime (RTOS) Objects unable to find the right state
-variables to read out the log records from SRAM. The UART and ITM transports are
-supported across all IDEs/toolchains.
+__NOTE:__ LogSinkBuf requires Runtime (RTOS) Objects which is currently not
+available in IAR. Thus, there is no proper visualizer for these messages besides
+inspecting their records in memory. Also, when LTO is enabled, the compiler will
+make Runtime (RTOS) Objects unable to find the right state variables to read out
+the log records from SRAM. The UART and ITM transports are supported across all
+IDEs/toolchains.
 
 __NOTE:__ Not all devices support ITM Logging.
 To see if your device does, see the device datasheet or SysConfig.

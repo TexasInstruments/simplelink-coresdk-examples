@@ -28,11 +28,11 @@
             -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/ti/posix/ticlang
             -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/third_party/freertos/include
             -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/third_party/freertos/portable/GCC/ARM_CM0
-            -gdwarf-3
             -mcpu=cortex-m0plus
             -march=thumbv6m
             -mfloat-abi=soft
             -mthumb
+            -Wall
         "
         linkerBuildOptions="
             -L${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source
@@ -52,7 +52,6 @@
             --compiler ticlang
         "
         description="Demonstrates the use of AES ECB driver for encryption and decryption.">
-
         <property name="buildProfile" value="release"/>
         <property name="isHybrid" value="true"/>
         <file path="../../aesecb.c" openOnCreation="false" excludeFromBuild="false" action="copy">

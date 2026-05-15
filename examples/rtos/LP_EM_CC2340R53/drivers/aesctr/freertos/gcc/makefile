@@ -25,6 +25,8 @@ OBJECTS = aesctr.obj freertos_main_freertos.obj $(patsubst %.c,%.obj,$(notdir $(
 NAME = aesctr
 
 
+DFLAGS += -gstrict-dwarf
+
 CFLAGS += -I../.. \
     -I. \
     $(addprefix @,$(SYSCFG_OPT_FILES)) \
@@ -44,10 +46,15 @@ CFLAGS += -I../.. \
     -ffunction-sections \
     -fdata-sections \
     -g \
-    -gstrict-dwarf \
     -Wall \
     "-I$(GCC_ARMCOMPILER)/arm-none-eabi/include/newlib-nano" \
     "-I$(GCC_ARMCOMPILER)/arm-none-eabi/include"
+
+
+ifneq ($(CONFIG),RELEASE)
+# Add debug flags by default (excluded only when CONFIG=RELEASE)
+CFLAGS += $(DFLAGS)
+endif
 
 LFLAGS += -Wl,-T,../../freertos/gcc/lpf3_cc23xx_freertos.lds \
     "-Wl,-Map,$(NAME).map" \

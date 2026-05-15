@@ -35,6 +35,8 @@ AFLAGS += -I.. \
     "-I$(IAR_ARMCOMPILER)/inc/c" \
     --cpu Cortex-M0+
 
+DFLAGS += --debug
+
 CFLAGS += -I.. \
     -I. \
     $(addprefix -f,$(SYSCFG_OPT_FILES)) \
@@ -42,7 +44,6 @@ CFLAGS += -I.. \
     "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source" \
     "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/kernel/nortos" \
     "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/kernel/nortos/posix" \
-    --debug \
     --silent \
     -e \
     --aeabi \
@@ -51,6 +52,12 @@ CFLAGS += -I.. \
     --cpu=Cortex-M0+ \
     --vla
 
+
+ifneq ($(CONFIG),RELEASE)
+# Add debug flags by default (excluded only when CONFIG=RELEASE)
+CFLAGS += $(DFLAGS)
+endif
+
 LFLAGS += "-L$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source" \
     --diag_suppress=Li065 \
     "-L$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/kernel/nortos" \
@@ -58,7 +65,7 @@ LFLAGS += "-L$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source" \
     --config ../iar/lpf3_nortos.icf \
     --map "$(NAME).map" \
     --silent \
-    --semihosting=iar_breakpoint \
+    "$(if $(filter RELEASE,$(CONFIG)),,--semihosting=iar_breakpoint)" \
     --cpu=Cortex-M0+
 
 all: postbuild

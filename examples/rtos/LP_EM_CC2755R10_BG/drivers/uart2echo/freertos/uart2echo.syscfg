@@ -49,22 +49,3 @@ var UART2 = scripting.addModule("/ti/drivers/UART2");
 var uart2 = UART2.addInstance();
 uart2.$hardware = system.deviceData.board.components.XDS110UART;
 uart2.$name = "CONFIG_UART2_0";
-
-if(system.deviceData.deviceId.match(/CC35.*/)) {
-    const ActionReq = scripting.addModule("/ti/vendorutils/Action/ActionReq");
-    const EMMap     = scripting.addModule("/ti/externalmemory/EMMap/EMMap");
-    const OTFDE     = scripting.addModule("/ti/externalmemory/OTFDE");
-    const XSPI      = scripting.addModule("/ti/externalmemory/XSPI");
-
-    ActionReq.primary_vendor_image = true;
-    ActionReq.primary_vendor_image_validate = false;
-
-    XSPI.xspi.clk.$assign   = "GPIO24";
-    XSPI.xspi.flash.$assign = "GPIO20";
-    XSPI.xspi.data0.$assign = "GPIO25";
-    XSPI.xspi.data1.$assign = "GPIO21";
-    XSPI.xspi.data2.$assign = "GPIO22";
-    XSPI.xspi.data3.$assign = "GPIO23";
-    XSPI.use_hw             = "IS25WJ032F";
-
-}

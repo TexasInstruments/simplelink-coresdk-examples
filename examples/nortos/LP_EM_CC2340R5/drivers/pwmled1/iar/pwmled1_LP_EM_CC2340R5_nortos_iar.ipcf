@@ -23,7 +23,6 @@
     <extraOptions>
         <args>
             <arg>-f$PROJ_DIR$/ti_utils_build_compiler.opt</arg>
-            <arg>--debug</arg>
             <arg>--silent</arg>
             <arg>-e</arg>
             <arg>--aeabi</arg>

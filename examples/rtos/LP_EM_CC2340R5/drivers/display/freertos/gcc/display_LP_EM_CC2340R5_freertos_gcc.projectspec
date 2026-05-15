@@ -38,7 +38,6 @@
             -ffunction-sections
             -fdata-sections
             -g
-            -gstrict-dwarf
             -Wall
             -I${CG_TOOL_ROOT}/arm-none-eabi/include/newlib-nano
             -I${CG_TOOL_ROOT}/arm-none-eabi/include
@@ -69,7 +68,6 @@
             --compiler gcc
         "
         description="An example demonstrating how to use the display driver">
-
         <property name="buildProfile" value="release"/>
         <property name="isHybrid" value="true"/>
         <file path="../../display.c" openOnCreation="false" excludeFromBuild="false" action="copy">

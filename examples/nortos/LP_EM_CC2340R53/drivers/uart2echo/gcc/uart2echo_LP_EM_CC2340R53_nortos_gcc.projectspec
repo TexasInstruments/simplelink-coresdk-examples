@@ -35,7 +35,6 @@
             -ffunction-sections
             -fdata-sections
             -g
-            -gstrict-dwarf
             -Wall
             -I${CG_TOOL_ROOT}/arm-none-eabi/include/newlib-nano
             -I${CG_TOOL_ROOT}/arm-none-eabi/include
@@ -69,7 +68,6 @@
             --compiler gcc
         "
         description="Echoes characters back using the UART2 driver">
-
         <property name="buildProfile" value="release"/>
         <property name="isHybrid" value="true"/>
         <file path="../uart2echo.c" openOnCreation="false" excludeFromBuild="false" action="copy">

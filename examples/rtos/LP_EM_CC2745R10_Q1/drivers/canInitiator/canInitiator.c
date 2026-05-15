@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024, Texas Instruments Incorporated
+ * Copyright (c) 2024-2026, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,6 +46,7 @@
 #include <ti/drivers/CAN.h>
 #include <ti/drivers/GPIO.h>
 #include <ti/drivers/UART2.h>
+#include <ti/drivers/apps/Button.h>
 
 /* Driver configuration */
 #include "ti_drivers_config.h"
@@ -101,6 +102,14 @@ sem_t rxSem;
 /* Button press semaphore */
 sem_t buttonSem;
 
+/* Button driver parameters. */
+Button_Params button0Params;
+Button_Params button1Params;
+
+/* Button driver handles. */
+Button_Handle button0Handle;
+Button_Handle button1Handle;
+
 /* Flag to Tx CAN FD message with BRS */
 volatile bool sendCANFD;
 
@@ -121,8 +130,10 @@ static void handleEvent(void)
         rxEventCnt++;
         processRxMsg();
 
+#ifdef CONFIG_GPIO_LED_1
         /* Turn off LED1, indicating response was received */
         GPIO_write(CONFIG_GPIO_LED_1, CONFIG_GPIO_LED_OFF);
+#endif /* CONFIG_GPIO_LED_1*/
     }
     else
     {
@@ -184,11 +195,19 @@ static void printRxMsg(void)
 
     sprintf(formattedMsg + strlen(formattedMsg), "TS: 0x%04x\r\n", rxElem.rxts);
 
+#ifndef CAN_SUPPORTS_DCAN
+
     sprintf(formattedMsg + strlen(formattedMsg), "CAN FD: %u\r\n", rxElem.fdf);
+
+#endif /* CAN_SUPPORTS_DCAN */
 
     sprintf(formattedMsg + strlen(formattedMsg), "DLC: %u\r\n", rxElem.dlc);
 
+#ifndef CAN_SUPPORTS_DCAN
+
     sprintf(formattedMsg + strlen(formattedMsg), "BRS: %u\r\n", rxElem.brs);
+
+#endif /* CAN_SUPPORTS_DCAN */
 
     sprintf(formattedMsg + strlen(formattedMsg), "ESI: %u\r\n", rxElem.esi);
 
@@ -243,6 +262,7 @@ static void verifyMsg(void)
                 (unsigned int)expectedID);
         verifyErr = true;
     }
+#ifndef CAN_SUPPORTS_DCAN
     else if (rxElem.fdf != txElem.fdf)
     {
         sprintf(formattedMsg,
@@ -251,6 +271,7 @@ static void verifyMsg(void)
                 (unsigned int)txElem.fdf);
         verifyErr = true;
     }
+#endif /* CAN_SUPPORTS_DCAN */
     else if (rxElem.dlc != txElem.dlc)
     {
         sprintf(formattedMsg,
@@ -326,10 +347,14 @@ static void txTestMsg(uint32_t id, uint32_t extID, uint32_t dlc, uint32_t fdForm
     txElem.id  = id;
     txElem.rtr = 0U;
     txElem.xtd = extID;
+#ifndef CAN_SUPPORTS_DCAN
     txElem.esi = 0U;
     txElem.brs = brsEnable;
+#endif /* CAN_SUPPORTS_DCAN */
     txElem.dlc = dlc;
+#ifndef CAN_SUPPORTS_DCAN
     txElem.fdf = fdFormat;
+#endif /* CAN_SUPPORTS_DCAN */
     txElem.efc = 0U;
     txElem.mm  = 1U;
 
@@ -347,26 +372,32 @@ static void txTestMsg(uint32_t id, uint32_t extID, uint32_t dlc, uint32_t fdForm
 }
 
 /*
- *  ======== buttonCallback ========
+ * ======== buttonPressedCallback ========
  */
-static void buttonCallback(uint_least8_t index)
+
+static void buttonPressedCallback(Button_Handle buttonHandle, Button_EventMask buttonEvents)
 {
-    /* Turn on LED1, indicating a button has been pressed to initiate CAN Tx */
-    GPIO_write(CONFIG_GPIO_LED_1, CONFIG_GPIO_LED_ON);
-
-    /* Wait for button to be released */
-    while (!GPIO_read(index)) {}
-
-    if (index == CONFIG_GPIO_BUTTON_0)
+    switch (buttonEvents)
     {
-        sendCANFD = true;
-    }
-    else /* CONFIG_GPIO_BUTTON_1 */
-    {
-        sendCANFD = false;
-    }
+        case Button_EV_CLICKED:
 
-    sem_post(&buttonSem);
+#ifndef CAN_SUPPORTS_DCAN
+            if (((Button_HWAttrs *)buttonHandle->hwAttrs)->gpioIndex == CONFIG_GPIO_BUTTON_0_INPUT)
+            {
+                sendCANFD = true;
+            }
+            else
+            {
+                sendCANFD = false;
+            }
+#endif /* CAN_SUPPORTS_DCAN */
+
+            sem_post(&buttonSem);
+            break;
+
+        default:
+            break;
+    }
 }
 
 /*
@@ -412,20 +443,42 @@ void *initiatorThread(void *arg0)
         UART2_write(uart2Handle, formattedMsg, strlen(formattedMsg), NULL);
     }
 
-    /* Turn on LED0 to indicate successful initialization */
-    GPIO_write(CONFIG_GPIO_LED_0, CONFIG_GPIO_LED_ON);
+#ifdef CONFIG_BUTTON_0
+    Button_Params_init(&button0Params);
+#endif
 
-    /* Set config for button pins */
-    GPIO_setConfig(CONFIG_GPIO_BUTTON_0, GPIO_CFG_IN_PU | GPIO_CFG_IN_INT_FALLING);
-    GPIO_setConfig(CONFIG_GPIO_BUTTON_1, GPIO_CFG_IN_PU | GPIO_CFG_IN_INT_FALLING);
+    Button_Params_init(&button1Params);
 
-    /* Setup callback for button pins */
-    GPIO_setCallback(CONFIG_GPIO_BUTTON_0, buttonCallback);
-    GPIO_setCallback(CONFIG_GPIO_BUTTON_1, buttonCallback);
+#ifdef CONFIG_BUTTON_0
+    button0Params.buttonCallback              = buttonPressedCallback;
+    button0Params.buttonEventMask             = Button_EV_CLICKED;
+    button0Params.debounceDuration            = 100;
+    button0Params.longPressDuration           = 10000;
+    button0Params.doublePressDetectiontimeout = 10000;
+#endif /* CONFIG_BUTTON_0 */
 
-    /* Enable interrupts for button pins */
-    GPIO_enableInt(CONFIG_GPIO_BUTTON_0);
-    GPIO_enableInt(CONFIG_GPIO_BUTTON_1);
+    button1Params.buttonCallback              = buttonPressedCallback;
+    button1Params.buttonEventMask             = Button_EV_CLICKED;
+    button1Params.debounceDuration            = 100;
+    button1Params.longPressDuration           = 10000;
+    button1Params.doublePressDetectiontimeout = 10000;
+
+#ifdef CONFIG_BUTTON_0
+    button0Handle = Button_open(CONFIG_BUTTON_0, &button0Params);
+
+    if (button0Handle == NULL)
+    {
+        while (1) {};
+    }
+
+#endif /* CONFIG_BUTTON_0 */
+
+    button1Handle = Button_open(CONFIG_BUTTON_1, &button1Params);
+
+    if (button1Handle == NULL)
+    {
+        while (1) {};
+    }
 
     /* Loop forever */
     while (1)

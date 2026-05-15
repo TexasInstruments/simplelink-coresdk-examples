@@ -16,14 +16,15 @@ pins and resources used.
 ## BoosterPacks, Board Resources & Jumper Settings
 
 This example requires two LaunchPads with an integrated CAN controller and two
-external CAN transceiver boards to communicate on the CAN bus.
+external CAN transceiver boards to communicate on the CAN bus. Kindly refer to
+the board specific README file for details on what pins of the launchpad have to
+be connected with the external transceiver.
 
-The transceiver should be connected to the LaunchPad as follows:
-
-| LaunchPad Pin | CAN Transceiver Pin |
-|:-------------:|:-------------------:|
-| BP.31 (DIO18) |         RXD         |
-| BP.32 (DIO17) |         TXD         |
+NOTE: In LP_EM_CC35XX launchpad, GPIO30 is connected to DCAN_TX and GRN_LED. Also,
+GPIO34 is connected to DCAN_RX and RED_LED. By default, GRN_LED and RED_LED are
+disabled and CONFIG_GPIO_LED_0 and CONFIG_GPIO_LED_1 are not configured. The user
+has to configure CONFIG_GPIO_LED_0 and CONFIG_GPIO_LED_1 through SysConfig before
+running the example.
 
 Initialization and configuration of the CAN transceiver is not handled by this
 example and must be performed independently.
@@ -65,13 +66,22 @@ The connection should have the following settings:
 * Run the example. `CONFIG_GPIO_LED_0` turns ON to indicate driver
 initialization is complete.
 
-* Once both the canInitator and canResponder examples are running, CAN messages
-can be exchanged. From the canInitator, press either BTN-1 or BTN-2 to transmit
+* Once both the canInitiator and canResponder examples are running, CAN messages
+can be exchanged. From the canInitiator, press either BTN-1 or BTN-2 to transmit
 a CAN message. `CONFIG_GPIO_LED_1` turns ON when the button is pressed.
+
+All launchpads (other than LP_EM_CC35X1)
 
     | LaunchPad Button | CAN Message Type    |
     |:----------------:|:-------------------:|
     | BTN-1            | CAN FD with BRS     |
+    | BTN-2            | Classic CAN         |
+
+LP_EM_CC35X1
+
+    | LaunchPad Button | CAN Message Type    |
+    |:----------------:|:-------------------:|
+    | BTN-1            | No effect           |
     | BTN-2            | Classic CAN         |
 
 * The canInitiator will then wait for the canResponder to reply with the same

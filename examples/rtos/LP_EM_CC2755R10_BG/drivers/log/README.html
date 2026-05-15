@@ -134,7 +134,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Exercises the UART, ITM and buffer loggers (<code>LogSinkUART</code>, <code>LogSinkITM</code>, <code>LogSinkBuf</code>)</li>
 <li>Runs a task which wakes up every 5 seconds</li>
 </ul>
-<p><strong>NOTE:</strong> LogSinkBuf requires Runtime (RTOS) Objects which is currently not available in IAR and CCS Theia. Thus, there is no proper visualizer for these messages besides inspecting their records in memory. Also, when LTO is enabled, the compiler will make Runtime (RTOS) Objects unable to find the right state variables to read out the log records from SRAM. The UART and ITM transports are supported across all IDEs/toolchains.</p>
+<p><strong>NOTE:</strong> LogSinkBuf requires Runtime (RTOS) Objects which is currently not available in IAR. Thus, there is no proper visualizer for these messages besides inspecting their records in memory. Also, when LTO is enabled, the compiler will make Runtime (RTOS) Objects unable to find the right state variables to read out the log records from SRAM. The UART and ITM transports are supported across all IDEs/toolchains.</p>
 <p><strong>NOTE:</strong> Not all devices support ITM Logging. To see if your device does, see the device datasheet or SysConfig.</p>
 <h3 id="overview">Overview</h3>
 <p>The example uses three log modules that each use a different log sink.</p>
@@ -241,7 +241,7 @@ Log_printf(LogModule_App3, Log_DEBUG, <span class="st">&quot;Hello World!&quot;<
   with 100,000+ analog ICs and embedded processors, along with software, tools
   and the industry‘s largest sales/support staff.</p>
   <p>
-    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2025</a>, Texas Instruments Incorporated. All rights reserved. <br>
+    <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">© Copyright 1995-2026</a>, Texas Instruments Incorporated. All rights reserved. <br>
     <a href="https://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="https://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="https://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="https://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
   </p>
 </footer>

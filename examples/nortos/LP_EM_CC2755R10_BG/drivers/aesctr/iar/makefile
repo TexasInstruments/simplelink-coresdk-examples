@@ -36,14 +36,25 @@ AFLAGS += -I.. \
     --cpu Cortex-M33 \
     --fpu VFPv5_sp
 
+DFLAGS += --debug
+
 CFLAGS += -I.. \
     -I. \
     $(addprefix -f,$(SYSCFG_OPT_FILES)) \
     -Oh \
     "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source" \
+    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/tfm_s/build/cc27xx/production_full/Release/export/tfm/inc" \
+    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/tfm/config" \
+    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/tfm/interface/include" \
+    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/tfm/secure_fw/include" \
+    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/psa_crypto/include" \
+    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/mbedtls/include" \
+    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/mbedtls/ti" \
+    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/mbedtls/ti/port" \
     "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/kernel/nortos" \
     "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/kernel/nortos/posix" \
-    --debug \
+    -DMBEDTLS_CONFIG_FILE="<configs/config-hsm.h>" \
+    -DMBEDTLS_PSA_CRYPTO_CONFIG_FILE="<configs/config-psa-crypto-hsm.h>" \
     --silent \
     -e \
     --aeabi \
@@ -53,6 +64,12 @@ CFLAGS += -I.. \
     --fpu VFPv5_sp \
     --vla
 
+
+ifneq ($(CONFIG),RELEASE)
+# Add debug flags by default (excluded only when CONFIG=RELEASE)
+CFLAGS += $(DFLAGS)
+endif
+
 LFLAGS += "-L$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source" \
     "-L$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/tfm_s" \
     --diag_suppress=Li065 \
@@ -61,7 +78,7 @@ LFLAGS += "-L$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source" \
     --config ../iar/lpf3_nortos.icf \
     --map "$(NAME).map" \
     --silent \
-    --semihosting=iar_breakpoint \
+    "$(if $(filter RELEASE,$(CONFIG)),,--semihosting=iar_breakpoint)" \
     --cpu=Cortex-M33 \
     --fpu VFPv5_sp
 

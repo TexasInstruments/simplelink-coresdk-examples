@@ -39,7 +39,6 @@
             -ffunction-sections
             -fdata-sections
             -g
-            -gstrict-dwarf
             -Wall
             -I${CG_TOOL_ROOT}/arm-none-eabi/include/newlib-nano
             -I${CG_TOOL_ROOT}/arm-none-eabi/include
@@ -70,7 +69,6 @@
             --compiler gcc
         "
         description="An example that hash a given string using SHA2">
-
         <property name="buildProfile" value="release"/>
         <property name="isHybrid" value="true"/>
         <file path="../../sha2hash.c" openOnCreation="false" excludeFromBuild="false" action="copy">

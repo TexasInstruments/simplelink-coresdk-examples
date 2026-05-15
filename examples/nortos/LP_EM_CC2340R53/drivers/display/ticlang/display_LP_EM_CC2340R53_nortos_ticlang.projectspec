@@ -26,11 +26,11 @@
             -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source
             -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/kernel/nortos
             -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/kernel/nortos/posix
-            -gdwarf-3
             -mcpu=cortex-m0plus
             -march=thumbv6m
             -mfloat-abi=soft
             -mthumb
+            -Wall
         "
         linkerBuildOptions="
             -L${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source
@@ -51,7 +51,6 @@
             --compiler ticlang
         "
         description="An example demonstrating how to use the display driver">
-
         <property name="buildProfile" value="release"/>
         <property name="isHybrid" value="true"/>
         <file path="../display.c" openOnCreation="false" excludeFromBuild="false" action="copy">

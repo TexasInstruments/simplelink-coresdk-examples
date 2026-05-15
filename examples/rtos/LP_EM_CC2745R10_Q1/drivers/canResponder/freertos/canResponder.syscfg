@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024, Texas Instruments Incorporated
+ * Copyright (c) 2024-2026, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,14 +44,23 @@ system.getScript("kernel_config_release.syscfg.js");
 const CAN    = scripting.addModule("/ti/drivers/CAN");
 const CAN1   = CAN.addInstance();
 CAN1.nomBitRate        = 500000;
-CAN1.canFDEnable       = true;
-CAN1.brsEnable         = true;
-CAN1.dataBitRate       = 1000000;
+if( !board.match(/CC35/) ) {
+
+    /*
+    *   CC35xx has DCAN peripheral which only supports CAN2.0B and not CAN-FD.
+    *   canFDEnable, brsEnable & dataBitRate are valid options for CAN peripherals
+    *   which support CAN-FD and so it is excluded for CC35xx devices.
+    */
+
+    CAN1.canFDEnable       = true;
+    CAN1.brsEnable         = true;
+    CAN1.dataBitRate       = 1000000;
+}
 CAN1.txRingBufferSize  = 0;
 CAN1.rxRingBufferSize  = 6;
 CAN1.rejectNonMatching = false;
 
-if (board.match(/CC27/))
+if (board.match(/CC27|CC35/))
 {
     CAN1.interruptPriority = "4";
     CAN1.$hardware = system.deviceData.board.components.LP_CAN_BUS;
@@ -79,14 +88,23 @@ else
 }
 
 /* ======== GPIO ======== */
-var GPIO = scripting.addModule("/ti/drivers/GPIO");
-var gpio0 = GPIO.addInstance();
-gpio0.$hardware = system.deviceData.board.components.LED_RED;
-gpio0.$name = "CONFIG_GPIO_LED_0";
 
-var gpio1 = GPIO.addInstance();
-gpio1.$hardware = system.deviceData.board.components.LED_GREEN;
-gpio1.$name = "CONFIG_GPIO_LED_1";
+if( !board.match(/CC35/) ) {
+    /*
+    *   In LP_EM_CC35X1 launchpad, GPIO30 is connected to LED_GREEN and GPIO34 is
+    *   connected to LED_RED. Also, GPIO30 is connected to DCAN_TX and GPIO34 is
+    *   is connected to DCAN_RX. Hence LED_GREEN and LED_RED cannot be controlled using
+    *   GPIO30 and GPIO34 and they are disabled for LP_EM_CC35X1.
+    */
+    var GPIO = scripting.addModule("/ti/drivers/GPIO");
+    var gpio0 = GPIO.addInstance();
+    gpio0.$hardware = system.deviceData.board.components.LED_RED;
+    gpio0.$name = "CONFIG_GPIO_LED_0";
+
+    var gpio1 = GPIO.addInstance();
+    gpio1.$hardware = system.deviceData.board.components.LED_GREEN;
+    gpio1.$name = "CONFIG_GPIO_LED_1";
+}
 
 /* ======== UART2 ======== */
 const UART2    = scripting.addModule("/ti/drivers/UART2");

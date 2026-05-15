@@ -24,14 +24,24 @@
             -I${PROJECT_ROOT}/${ConfigName}
             -Oz
             -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source
+            -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/tfm_s/build/cc27xx/production_full/Release/export/tfm/inc
+            -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/third_party/tfm/config
+            -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/third_party/tfm/interface/include
+            -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/third_party/tfm/secure_fw/include
+            -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/third_party/psa_crypto/include
+            -DMBEDTLS_CONFIG_FILE=&quot;&lt;configs/config-hsm.h&gt;&quot;
+            -DMBEDTLS_PSA_CRYPTO_CONFIG_FILE=&quot;&lt;configs/config-psa-crypto-hsm.h&gt;&quot;
+            -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/third_party/mbedtls/include
+            -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/third_party/mbedtls/ti
+            -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/third_party/mbedtls/ti/port
             -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/kernel/freertos
             -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/ti/posix/ticlang
             -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/third_party/freertos/include
             -I${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source/third_party/freertos/portable/GCC/ARM_CM33_NTZ/non_secure
-            -gdwarf-3
             -mcpu=cortex-m33
             -mfloat-abi=hard
             -mfpu=fpv5-sp-d16
+            -Wall
         "
         linkerBuildOptions="
             -L${COM_TI_SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR}/source
@@ -52,7 +62,6 @@
             --compiler ticlang
         "
         description="Toggles Board LED0 to match the comparator output using the Comparator driver">
-
         <property name="buildProfile" value="release"/>
         <property name="isHybrid" value="true"/>
         <file path="../../comparatorinterrupt.c" openOnCreation="false" excludeFromBuild="false" action="copy">

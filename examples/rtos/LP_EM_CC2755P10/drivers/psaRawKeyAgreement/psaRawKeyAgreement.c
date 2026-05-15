@@ -41,12 +41,12 @@
 #include <pthread.h>
 
 /* PSA Crypto header file */
-#include <third_party/psa_crypto/include/psa/crypto.h>
+#include <third_party/mbedtls/include/psa/crypto.h>
 
 /* Driver Header files */
 #include <ti/display/Display.h>
 #include <ti/drivers/GPIO.h>
-#include <ti/drivers/cryptoutils/hsm/HSMLPF3.h>
+#include <ti/drivers/cryptoutils/hsm/HSMXXF3.h>
 
 #include <ti/devices/DeviceFamily.h>
 
@@ -237,11 +237,21 @@ static void *keyAgreementThread(void *arg0)
             privateKeyID = PSA_KEY_ID_USER_MIN + i;
             psa_set_key_id(&attributes, privateKeyID);
 
-            /* Attempt to delete the key to ensure psa_import_key() works
-             * everytime. Ignore return value as it may fail if the key does not
-             * exist.
-             */
-            (void)psa_destroy_key(privateKeyID);
+            /* Attempt to delete the key. To ensure psa_import_key() works everytime. */
+            status = psa_destroy_key(privateKeyID);
+
+            if (status == PSA_SUCCESS)
+            {
+                Display_printf(display,
+                               0U,
+                               0U,
+                               "Destroyed previously existing key with same ID. Status = %d\n",
+                               status);
+            }
+            else if (status == PSA_ERROR_DOES_NOT_EXIST)
+            {
+                /* Expected case, no need to output anything */
+            }
         }
 
         printKeyLifetime(lifetime);
@@ -385,10 +395,10 @@ void *mainThread(void *arg0)
     Display_printf(display, 0U, 0U, "Provisioning Hardware Unique Key (HUK)...\n");
 
     /* Provision the HW Unique Key needed to store key blobs */
-    ret = HSMLPF3_provisionHUK();
-    if (ret != HSMLPF3_STATUS_SUCCESS)
+    ret = HSMXXF3_provisionHUK();
+    if (ret != HSMXXF3_STATUS_SUCCESS)
     {
-        Display_printf(display, 0U, 0U, "Error: HSMLPF3_provisionHUK() failed. Status = %d\n", ret);
+        Display_printf(display, 0U, 0U, "Error: HSMXXF3_provisionHUK() failed. Status = %d\n", ret);
         while (1) {}
     }
 

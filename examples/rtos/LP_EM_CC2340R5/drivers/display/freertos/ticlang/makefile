@@ -25,6 +25,8 @@ OBJECTS = display.obj freertos_main_freertos.obj $(patsubst %.c,%.obj,$(notdir $
 NAME = display
 
 
+DFLAGS += -gdwarf-3
+
 CFLAGS += -I../.. \
     -I. \
     $(addprefix @,$(SYSCFG_OPT_FILES)) \
@@ -34,11 +36,17 @@ CFLAGS += -I../.. \
     "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/ti/posix/ticlang" \
     "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/freertos/include" \
     "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/freertos/portable/GCC/ARM_CM0" \
-    -gdwarf-3 \
     -mcpu=cortex-m0plus \
     -march=thumbv6m \
     -mfloat-abi=soft \
-    -mthumb
+    -mthumb \
+    -Wall
+
+
+ifneq ($(CONFIG),RELEASE)
+# Add debug flags by default (excluded only when CONFIG=RELEASE)
+CFLAGS += $(DFLAGS)
+endif
 
 LFLAGS += "-L$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source" \
     ti_utils_build_linker.cmd.genlibs \
