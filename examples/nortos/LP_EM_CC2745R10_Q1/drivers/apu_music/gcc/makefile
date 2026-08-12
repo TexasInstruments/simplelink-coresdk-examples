@@ -32,16 +32,6 @@ CFLAGS += -I.. \
     $(addprefix @,$(SYSCFG_OPT_FILES)) \
     -O3 \
     "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source" \
-    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/tfm_s/build/cc27xx/production_full/Release/export/tfm/inc" \
-    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/tfm/config" \
-    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/tfm/interface/include" \
-    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/tfm/secure_fw/include" \
-    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/psa_crypto/include" \
-    -DMBEDTLS_CONFIG_FILE="<configs/config-hsm.h>" \
-    -DMBEDTLS_PSA_CRYPTO_CONFIG_FILE="<configs/config-psa-crypto-hsm.h>" \
-    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/mbedtls/include" \
-    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/mbedtls/ti" \
-    "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/source/third_party/mbedtls/ti/port" \
     "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/kernel/nortos" \
     "-I$(SIMPLELINK_LOWPOWER_F3_SDK_INSTALL_DIR)/kernel/nortos/posix" \
     -mcpu=cortex-m33 \

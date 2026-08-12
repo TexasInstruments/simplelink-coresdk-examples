@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2026, Texas Instruments Incorporated
+ * Copyright (c) 2016-2024, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -60,9 +60,7 @@
  *  ======== TMP Registers ========
  */
 #define TMP_BP_REG  0x0000 /* Die Temp Result Register for BP TMP sensor */
-#define TMP_BP_ADDR 0x48
-
-#define TMP_RESOLUTION_C 0.0078125
+#define TMP_BP_ADDR 0x48;
 
 /* Temperature written by the temperature thread and read by console thread */
 volatile float temperatureC;
@@ -162,13 +160,12 @@ void *temperatureThread(void *arg0)
     sem_t semTimer;
     timer_t timerid;
     int retc;
-    int16_t tempRaw;
 
     /* Configure the LED and if applicable, the TMP_EN pin */
     GPIO_setConfig(CONFIG_GPIO_LED_0, GPIO_CFG_OUT_STD | GPIO_CFG_OUT_LOW);
 #ifdef CONFIG_GPIO_TMP_EN
     GPIO_setConfig(CONFIG_GPIO_TMP_EN, GPIO_CFG_OUT_STD | GPIO_CFG_OUT_HIGH);
-    /* 1 second reset time for the TMP sensor */
+    /* 1.5 ms reset time for the TMP sensor */
     sleep(1);
 #endif
 
@@ -222,8 +219,8 @@ void *temperatureThread(void *arg0)
              *  in a thread-safe manner.
              */
             pthread_mutex_lock(&temperatureMutex);
-            tempRaw      = (int16_t)((rxBuffer[0] << 8) | rxBuffer[1]);
-            temperatureC = tempRaw * TMP_RESOLUTION_C;
+            temperatureC = (rxBuffer[0] << 6) | (rxBuffer[1] >> 2);
+            temperatureC *= 0.03125;
             temperatureF = temperatureC * 9 / 5 + 32;
             pthread_mutex_unlock(&temperatureMutex);
 
