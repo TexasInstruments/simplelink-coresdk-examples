@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024, Texas Instruments Incorporated
+ * Copyright (c) 2024-2026, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,6 +46,7 @@
 #include <ti/drivers/CAN.h>
 #include <ti/drivers/GPIO.h>
 #include <ti/drivers/UART2.h>
+#include <ti/drivers/apps/Button.h>
 
 #include <ti/devices/DeviceFamily.h>
 #include DeviceFamily_constructPath(inc/hw_memmap.h)
@@ -109,6 +110,14 @@ CAN_TxBufElement txElem;
 /* Tx Event element */
 CAN_TxEventElement txEventelem;
 
+/* Button driver parameters. */
+Button_Params button0Params;
+Button_Params button1Params;
+
+/* Button handlers. */
+Button_Handle button0Handle;
+Button_Handle button1Handle;
+
 /* Received msg count */
 uint32_t rxMsgCnt = 0U;
 
@@ -130,7 +139,6 @@ sem_t buttonSem;
 volatile bool efcEnable;
 
 /* Forward declarations */
-static void buttonCallback(uint_least8_t index);
 static void eventCallback(CAN_Handle handle, uint32_t curEvent, uint32_t curEventData, void *userArg);
 static void handleTimeSyncRx(void);
 static void handleTxEvent(void);
@@ -218,11 +226,19 @@ static void printRxMsg(void)
 
     sprintf(formattedMsg + strlen(formattedMsg), "TS: 0x%04x\r\n", rxElem.rxts);
 
+#ifndef CAN_SUPPORTS_DCAN
+
     sprintf(formattedMsg + strlen(formattedMsg), "CAN FD: %u\r\n", rxElem.fdf);
+
+#endif /* CAN_SUPPORTS_DCAN */
 
     sprintf(formattedMsg + strlen(formattedMsg), "DLC: %u\r\n", rxElem.dlc);
 
+#ifndef CAN_SUPPORTS_DCAN
+
     sprintf(formattedMsg + strlen(formattedMsg), "BRS: %u\r\n", rxElem.brs);
+
+#endif /* CAN_SUPPORTS_DCAN */
 
     sprintf(formattedMsg + strlen(formattedMsg), "ESI: %u\r\n", rxElem.esi);
 
@@ -263,8 +279,16 @@ static void handleTxEvent(void)
     /* Read current system time */
     systim = HWREG(SYSTIM_BASE + SYSTIM_O_TIME250N);
 
+#ifndef CAN_SUPPORTS_DCAN
+
     /* Get current timestamp counter value */
     tscv = MCAN_getTimestampCounter();
+
+#else
+
+    tscv = DCAN_getTimestampCounter();
+
+#endif /* (DeviceFamily_PARENT != DeviceFamily_PARENT_CC35XX) */
 
     /* Read Tx Event element */
     status = CAN_readTxEvent(canHandle, &txEventelem);
@@ -305,8 +329,12 @@ static void handleTxEvent(void)
      */
     while (HWREG(SYSTIM_BASE + SYSTIM_O_TIME250N) < targetTime) {}
 
+#ifdef CONFIG_GPIO_LED_1
+
     /* Toggle LED1 */
     GPIO_toggle(CONFIG_GPIO_LED_1);
+
+#endif /* CONFIG_GPIO_LED_1 */
 
     HwiP_restore(hwiKey);
 
@@ -335,8 +363,16 @@ static void handleTimeSyncRx(void)
     /* Read current system time */
     systim = HWREG(SYSTIM_BASE + SYSTIM_O_TIME250N);
 
+#ifndef CAN_SUPPORTS_DCAN
+
     /* Get current timestamp counter value */
     tscv = MCAN_getTimestampCounter();
+
+#else
+
+    tscv = DCAN_getTimestampCounter();
+
+#endif /* CAN_SUPPORTS_DCAN */
 
     /* Read the Rx timestamp */
     rxts = rxElem.rxts;
@@ -360,8 +396,12 @@ static void handleTimeSyncRx(void)
      */
     while (HWREG(SYSTIM_BASE + SYSTIM_O_TIME250N) < targetTime) {}
 
+#ifdef CONFIG_GPIO_LED_1
+
     /* Toggle LED1 */
     GPIO_toggle(CONFIG_GPIO_LED_1);
+
+#endif /* CONFIG_GPIO_LED_1 */
 
     HwiP_restore(hwiKey);
 
@@ -405,10 +445,14 @@ static void txTestMsg(uint32_t id, uint32_t efc, uint32_t dlc, uint32_t brsEnabl
     txElem.id  = id;
     txElem.rtr = 0U;
     txElem.xtd = 1U;
+#ifndef CAN_SUPPORTS_DCAN
     txElem.esi = 0U;
     txElem.brs = brsEnable;
+#endif /* CAN_SUPPORTS_DCAN */
     txElem.dlc = dlc;
+#ifndef CAN_SUPPORTS_DCAN
     txElem.fdf = 1U;
+#endif /* CAN_SUPPORTS_DCAN */
     txElem.efc = efc;
     txElem.mm  = 1U;
 
@@ -426,23 +470,29 @@ static void txTestMsg(uint32_t id, uint32_t efc, uint32_t dlc, uint32_t brsEnabl
 }
 
 /*
- *  ======== buttonCallback ========
+ * ======== buttonPressedCallback ========
  */
-static void buttonCallback(uint_least8_t index)
+
+static void buttonPressedCallback(Button_Handle buttonHandle, Button_EventMask buttonEvents)
 {
-    /* Wait for button to be released */
-    while (!GPIO_read(index)) {}
-
-    if (index == CONFIG_GPIO_BUTTON_0)
+    switch (buttonEvents)
     {
-        efcEnable = true;
-    }
-    else /* CONFIG_GPIO_BUTTON_1 */
-    {
-        efcEnable = false;
-    }
+        case Button_EV_CLICKED:
 
-    sem_post(&buttonSem);
+            if (((Button_HWAttrs *)buttonHandle->hwAttrs)->gpioIndex == CONFIG_GPIO_BUTTON_0_INPUT)
+            {
+                efcEnable = true;
+            }
+            else
+            {
+                efcEnable = false;
+            }
+            sem_post(&buttonSem);
+            break;
+
+        default:
+            break;
+    }
 }
 
 /*
@@ -526,20 +576,40 @@ void *mainThread(void *arg0)
     /* Convert the Start Of Frame to Tx timestamp delta value to system time domain */
     sofToTimestampDelay = PSEC_TO_SYSTIM(sofToTimestampDelay);
 
+#ifdef CONFIG_GPIO_LED_0
+
     /* Turn on LED0 to indicate successful initialization */
     GPIO_write(CONFIG_GPIO_LED_0, CONFIG_GPIO_LED_ON);
 
-    /* Set config for button pins */
-    GPIO_setConfig(CONFIG_GPIO_BUTTON_0, GPIO_CFG_IN_PU | GPIO_CFG_IN_INT_FALLING);
-    GPIO_setConfig(CONFIG_GPIO_BUTTON_1, GPIO_CFG_IN_PU | GPIO_CFG_IN_INT_FALLING);
+#endif /* CONFIG_GPIO_LED_0 */
 
-    /* Setup callback for button pins */
-    GPIO_setCallback(CONFIG_GPIO_BUTTON_0, buttonCallback);
-    GPIO_setCallback(CONFIG_GPIO_BUTTON_1, buttonCallback);
+    Button_Params_init(&button0Params);
+    Button_Params_init(&button1Params);
 
-    /* Enable interrupts for button pins */
-    GPIO_enableInt(CONFIG_GPIO_BUTTON_0);
-    GPIO_enableInt(CONFIG_GPIO_BUTTON_1);
+    button0Params.buttonCallback              = buttonPressedCallback;
+    button0Params.buttonEventMask             = Button_EV_CLICKED;
+    button0Params.debounceDuration            = 100;
+    button0Params.longPressDuration           = 10000;
+    button0Params.doublePressDetectiontimeout = 10000;
+
+    button1Params.buttonCallback              = buttonPressedCallback;
+    button1Params.buttonEventMask             = Button_EV_CLICKED;
+    button1Params.debounceDuration            = 100;
+    button1Params.longPressDuration           = 10000;
+    button1Params.doublePressDetectiontimeout = 10000;
+
+    button0Handle = Button_open(CONFIG_BUTTON_0, &button0Params);
+    button1Handle = Button_open(CONFIG_BUTTON_1, &button1Params);
+
+    if (button0Handle == NULL)
+    {
+        while (1) {};
+    }
+
+    if (button1Handle == NULL)
+    {
+        while (1) {};
+    }
 
     sprintf(formattedMsg,
             "\r\nCAN Time Sync ready.\r\nPress BTN-1 to send time sync msg or BTN-2 to send a regular msg...\r\n\n");
@@ -556,16 +626,26 @@ void *mainThread(void *arg0)
             sprintf(formattedMsg, "\r\nSending time sync message...\r\n\n");
             UART2_write(uart2Handle, formattedMsg, strlen(formattedMsg), NULL);
 
+#ifndef CAN_SUPPORTS_DCAN
             /* Tx CAN FD message with time sync msg ID and EFC */
             txTestMsg(CAN_TIME_SYNC_MSG_ID, 1U, CAN_DLC_0B, 1U);
+#else
+            /* Tx CAN message with time sync msg ID and EFC */
+            txTestMsg(CAN_TIME_SYNC_MSG_ID, 1U, CAN_DLC_0B, 0U);
+#endif /* (DeviceFamily_PARENT != DeviceFamily_PARENT_CC35XX) */
         }
         else
         {
             sprintf(formattedMsg, "\r\nSending regular message...\r\n\n");
             UART2_write(uart2Handle, formattedMsg, strlen(formattedMsg), NULL);
 
+#ifndef CAN_SUPPORTS_DCAN
             /* Tx CAN FD message with non-time sync msg ID without EFC */
             txTestMsg(CAN_NON_TIME_SYNC_MSG_ID, 0U, CAN_DLC_0B, 1U);
+#else
+            /* Tx CAN message with non-time sync msg ID without EFC */
+            txTestMsg(CAN_NON_TIME_SYNC_MSG_ID, 0U, CAN_DLC_0B, 0U);
+#endif /* CAN_SUPPORTS_DCAN */
         }
 
         /* Wait until Tx is completed */

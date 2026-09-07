@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024, Texas Instruments Incorporated
+ * Copyright (c) 2024-2025, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,7 +56,7 @@
 #define ASCII_CR             0x0D
 #define NUM_BANNER_CHARS     60
 
-#if defined(DeviceFamily_CC27XX)
+#if (DeviceFamily_PARENT == DeviceFamily_PARENT_CC27XX)
     /* HSM HW engine will be used for CC27XX device. */
     #define CryptoKeyPlaintext_initKey CryptoKeyPlaintextHSM_initKey
 #endif
@@ -71,7 +71,7 @@ static const char msgAESOpenFails[] = "\n\n\rFailed to open AES Driver!";
 static const char msgEncryptFails[] = "\n\n\rFailed to encrypt message!";
 static const char msgExit[]         = "\n\n\rExiting example...";
 
-#if defined(DeviceFamily_CC27XX)
+#if (DeviceFamily_PARENT == DeviceFamily_PARENT_CC27XX)
 static const char promptMsgDecrypt[] = "\"\n\n\rDecrypted result: \"";
 static const char msgDecryptFails[]  = "\n\n\rFailed to decrypt message!";
 #else
@@ -187,7 +187,7 @@ void *mainThread(void *arg0)
     AESCBC_Params params;
     CryptoKey cryptoKey;
     int_fast16_t encryptionResult;
-#if defined(DeviceFamily_CC27XX)
+#if (DeviceFamily_PARENT == DeviceFamily_PARENT_CC27XX)
     int_fast16_t decryptionResult;
 #endif
 
@@ -231,7 +231,7 @@ void *mainThread(void *arg0)
         UART2_write(uart2Handle, promptEnter, strlen(promptEnter), NULL);
 
         /* Reset testIndex for input */
-        testIndex = ASCII_ONE;
+        testIndex = 0;
 
         /* Read in from the console until carriage return is detected */
         while (1)
@@ -294,7 +294,7 @@ void *mainThread(void *arg0)
         /* Print out the encrypted result */
         printMessage(uart2Handle, (char *)promptMessage, operation.output, operation.inputLength);
 
-#if defined(DeviceFamily_CC27XX)
+#if (DeviceFamily_PARENT == DeviceFamily_PARENT_CC27XX)
         /* Decrypt the encrypted result
          * For CC27XX devices, it would be valid to use CryptoKeyPlaintextHSM_initKey()
          * directly, if the targeted hardware accelerator is HSM module.

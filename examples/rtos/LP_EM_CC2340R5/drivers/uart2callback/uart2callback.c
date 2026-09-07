@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020, Texas Instruments Incorporated
+ * Copyright (c) 2020-2025, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -74,7 +74,7 @@ void *mainThread(void *arg0)
     UART2_Handle uart;
     UART2_Params uartParams;
     int32_t semStatus;
-    uint32_t status = UART2_STATUS_SUCCESS;
+    int_fast16_t status = UART2_STATUS_SUCCESS;
 
     /* Call driver init functions */
     GPIO_init();

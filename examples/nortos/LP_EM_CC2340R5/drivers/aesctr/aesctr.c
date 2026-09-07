@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024, Texas Instruments Incorporated
+ * Copyright (c) 2024-2025, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,7 +56,7 @@
 #define ASCII_CR                 0x0D
 #define NUM_BANNER_CHARS         60
 
-#if defined(DeviceFamily_CC27XX)
+#if (DeviceFamily_PARENT == DeviceFamily_PARENT_CC27XX)
     /* HSM HW engine will be used for CC27XX device. */
     #define CryptoKeyPlaintext_initKey CryptoKeyPlaintextHSM_initKey
 #endif
@@ -226,7 +226,7 @@ void *mainThread(void *arg0)
         UART2_write(uart2Handle, promptEnter, strlen(promptEnter), NULL);
 
         /* Reset testIndex for input */
-        testIndex = ASCII_ONE;
+        testIndex = 0;
 
         /* Read in from the console until carriage return is detected */
         while (1)

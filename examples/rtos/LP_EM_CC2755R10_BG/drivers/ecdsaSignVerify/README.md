@@ -7,6 +7,8 @@ This example demonstrates the usage of the ECDSA driver.
 This examples shows how to use the ECDSA and SHA2 drivers in both sign and
 verify operations and single step hash mode.
 
+* The example initializes the ECDSA and SHA2 drivers, and turns on a LED.
+
 * The example runs ECDSA operations in callback mode and the user of this
 example can change this behavior by modifying the following line of code at
 the top of the `ecdsaSignVerify.c` file.
@@ -23,6 +25,10 @@ vectors and the digest that is part of the test vector is then ignored.
 
 * For other curves, the example relies on pre-hashed digest present in the test
 vectors.
+
+* If opening the SHA2 or ECDSA driver fails, or the ECDSA signing or verification
+step fails, the application will toggle the LED in an infinite loop. If the
+LED is turned on and not blinking, the example completed successfully.
 
 ## Application Design Details
 

@@ -111,7 +111,7 @@ the `.s2rram` section.
 
 * To be able to read and write to the buffer, the S2R RAM must be clocked. This is
   achieved by setting a power dependency on the S2R RAM using this statement:
-  `Power_setDependency(PowerLPF3_PERIPH_LFRD_S2RRAM);`.
+  `Power_setDependency(PowerLPF3_PERIPH_LRFD_S2RRAM);`.
 
 * When performing the `sleep(1)` dummy operation, we must ensure that the device
   is not put into STANDBY, otherwise the verification might fail because the S2R
@@ -126,7 +126,7 @@ the `.s2rram` section.
 
 * At the end of the `mainThread` function, we release the dependency on S2R RAM,
   since it is no longer needed. This is done with the following statement:
-  `Power_releaseDependency(PowerLPF3_PERIPH_LFRD_S2RRAM);`.
+  `Power_releaseDependency(PowerLPF3_PERIPH_LRFD_S2RRAM);`.
 
 FreeRTOS:
 

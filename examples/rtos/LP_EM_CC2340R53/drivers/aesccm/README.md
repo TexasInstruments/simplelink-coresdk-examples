@@ -6,8 +6,8 @@ and displayed to the user. Then, the encrypted message is decrypted to get
 back the original plaintext. After decryption, plaintext is displayed back
 to the user. `1` is to select 24 byte plaintext and `2` is for 128 byte
 plaintext. The user can interact with the target until the user presses `q`.
-Note that Loki AES-128 (LAES) engine will be used on CC23XX devices and
-Hardware Security Module (HSM) will be used on CC27XX devices. CC27XX has LAES
+Note that AES-128 (AES) engine will be used on CC23XX devices and
+Hardware Security Module (HSM) will be used on CC27XX devices. CC27XX has AES
 engine as well, which can be used as an alternative.
 
 ## Peripherals & Pin Assignments

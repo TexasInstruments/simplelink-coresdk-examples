@@ -24,7 +24,7 @@ pins and resources used.
 
 ## BoosterPacks, Board Resources & Jumper Settings
 
-This example requires a [__CC3200 Audio BoosterPack__][cc3200audboost]
+This example requires a [__CC3200 Audio BoosterPack__][cc3200audboost].
 
 For board specific jumper settings, resources and BoosterPack modifications,
 refer to the __Board.html__ file. Due to the required jumper wires, some boards

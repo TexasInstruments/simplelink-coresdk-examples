@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2025, Texas Instruments Incorporated
+ * Copyright (c) 2018-2026, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,7 +44,7 @@ var board = system.deviceData.board.name;
 /* ======== PWM ======== */
 var PWM = scripting.addModule("/ti/drivers/PWM");
 
-if (board.match(/LP_EM_CC2745R10_Q1|LP_EM_CC2745R10_FPGA|LP_EM_CC2745R10_SOCKET|LP_EM_CC2745P10_SOCKET/)) {
+if (board.match(/LP_EM_CC2745R10_Q1|LP_EM_CC2745R10_FPGA|LP_EM_CC2745R10_SOCKET|LP_EM_CC2745P10_SOCKET|LP_EM_CC2755P10|LP_EM_CC2755P20|LP_EM_CC2755R10_BG/)) {
     var pwm0 = PWM.addInstance();
     pwm0.$name                            = "CONFIG_PWM_0";
     pwm0.timerObject.channel0Connection   = "Pin";
@@ -71,7 +71,7 @@ else if (board.match(/LP_EM_CC3561EF_FPGA/)) {
 
     scripting.suppress("@@@.+?@@@", pwm0.timerObject.timer, "ch2Pin");
 }
-else if (board.match(/CC35X1_LAUNCHXL/)) {
+else if (board.match(/LP_EM_CC35X1/)) {
     var pwm0 = PWM.addInstance();
     pwm0.$name                            = "CONFIG_PWM_0";
     pwm0.timerObject.channel1Connection   = "Pin";
@@ -84,22 +84,4 @@ else {
     var pwm0 = PWM.addInstance();
     pwm0.$hardware = system.deviceData.board.components.LED0_PWM;
     pwm0.$name = "CONFIG_PWM_0";
-}
-
-if(system.deviceData.deviceId.match(/CC35.*/)) {
-    const ActionReq = scripting.addModule("/ti/vendorutils/Action/ActionReq");
-    const EMMap     = scripting.addModule("/ti/externalmemory/EMMap/EMMap");
-    const OTFDE     = scripting.addModule("/ti/externalmemory/OTFDE");
-    const XSPI      = scripting.addModule("/ti/externalmemory/XSPI");
-
-    ActionReq.primary_vendor_image = true;
-    ActionReq.primary_vendor_image_validate = false;
-
-    XSPI.xspi.clk.$assign   = "GPIO24";
-    XSPI.xspi.flash.$assign = "GPIO20";
-    XSPI.xspi.data0.$assign = "GPIO25";
-    XSPI.xspi.data1.$assign = "GPIO21";
-    XSPI.xspi.data2.$assign = "GPIO22";
-    XSPI.xspi.data3.$assign = "GPIO23";
-    XSPI.use_hw             = "IS25WJ032F";
 }

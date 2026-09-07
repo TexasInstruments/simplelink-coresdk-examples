@@ -41,12 +41,12 @@
 #include <pthread.h>
 
 /* PSA Crypto header file */
-#include <third_party/psa_crypto/include/psa/crypto.h>
+#include <third_party/mbedtls/include/psa/crypto.h>
 
 /* Driver Header files */
 #include <ti/display/Display.h>
 #include <ti/drivers/GPIO.h>
-#include <ti/drivers/cryptoutils/hsm/HSMLPF3.h>
+#include <ti/drivers/cryptoutils/hsm/HSMXXF3.h>
 
 #include <ti/devices/DeviceFamily.h>
 
@@ -70,10 +70,8 @@ static const psa_key_lifetime_t lifetimes[] = {
 
 static const size_t lifetimeCnt = sizeof(lifetimes) / sizeof(psa_key_lifetime_t);
 
-#define MAX_PLAINTEXT_LENGTH    32
-#define MAX_MAC_LENGTH          16
-#define KEY_DERIVATION_LOOP_CNT 5
-#define EXPECTED_PASS_CNT       (lifetimeCnt + (lifetimeCnt * KEY_DERIVATION_LOOP_CNT))
+#define MAX_PLAINTEXT_LENGTH 32
+#define MAX_MAC_LENGTH       16
 
 #if (DeviceFamily_PARENT == DeviceFamily_PARENT_CC35XX)
     /* For CC35XX device, HSM module cannot access Flash directly.
@@ -96,7 +94,7 @@ typedef struct
     uint8_t nonceLength;
     uint8_t expectedMac[MAX_MAC_LENGTH];
     uint8_t macLength;
-    uint8_t expectedCiphertext[MAX_PLAINTEXT_LENGTH];
+    uint8_t expectedCiphertext[MAX_PLAINTEXT_LENGTH + 1];
     psa_algorithm_t alg;
 } AEADTestVector;
 
@@ -114,14 +112,11 @@ static _CONST AEADTestVector testVector = {
     .nonceLength     = 7,
     .expectedMac     = {0x38, 0xf1, 0x25, 0xfa},
     .macLength       = 4,
-    .expectedCiphertext = {0x6b, 0xe3, 0x18, 0x60, 0xca, 0x27, 0x1e, 0xf4, 0x48, 0xde, 0x8f, 0x8d,
+    .expectedCiphertext = {0x00, 0x6b, 0xe3, 0x18, 0x60, 0xca, 0x27, 0x1e, 0xf4, 0x48, 0xde, 0x8f, 0x8d,
                            0x8b, 0x39, 0x34, 0x6d, 0xaf, 0x4b, 0x81, 0xd7, 0xe9, 0x2d, 0x65, 0xb3},
     .alg                = PSA_ALG_AEAD_WITH_SHORTENED_TAG(PSA_ALG_CCM, 4),
 };
 
-static const uint8_t context[] = "ThisIsAContextOfSufficientLength";
-static const uint8_t label[]   = "ThisIsALabelOfSufficientLengthToSatisfyTheHSMRequirement";
-#define TEST_MSG_SIZE   16 /* bytes */
 #define MSG_BUFFER_SIZE 128
 
 static char msgBuf[MSG_BUFFER_SIZE];
@@ -190,74 +185,29 @@ static void printKeyLifetime(psa_key_lifetime_t lifetime)
     Display_printf(display, 0U, 0U, msgBuf);
 }
 
-static size_t setupKeyDerivation(psa_key_derivation_operation_t *derivation, psa_algorithm_t alg, psa_key_id_t keyID)
-{
-    psa_status_t status;
-    size_t capacity;
-
-    /* Set up the key derivation operation */
-    status = psa_key_derivation_setup(derivation, alg);
-    if (status != PSA_SUCCESS)
-    {
-        Display_printf(display, 0U, 0U, "Error: psa_key_derivation_setup() failed. Status = %d\n", status);
-    }
-
-    /* Provide the input key for derivation */
-    status = psa_key_derivation_input_key(derivation, PSA_KEY_DERIVATION_INPUT_SECRET, keyID);
-    if (status != PSA_SUCCESS)
-    {
-        Display_printf(display, 0U, 0U, "Error: psa_key_derivation_input_key() failed. Status = %d\n", status);
-    }
-
-    /* Set input label */
-    status = psa_key_derivation_input_bytes(derivation, PSA_KEY_DERIVATION_INPUT_LABEL, label, sizeof(label));
-    if (status != PSA_SUCCESS)
-    {
-        Display_printf(display, 0U, 0U, "Error: psa_key_derivation_input_bytes() failed. Status = %d\n", status);
-    }
-
-    /* Set input context. When deriving from the HUK or from the TKDK, the HSM
-     * automatically appends a context. Therefore, we should not add the context
-     * provided by the application.
-     */
-    if ((keyID != PSA_KEY_ID_HSM_HUK) && (keyID != PSA_KEY_ID_HSM_TKDK))
-    {
-        status = psa_key_derivation_input_bytes(derivation, PSA_KEY_DERIVATION_INPUT_CONTEXT, context, sizeof(context));
-    }
-
-    /* Verify the initial capacity */
-    status = psa_key_derivation_get_capacity(derivation, &capacity);
-    if (status != PSA_SUCCESS)
-    {
-        Display_printf(display, 0U, 0U, "Error: psa_key_derivation_get_capacity() failed. Status = %d\n", status);
-    }
-    return capacity;
-}
 /*
  *  ======== encryptThread ========
  */
 static void *encryptThread(void *arg0)
 {
+    int_fast8_t passCnt = 0;
     psa_key_attributes_t attributes;
     psa_key_id_t keyID;
     psa_key_lifetime_t lifetime;
     psa_status_t status;
     size_t index;
     size_t outputLength;
-    size_t capacity;
-    psa_key_derivation_operation_t derivation = PSA_KEY_DERIVATION_OPERATION_INIT;
-    uint_fast8_t i, j;
-    int_fast8_t passCnt = 0U;
-    uint8_t ciphertext[MAX_PLAINTEXT_LENGTH + MAX_MAC_LENGTH];
+    uint_fast8_t i;
+    uint8_t ciphertext[MAX_PLAINTEXT_LENGTH + MAX_MAC_LENGTH + 1];
 
     /* Print the encryption inputs */
     printByteArray(display, "Nonce: 0x", testVector.nonce, testVector.nonceLength);
     printByteArray(display, "AAD: 0x", testVector.aad, testVector.aadLength);
-    printByteArray(display, "Plaintext: 0x", testVector.plaintext, testVector.plaintextLength);
+    printByteArray(display, "Plaintext: 0x", testVector.plaintext + 1, testVector.plaintextLength);
     printByteArray(display, "Key: 0x", testVector.key, testVector.keyLength);
     Display_printf(display, 0U, 0U, "");
 
-    /* Key Generation with different key lifetimes */
+    /* Loop for all valid key lifetimes */
     for (i = 0U; i < lifetimeCnt; i++)
     {
         lifetime = lifetimes[i];
@@ -276,11 +226,21 @@ static void *encryptThread(void *arg0)
             keyID = PSA_KEY_ID_USER_MIN + i;
             psa_set_key_id(&attributes, keyID);
 
-            /* Attempt to delete the key to ensure psa_import_key() works
-             * everytime. Ignore return value as it may fail if the key does not
-             * exist.
-             */
-            (void)psa_destroy_key(keyID);
+            /* Attempt to delete the key. To ensure psa_import_key() works everytime. */
+            status = psa_destroy_key(keyID);
+
+            if (status == PSA_SUCCESS)
+            {
+                Display_printf(display,
+                               0U,
+                               0U,
+                               "Destroyed previously existing key with same ID. Status = %d\n",
+                               status);
+            }
+            else if (status == PSA_ERROR_DOES_NOT_EXIST)
+            {
+                /* Expected case, no need to output anything */
+            }
         }
 
         printKeyLifetime(lifetime);
@@ -327,7 +287,7 @@ static void *encryptThread(void *arg0)
                                   testVector.aadLength,
                                   testVector.plaintext,
                                   testVector.plaintextLength,
-                                  ciphertext,
+                                  ciphertext + 1,
                                   sizeof(ciphertext),
                                   &outputLength);
 
@@ -336,7 +296,7 @@ static void *encryptThread(void *arg0)
             printByteArray(display, "Ciphertext: 0x", ciphertext, outputLength);
 
             /* Verify ciphertext output matches expected */
-            for (index = 0; index < testVector.plaintextLength; index++)
+            for (index = 1; index < testVector.plaintextLength + 1; index++)
             {
                 if (ciphertext[index] != testVector.expectedCiphertext[index])
                 {
@@ -356,10 +316,10 @@ static void *encryptThread(void *arg0)
             if (status == PSA_SUCCESS)
             {
                 /* Verify MAC is correct */
-                for (index = 0; index < testVector.macLength; index++)
+                for (index = 0; index < testVector.macLength + 1; index++)
                 {
                     /* The output MAC is appended to the ciphertext output */
-                    if (ciphertext[testVector.plaintextLength + index] != testVector.expectedMac[index])
+                    if (ciphertext[testVector.plaintextLength + index + 1] != testVector.expectedMac[index])
                     {
                         Display_printf(display,
                                        0U,
@@ -396,149 +356,11 @@ static void *encryptThread(void *arg0)
         }
     }
 
-    Display_printf(display, 0U, 0U, "\nStarting key derivation...\n");
+    Display_printf(display, 0U, 0U, "DONE!\n");
 
-    /* Key Derivation */
-    for (i = 0U; i < lifetimeCnt; i++)
+    if (passCnt == lifetimeCnt)
     {
-        psa_key_id_t newkeyID;
-
-        lifetime = lifetimes[i];
-
-        /* configure key attributes for the key you want to use to derive a new key */
-        attributes = PSA_KEY_ATTRIBUTES_INIT;
-        psa_set_key_algorithm(&attributes, PSA_ALG_SP800_108_COUNTER_CMAC);
-        psa_set_key_bits(&attributes, PSA_BYTES_TO_BITS(testVector.keyLength));
-        psa_set_key_type(&attributes, PSA_KEY_TYPE_AES);
-        psa_set_key_usage_flags(&attributes, PSA_KEY_USAGE_DERIVE);
-        psa_set_key_lifetime(&attributes, lifetime);
-
-        if (PSA_KEY_LIFETIME_GET_PERSISTENCE(lifetime) != PSA_KEY_PERSISTENCE_VOLATILE)
-        {
-            /* Set the key ID for non-volatile keys, Range:[PSA_KEY_ID_USER_MIN - PSA_KEY_ID_USER_MAX] */
-            keyID = 5U + i;
-            psa_set_key_id(&attributes, keyID);
-
-            /* Attempt to delete the key to ensure psa_import_key() works
-             * everytime. Ignore return value as it may fail if the key does not
-             * exist.
-             */
-            (void)psa_destroy_key(keyID);
-        }
-
-        printKeyLifetime(lifetime);
-
-        /* Import the key */
-        status = psa_import_key(&attributes, testVector.key, testVector.keyLength, &keyID);
-
-        if (status != PSA_SUCCESS)
-        {
-            Display_printf(display, 0U, 0U, "Error: psa_import_key() failed. Status = %d\n", status);
-
-            if (status == PSA_ERROR_ALREADY_EXISTS)
-            {
-                /* Attempt to delete the existing key. So, next run could be successful. */
-                status = psa_destroy_key(keyID);
-                Display_printf(display, 0U, 0U, "Destroy Key: psa_destroy_key() called. Status = %d\n", status);
-            }
-
-            /* Skip to next key lifetime if key import fails */
-            continue;
-        }
-
-        capacity = setupKeyDerivation(&derivation, PSA_ALG_SP800_108_COUNTER_CMAC, keyID);
-        /* Set capacity to KEY_DERIVATION_LOOP_CNT */
-        capacity = KEY_DERIVATION_LOOP_CNT * TEST_MSG_SIZE;
-        status   = psa_key_derivation_set_capacity(&derivation, capacity);
-
-        /* Read capacity to verify it was set */
-        status = psa_key_derivation_get_capacity(&derivation, &capacity);
-        if (status == PSA_SUCCESS)
-        {
-            Display_printf(display, 0U, 0U, "Capacity is set to = %d\n", capacity);
-        }
-
-        /* Setup new key attributes */
-        psa_key_attributes_t newAttributes = PSA_KEY_ATTRIBUTES_INIT;
-        psa_set_key_algorithm(&newAttributes, PSA_ALG_ECB_NO_PADDING);
-        psa_set_key_bits(&newAttributes, PSA_BYTES_TO_BITS(TEST_MSG_SIZE));
-        psa_set_key_type(&newAttributes, PSA_KEY_TYPE_AES);
-        psa_set_key_usage_flags(&newAttributes, (PSA_KEY_USAGE_ENCRYPT));
-        /* Derived keys can only be produced with Asset Store location and persistence */
-        psa_set_key_lifetime(&newAttributes,
-                             PSA_KEY_LIFETIME_FROM_PERSISTENCE_AND_LOCATION(PSA_KEY_PERSISTENCE_HSM_ASSET_STORE,
-                                                                            PSA_KEY_LOCATION_HSM_ASSET_STORE));
-        for (j = 0U; j < KEY_DERIVATION_LOOP_CNT; j++)
-        {
-            newkeyID = 10U + (i * 10U) + j;
-            psa_set_key_id(&newAttributes, newkeyID);
-
-            /* Perform the key derivation to output HSM asset */
-            status = psa_key_derivation_output_key(&newAttributes, &derivation, &newkeyID);
-            if (status == PSA_SUCCESS)
-            {
-                Display_printf(display, 0U, 0U, "A key has been newly derived, KeyID = %d", newkeyID);
-            }
-            /* Retrieve the updated key attributes */
-            status = psa_get_key_attributes(newkeyID, &newAttributes);
-
-            if (status != PSA_SUCCESS)
-            {
-                Display_printf(display, 0U, 0U, "Error: psa_get_key_attributes() failed. Status = %d\n", status);
-                continue;
-            }
-
-            Display_printf(display, 0U, 0U, "Read KeyID: %d", psa_get_key_id(&newAttributes));
-
-            /* Verify the capacity was reduced by the correct amount */
-            status = psa_key_derivation_get_capacity(&derivation, &capacity);
-            if (status == PSA_SUCCESS)
-            {
-                Display_printf(display, 0U, 0U, "Remaining Capacity is = %d", capacity);
-            }
-
-            /* Zero the ciphertext output buffer */
-            (void)memset(&ciphertext[0], 0, sizeof(ciphertext));
-
-            Display_printf(display, 0U, 0U, "Calling psa_cipher_encrypt()");
-
-            /* Encrypt */
-            status = psa_cipher_encrypt(newkeyID,
-                                        PSA_ALG_ECB_NO_PADDING,
-                                        testVector.plaintext,
-                                        TEST_MSG_SIZE,
-                                        ciphertext,
-                                        sizeof(ciphertext),
-                                        &outputLength);
-
-            if (status == PSA_SUCCESS)
-            {
-                passCnt++;
-                printByteArray(display, "Ciphertext: 0x", ciphertext, outputLength);
-                Display_printf(display, 0U, 0U, "ciphertext should be different every time \n");
-            }
-            else
-            {
-                Display_printf(display, 0U, 0U, "Error: psa_aead_encrypt() failed. Status = %d\n", status);
-            }
-
-            /* Destroy the derived key as there are only a limited number of HSM Assets available */
-            status = psa_destroy_key(newkeyID);
-        }
-
-        /* Destroy the original key */
-        status = psa_destroy_key(keyID);
-
-        if (status != PSA_SUCCESS)
-        {
-            passCnt--;
-            Display_printf(display, 0U, 0U, "Error: psa_destroy_key() failed. Status = %d\n", status);
-        }
-    }
-
-    if (passCnt == EXPECTED_PASS_CNT)
-    {
-        Display_printf(display, 0U, 0U, "DONE!\n");
+        /* Turn on LED1 to indicate encryption with all key lifetimes passed */
         GPIO_write(CONFIG_GPIO_LED_1, CONFIG_GPIO_LED_ON);
     }
 
@@ -581,10 +403,10 @@ void *mainThread(void *arg0)
     Display_printf(display, 0U, 0U, "Provisioning Hardware Unique Key (HUK)...\n");
 
     /* Provision the HW Unique Key needed to store key blobs */
-    ret = HSMLPF3_provisionHUK();
-    if (ret != HSMLPF3_STATUS_SUCCESS)
+    ret = HSMXXF3_provisionHUK();
+    if (ret != HSMXXF3_STATUS_SUCCESS)
     {
-        Display_printf(display, 0U, 0U, "Error: HSMLPF3_provisionHUK() failed. Status = %d\n", ret);
+        Display_printf(display, 0U, 0U, "Error: HSMXXF3_provisionHUK() failed. Status = %d\n", ret);
         while (1) {}
     }
 

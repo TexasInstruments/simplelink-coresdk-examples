@@ -14,6 +14,10 @@ files. Additionally, the System Configuration file (\*.syscfg) present in the
 project may be opened with SysConfig's graphical user interface to determine
 pins and resources used.
 
+* `CONFIG_Display_0` - Displays execution details on the UART.
+* `CONFIG_GPIO_LED_0` - Indicates driver initialization completed successfully.
+* `CONFIG_GPIO_LED_1` - Indicates all operations completed successfully.
+
 ## BoosterPacks, Board Resources & Jumper Settings
 
 For board specific jumper settings, resources and BoosterPack modifications,
@@ -26,7 +30,7 @@ board-specific jumper settings.
 The Board.html can also be found in your SDK installation:
 
 ```text
-    <SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
+<SDK_INSTALL_DIR>/source/ti/boards/<BOARD>
 ```
 
 ## Example Usage
@@ -48,7 +52,7 @@ The connection should have the following settings:
 
 * Run the example.
 
-* `CONFIG_GPIO_LED_0` turns ON to indicate PSA Crypto init is complete.
+* `CONFIG_GPIO_LED_0` turns ON to indicate driver initialization is complete.
 
 * The target will print execution details to the UART.
 

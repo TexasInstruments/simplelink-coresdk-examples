@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023-2024, Texas Instruments Incorporated
+ * Copyright (c) 2023-2026, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -190,11 +190,19 @@ static void printRxMsg(void)
 
     sprintf(formattedMsg + strlen(formattedMsg), "TS: 0x%04x\r\n", rxElem.rxts);
 
+#ifndef CAN_SUPPORTS_DCAN
+
     sprintf(formattedMsg + strlen(formattedMsg), "CAN FD: %u\r\n", rxElem.fdf);
+
+#endif /* CAN_SUPPORTS_DCAN */
 
     sprintf(formattedMsg + strlen(formattedMsg), "DLC: %u\r\n", rxElem.dlc);
 
+#ifndef CAN_SUPPORTS_DCAN
+
     sprintf(formattedMsg + strlen(formattedMsg), "BRS: %u\r\n", rxElem.brs);
+
+#endif /* CAN_SUPPORTS_DCAN */
 
     sprintf(formattedMsg + strlen(formattedMsg), "ESI: %u\r\n", rxElem.esi);
 
@@ -233,6 +241,7 @@ static void verifyMsg(void)
                 (unsigned int)txElem.id);
         verifyErr = true;
     }
+#ifndef CAN_SUPPORTS_DCAN
     else if (rxElem.fdf != txElem.fdf)
     {
         sprintf(formattedMsg,
@@ -241,6 +250,7 @@ static void verifyMsg(void)
                 (unsigned int)txElem.fdf);
         verifyErr = true;
     }
+#endif /* CAN_SUPPORTS_DCAN */
     else if (rxElem.dlc != txElem.dlc)
     {
         sprintf(formattedMsg,
@@ -329,10 +339,14 @@ static void txTestMsg(uint32_t id, uint32_t extID, uint32_t dlc, uint32_t fdForm
     txElem.id  = id;
     txElem.rtr = 0U;
     txElem.xtd = extID;
+#ifndef CAN_SUPPORTS_DCAN
     txElem.esi = 0U;
     txElem.brs = brsEnable;
+#endif /* CAN_SUPPORTS_DCAN */
     txElem.dlc = dlc;
+#ifndef CAN_SUPPORTS_DCAN
     txElem.fdf = fdFormat;
+#endif /* CAN_SUPPORTS_DCAN */
     txElem.efc = 0U;
     txElem.mm  = 1U;
 
@@ -416,8 +430,12 @@ void *mainThread(void *arg0)
         while (1) {}
     }
 
+#ifdef CONFIG_GPIO_LED_0
+
     /* Turn on user LED to indicate successful initialization */
     GPIO_write(CONFIG_GPIO_LED_0, CONFIG_GPIO_LED_ON);
+
+#endif /* CONFIG_GPIO_LED_0 */
 
     /* Enable external loopback test mode */
     CAN_enableLoopbackExt(canHandle);
@@ -429,8 +447,17 @@ void *mainThread(void *arg0)
     /* Print and verify the received message matches the transmitted */
     processRxMsg(true);
 
+#ifndef CAN_SUPPORTS_DCAN
+
     /* Tx CAN FD message with bit rate switching */
     txTestMsg(0x12345678, 1U, CAN_DLC_64B, 1U, 1U);
+
+#else
+    /* Tx classic CAN message without bit rate switching */
+    txTestMsg(0x12345678, 1U, CAN_DLC_8B, 0U, 0U);
+
+#endif /* CAN_SUPPORTS_DCAN */
+
     /* Wait until event callback posts Rx event semaphore */
     sem_wait(&rxEventSem);
     /* Print and verify the received message matches the transmitted */

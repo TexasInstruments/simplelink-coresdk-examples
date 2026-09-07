@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019-2023,Texas Instruments Incorporated
+ * Copyright (c) 2019-2025,Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms,with or without
@@ -35,7 +35,7 @@
 
 #include <ti/drivers/ECDSA.h>
 
-#include <ti/drivers/cryptoutils/hsm/HSMLPF3Utility.h>
+#include <ti/drivers/cryptoutils/hsm/HSMXXF3Utility.h>
 
 #include "ecdsaTestVector.h"
 

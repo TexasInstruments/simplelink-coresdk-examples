@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015-2024, Texas Instruments Incorporated
+ * Copyright (c) 2015-2025, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -233,7 +233,7 @@ void *echoThread(void *arg0)
         List_put(&i2sReadList, (List_Elem *)i2sTransactionList[k]);
     }
 
-    /* The second half of the transactions is stored in the write queue */
+    /* The second half of the transactions are stored in the write queue */
     for (k = NUMBUFS / 2; k < NUMBUFS; k++)
     {
         I2S_Transaction_init(i2sTransactionList[k]);
@@ -285,8 +285,8 @@ void *echoThread(void *arg0)
                  * Here we use a very basic filter
                  * (average to reduce noise level on left channel)
                  *
-                 * Note: data coming from left channel and right channel
-                 * are interleaved
+                 * Note: data coming from left channel and right channel are
+                 * interleaved
                  */
                 buf[n] = (buf[n] + buf[n + 2]) / 2;
             }
